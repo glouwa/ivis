@@ -1,0 +1,105 @@
+%----------------------------------------------------------------
+%
+%  File    :  survey-intro.tex
+%
+%  Author  :  Keith Andrews, IICM, TU Graz, Austria
+% 
+%  Created :  27 May 1993
+% 
+%  Changed :  16 Nov 2010
+% 
+%----------------------------------------------------------------
+
+
+\chapter{Basics}\label{chap:Basics}
+
+
+This chapter explains the different types of graphs and their corresponding matrices, which techniques are basically used on matrices and how to interpret the resulting patterns
+
+\section{Definitions}
+Every node in the graph has its distinctive unique id, which never changes. In this paper, the terms ``nodes" and ``edges" are used. 
+
+\textbf{TODO: some more stuff here}
+
+
+
+
+\section{Types of Graphs}
+
+We distinguish between two types of edges (directed and undirected) and two types of cost calculations (weighted and unweighted) between the nodes, which leads to 4 different graphs
+
+\subsection{directed/undirected}
+
+As can be seen in figure~\ref{fig:dir_graph} undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. 
+
+\textbf{TODO: some more stuff here}
+
+\subsection{weighted/unweighted}
+
+A graph without weights has uniform costs on all edges, which leads to equal costs by traversing the edges in any order. When adding weights or costs to the edges, this fact changes. The order or selection of traversing the edges does matter as it creates different costs.
+
+
+\textbf{TODO: some more stuff here}
+
+\section{Use cases}
+Some use cases of the different graph types are (to name just a few examples):
+\begin{itemize}
+\item Navigation system (weighted directed)
+	\begin{itemize}
+		\item Nodes: Cities/POIs
+		\item Edges: Routes directed (one way streets)
+		\begin{itemize}
+			\item weights
+			\begin{itemize}
+				\item length of street (find shortest way)
+				\item time to traverse the street (find fastest way)
+			\end{itemize}		
+		\end{itemize}
+	\end{itemize}		
+\item Subway map (undirected unweighted)
+\begin{itemize}
+	\item Nodes: stations
+	\item edges: connection between stations
+\end{itemize}
+\item Relations of tweets (directed unweighted)
+\begin{itemize}
+	\item nodes: single tweet entry
+	\item edges: references to other tweets
+\end{itemize}
+\end{itemize}
+
+
+
+
+\section{Matrix representation of graphs}
+
+When representing graphs in a matrix, an adjacency matrix is used. Adjacency matrices are structured with every row and every column represents one node. This leads to a N x N square matrix, where N is the number of nodes. 
+
+These matrices show some patterns according to their corresponding graph but most times these patterns are not immediately visible. There are some techniques to reveal these patterns, all of them involving the reordering of the matrix.
+
+
+\subsection{Reordering}
+
+The main goal of reordering the matrix is to cluster the edges and thus reveal certain patterns. An example of this behaviour can be seen in figure~\ref{fig:reorder}. 
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{images/reorder}
+\caption{Reordering a matrix\label{fig:reorder}}
+\end{figure}
+
+
+When reordering the matrix, the indices of the single rows and columns stay with the rows, otherwise the graph would change by this workstep. In this example, at first the rows 1 and 4 get swapped and as a second step columns 2 and 4. In this way the full connection pattern of the two subgraphs may be observed. 
+
+\subsection{Patterns}
+There are 4 main patterns which may be revealed by reordering the matrix. These patterns may be combined in such a way, that for example a subgraph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
+The four different patterns can be seen in the corresponding figures~\ref{fig:patterns}.
+\begin{table}
+  \centering
+\begin{tabu}{cc}
+	\includegraphics[width=0.49\textwidth]{images/pattern_star}  &
+	\includegraphics[width=0.49\textwidth]{images/pattern_full} \\
+	\includegraphics[width=0.49\textwidth]{images/pattern_circle} &
+	\includegraphics[width=0.49\textwidth]{images/pattern_line} 
+\end{tabu}
+\captionof{figure}{4 differnet patterns: star, full, circle and line\label{fig:patterns}}
+\end{table}
