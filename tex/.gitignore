@@ -8,3 +8,6 @@
 *.aux
 *.log
 .directory
+*.bbl
+*.blg
+*.orig

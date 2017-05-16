@@ -14,10 +14,10 @@
 \chapter{Basics}\label{chap:Basics}
 
 
-This chapter explains the different types of graphs and their corresponding matrices, which techniques are basically used on matrices and how to interpret the resulting patterns
+This chapter explains the different types of graphs and their corresponding matrices, which techniques are used on matrices and how to interpret the resulting patterns.
 
 \section{Definitions}
-Basically, a graph in mathematics is an ordered pair $G = (V, E)$ containing a set of nodes $V$ and a set of edges $e$. However, some literature refer to nodes as ``vertices" (thus the $V$) or ``points".
+In mathematics a graph is an ordered pair $G = (V, E)$ containing a set of nodes $V$ and a set of edges $E$. However, some literature refer to nodes as ``vertices" (thus the $V$) or ``points".
 Edges may be called ``arc" or lines. 
 On the other hand, in the case of an directed graph, edges may also be called arrows. Moreover: \begin{itemize}
 	\item $V$ is not allowed to be empty
@@ -26,25 +26,52 @@ On the other hand, in the case of an directed graph, edges may also be called ar
 	\item The \textbf{size} of a graph is the number of edges $|E|$
 \end{itemize}
 
-In this paper, we define that every node in the graph has its distinctive unique id, which never changes. This holds for the reordering of the matrices too - when reordering rows and columns, the corresponding index stays with the column, otherwise the graph would be changed with this operation.
-
+In this paper, every node in the graph has its distinctive unique id, which never changes. This holds for the reordering of the matrices too - when reordering rows and columns, the corresponding index stays with the column, otherwise the graph would be changed with this operation.
 
 
 \section{Types of Graphs}
 
-We distinguish between two types of edges (directed and undirected) and two types of cost calculations (weighted and unweighted) between the nodes, which leads to 4 different graphs
+Basically, there are two types of edges (directed and undirected) and two types of cost calculations (weighted and unweighted), which leads to 4 different graphs. Figure~\ref{fig:graph_types} shows these 4 different types of graphs. 
+
+
+\begin{table}[H]
+  \centering
+\begin{tabu}{cc}
+	\includegraphics[width=0.49\textwidth]{images/directed_weighted_graph}
+	 &
+	\includegraphics[width=0.49\textwidth]{images/undirected_weighted_graph} \\
+	\includegraphics[width=0.49\textwidth]{images/directed_graph}  &
+	\includegraphics[width=0.49\textwidth]{images/undirected_graph} 
+\end{tabu}
+\captionof{figure}{4 different types of graphs (top: weighted directed and undirected, bottom: unweighted directed and undirected)\label{fig:graph_types}}
+\end{table}
+
 
 \subsection{directed/undirected}
 
-As can be seen in figure~\ref{fig:dir_graph} undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. In this paper we neither talk about the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor about a \textbf{multigraph}, which is a graph which contains multiple undirected edges connecting just two nodes.
+Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textbf{multigraph}, which is a graph which contains multiple undirected edges connecting just two nodes, is used.
 
 
 \subsection{weighted/unweighted}
 
-A graph without weights has uniform costs on all edges, which leads to equal costs by traversing the edges in any order. When adding weights or costs to the edges, this fact changes. The order or selection of traversing the edges does matter as it creates different costs.
+For graphs without costs defined for their edges, so called \textbf{unweighted graphs}, may be processed differently: 
+\begin{itemize}
+\item Either the algorithm searches for the shortest path, thus defining a uniform cost on all edges
+\item Or there is no cost calculation at all, even the amount of edges is ignored
+\end{itemize}
+
+When adding weights to the edges, the graph is called a \textbf{weighted graph}. These weights typically represent different things, for example:
+\begin{itemize}
+\item time
+\item length
+\item energy consumption
+\item elevations
+\end{itemize}
+to name just a few.
+
+With weights defined on the edges, the approaches of algorithms are different, as the shortest path, in despite of number of traversed edges, is not necessarily the cheapest one. 
 
 
-\textbf{TODO: some more stuff here}
 
 \section{Use cases}
 Some use cases of the different graph types are (to name just a few examples):
@@ -74,8 +101,6 @@ Some use cases of the different graph types are (to name just a few examples):
 \end{itemize}
 
 
-
-
 \section{Matrix representation of graphs}
 
 When representing graphs in a matrix, an adjacency matrix is used. Adjacency matrices are structured with every row and every column represents one node. This leads to a N x N square matrix, where N is the number of nodes. 
@@ -98,7 +123,8 @@ When reordering the matrix, the indices of the single rows and columns stay with
 \subsection{Patterns}
 There are 4 main patterns which may be revealed by reordering the matrix. These patterns may be combined in such a way, that for example a subgraph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
 The four different patterns can be seen in the corresponding figures~\ref{fig:patterns}.
-\begin{table}
+
+\begin{table}[H]
   \centering
 \begin{tabu}{cc}
 	\includegraphics[width=0.49\textwidth]{images/pattern_star}  &

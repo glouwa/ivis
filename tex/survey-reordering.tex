@@ -1,0 +1,24 @@
+%----------------------------------------------------------------
+%
+%  File    :  thesis-tech.tex
+%
+%  Author  :  Eva Rott, TU Graz, Austria
+% 
+%  Created :  14 May 2017
+% 
+%  Changed :  16 May 2017
+% 
+%----------------------------------------------------------------
+
+
+\chapter{Reordering}\label{chap:reordering}
+
+Reordering describes the process of either moving nodes in a graph or moving rows or columns in a matrix. There are two types of reordering: manual and automatic. Manual reordering is done by the user of a software. This survey focuses on automatic reordering, which is done by a software tool based on its implemented algorithms. The information used as input for the algorithms can be the node label, node in / out degree or clustering data. The mentioned information sources are not a complete list of available reordering input data. However, they were found in the tested programs and they are described in more detail in the following enumeration.
+
+\begin{enumerate}
+	\item Reordering using node label. The data used for this example describes a number of functions of a program connected corresponding to the its control flow. Figure $[function_calls_graph.png]$ TODO shows the directed graph with the functions as nodes; Figure $[sample_matrix.png]$ TODO the unsorted matrix representation of the graph. The result of reordering the matrix based on alphabetic label name order can be seen in figure $[reordered_by_label.png]$ TODO.
+	
+	\item Reordering using node out degree. The data used for this example is the same as in TODO. Figure TODO shows a reordered matrix based on ascending order of node in and out degree. The function with the largest number of incoming links is the rightmost column and the node function with the largest number of outgoing links the lowermost row of the matrix.
+
+	\item Reordering using node clustering. As node clustering needs to be computed first, this type of reordering is explained in an example taken from the program Nodetrix. Displayed in figure TODO $[nodetrix_reordering.png]$ is the graph with the clustered nodes, marked in different colors, and some sub-matrices for some of the ordered clusters.
+\end{enumerate}
