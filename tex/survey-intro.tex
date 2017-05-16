@@ -1,12 +1,12 @@
 %----------------------------------------------------------------
 %
-%  File    :  survey-intro.tex
+%  File    :  survey-basics.tex
 %
-%  Author  :  Keith Andrews, IICM, TU Graz, Austria
+%  Author  :  Julian Philipp Wolf, TU Graz, Austria
 % 
-%  Created :  27 May 1993
+%  Created :  14 May 2017
 % 
-%  Changed :  16 Nov 2010
+%  Changed :  16 May 2017
 % 
 %----------------------------------------------------------------
 
@@ -17,10 +17,16 @@
 This chapter explains the different types of graphs and their corresponding matrices, which techniques are basically used on matrices and how to interpret the resulting patterns
 
 \section{Definitions}
-Every node in the graph has its distinctive unique id, which never changes. In this paper, the terms ``nodes" and ``edges" are used. 
+Basically, a graph in mathematics is an ordered pair $G = (V, E)$ containing a set of nodes $V$ and a set of edges $e$. However, some literature refer to nodes as ``vertices" (thus the $V$) or ``points".
+Edges may be called ``arc" or lines. 
+On the other hand, in the case of an directed graph, edges may also be called arrows. Moreover: \begin{itemize}
+	\item $V$ is not allowed to be empty
+	\item $E$ is allowed to be empty
+	\item The \textbf{order} of a graph is the number of vertices $|V|$
+	\item The \textbf{size} of a graph is the number of edges $|E|$
+\end{itemize}
 
-\textbf{TODO: some more stuff here}
-
+In this paper, we define that every node in the graph has its distinctive unique id, which never changes. This holds for the reordering of the matrices too - when reordering rows and columns, the corresponding index stays with the column, otherwise the graph would be changed with this operation.
 
 
 
@@ -30,9 +36,8 @@ We distinguish between two types of edges (directed and undirected) and two type
 
 \subsection{directed/undirected}
 
-As can be seen in figure~\ref{fig:dir_graph} undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. 
+As can be seen in figure~\ref{fig:dir_graph} undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. In this paper we neither talk about the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor about a \textbf{multigraph}, which is a graph which contains multiple undirected edges connecting just two nodes.
 
-\textbf{TODO: some more stuff here}
 
 \subsection{weighted/unweighted}
 
