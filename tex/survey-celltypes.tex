@@ -11,4 +11,66 @@
 %----------------------------------------------------------------
 
 
-\chapter{Cell types}\label{chap:celltypes}
+\chapter{Cell Visualization Techniques}\label{chap:celltypes}
+
+
+\section{What to visualize in cells?}
+Often graph node links contain additional data, besides their connected nodes and weight, for example the textual description.
+
+Most of the time, the cell simply represents the connection between two nodes by filling the cell. If the input is a weighted graph, this information is often extended by the edge weights. Given the case that the input graph is undirected, the cells form a symmetric pattern along the diagonal. 
+
+On the other hand, the cell can also represent data of a node, for example the affiliation to a specific cluster or the similarity to nodes from other clusters or the local neighbourhood. 
+Most tools provide the possibility to highlight the current selection in the matrix.
+
+\section{How to visualize it in cells?}
+
+Connections are most of the time shown in a black-white scheme, where black means that there is a connection, and accordingly white shows, that there is none. The current selection is then highlighted by increasing the transparency of the not-selected cells or simply setting them to grey. The logical next step from this is the extension to a wider color scheme, so that for example weights can be represented by different color grades, additionally with text as a fallback. If this scale is discrete, there is also the possibility to display icons or textures instead of color grades.
+If the data which should be visualized is more exotic, like the similarity of nodes in the local neighbourhood, this could be displayed as bar charts or histograms inside the cells. A matrix cell can even include another matrix and represent the according sub-cells. This technique is mainly used to simplify complex and large matrices.
+
+
+\section{Example: Nodetrix}
+
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/nodetrix_cell}
+\caption{TODO: Screenshot created using Nodetrix...\label{fig:cell_nodetrix}}
+\end{figure}
+
+
+
+In the matrix representation of Nodetrix, connections are shown as black cells, the color in the matrix diagonal visualizes the affiliation to a specific cluster in the graph. The matrices in Nodetrix have a hover effect, which highlights the row and column of the currently selected cell. Every other cell in the matrix becomes light gray to help the user focus on connections. Additionally, the connections to graph nodes from the selected cell are emphasized too, as they are drawn boldly. 
+
+\section{Example: Matrix Zoom}
+
+
+Matrix zoom uses colors to visualize edge attributes. In the example set, edge attributes are an indication if a call is allowed or not or the local neighbourhood of a call, visualized in a color scale. Therefore, calls, which have a shorter path-distance to the considered call are indicated in red. Transparency is used to indicate the call density of this matrix cell, higher cell density meaning a larger percentage of subcells containing calls. TODO: citation ham-ivis2003.pdf
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/matrixzoom_cell}
+\caption{Screenshot created using Matrix zoom...\label{fig:zell_matrixzoom}}
+\end{figure}
+
+
+\section{Example: Cubix}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/cubix3d_cell}
+\caption{The 3D representation of Data in Cubix, screenshot created using Cubix\label{fig:cell_cubix3d}}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/cubix2d_cell}
+\caption{The same data in 2D shown as time slices, screenshot created using Cubix\label{fig:cell_cubix2d}}
+\end{figure}
+
+
+Cubix is a tool to visualize and analyze graphs, which changes over time using the space-time-metaphor. Adjacency matrices are stacked onto each other in chronological order to create a cube with two vertex and one time dimension.
+
+The cell colors represent by default the edge weight, this can also be changed to the edge weight diverging or the affiliation to a specific time slice. The user can switch off the color encoding too, for easier recognizing patterns of the cells. Since this is a three-dimensional visualization, cell opacity is an important method for identifying patterns or cells behind another one. 
+
+Additionally, the size of the cell is another tool to visualize the weight of the edges and their change over time. For pattern finding, this feature can also be turned off. TODO: citation Bach2014cubix.pdf (http://www.aviz.fr/~bbach/cubix/Bach2014cubix.pdf)
+
