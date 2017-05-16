@@ -1,0 +1,10 @@
+*.out
+*.bcf
+*.lof
+*.lol
+*.lot
+*.synctex.gz
+*.toc
+*.aux
+*.log
+.directory
