@@ -11,14 +11,52 @@
 %----------------------------------------------------------------
 
 
-\chapter{Reordering}\label{chap:reordering}
+\chapter{Reordering}
+\label{chap:reordering}
 
-Reordering describes the process of either moving nodes in a graph or moving rows or columns in a matrix. There are two types of reordering: manual and automatic. Manual reordering is done by the user of a software. This survey focuses on automatic reordering, which is done by a software tool based on its implemented algorithms. The information used as input for the algorithms can be the node label, node in / out degree or clustering data. The mentioned information sources are not a complete list of available reordering input data. However, they were found in the tested programs and they are described in more detail in the following enumeration.
+Reordering describes the process of either moving nodes in a graph or moving rows or columns in a matrix. There are two types of reordering: manual and automatic. The former is done by the user of a program. The latter is computed by a software tool using the implemented algorithms. This survey focuses on automatic reordering.
 
-\begin{enumerate}
-	\item Reordering using node label. The data used for this example describes a number of functions of a program connected corresponding to the its control flow. Figure $[function_calls_graph.png]$ TODO shows the directed graph with the functions as nodes; Figure $[sample_matrix.png]$ TODO the unsorted matrix representation of the graph. The result of reordering the matrix based on alphabetic label name order can be seen in figure $[reordered_by_label.png]$ TODO.
-	
-	\item Reordering using node out degree. The data used for this example is the same as in TODO. Figure TODO shows a reordered matrix based on ascending order of node in and out degree. The function with the largest number of incoming links is the rightmost column and the node function with the largest number of outgoing links the lowermost row of the matrix.
+The information used as input for the algorithms can be the node label, node in or out degree or clustering data. The mentioned information sources are not a complete list of available reordering input data. However, they were found in the tested programs and they are described in more detail in the following sections.
 
-	\item Reordering using node clustering. As node clustering needs to be computed first, this type of reordering is explained in an example taken from the program Nodetrix. Displayed in figure TODO $[nodetrix_reordering.png]$ is the graph with the clustered nodes, marked in different colors, and some sub-matrices for some of the ordered clusters.
-\end{enumerate}
+
+\section{Reordering Using Node Label}
+\label{sec:reordering_label}
+The data used for this example describes a number of functions of a program connected corresponding to the their control flow. Figure \ref{fig:reordering_example_graph} shows the directed graph with the functions as nodes; figure \ref{fig:reordering_example_matrix} the unsorted matrix representation of the graph. The result of reordering the matrix based on alphabetic label name order can be seen in \ref{reordering_example_label}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{images/Reordering_Example_graph.png}
+  \caption{Directed Graph of Sample Data. The nodes are functions in a program connected corresponding to control flow.\label{fig:reordering_example_graph}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{images/Reordering_Example_matrix.png}
+  \caption{Matrix Representation of Sample Data. Function callers are marked in the columns and function callees in the rows. \label{fig:reordering_example_matrix}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{images/Reordering_Example_label.png}
+  \caption{Reordered Matrix Based on Labels. \label{fig:reordering_example_label}}
+\end{figure}
+
+
+\section{Reordering Using Node Out Degree}
+The data used for this example is the same as in \ref{sec:reordering_label}. Figure \ref{fig:reordering_example_degree} shows a reordered matrix based on ascending order of node in and out degree. The function with the largest number of incoming links is the rightmost column and the node with the largest number of outgoing links the lowermost row of the matrix.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{images/Reordering_Example_degree.png}
+  \caption{Reordered Matrix Based on Node Degree. The columns are sorted corresponding to their out degree and the rows to indegree. \label{fig:reordering_example_degree}}
+\end{figure}
+
+
+\section{Reordering Using Node Clustering}
+As node clustering needs to be computed first, this type of reordering is explained in an example taken from the program Nodetrix. Displayed in figure \ref{fig:reordering_nodetrix_cluster} is the graph with the clustered nodes, marked in different colors, and some sub-matrices for some of the ordered clusters.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.9]{images/Reordering_NodeTrix_cluster.png}
+  \caption{Reordered Matrix Based on Clustering. The clustering is computed based on node labels. Screenshot created using Nodetrix. \citep[1302-1309]{henry-nodetrix-2007}. \label{fig:reordering_nodetrix_cluster}}
+\end{figure}
