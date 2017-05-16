@@ -11,45 +11,60 @@
 %----------------------------------------------------------------
 
 
-\chapter{Hierarchy Browsers}
+\chapter{Scalability}
 
-\label{chap:Browsers}
-
-
-If the survey were on the topic of hierarchy browsers, for example,
-this is how I might divide up the field.
+\label{chap:Scalability}
 
 
+Graph visuaisations are always limited by the number of nodes, aswell as the number of edges. 
+The simple geometrie of Adjacenzy matrxes allows an esimation of those upper limits. May edgtes is always nodes**2.
 
-\section{Node-Link Hierarchy Browsers}
+On a typical sreen with ~25” alows to  about 
 
-\subsection{Layered}
+table
 
-\subsection{Radial}
+The most simple
+ aproach is zooming, unfortunatly this brings new problems, and doeas not solve
 
+Simple zooming bring problems:
+Zoomed in:Invisible edges in hidden zoom area, tasks wie mit allen verbunden geht nimma
 
+Simple zooming dows not solve problems:
+Zoomed out: to small cols/rows with unreadable labels
 
+Improvments in a spezific kontext, 
+Clustering, recursive clustering: relations beteen nodes, clusters (ham). depends on clustering, this is dataproprocessing from my point of view.
 
-
-\section{Space-Filling Hierarchy Browsers}
-
-\subsection{Layered}
-
-\subsection{Radial}
-
-\subsection{Inclusive}
-
-\subsection{Overlapping}
+Hybrid: dens clusters (nodetrix) is usefull if dense subclusters a present. Shows them as adjm in traditional graph
 
 
 
+\section{Matrix subdivision}
+
+\subsection{clusteralgo}
+algo -> sort,
+multible sorts (within cluser, clusters)
+
+minimizes unseed edges. sugest marks for unseedn edges
+
+\subsection{Transformations}
+\subsubsection{Header}
+\subsubsection{Cell}
 
 
 
-\section{Evaluating Hierarchy Browsers}
 
-\subsection{Formative Studies}
 
-\subsection{Comparative Studies}
+\section{Recursive Matrix subdivision}
 
+additional header stuff
+
+
+
+
+
+\section{Hybrid Representation}
+
+shows adjm in tratitionsl graph
+best for dense clustes in graph
 
