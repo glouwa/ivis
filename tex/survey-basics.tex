@@ -17,9 +17,9 @@
 This chapter explains the different types of graphs and their corresponding matrices, which techniques are used on matrices and how to interpret the resulting patterns.
 
 \section{Definitions}
-In mathematics a graph is an ordered pair $G = (V, E)$ containing a set of nodes $V$ and a set of edges $E$. However, some literature refer to nodes as ``vertices" (thus the $V$) or ``points".
+In mathematics a graph is an ordered pair $G = (V, E)$ containing a set of nodes $V$ and a set of edges $E$. However, some literature refers to nodes as ``vertices" (thus the $V$) or ``points".
 Edges may be called ``arc" or lines. 
-On the other hand, in the case of an directed graph, edges may also be called arrows. Moreover: \begin{itemize}
+On the other hand, in the case of a directed graph, edges may also be called arrows. Moreover: \begin{itemize}
 	\item $V$ is not allowed to be empty
 	\item $E$ is allowed to be empty
 	\item The \textbf{order} of a graph is the number of vertices $|V|$
@@ -49,12 +49,12 @@ Basically, there are two types of edges (directed and undirected) and two types 
 
 \subsection{Directed/Undirected}
 
-Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textbf{multigraph}, which is a graph which contains multiple undirected edges connecting just two nodes, is used.
+Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textbf{multigraph}, a graph which contains multiple undirected edges connecting just two nodes, is used.
 
 
 \subsection{Weighted/Unweighted}
 
-For graphs without costs defined for their edges, so called \textbf{unweighted graphs}, may be processed differently: 
+Graphs without costs defined for their edges, so called \textbf{unweighted graphs}, may be processed differently: 
 \begin{itemize}
 \item Either the algorithm searches for the shortest path, thus defining a uniform cost on all edges
 \item Or there is no cost calculation at all, even the amount of edges is ignored
@@ -78,8 +78,8 @@ Some use cases of the different graph types are (to name just a few examples):
 \begin{itemize}
 \item Navigation system (weighted directed)
 	\begin{itemize}
-		\item Nodes: Cities/POIs
-		\item Edges: Routes directed (one way streets)
+		\item Nodes: cities/POIs
+		\item Edges: routes directed (one way streets)
 		\begin{itemize}
 			\item weights
 			\begin{itemize}
@@ -91,19 +91,19 @@ Some use cases of the different graph types are (to name just a few examples):
 \item Subway map (undirected unweighted)
 \begin{itemize}
 	\item Nodes: stations
-	\item edges: connection between stations
+	\item Edges: connections between stations
 \end{itemize}
 \item Relations of tweets (directed unweighted)
 \begin{itemize}
-	\item nodes: single tweet entry
-	\item edges: references to other tweets
+	\item Nodes: single tweet entry
+	\item Edges: references to other tweets
 \end{itemize}
 \end{itemize}
 
 
 \section{Matrix Representation of Graphs}
 
-When representing graphs in a matrix, an adjacency matrix is used. Adjacency matrices are structured with every row and every column represents one node. This leads to a N x N square matrix, where N is the number of nodes. 
+When representing graphs in a matrix, an adjacency matrix is used. Adjacency matrices are structured with every row and every column representing one node. This leads to an N x N square matrix, where N is the number of nodes. 
 
 These matrices show some patterns according to their corresponding graph but most times these patterns are not immediately visible. There are some techniques to reveal these patterns, all of them involving the reordering of the matrix.
 
@@ -121,7 +121,7 @@ The main goal of reordering the matrix is to cluster the edges and thus reveal c
 When reordering the matrix, the indices of the single rows and columns stay with the rows, otherwise the graph would change by this work step. In this example, at first the rows 1 and 4 get swapped and as a second step columns 2 and 4. In this way the full connection pattern of the two subgraphs may be observed. 
 
 \subsection{Patterns}
-There are 4 main patterns which may be revealed by reordering the matrix. These patterns may be combined in such a way, that for example a subgraph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
+There are 4 main patterns which may be revealed by reordering the matrix. These patterns can be combined in such a way, that for example a sub graph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
 The four different patterns can be seen in the corresponding figures~\ref{fig:patterns}.
 
 \begin{table}[H]

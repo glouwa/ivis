@@ -15,12 +15,13 @@
 \label{chap:headers}
 
 A standard matrix visualization contains a symmetric grid representing the node connections and node labels on top and to the left side of the grid. In this survey this area and in general the area around the grid is referred to as matrix header. The matrix header can be used for visualizing additional information about the matrix data. An example for that is a group of node connections, the node density or the current level of zoom in a multi-layer matrix.
+There are various techniques to achieve additional information visualization in a matrix header. Most of them can be found in the program Matrix Explorer.
 
-There are various techniques to achieve additional information visualization in a matrix header. Most of the visualization techniques can be found in the program Matrix Explorer. The Matrix Explorer is another tool for matrix visualization of graphs. As seen in figure \ref{fig:header_matrixexplorer}, the program displays the matrix without a zoom functionality, while giving a small overview of the full matrix in the top left corner of the graphical user interface. Aside from the matrix visualization, the Matrix Explorer provides various options for filtering or sorting of nodes and executing operations on the matrix headers. The following section describes the most common operations and gives one example per listed tool for a better understanding. 
+The Matrix Explorer is another tool for matrix visualization of graphs. As seen in figure \ref{fig:header_matrixexplorer}, the program displays the matrix without a zoom functionality, while giving a small overview of the full matrix in the top left corner of the graphical user interface. Aside from the matrix visualization, the Matrix Explorer provides various options for filtering and sorting of nodes and executing operations on the matrix headers. The following section describes the most common operations and gives one example per listed header visualization technique for a better understanding. 
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/Header_MatrixExplorer.png}
-  \caption{Matrix Visualization Tool MatrixExplorer. Screenshot created using MatrixExplorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer}}
+  \caption{Matrix Visualization Tool Matrix Explorer. Screenshot created using Matrix Explorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer}}
 \end{figure}
 
 \section{Node Connections}
@@ -36,14 +37,14 @@ As seen in figure \ref{fig:header_matlink} from the program MatLink, created by 
 A histogram can be computed over various node properties. An example for such a property is the node degree. The Matrix Explorer offers this histogram functionality. Figure \ref{fig:header_matrixexplorer_histogram} shows a matrix visualization of data similar to that used for the first two examples in the previous chapter. Again, a set of functions from a program are represented as nodes and the programs control flow as links. Looking at the histogram which was computed over the outgoing links it becomes obvious that the main function has the largest light gray area. This means that it has the largest number of outgoing links of all nodes. In contrast to the node out degree distribution, the incoming links follow a more balanced distribution. Considering this example, a histogram in the header is well suited for showing the general distribution of the node degree. In case nodes containing extreme values should be highlighted, the header color visualization technique can be used.
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/Header_MatrixExplorer_histogram.png}
-  \caption{Matrix Header with Histogram of Node Degree. The size of the white area represents the node degree. Screenshot created using MatrixExplorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer_histogram}}
+  \caption{Matrix Header with Histogram of Node Degree. The size of the white area represents the node degree. Screenshot created using Matrix Explorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer_histogram}}
 \end{figure}
 
 \section{Color Highlighting}
 Every node in a graph can be assigned a color in a certain range. This color distribution assigned to the nodes can be computed for the same properties as the histogram. The darker the color the higher the value of this node. Considering the same example and figure \ref{fig:header_matrixexplorer_color} as in the previous section, it becomes obvious that the start function has no incoming links as it is the root function of the program.
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/Header_MatrixExplorer_color.png}
-  \caption{Matrix Header with Color Representation of Node Degree. The intensity of the color represents the node degree. Screenshot created using MatrixExplorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer_color}}
+  \caption{Matrix Header with Color Representation of Node Degree. The intensity of the color represents the node degree. Screenshot created using Matrix Explorer. \citep{henry-phd-2008}. \label{fig:header_matrixexplorer_color}}
 \end{figure}
 
 \section{Histogram per Matrix Sub-Section}
