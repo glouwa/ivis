@@ -1,1 +1,8 @@
 tex/survey.pdf
+tex/*.backup
+tex/*.aux
+tex/*.lof
+tex/*.log
+tex/*.lot
+tex/*.out
+tex/*.toc
