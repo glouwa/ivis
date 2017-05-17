@@ -47,12 +47,12 @@ Basically, there are two types of edges (directed and undirected) and two types 
 \end{table}
 
 
-\subsection{directed/undirected}
+\subsection{Directed/Undirected}
 
 Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textbf{multigraph}, which is a graph which contains multiple undirected edges connecting just two nodes, is used.
 
 
-\subsection{weighted/unweighted}
+\subsection{Weighted/Unweighted}
 
 For graphs without costs defined for their edges, so called \textbf{unweighted graphs}, may be processed differently: 
 \begin{itemize}
@@ -101,7 +101,7 @@ Some use cases of the different graph types are (to name just a few examples):
 \end{itemize}
 
 
-\section{Matrix representation of graphs}
+\section{Matrix Representation of Graphs}
 
 When representing graphs in a matrix, an adjacency matrix is used. Adjacency matrices are structured with every row and every column represents one node. This leads to a N x N square matrix, where N is the number of nodes. 
 
@@ -110,7 +110,7 @@ These matrices show some patterns according to their corresponding graph but mos
 
 \subsection{Reordering}
 
-The main goal of reordering the matrix is to cluster the edges and thus reveal certain patterns. An example of this behaviour can be seen in figure~\ref{fig:reorder}. 
+The main goal of reordering the matrix is to cluster the edges and thus reveal certain patterns. An example of this behavior can be seen in figure~\ref{fig:reorder}. 
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{images/reorder}
@@ -118,7 +118,7 @@ The main goal of reordering the matrix is to cluster the edges and thus reveal c
 \end{figure}
 
 
-When reordering the matrix, the indices of the single rows and columns stay with the rows, otherwise the graph would change by this workstep. In this example, at first the rows 1 and 4 get swapped and as a second step columns 2 and 4. In this way the full connection pattern of the two subgraphs may be observed. 
+When reordering the matrix, the indices of the single rows and columns stay with the rows, otherwise the graph would change by this work step. In this example, at first the rows 1 and 4 get swapped and as a second step columns 2 and 4. In this way the full connection pattern of the two subgraphs may be observed. 
 
 \subsection{Patterns}
 There are 4 main patterns which may be revealed by reordering the matrix. These patterns may be combined in such a way, that for example a subgraph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
