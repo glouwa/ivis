@@ -2,11 +2,11 @@
 %
 %  File    :  survey.tex
 %
-%  Author  :  Keith Andrews, IICM, TU Graz, Austria
+%  Author  :  Keith Andrews, ISDS, TU Graz, Austria
 %
 %  Created :  24 Mar 2010
 %
-%  Changed :  16 May 2017
+%  Changed :  22 Nov 2016
 %
 %----------------------------------------------------------------
 
@@ -30,6 +30,7 @@
 % A4 is 210 x 297 mm
 
 
+
 \usepackage{txfonts}            % new times fonts
 \usepackage{relsize}            % relative font sizes \smaller \larger
 
@@ -51,9 +52,12 @@
 \usepackage{xspace}
 \usepackage{etoolbox}           % for \newrobustcmd
 \usepackage{makecmds}           % for \makecommand
+\usepackage{placeins}		   % for FloatBarrier command
 
 
 \usepackage[english,austrian,british]{babel}
+
+\usepackage{tabu}
 
 \usepackage[bf,sf]{titlesec}
 
@@ -68,6 +72,28 @@
 
 \setlength{\abovecaptionskip}{4mm plus 2mm minus 1mm}
 \setlength{\belowcaptionskip}{0mm}
+
+
+
+% sensible settings for floats
+% See http://www-rohan.sdsu.edu/~aty/bibliog/latex/floats.html
+% See https://robjhyndman.com/hyndsight/latex-floats/
+
+\setcounter{topnumber}{2}               % max num floats at top of page
+\setcounter{dbltopnumber}{2}            % max num floats on 2col page
+\setcounter{bottomnumber}{2}            % max num floats at bottom of page
+\setcounter{totalnumber}{4}             % max num floats on a page
+
+\renewcommand{\topfraction}{0.8}        % max fraction of floats at top
+\renewcommand{\dbltopfraction}{0.9}     % max fraction of floats at top 2col
+\renewcommand{\bottomfraction}{0.8}     % max fraction of floats at bottom
+\renewcommand{\textfraction}{0.2}       % min fraction of text
+
+% only for entirely float pages:
+\renewcommand{\floatpagefraction}{0.7}      % min page fraction having floats
+\renewcommand{\dblfloatpagefraction}{0.7}   % min 2col page fraction having floats
+
+
 
 
 
@@ -88,11 +114,11 @@
   parskip=0pt,
   hangindent=0pt,
   indention=0pt,
-  singlelinecheck=true
+  singlelinecheck=true,
 }
 
 
-\usepackage{tabu}
+
 
 % fancyhdr to make nice headers and footers
 % and deal with long chapter names
@@ -326,7 +352,6 @@
 \addbibresource{kandrews.bib}
 \addbibresource{ivis.bib}
 
-\bibliography{ivis.bib}
 
 
 
@@ -570,7 +595,6 @@ doi:\protect\nolinkurl{#1}%
 
 
 
-
 \begin{document}
 
 \keithdate
@@ -585,17 +609,11 @@ doi:\protect\nolinkurl{#1}%
 \begin{titlepage}
 
 \begin{center}
-{\Large \sffamily \bfseries Matrix Representation of Graphs}
+{\Large \sffamily \bfseries Writing a Survey Paper}
 
 \vspace{1cm}
 
-{\large\sffamily Group 3\\ \vspace*{1cm}}
-{\small\sffamily 
-Eva Rott\\
-Michael Glatzhofer\\
-Dominik Mocher\\
-Julian Wolf
-}
+{\large\sffamily Keith Andrews}
 
 % {\large\sffamily Group 4}
 % \vspace{5mm}
@@ -603,19 +621,19 @@ Julian Wolf
 
 \vspace{1cm}
 
-Institute for Information Systems and Computer Media (IICM), \\
+Institute of Interactive Systems and Data Science (ISDS), \\
 Graz University of Technology \\
 A-8010 Graz, Austria \\[1cm]
 
 
 % {\large
-% 706.057 Information Visualisation SS 2017 \\
+% 706.057 Information Visualisation SS 2016 \\
 % Graz University of Technology \\[1cm]
 % }
 
 \vspace{1cm}
 
-{\large 15 Mai 2017}
+{\large 22 Nov 2016}
 
 \end{center}
 
@@ -637,7 +655,7 @@ In this survey we present some potent techniques applicable to adjacency matrice
 \vfill
 
 \begin{center}
-{\small\sffamily \copyright ~ Copyright 2017 by the author(s),
+{\small\sffamily \copyright ~ Copyright 2016 by the author(s),
 except as otherwise noted.}
 
 \vspace{2mm}
@@ -702,7 +720,7 @@ Creative Commons Attribution 4.0 International
 \cleardoublepage
 \setcounter{secnumdepth}{-1}
 \chapter{Conclusion}
-In this paper several tools for matrix visualization of graphs were discussed and evaluated with focus on the implementation of a zoom function, cell visualization techniques and matrix header visualizations. Evaluating all of these three points, it became clear that each of the presented tools implements a different key aspect. While MatrixZoom has the best zoom implementation, Nodetrix provides very good cell visualization techniques, Matrix Explorer offers the best support for additional information visualization. 
+Several tools for matrix visualization of graphs were discussed and evaluated with focus on the implementation of a zoom function, cell visualization techniques and matrix header visualizations. Evaluating all of these three points, it became clear that each of the presented tools implements a different key aspect. While MatrixZoom has the best zoom implementation, Nodetrix provides very good cell visualization techniques, Matrix Explorer offers the best support for additional information visualization. 
 
 All in all, no program can be recommended in general for any application. Best approach is to consider the type and size of the data before choosing a matrix visualization tool.
 

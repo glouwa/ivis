@@ -22,19 +22,20 @@ Edges may be called ``arc" or lines.
 On the other hand, in the case of a directed graph, edges may also be called arrows. Moreover: \begin{itemize}
 	\item $V$ is not allowed to be empty
 	\item $E$ is allowed to be empty
-	\item The \textbf{order} of a graph is the number of vertices $|V|$
-	\item The \textbf{size} of a graph is the number of edges $|E|$
+	\item The \textit{order} of a graph is the number of vertices $|V|$
+	\item The \textit{size} of a graph is the number of edges $|E|$
 \end{itemize}
 
 In this paper, every node in the graph has its distinctive unique id, which never changes. This holds for the reordering of the matrices too - when reordering rows and columns, the corresponding index stays with the column, otherwise the graph would be changed with this operation.
 
 
+\FloatBarrier
 \section{Types of Graphs}
 
 Basically, there are two types of edges (directed and undirected) and two types of cost calculations (weighted and unweighted), which leads to 4 different graphs. Figure~\ref{fig:graph_types} shows these 4 different types of graphs. 
 
 
-\begin{table}[H]
+\begin{table}[tp]
   \centering
 \begin{tabu}{cc}
 	\includegraphics[width=0.49\textwidth]{images/directed_weighted_graph}
@@ -43,24 +44,24 @@ Basically, there are two types of edges (directed and undirected) and two types 
 	\includegraphics[width=0.49\textwidth]{images/directed_graph}  &
 	\includegraphics[width=0.49\textwidth]{images/undirected_graph} 
 \end{tabu}
-\captionof{figure}{4 different types of graphs (top: weighted directed and undirected, bottom: unweighted directed and undirected)\label{fig:graph_types}}
+\captionof{figure}{4 different types of graphs (top: weighted directed and undirected, bottom: unweighted directed and undirected)\imgcredit{Figure created by an author of this thesis using GoogleDraw.}\label{fig:graph_types}}
 \end{table}
 
 
 \subsection{Directed/Undirected}
 
-Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textbf{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textbf{multigraph}, a graph which contains multiple undirected edges connecting just two nodes, is used.
+Undirected edges may be traversed in any direction, whereas directed edges may just be traversed in one direction. For matrix representation of graphs, neither the mathematical \textit{quiver}, a directed graph which has multiple arrows pointing from node $x$ to $y$, nor the \textit{multigraph}, a graph which contains multiple undirected edges connecting just two nodes, is used.
 
 
 \subsection{Weighted/Unweighted}
 
-Graphs without costs defined for their edges, so called \textbf{unweighted graphs}, may be processed differently: 
+Graphs without costs defined for their edges, so called \textit{unweighted graphs}, may be processed differently: 
 \begin{itemize}
 \item Either the algorithm searches for the shortest path, thus defining a uniform cost on all edges
 \item Or there is no cost calculation at all, even the amount of edges is ignored
 \end{itemize}
 
-When adding weights to the edges, the graph is called a \textbf{weighted graph}. These weights typically represent different things, for example:
+When adding weights to the edges, the graph is called a \textit{weighted graph}. These weights typically represent different things, for example:
 \begin{itemize}
 \item time
 \item length
@@ -71,7 +72,7 @@ to name just a few.
 
 With weights defined on the edges, the approaches of algorithms are different, as the shortest path, in despite of number of traversed edges, is not necessarily the cheapest one. 
 
-
+\FloatBarrier
 
 \section{Use cases}
 Some use cases of the different graph types are (to name just a few examples):
@@ -107,24 +108,28 @@ When representing graphs in a matrix, an adjacency matrix is used. Adjacency mat
 
 These matrices show some patterns according to their corresponding graph but most times these patterns are not immediately visible. There are some techniques to reveal these patterns, all of them involving the reordering of the matrix.
 
-
+\FloatBarrier
 \subsection{Reordering}
 
 The main goal of reordering the matrix is to cluster the edges and thus reveal certain patterns. An example of this behavior can be seen in figure~\ref{fig:reorder}. 
 
-\begin{figure}[h]
-\includegraphics[width=\textwidth]{images/reorder}
-\caption{Reordering a matrix\label{fig:reorder}}
-\end{figure}
-
 
 When reordering the matrix, the indices of the single rows and columns stay with the rows, otherwise the graph would change by this work step. In this example, at first the rows 1 and 4 get swapped and as a second step columns 2 and 4. In this way the full connection pattern of the two subgraphs may be observed. 
 
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{images/reorder}
+\caption[Reordering a matrix]{Reordering a matrix\imgcredit{Figure created by an author of this thesis using GoogleDraw.}\label{fig:reorder}}
+\end{figure}
+
+\FloatBarrier
+
 \subsection{Patterns}
+
 There are 4 main patterns which may be revealed by reordering the matrix. These patterns can be combined in such a way, that for example a sub graph creates a circle, but one node if it is connected to every other node. This results in a combination of the star and the circle pattern. 
 The four different patterns can be seen in the corresponding figures~\ref{fig:patterns}.
 
-\begin{table}[H]
+\begin{table}[tp]
   \centering
 \begin{tabu}{cc}
 	\includegraphics[width=0.49\textwidth]{images/pattern_star}  &
@@ -132,5 +137,5 @@ The four different patterns can be seen in the corresponding figures~\ref{fig:pa
 	\includegraphics[width=0.49\textwidth]{images/pattern_circle} &
 	\includegraphics[width=0.49\textwidth]{images/pattern_line} 
 \end{tabu}
-\captionof{figure}{4 differnet patterns: star, full, circle and line\label{fig:patterns}}
+\captionof{figure}{4 differnet patterns: star, full, circle and line\imgcredit{Figure created by an author of this thesis using GoogleDraw.}\label{fig:patterns}}
 \end{table}
