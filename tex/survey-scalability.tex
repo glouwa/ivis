@@ -23,8 +23,10 @@ Pixel grid                 & 3000      & $10^7$                     \\ \hline
 Interactive cell or header & 300       & $10^5$                     \\ \hline
 Labeled cell or header     & 30        & $10^3$                     \\ \hline
 \end{tabular}
-\caption{Upper limit of nodes on a 25" screen for fully visible adjacency matrix visualizations.}
-\label{my-label}
+\caption
+  [Upper Limit of Nodes of Fully Visible Adjacency Matrix Visualizations]
+  {Estimated Upper limit of nodes on a 25" screen for fully visible adjacency matrix visualizations.}
+  \label{table_upperlimit}
 \end{table}
 
 
@@ -44,7 +46,11 @@ When node labels get too small to be read, they form groups based on their conta
 \begin{figure}[h]
 \centering
 \includegraphics{images/matrixzoom_transform}
-\caption{Cell and header transformations \citep{ham-ivis-2003}. \label{fig:matrixzoom_transform}}
+\caption
+  [Cell and Header Transformations]
+  {Cell and header transformations.}
+  \imgcredit{Image taken from \citep{ham-ivis-2003}.}
+  \label{fig:matrixzoom_transform}
 \end{figure}
 
 
@@ -62,7 +68,11 @@ This concept is suitable for recursive clustering, where each cluster is a zoom 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{images/matrixzoom_abello}
-\caption{Cluster tree visualized in matrix header for better navigation \citep{abello2004}. \label{fig:matrixzoom_abello}}
+\caption
+  [Cluster Tree Visualized in Matrix Header for Better Navigation]
+  {Cluster tree visualized in matrix header for better navigation.}
+  \imgcredit{Image taken from Phd. thesis \citep{ham2005phd}}
+  \label{fig:matrixzoom_abello}
 \end{figure}
 
 
@@ -77,7 +87,11 @@ The quality of this reduction depends on the chosen clustering algorithm and the
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth/2]{images/matrixzoom_cluster}
-\caption{Typical matrix subdivision view of Matrix zoom \citep{ham2005phd}. \label{fig:matrixzoom_cluster}}
+\caption
+    [Typical Matrix Subdivision View of Matrix zoom]
+    {Typical matrix subdivision view of Matrix zoom.}
+    \imgcredit{Image taken from the Phd. thesis \citep{ham2005phd}}
+    \label{fig:matrixzoom_cluster}
 \end{figure}
 
 This concept can not be applied always. In best case the data set gives a natural cluster tree like the software repository. Otherwise, a suitable cluster algorithm must be found, as well as human readable labels for those automatically generated clusters. It should be considered as data preprocessing, since it may be applied to large data sets.
@@ -103,5 +117,11 @@ Nodetrix is a graph adjacency matrix hybrid. Adjacency matrices are better suite
 \centering
 \includegraphics[width=\textwidth/3]{images/nodetrix_matrix}
 \includegraphics[width=\textwidth/3]{images/nodetrix_cluster}
-\caption{Nodetrix with traditional graph view, enhanced with adjacency matrix view \citep{henry-nodetrix-2007}. \label{fig:nodetrix_cluster}}
+\caption
+  [Nodetrix with Traditional Graph View, Enhanced with Adjacency Matrix View]
+  {Nodetrix with traditional graph view, enhanced with adjacency matrix view.}
+  \imgcredit{Screenshot created an author of this thesis using Nodetrix \citep{henry-nodetrix-2007}}
+  \label{fig:nodetrix_cluster}
 \end{figure}
+
+
