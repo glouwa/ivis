@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PLEXX.JS Example: OnHover and Mark</title>
+</head>
+
+<body>
+<h1>PLEXX.JS Example: OnHover and Mark</h1>
+<a href="./3.html">&lt;</a>
+<a href="./5.html">&gt;</a>
+
+
+<div class="plexx" id="map-austria" style="height:30em; width:50em;"></div>
+<nav id="map-austria-debug-panel"></nav>
+
+<script type="text/javascript" src="./plexx.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    //--------------------------------------------------------------------
+
+    function visit(n, fpre, fpost) {
+        if (fpre)
+            fpre(n)
+        if (n.children)
+            for (var i=0; i<n.children.length; i++)
+                visit(n.children[i], fpre, fpost)
+        if (fpost)
+            fpost(n)
+    }
+
+    function addMouseActHov(v)
+    {
+        v.isActive = false;
+        v.on("mousedown", function (e) {
+            v.isActive = !v.isActive;
+            if (v.isActive)
+                v.setColour("#e91e63");
+            else
+                v.setColour("#9c27b0");
+        });
+
+        v.on("mousein", function (e) {
+            if(!v.isActive) v.setColour("#9c27b0");
+        });
+
+        v.on("mouseout", function (e) {
+            if(!v.isActive) v.setColour(v.colour);
+        });
+        return v
+    }
+
+    // model creators --------------------------------------------------------------------
+
+    function oneNode(ok) {
+        ok({
+            children:null,
+            data:{},
+            depth:0,
+            id:'root',
+            parent:null
+        })
+    }
+
+    var nrDn = 24
+    function generated(ok) {
+        oneNode(d=> {
+            d.children = []
+            for (var i=0; i<4+nrDn; i++)
+                d.children.push({ parent:d })
+            ok(d)
+        })
+    }
+
+    function d3csv(ok) {
+        d3.csv("flare.csv", function(error, data) {
+            if (error)
+                throw error;
+            ok(d3.stratify().parentId(d=> d.id.substring(0, d.id.lastIndexOf(".")))(data))
+        });
+    }
+
+    // layouts (initial position)  --------------------------------------------------------------------
+
+    function layoutOneAtCenter(root) {
+        root.x = 0; root.y=0
+        return root
+    }
+
+    function layoutDemo(root) {
+        root.x = 0; root.y=0
+        root.children[0].x = 1; root.children[0].y=0
+        root.children[1].x = 0; root.children[1].y=1
+        root.children[2].x =-1; root.children[2].y=0
+        root.children[3].x = 0; root.children[3].y=-1
+
+        for (var i=0; i<nrDn; i++) {
+            a = i/nrDn*2*Math.PI //+ 2*Math.PI/nrDn/2
+            r = i/nrDn*0.3+0.3
+            root.children[4+i].x = r*Math.cos(a)
+            root.children[4+i].y = r*Math.sin(a)
+        }
+        return root
+    }
+
+    function layoutRadial(root) {
+        root = d3.tree().size([2 * Math.PI, 1])(root)
+        visit(root, n=> {
+            var a = n.x - Math.PI/2
+            n.x = n.y * Math.cos(a)
+            n.y = n.y * Math.sin(a)
+        })
+        return root
+    }
+
+    // plexx --------------------------------------------------------------------
+
+    var myCanvas =      new Plexx.DrawingArea({ width: "1000", height: "500", align: "xMidYMid", });
+    var renderContext = new Plexx.RenderContext({ id: "map-austria"});
+    var debugPanel =    new Plexx.DebugHelper("map-austria-debug-panel", renderContext, myCanvas);
+    myCanvas.run(renderContext);
+
+    function UnitDisk(args)
+    {
+        var plexxObj = new Plexx.Group({ translation:args.pos});
+        var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7", /*draggable:true,*/ });
+        //unitDiscBg.on("mousedown", function (e) { console.log('mouseDown', e) });
+
+        myCanvas.add(plexxObj);
+        plexxObj.add(unitDiscBg);
+        plexxObj.positionUpdateable = []
+        plexxObj.update = function()
+        {
+            // all nodes and links are in positionUpdateable
+            // if transformatin dependency is changed, all get update msg
+            // the all know their model (node) and will calculate their new position
+            for(var i=0; i<plexxObj.positionUpdateable.length; i++)
+                plexxObj.positionUpdateable[i].update(args.transform)
+
+            myCanvas.renderFrame(renderContext);
+        }
+
+        // load data
+        args.data(d3h=> {
+
+            // data ok. calc init layout
+            this.data = d3h
+            this.data = args.layout(d3h)
+
+            // create view stuff from data
+            var model = this.data
+            var s = args.radius
+            visit(model, n=> {
+                // add blue circle
+                var node = new Plexx.Circle({
+                    radius: 8,
+                    position: [n.x*s, n.y*s],
+                    colour: "#90caf9"
+                })
+                node.model = n
+                node = addMouseActHov(node)
+                node.update = function(t) {
+                    console.log('UN');
+                    this.position = t(this.model)
+                }
+                plexxObj.add(node)
+                plexxObj.positionUpdateable.push(node)
+
+                // add line (root has no link)
+                if (n.parent) {
+                    var link = new Plexx.Line({
+                        points: [n.parent.x*s, n.parent.y*s, n.x*s, n.y*s],
+                        width: 0.5,
+                        type: Constants.LineType.Default,
+                        colour: "black",
+                    })
+                    link.model = n
+                    link.update = function(t)
+                    {
+                        console.log('UL', t(this.model.parent).concat(t(this.model)));
+                        this.points = t(this.model.parent).concat(t(this.model))
+                        //this.points = [0, 0, 100, 100] doesnt work either
+                    }
+                    plexxObj.add(link)
+                    plexxObj.positionUpdateable.push(link)
+                }
+            })
+
+        })
+
+        return plexxObj
+    }
+
+    // init --------------------------------------------------------------------
+
+    var z = { x:0, y:0 }
+    var ud1 = UnitDisk({
+        radius:250,
+        pos:[250, 250],
+        data:oneNode,
+        layout:layoutOneAtCenter, // x, y (for now eucidien)
+        transform:p=> [(p.x+z.x)*250, (p.y+z.y)*250] // plexx coord
+    })
+
+    var ud2 = UnitDisk({
+        radius:125,
+        pos:[750, 250+125],
+        data:generated,
+        layout:layoutDemo,
+        transform:p=> [(p.x+z.x)*125, (p.y+z.y)*125]
+    })
+
+    var ud3 = UnitDisk({
+        radius:125,
+        pos:[750, 125],
+        data:d3csv,
+        layout:layoutRadial,
+        transform:p=> [(p.x+z.x)*125, (p.y+z.y)*125]
+    })
+
+    function setz(x, y)
+    {
+        z.x = x; z.y = y
+        ud1.update()
+        ud2.update()
+        //ud3.update()
+    }
+
+</script>
+</body>
+</html>

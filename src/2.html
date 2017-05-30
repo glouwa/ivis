@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PLEXX.JS Example: OnHover and Mark</title>
+</head>
+
+<body>
+<h1>PLEXX.JS Example: OnHover and Mark</h1>
+<a href="./1.html">&lt;</a>
+<a href="./3.html">&gt;</a>
+
+<div class="plexx" id="map-austria" style="height:30em; width:50em;"></div>
+<nav id="map-austria-debug-panel"></nav>
+
+<script type="text/javascript" src="./plexx.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    //--------------------------------------------------------------------
+
+    function Node(x, y)
+    {
+        function setupMouse(mapFragment)
+        {
+            mapFragment.mapFragmentActive = false;
+
+            mapFragment.on("mousedown", function (e) {
+                mapFragment.mapFragmentActive = !mapFragment.mapFragmentActive;
+                if (mapFragment.mapFragmentActive)
+                    mapFragment.setColour("#e91e63");
+                else
+                    mapFragment.setColour("#9c27b0");
+            });
+
+            mapFragment.on("mousein", function (e) {
+                if(!mapFragment.mapFragmentActive) mapFragment.setColour("#9c27b0");
+            });
+
+            mapFragment.on("mouseout", function (e) {
+                if(!mapFragment.mapFragmentActive) mapFragment.setColour(mapFragment.colour);
+            });
+        }
+
+        var circlePoint = new Plexx.Circle({
+            radius: 8,
+            position: [x*250, y*250],
+            colour: "#90caf9"
+        });
+
+        setupMouse(circlePoint)
+        return circlePoint
+    }
+
+    function Link(n)
+    {
+        return new Plexx.Line({
+            points: [n.parent.x*250, n.parent.y*250, n.x*250, n.y*250],
+            width: 0.5,
+            type: Constants.LineType.Default,
+            colour: "black",
+        })
+    }
+
+    //--------------------------------------------------------------------
+
+    function visit(n, fpre, fpost) {
+        if (fpre)
+            fpre(n)
+        if (n.children)
+            for (var i=0; i<n.children.length; i++)
+                visit(n.children[i], fpre, fpost)
+        if (fpost)
+            fpost(n)
+    }
+    //--------------------------------------------------------------------
+
+    var nrDn = 24
+    function loadNodes() {
+        var root = {
+            children:[],
+            data:{},
+            depth:0,
+            id:'root',
+            parent:null
+        }
+        for (var i=0; i<4+nrDn; i++)
+            root.children.push({ parent:root })
+        return root
+    }
+
+    function layout(root) {
+        root.x = 0; root.y=0
+        root.children[0].x = 1; root.children[0].y=0
+        root.children[1].x = 0; root.children[1].y=1
+        root.children[2].x =-1; root.children[2].y=0
+        root.children[3].x = 0; root.children[3].y=-1
+
+        for (var i=0; i<nrDn; i++) {
+            a = i/nrDn*2*Math.PI
+            r = i/nrDn*0.3+0.3
+            root.children[4+i].x = r*Math.cos(a)
+            root.children[4+i].y = r*Math.sin(a)
+        }
+        return root
+    }
+
+    //--------------------------------------------------------------------
+
+    function layout2(root) {
+        root = d3.tree().size([2 * Math.PI, 1])(root)
+        visit(root, n=> {
+            var a = n.x - Math.PI/2
+            n.x = n.y * Math.cos(a)
+            n.y = n.y * Math.sin(a)
+        })
+        return root
+    }
+
+    //--------------------------------------------------------------------
+
+    function update(root) {
+        visit(root, n=> {
+            rootGroup.add(Node(n.x, n.y))
+            if (n.parent)
+                rootGroup.add(Link(n))
+        })
+    }
+
+    var myCanvas =       new Plexx.DrawingArea({ width: "1000", height: "500", align: "xMidYMid", });
+    var renderContext =  new Plexx.RenderContext({ id: "map-austria"});
+    var debugPanel =     new Plexx.DebugHelper("map-austria-debug-panel", renderContext, myCanvas);
+    var rootGroup =      new Plexx.Group({ translation: [500, 250]});
+    var euclideanSpace = new Plexx.Circle({ radius: 250, position: [0, 0], colour: "#f9fbe7" });
+
+    myCanvas.add(rootGroup);
+    rootGroup.add(euclideanSpace);
+
+    d3.csv("flare.csv", function(error, data) {
+        if (error) throw error;
+        var stratify = d3.stratify().parentId(d=> d.id.substring(0, d.id.lastIndexOf(".")));
+
+        //update(layout2(stratify(data)))
+        update(layout(loadNodes()))
+
+        myCanvas.run(renderContext);
+    });
+
+</script>
+</body>
+</html>

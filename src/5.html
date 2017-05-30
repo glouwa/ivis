@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PLEXX.JS Example: OnHover and Mark</title>
+</head>
+
+<body>
+<h1>PLEXX.JS Example: OnHover and Mark</h1>
+<a href="./4.html">&lt;</a>
+<a href="./6.html">&gt;</a>
+
+
+<svg class="plexx" id="map-austria" style="height:500; width:1000;"></svg>
+<nav id="map-austria-debug-panel"></nav>
+
+<script type="text/javascript" src="./plexx.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    //--------------------------------------------------------------------
+
+    function visit(n, fpre, fpost) {
+        if (fpre)
+            fpre(n)
+        if (n.children)
+            for (var i=0; i<n.children.length; i++)
+                visit(n.children[i], fpre, fpost)
+        if (fpost)
+            fpost(n)
+    }
+
+    function flat(n, f)
+    {
+        var r = []
+        visit(n, n=> { if(f(n)) r.push(n) })
+        return r
+    }
+
+    // model creators --------------------------------------------------------------------
+
+    function oneNode(ok) {
+        ok({
+            children:null,
+            data:{},
+            depth:0,
+            id:'root',
+            parent:null
+        })
+    }
+
+    var nrDn = 24
+    function generated(ok) {
+        oneNode(d=> {
+            d.children = []
+            for (var i=0; i<4+nrDn; i++)
+                d.children.push({ parent:d })
+            ok(d)
+        })
+    }
+
+    function d3csv(ok) {
+        d3.csv("flare.csv", function(error, data) {
+            if (error)
+                throw error;
+            ok(d3.stratify().parentId(d=> d.id.substring(0, d.id.lastIndexOf(".")))(data))
+        });
+    }
+
+    // layouts (initial position)  --------------------------------------------------------------------
+
+    function layoutOneAtCenter(root) {
+        root.x = 0; root.y=0
+        return root
+    }
+
+    function layoutDemo(root) {
+        root.x = 0; root.y=0
+        root.children[0].x = 1; root.children[0].y=0
+        root.children[1].x = 0; root.children[1].y=1
+        root.children[2].x =-1; root.children[2].y=0
+        root.children[3].x = 0; root.children[3].y=-1
+
+        for (var i=0; i<nrDn; i++) {
+            a = i/nrDn*2*Math.PI //+ 2*Math.PI/nrDn/2
+            r = i/nrDn*0.3+0.3
+            root.children[4+i].x = r*Math.cos(a)
+            root.children[4+i].y = r*Math.sin(a)
+        }
+        return root
+    }
+
+    function layoutRadial(root) {
+        root = d3.tree().size([2 * Math.PI, 1])(root)
+        visit(root, n=> {
+            var a = n.x - Math.PI/2
+            n.x = n.y * Math.cos(a)
+            n.y = n.y * Math.sin(a)
+        })
+        return root
+    }
+
+    // plexx --------------------------------------------------------------------
+
+    var svg = d3.select("#map-austria")
+
+    function UnitDisk(args)
+    {
+        var plexxObj = svg.append('g')
+            .attr("transform", "translate(" + args.pos[0] + "," + args.pos[1] + ")");
+        var unitDiscBg = plexxObj.append('circle')
+            .attr("r", args.radius)
+            .attr("fill", "#f9fbe7")
+            .call(d3.drag()
+                .on("drag", d=> setz(d3.event.x/args.radius, d3.event.y/args.radius)))
+
+        plexxObj.positionUpdateable = []
+        plexxObj.update = function()
+        {
+            plexxObj.nodes
+                .attr("cx", d=> args.transform(d)[0])
+                .attr("cy", d=> args.transform(d)[1])
+            plexxObj.links
+                .attr("d", d=> "M "+ args.transform(d) + " L " + args.transform(d.parent))
+        }
+
+        // load data
+        args.data(d3h=> {
+
+            // data ok. calc init layout
+            plexxObj.data = d3h
+            plexxObj.data = args.layout(d3h)
+
+            // create view stuff from data            
+            plexxObj.nodes = plexxObj.selectAll(".node")
+                .data(flat(plexxObj.data, n=>true))
+                .enter().append("circle")
+                  .attr("class", "node")
+                  .attr("r", 8)
+                  .attr("fill", "#90caf9")
+                  .attr("cx", d=> args.transform(d)[0])
+                  .attr("cy", d=> args.transform(d)[1])
+
+            plexxObj.links = plexxObj.selectAll(".link")
+                .data(flat(plexxObj.data, n=>n.parent))
+                .enter().append("path")
+                  .attr("class", "link")
+                  .attr("d", d=> "M "+ args.transform(d) + " L " + args.transform(d.parent))
+                  .attr("stroke", "gray")
+        })
+
+        return plexxObj
+    }
+
+    // init --------------------------------------------------------------------
+
+    var z = { x:0, y:0 }
+    var ud1 = UnitDisk({
+        radius:250,
+        pos:[250, 250],
+        data:oneNode,
+        layout:layoutOneAtCenter, // x, y (for now eucidien)
+        transform:p=> [(p.x+z.x)*250, (p.y+z.y)*250] // plexx coord
+    })
+
+    var ud2 = UnitDisk({
+        radius:125,
+        pos:[750, 250+125],
+        data:generated,
+        layout:layoutDemo,
+        transform:p=> [-(p.x+z.x)*125, -(p.y+z.y)*125]
+    })
+
+    var ud3 = UnitDisk({
+        radius:125,
+        pos:[750, 125],
+        data:d3csv,
+        layout:layoutRadial,
+        transform:p=> [-(p.x+z.x)*125, -(p.y+z.y)*125]
+    })
+
+    function setz(x, y)
+    {
+        z.x = x; z.y = y
+        ud1.update()
+        ud2.update()
+        ud3.update()
+    }
+
+</script>
+</body>
+</html>
