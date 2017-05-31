@@ -6,6 +6,7 @@
 function init() {
 
 
+    mini$.$("body").append(mini$.$("main_drawing_area");
 
     var myCanvas = new Plexx.DrawingArea({width: 1000, height: 500, align: "xMidYMid"});
     var renderContext = new Plexx.RenderContext({id: "main_drawing_area"});
@@ -14,12 +15,5 @@ function init() {
     var euclideanSpace = new Plexx.Circle({radius: 250, position: [0, 0], colour: "#f9fbe7"});
 }
 
+window.onload = init;
 
-if(window.onload) {
-    var newonload = function(evt) {
-        init();
-    };
-    window.onload = newonload;
-} else {
-    window.onload = init;
-}
