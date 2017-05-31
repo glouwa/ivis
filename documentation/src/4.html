@@ -130,6 +130,7 @@
         //unitDiscBg.on("mousedown", function (e) { console.log('mouseDown', e) });
 
         myCanvas.add(plexxObj);
+        plexxObj.data = args.data
         plexxObj.add(unitDiscBg);
         plexxObj.positionUpdateable = []
         plexxObj.update = function()
@@ -143,91 +144,111 @@
             myCanvas.renderFrame(renderContext);
         }
 
-        // load data
-        args.data(d3h=> {
+        // create view stuff from data
+        var model = args.data
+        var s = args.radius
+        visit(model, n=> {
+            // add blue circle
+            var node = new Plexx.Circle({
+                radius: args.r,
+                position: [n.x*s, n.y*s],
+                colour: "#90caf9"
+            })
+            node.model = n
+            node = addMouseActHov(node)
+            node.update = function(t) {
+                console.log('UN');
+                this.position = t(this.model)
+            }
+            plexxObj.add(node)
+            plexxObj.positionUpdateable.push(node)
+
+            // add line (root has no link)
+            if (n.parent) {
+                var link = new Plexx.Line({
+                    points: [n.parent.x*s, n.parent.y*s, n.x*s, n.y*s],
+                    width: 0.5,
+                    type: Constants.LineType.Default,
+                    colour: "black",
+                })
+                link.model = n
+                link.update = function(t)
+                {
+                    console.log('UL', t(this.model.parent).concat(t(this.model)));
+                    this.points = t(this.model.parent).concat(t(this.model))
+                    //this.points = [0, 0, 100, 100] doesnt work either
+                }
+                plexxObj.add(link)
+                plexxObj.positionUpdateable.push(link)
+            }
+        })
+        return plexxObj
+    }
+
+    var testZ = null
+    function HyperboicTree(args)
+    {
+        args.dataloader(d3h=> {
 
             // data ok. calc init layout
-            this.data = d3h
-            this.data = args.layout(d3h)
+            var data = d3h
+            data = args.layout(data)
 
-            // create view stuff from data
-            var model = this.data
-            var s = args.radius
-            visit(model, n=> {
-                // add blue circle
-                var node = new Plexx.Circle({
-                    radius: 8,
-                    position: [n.x*s, n.y*s],
-                    colour: "#90caf9"
-                })
-                node.model = n
-                node = addMouseActHov(node)
-                node.update = function(t) {
-                    console.log('UN');
-                    this.position = t(this.model)
-                }
-                plexxObj.add(node)
-                plexxObj.positionUpdateable.push(node)
+            // common state
+            var z = { x:0, y:0 }
+            function setz(x, y)
+            {
+                z.x = x; z.y = y
+                nav.update()
+                view.update()
+            }
+            testZ = setz
 
-                // add line (root has no link)
-                if (n.parent) {
-                    var link = new Plexx.Line({
-                        points: [n.parent.x*s, n.parent.y*s, n.x*s, n.y*s],
-                        width: 0.5,
-                        type: Constants.LineType.Default,
-                        colour: "black",
-                    })
-                    link.model = n
-                    link.update = function(t)
-                    {
-                        console.log('UL', t(this.model.parent).concat(t(this.model)));
-                        this.points = t(this.model.parent).concat(t(this.model))
-                        //this.points = [0, 0, 100, 100] doesnt work either
-                    }
-                    plexxObj.add(link)
-                    plexxObj.positionUpdateable.push(link)
-                }
+            // create components
+            var navR = 50
+            var navbg = UnitDisk({
+                radius:navR+5,
+                r:2,
+                pos:[55+args.pos[0], 55+args.pos[1]],
+                data:data,
+                transform:p=> [(p.x+z.x)*navR, (p.y+z.y)*navR], // plexx coord
+                onZ: p=>{}
+            })
+            var nav = UnitDisk({
+                opacity:.8,
+                radius:navR+5,
+                r:7,
+                pos:[55+args.pos[0], 55+args.pos[1]],
+                data:layoutOneAtCenter(oneNode),
+                transform:p=> [-(p.x+z.x)*navR, -(p.y+z.y)*navR], // plexx coord
+                onZ: p=> setz(-p[0], -p[1])
             })
 
+            var viewR = 190
+            var view = UnitDisk({
+                radius:viewR+10,
+                r:7,
+                pos:[240+args.pos[0], 240+args.pos[1]],
+                data:data,
+                transform:p=> [(p.x+z.x)*viewR, (p.y+z.y)*viewR],
+                onZ: p=> setz(p[0], p[1])
+            })
         })
-
-        return plexxObj
     }
 
     // init --------------------------------------------------------------------
 
-    var z = { x:0, y:0 }
-    var ud1 = UnitDisk({
-        radius:250,
-        pos:[250, 250],
-        data:oneNode,
-        layout:layoutOneAtCenter, // x, y (for now eucidien)
-        transform:p=> [(p.x+z.x)*250, (p.y+z.y)*250] // plexx coord
-    })
-
-    var ud2 = UnitDisk({
-        radius:125,
-        pos:[750, 250+125],
-        data:generated,
+    HyperboicTree({
+        pos:[0,0],
+        dataloader:generated,
         layout:layoutDemo,
-        transform:p=> [(p.x+z.x)*125, (p.y+z.y)*125]
     })
 
-    var ud3 = UnitDisk({
-        radius:125,
-        pos:[750, 125],
-        data:d3csv,
+    HyperboicTree({
+        pos:[550,0],
+        dataloader:d3csv,
         layout:layoutRadial,
-        transform:p=> [(p.x+z.x)*125, (p.y+z.y)*125]
     })
-
-    function setz(x, y)
-    {
-        z.x = x; z.y = y
-        ud1.update()
-        ud2.update()
-        //ud3.update()
-    }
 
 </script>
 </body>
