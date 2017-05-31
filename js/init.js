@@ -72,8 +72,8 @@ function init() {
     initUi();
     HyperboicTree({
         pos: [0, 0],
-        dataloader: oneNode,
-        layout: layoutAtCenter,
+        dataloader: dataLoader,
+        layout: layoutRadial,
         t: (p, z) => R2addR2(p, z)
     });
     HyperboicTree({

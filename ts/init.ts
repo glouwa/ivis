@@ -22,15 +22,15 @@ function R2inv(p)        { return { x:-p.x,           y:-p.y }}
 function R2mulR(p1, s)   { return { x:p1.x * s,       y:p1.y * s }}
 function R2addR2(p1, p2) { return { x:p1.x +p2.x,     y:p1.y + p2.y }}
 
-function R2toC(p)        { return { re:p.x,           im:p.y } }
-function R2toArr(p)      { return [ p.x,              p.y ] }
+function R2toC(p)        { return { re:p.x,           im:p.y }}
+function R2toArr(p)      { return [ p.x,              p.y ]}
 
 function Cinv(p)         { return { re:-p.re,         im:-p.im }}
 function CmulR(p1, s)    { return { re:p1.re * s,     im:p1.im * s }}
 function CaddC(p1, p2)   { return { re:p1.re + p2.re, im:p1.im + p2.im }}
 
-function CtoR2(p)        { return { x:p.re,           y:p.im } }
-function CtoArr(p)       { return [ p.re,             p.im ] }
+function CtoR2(p)        { return { x:p.re,           y:p.im }}
+function CtoArr(p)       { return [ p.re,             p.im ]}
 
 function HyperboicTree(args)
 {
@@ -87,8 +87,8 @@ function init() {
 
     HyperboicTree({
         pos:[0,0],
-        dataloader:oneNode,
-        layout:layoutAtCenter,
+        dataloader:dataLoader,
+        layout:layoutRadial,
         t: (p,z)=> R2addR2(p,z)
     })
 

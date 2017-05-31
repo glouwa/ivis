@@ -15,9 +15,6 @@ function star(ok, max) {
         ok(d3.hierarchy(d));
     });
 }
-var star10 = ok => star(ok, 10);
-var star100 = ok => star(ok, 100);
-var star1000 = ok => star(ok, 1000);
 function path(ok, max) {
     oneNode(d => {
         d.children = [];
@@ -30,9 +27,12 @@ function path(ok, max) {
         ok(d3.hierarchy(d));
     });
 }
-function path10(ok) { return path(ok, 10); }
-function path100(ok) { return path(ok, 100); }
-function path1000(ok) { return path(ok, 1000); }
+var star1 = ok => star(ok, 50);
+var star2 = ok => star(ok, 500);
+var star3 = ok => star(ok, 5000);
+var path1 = ok => path(ok, 50);
+var path2 = ok => path(ok, 500);
+var path3 = ok => path(ok, 5000);
 function d3csv(ok) {
     d3.csv("flare.csv", function (error, data) {
         if (error)
