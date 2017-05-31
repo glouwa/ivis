@@ -126,8 +126,15 @@
     function UnitDisk(args)
     {
         var plexxObj = new Plexx.Group({ translation:args.pos});
-        var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7", /*draggable:true,*/ });
-        //unitDiscBg.on("mousedown", function (e) { console.log('mouseDown', e) });
+        var unitDiscBg = new Plexx.Rectangle({
+            //radius:args.radius,
+            width: args.radius,
+            height: args.radius,
+            position:[0,0],
+            colour:"#f9fbe7",
+            draggable:true,
+            draggingSpace: [-10000, -10000, 10000, 10000]});
+        unitDiscBg.on("dragmove", function (e) { console.log('dragmove', e) });
 
         myCanvas.add(plexxObj);
         plexxObj.data = args.data
