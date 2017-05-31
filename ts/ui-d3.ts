@@ -1,6 +1,14 @@
-var svg = d3.select("#map-austria")
+var svg = null
 
-function UnitDisk(args)
+function initD3(args)
+{
+    svg = d3.select("#ivis-canvas-div")
+        .append('svg')
+        .attr("width", "1000")
+        .attr("height", "500")
+}
+
+function UnitDiskD3(args)
 {
     var plexxObj = svg.append('g')
         .attr("transform", "translate(" + args.pos + ")");

@@ -17,6 +17,7 @@ function flat(n, f) {
     return r;
 }
 function init() {
+    initUi();
     var testZ = null;
     function HyperboicTree(args) {
         args.dataloader(d3h => {
@@ -74,4 +75,23 @@ function init() {
         layout: layoutRadial,
     });
 }
-window.onload = init;
+function setRenderer(e) {
+    console.log(e.value);
+    initUi = eval('init' + e.value);
+    UnitDisk = eval('UnitDisk' + e.value);
+    document.getElementById("ivis-canvas-div").innerText = '';
+    document.getElementById("ivis-canvas-debug-panel").innerText = '';
+    init();
+}
+function setDataSource(e) {
+    initUi = eval('init' + e.value);
+    UnitDisk = eval('UnitDisk' + e.value);
+    document.getElementById("ivis-canvas-div").innerText = '';
+    document.getElementById("ivis-canvas-debug-panel").innerText = '';
+    init();
+}
+window.onload = function () {
+    initUi = eval('init' + document.getElementById("rendererSelect").value);
+    UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
+    init();
+};

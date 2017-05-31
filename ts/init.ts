@@ -1,8 +1,6 @@
-
 /**
  * Created by julian on 31.05.17.
  */
-
 function visit(n, fpre, fpost) {
     if (fpre)
         fpre(n)
@@ -21,6 +19,8 @@ function flat(n, f)
 }
 
 function init() {
+
+    initUi()
 
     var testZ = null
     function HyperboicTree(args)
@@ -86,8 +86,34 @@ function init() {
         dataloader:d3csv,
         layout:layoutRadial,
     })
-
 }
 
-window.onload = init;
+function setRenderer(e)
+{
+    console.log(e.value)
+
+    initUi = eval('init' + e.value)
+    UnitDisk = eval('UnitDisk' + e.value)
+
+    document.getElementById("ivis-canvas-div").innerText = ''
+    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    init()
+}
+
+function setDataSource(e)
+{
+    initUi = eval('init' + e.value)
+    UnitDisk = eval('UnitDisk' + e.value)
+
+    document.getElementById("ivis-canvas-div").innerText = ''
+    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    init()
+}
+
+window.onload = function()
+{
+    initUi = eval('init' + document.getElementById("rendererSelect").value)
+    UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value)
+    init()
+}
 
