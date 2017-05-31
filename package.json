@@ -1,0 +1,27 @@
+{
+  "name": "ivis",
+  "version": "1.0.0",
+  "description": "Hyperbolic tree view in plexx",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glouwa/ivis.git"
+  },
+  "keywords": [
+    "Hyperbolic",
+    "plexx",
+    "ivis"
+  ],
+  "author": "G3: Eva Rott, Michael Glatzhofer, Dominik Mocher, Julian Wolf",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/glouwa/ivis/issues"
+  },
+  "homepage": "https://github.com/glouwa/ivis#readme",
+  "dependencies": {
+    "typescript": "^2.3.4"
+  }
+}
