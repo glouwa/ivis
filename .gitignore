@@ -67,3 +67,9 @@ typings/
 # dotenv environment variables file
 .env
 
+# qt cerator
+.directory
+.config
+.creator
+.files
+.includes

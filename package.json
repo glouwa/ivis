@@ -28,6 +28,8 @@
   "homepage": "https://github.com/glouwa/ivis#readme",
   "dependencies": {
     "typescript": "^2.3.4",
-    "watch": "^1.0.2"
+    "watch": "^1.0.2",
+    "connect": "^3.4.1",
+    "serve-static": "^1.10.3"
   }
 }
