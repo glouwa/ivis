@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "ES6",
         "outDir": "js",
         "rootDir": "ts"

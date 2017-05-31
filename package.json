@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Hyperbolic tree view in plexx",
   "main": "index.html",
+  "watch": {
+    "start": "{ts}/*.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && kde-open index.html || gnome-open index.html || chrome index.html || firefox index.html"
+    "start": "tsc -w",
+    "prestart": "npm install && kde-open index.html || gnome-open index.html || chrome index.html || firefox index.html"
   },
   "repository": {
     "type": "git",
@@ -23,6 +27,7 @@
   },
   "homepage": "https://github.com/glouwa/ivis#readme",
   "dependencies": {
-    "typescript": "^2.3.4"
+    "typescript": "^2.3.4",
+    "watch": "^1.0.2"
   }
 }
