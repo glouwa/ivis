@@ -16,54 +16,56 @@ function flat(n, f) {
         r.push(n); });
     return r;
 }
+var testZ = null;
+function HyperboicTree(args) {
+    args.dataloader(d3h => {
+        // data ok. calc init layout
+        var data = d3h;
+        data = args.layout(data);
+        // common state
+        var z = { x: 0, y: 0 };
+        function setz(x, y) {
+            z.x = x;
+            z.y = y;
+            nav.update();
+            view.update();
+        }
+        testZ = setz;
+        // create components
+        var navR = 50;
+        var navbg = UnitDisk({
+            radius: navR + 5,
+            r: 2,
+            pos: [55 + args.pos[0], 55 + args.pos[1]],
+            data: data,
+            transform: p => [(p.x + z.x) * navR, (p.y + z.y) * navR],
+            onZ: p => { }
+        });
+        var nav = UnitDisk({
+            opacity: .8,
+            radius: navR + 5,
+            r: 7,
+            pos: [55 + args.pos[0], 55 + args.pos[1]],
+            data: layoutOneAtCenter(oneNode),
+            transform: p => [-(p.x + z.x) * navR, -(p.y + z.y) * navR],
+            onZ: p => setz(-p[0], -p[1])
+        });
+        var viewR = 190;
+        var view = UnitDisk({
+            radius: viewR + 10,
+            r: 7,
+            pos: [240 + args.pos[0], 240 + args.pos[1]],
+            data: data,
+            transform: p => [(p.x + z.x) * viewR, (p.y + z.y) * viewR],
+            onZ: p => setz(p[0], p[1])
+        });
+    });
+}
+var initUi = null;
+var UnitDisk = null;
+var dataLoader = null;
 function init() {
     initUi();
-    var testZ = null;
-    function HyperboicTree(args) {
-        args.dataloader(d3h => {
-            // data ok. calc init layout
-            var data = d3h;
-            data = args.layout(data);
-            // common state
-            var z = { x: 0, y: 0 };
-            function setz(x, y) {
-                z.x = x;
-                z.y = y;
-                nav.update();
-                view.update();
-            }
-            testZ = setz;
-            // create components
-            var navR = 50;
-            var navbg = UnitDisk({
-                radius: navR + 5,
-                r: 2,
-                pos: [55 + args.pos[0], 55 + args.pos[1]],
-                data: data,
-                transform: p => [(p.x + z.x) * navR, (p.y + z.y) * navR],
-                onZ: p => { }
-            });
-            var nav = UnitDisk({
-                opacity: .8,
-                radius: navR + 5,
-                r: 7,
-                pos: [55 + args.pos[0], 55 + args.pos[1]],
-                data: layoutOneAtCenter(oneNode),
-                transform: p => [-(p.x + z.x) * navR, -(p.y + z.y) * navR],
-                onZ: p => setz(-p[0], -p[1])
-            });
-            var viewR = 190;
-            var view = UnitDisk({
-                radius: viewR + 10,
-                r: 7,
-                pos: [240 + args.pos[0], 240 + args.pos[1]],
-                data: data,
-                transform: p => [(p.x + z.x) * viewR, (p.y + z.y) * viewR],
-                onZ: p => setz(p[0], p[1])
-            });
-        });
-    }
-    // init --------------------------------------------------------------------
     HyperboicTree({
         pos: [0, 0],
         dataloader: generated,
@@ -71,12 +73,11 @@ function init() {
     });
     HyperboicTree({
         pos: [550, 0],
-        dataloader: d3csv,
+        dataloader: dataLoader,
         layout: layoutRadial,
     });
 }
 function setRenderer(e) {
-    console.log(e.value);
     initUi = eval('init' + e.value);
     UnitDisk = eval('UnitDisk' + e.value);
     document.getElementById("ivis-canvas-div").innerText = '';
@@ -84,8 +85,6 @@ function setRenderer(e) {
     init();
 }
 function setDataSource(e) {
-    initUi = eval('init' + e.value);
-    UnitDisk = eval('UnitDisk' + e.value);
     document.getElementById("ivis-canvas-div").innerText = '';
     document.getElementById("ivis-canvas-debug-panel").innerText = '';
     init();
@@ -93,5 +92,6 @@ function setDataSource(e) {
 window.onload = function () {
     initUi = eval('init' + document.getElementById("rendererSelect").value);
     UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
+    dataLoader = eval('' + document.getElementById("dataSourceSelect").value);
     init();
 };
