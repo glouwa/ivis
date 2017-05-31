@@ -18,24 +18,12 @@ function layoutUnitVectors(root) {
     return root
 }
 
-function layoutDemo(root) {
-    var flatNodes = flat(root)
-    var nrDn = flatNodes.length
-    for (var i=0; i<nrDn; i++) {
-        a = i/nrDn * 2*Math.PI * 3
-        r = i/nrDn * 0.3 + 0.3
-        flatNodes[i].x = r*Math.cos(a)
-        flatNodes[i].y = r*Math.sin(a)
-    }
-    return root
-}
-
 function layoutSpiral(root) {
     var flatNodes = flat(root)
     var nrDn = flatNodes.length
     var nrRounds = Math.floor(nrDn/24)
     for (var i=0; i<nrDn; i++) {
-        a = i/nrDn * 2*Math.PI * nrRounds
+        a = i/nrDn * 2*Math.PI * (nrRounds+1)
         r = Math.pow(2, i/nrDn)-1
         flatNodes[i].x = r*Math.cos(a)
         flatNodes[i].y = r*Math.sin(a)
