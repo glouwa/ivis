@@ -17,7 +17,7 @@ function UnitDiskD3(args)
         .attr("fill", "#f9fbe7")
         .attr("fill-opacity", args.opacity)
         .call(d3.drag()
-            .on("drag", d=> args.onZ([d3.event.x/args.radius, d3.event.y/args.radius])))
+            .on("drag", d=> args.onZ({ x:d3.event.x/args.radius, y:d3.event.y/args.radius })))
     var linkLayer = plexxObj.append('g')
     var nodeLayer = plexxObj.append('g')
 
