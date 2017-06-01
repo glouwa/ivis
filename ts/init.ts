@@ -1,5 +1,11 @@
 /**
  * Created by julian on 31.05.17.
+ *
+ * n is immer eine Node
+ * s state. enthält pan position. später dann vermutlich theta und P
+ * p is immer ein point
+ * d wie immer bei d3
+ * e is immer ein event arg. es gibt ja kein error handling
  */
 
 function dfs(n, fpre, fpost) {
@@ -25,8 +31,8 @@ function R2addR2(p1, p2) { return { x:p1.x +p2.x,     y:p1.y + p2.y }}
 function R2toC(p)        { return { re:p.x,           im:p.y }}
 function R2toArr(p)      { return [ p.x,              p.y ]}
 
-function Cinv(p)         { return { re:-p.re,         im:-p.im }}
-function CmulR(p1, s)    { return { re:p1.re * s,     im:p1.im * s }}
+function Cinv(p)         { return { re:-p.re,         im:-p.im }} // todo
+function CmulR(p1, s)    { return { re:p1.re * s,     im:p1.im * s }} // todo
 function CaddC(p1, p2)   { return { re:p1.re + p2.re, im:p1.im + p2.im }}
 
 function CtoR2(p)        { return { x:p.re,           y:p.im }}
@@ -38,9 +44,9 @@ function HyperboicTree(args)
 
         data = args.layout(d3h) // data ok. calc init layout
 
-        var z = { x:0, y:0 }    // common state
-        function setz(nz) {
-            z = nz
+        var s = { x:0, y:0 }    // common state. wird vermutlich mehr rein kommen. theta und P?
+        function setS(ns) {
+            s = ns
             nav.update()
             view.update()
         }
@@ -51,8 +57,8 @@ function HyperboicTree(args)
             radius:navR+5,            
             pos:[55+args.pos[0], 55+args.pos[1]],
             data:data,
-            transform: p=> R2toArr(R2mulR(args.t(p, z), navR)),
-            onZ: p=>{}
+            transform: n=> R2toArr(R2mulR(args.t(n, s), navR)),
+            onS: s=>{}
         })
         var nav = UnitDisk({
             r:7,
@@ -60,8 +66,8 @@ function HyperboicTree(args)
             radius:navR+5,            
             pos:[55+args.pos[0], 55+args.pos[1]],
             data:layoutAtCenter(oneNode),
-            transform: p=> R2toArr(R2inv(R2mulR(args.t(p, z), navR))),
-            onZ: p=> setz(R2inv(p))
+            transform: n=> R2toArr(R2inv(R2mulR(args.t(n, s), navR))),
+            onS: s=> setS(R2inv(s))
         })
 
         var viewR = 190
@@ -70,8 +76,8 @@ function HyperboicTree(args)
             radius:viewR+10,            
             pos:[240+args.pos[0], 240+args.pos[1]],
             data:data,
-            transform: p=> R2toArr(R2mulR(args.t(p, z), viewR)),
-            onZ: p=> setz(p)
+            transform: n=> R2toArr(R2mulR(args.t(n, s), viewR)),
+            onS: s=> setS(s)
         })
     })
 }
@@ -89,14 +95,14 @@ function init() {
         pos:[0,0],
         dataloader:dataLoader,
         layout:layoutRadial,
-        t: (p,z)=> R2addR2(p,z)
+        t: (n,s)=> R2addR2(n,s) // simple paning. s = verschiebe vektor
     })
 
     HyperboicTree({
         pos:[550,0],
         dataloader:dataLoader,
         layout:layout,
-        t: (p,z)=> R2addR2(p,z)
+        t: (n,s)=> R2addR2(n,s) // todo: return z prime = .. S.46 oder 47
     })
 }
 

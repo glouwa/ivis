@@ -20,11 +20,11 @@ function layoutUnitVectors(root) {
 
 function layoutSpiral(root) {
     var flatNodes = flat(root)
-    var nrDn = flatNodes.length
-    var nrRounds = Math.floor(nrDn/24)
-    for (var i=0; i<nrDn; i++) {
-        a = i/nrDn * 2*Math.PI * (nrRounds+1)
-        r = Math.pow(2, i/nrDn)-1
+    var nrN = flatNodes.length
+    var nrRounds = Math.floor(nrN/24)
+    for (var i=0; i<nrN; i++) {
+        a = i/nrN * 2*Math.PI * (nrRounds+1)
+        r = Math.pow(2, i/nrN)-1
         flatNodes[i].x = r*Math.cos(a)
         flatNodes[i].y = r*Math.sin(a)
     }
@@ -42,6 +42,16 @@ function layoutRadial(root) {
 }
 
 function layoutHyperbolic(root) {
-    dfs(root, n=> { n.x=0; n.y=0 })
+    dfs(root, n=> {
+
+        // n.wedge = { p, m, a } // p=n.z?
+
+        // var d = S. 47
+        // n.z = { re:0.4, im:0.3 } // das z aus m paper. z strich wird erst von der transformation berechnet
+
+
+        n.x=0; // n.x n.y wird derzeit zum zeichnen verwendet. kannst aber auch ändern
+        n.y=0  // in der transformationsfunktion HyperboicTree argument 't'
+    })
     return root
 }
