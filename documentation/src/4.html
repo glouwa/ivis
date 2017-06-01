@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<h1>PLEXX.JS Example: :(</h1>
+<h1>PLEXX.JS Example: plexx</h1>
 <a href="./3.html">&lt;</a>
 <a href="./5.html">&gt;</a>
 
@@ -126,8 +126,8 @@
     function UnitDisk(args)
     {
         var plexxObj = new Plexx.Group({ translation:args.pos});
-        var unitDiscBg = new Plexx.Rectangle({
-            //radius:args.radius,
+        var unitDiscBg = new Plexx.Circle({
+            radius: args.radius,
             width: args.radius,
             height: args.radius,
             position:[0,0],
