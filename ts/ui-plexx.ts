@@ -3,53 +3,58 @@ var renderContext = null
 
 function initPlexx()
 {
-    myCanvas =       new Plexx.DrawingArea({ width: "1000", height: "500", align: "xMidYMid", });
+    myCanvas =       new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", });
     renderContext =  new Plexx.RenderContext({ id: "ivis-canvas-div"});
     var debugPanel = new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
     myCanvas.run(renderContext);
 }
 
-function UnitDiskPlexx(args)
+class UnitDiskPlexx implements UnitDisk
 {
-    var plexxObj = new Plexx.Group({ translation:args.pos});
-    var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7", /*draggable:true,*/ });
-    //unitDiscBg.on("mousedown", function (e) { console.log('mouseDown', e) });
+    args : UnitDiskConfig
 
-    myCanvas.add(plexxObj);
-    plexxObj.data = args.data
-    plexxObj.add(unitDiscBg);
-    plexxObj.positionUpdateable = []
-    plexxObj.update = function()
+    plexxObj : Plexx.Group
+    positionUpdateable = []
+
+    constructor(args : UnitDiskConfig)
     {
-        // all nodes and links are in positionUpdateable
-        // if transformatin dependency is changed, all get update msg
-        // the all know their model (node) and will calculate their new position
-        for(var i=0; i<plexxObj.positionUpdateable.length; i++)
-            plexxObj.positionUpdateable[i].update(args.transform)
+        this.args = args
+
+        this.plexxObj = new Plexx.Group({ translation:args.pos});
+        var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7" });
+        myCanvas.add(this.plexxObj)
+        this.plexxObj.add(unitDiscBg)
+        this.create()
+    }
+
+    update() : void
+    {
+        for(var i=0; i<this.positionUpdateable.length; i++)
+            this.positionUpdateable[i].update()
 
         myCanvas.renderFrame(renderContext);
     }
 
-    plexxObj.create = function()
+    private create() : void
     {
         // create view stuff from data
-        var model = args.data
-        var s = args.radius
-        dfs(model, n=> {
+        var model = this.args.data
+        var s = this.args.radius
+        dfs(model, (n : N)=> {
             // add blue circle
             var node = new Plexx.Circle({
-                radius: args.r,
-                position: [n.x*s, n.y*s],
+                radius: this.args.r,
+                position: [n.x * s, n.y * s],
                 colour: "#90caf9"
             })
             node.model = n
-            node = addMouseActHov(node)
+            node = this.addMouseActHov(node)
             node.update = function(t) {
                 console.log('UN');
                 this.position = t(this.model)
             }
-            plexxObj.add(node)
-            plexxObj.positionUpdateable.push(node)
+            this.plexxObj.add(node)
+            this.positionUpdateable.push(node)
 
             // add line (root has no link)
             if (n.parent) {
@@ -58,6 +63,10 @@ function UnitDiskPlexx(args)
                     width: 0.5,
                     type: Constants.LineType.Default,
                     colour: "black",
+                    startArrow:null,
+                    endArrow:null,
+                    arrowScale:1,
+
                 })
                 link.model = n
                 link.update = function(t)
@@ -66,33 +75,31 @@ function UnitDiskPlexx(args)
                     this.points = t(this.model.parent).concat(t(this.model))
                     //this.points = [0, 0, 100, 100] doesnt work either
                 }
-                plexxObj.add(link)
-                plexxObj.positionUpdateable.push(link)
+                this.plexxObj.add(link)
+                this.positionUpdateable.push(link)
             }
         })
     }
 
-    plexxObj.create()
-    return plexxObj
+    private addMouseActHov(v)
+    {
+        v.isActive = false;
+        v.on("mousedown", function (e) {
+            v.isActive = !v.isActive;
+            if (v.isActive)
+                v.setColour("#e91e63");
+            else
+                v.setColour("#9c27b0");
+        });
+
+        v.on("mousein", function (e) {
+            if(!v.isActive) v.setColour("#9c27b0");
+        });
+
+        v.on("mouseout", function (e) {
+            if(!v.isActive) v.setColour(v.colour);
+        });
+        return v
+    }
 }
 
-function addMouseActHov(v)
-{
-    v.isActive = false;
-    v.on("mousedown", function (e) {
-        v.isActive = !v.isActive;
-        if (v.isActive)
-            v.setColour("#e91e63");
-        else
-            v.setColour("#9c27b0");
-    });
-
-    v.on("mousein", function (e) {
-        if(!v.isActive) v.setColour("#9c27b0");
-    });
-
-    v.on("mouseout", function (e) {
-        if(!v.isActive) v.setColour(v.colour);
-    });
-    return v
-}

@@ -2,6 +2,9 @@
     "compilerOptions": {
         "target": "ES6",
         "outDir": "js",
-        "rootDir": "ts"
+        "rootDir": "ts",
+        "types": [
+          "d3"
+        ]
     }
 }

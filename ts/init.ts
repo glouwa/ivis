@@ -1,139 +1,138 @@
 /**
  * Created by julian on 31.05.17.
+ *
+ * n is immer eine Node
+ * s state. enthält pan position. später dann vermutlich theta und P
+ * p is immer ein point
+ * d wie immer bei d3
+ * e is immer ein event arg. es gibt ja kein error handling
  */
 
-function dfs(n, fpre, fpost) {
-    if (fpre)
-        fpre(n)
+//----------------------------------------------------------------------------------------
+
+/**
+ * im wesentlichen von d3 übernommen
+ */
+interface N {
+    id: string,
+    parent: N,
+    children: Array<N>,
+    data: any,
+    depth: 0,
+    x: number,
+    y: number
+}
+
+type LoaderFunction = (ok : (root:N) => void) => void
+type LayoutFunction = (root : N) => N
+type InitUiFunction = (args) => void
+
+//----------------------------------------------------------------------------------------
+
+/**
+ * werden abhängig von den html selects gewählt
+ */
+var selectedInitUi = null
+var SelectedUnitDisk = null
+var selectedDataLoader = null
+var selectedLayout = null
+
+function init() {
+
+    var uiRoot = selectedInitUi()
+
+    new HyperbolicTree({
+        parent:uiRoot,
+        pos:[0,0],
+        dataloader:selectedDataLoader,
+        layout:layoutRadial,
+        t: (n,s) => R2addR2(n,s) // simple paning. s = verschiebe vektor
+    })
+
+    new HyperbolicTree({
+        parent:uiRoot,
+        pos:[550,0],
+        dataloader:selectedDataLoader,
+        layout:selectedLayout,
+        t: (n,s) => R2addR2(n,s) // todo: return z prime = .. S.46 oder 47
+    })
+}
+
+//----------------------------------------------------------------------------------------
+
+function dfs(n, fpre, fpost?) {
+    if (fpre) fpre(n)
     if (n.children)
         for (var i=0; i<n.children.length; i++)
             dfs(n.children[i], fpre, fpost)
-    if (fpost)
-        fpost(n)
+
+    if (fpost) fpost(n)
 }
 
-function flat(n, f) {
+function flat(n, f?) {
     var r = []
     dfs(n, n=> { if(!f || f(n)) r.push(n) })
     return r
 }
 
-function R2inv(p)        { return { x:-p.x,           y:-p.y }}
-function R2mulR(p1, s)   { return { x:p1.x * s,       y:p1.y * s }}
-function R2addR2(p1, p2) { return { x:p1.x +p2.x,     y:p1.y + p2.y }}
-
-function R2toC(p)        { return { re:p.x,           im:p.y }}
-function R2toArr(p)      { return [ p.x,              p.y ]}
-
-function Cinv(p)         { return { re:-p.re,         im:-p.im }}
-function CmulR(p1, s)    { return { re:p1.re * s,     im:p1.im * s }}
-function CaddC(p1, p2)   { return { re:p1.re + p2.re, im:p1.im + p2.im }}
-
-function CtoR2(p)        { return { x:p.re,           y:p.im }}
-function CtoArr(p)       { return [ p.re,             p.im ]}
-
-function HyperboicTree(args)
+function resetDom()
 {
-    args.dataloader(d3h=> {
-
-        data = args.layout(d3h) // data ok. calc init layout
-
-        var z = { x:0, y:0 }    // common state
-        function setz(nz) {
-            z = nz
-            nav.update()
-            view.update()
-        }
-
-        var navR = 50           // create components
-        var navbg = UnitDisk({
-            r:2,
-            radius:navR+5,            
-            pos:[55+args.pos[0], 55+args.pos[1]],
-            data:data,
-            transform: p=> R2toArr(R2mulR(args.t(p, z), navR)),
-            onZ: p=>{}
-        })
-        var nav = UnitDisk({
-            r:7,
-            opacity:.8,
-            radius:navR+5,            
-            pos:[55+args.pos[0], 55+args.pos[1]],
-            data:layoutAtCenter(oneNode),
-            transform: p=> R2toArr(R2inv(R2mulR(args.t(p, z), navR))),
-            onZ: p=> setz(R2inv(p))
-        })
-
-        var viewR = 190
-        var view = UnitDisk({
-            r:7,
-            radius:viewR+10,            
-            pos:[240+args.pos[0], 240+args.pos[1]],
-            data:data,
-            transform: p=> R2toArr(R2mulR(args.t(p, z), viewR)),
-            onZ: p=> setz(p)
-        })
-    })
-}
-
-var initUi = null
-var UnitDisk = null
-var dataLoader = null
-var layout = null
-
-function init() {
-
-    initUi()
-
-    HyperboicTree({
-        pos:[0,0],
-        dataloader:dataLoader,
-        layout:layoutRadial,
-        t: (p,z)=> R2addR2(p,z)
-    })
-
-    HyperboicTree({
-        pos:[550,0],
-        dataloader:dataLoader,
-        layout:layout,
-        t: (p,z)=> R2addR2(p,z)
-    })
+    document.getElementById("ivis-canvas-div").innerText = ''
+    document.getElementById("ivis-canvas-debug-panel").innerText = ''
 }
 
 function setRenderer(e)
 {
-    initUi = eval('init' + e.value)
-    UnitDisk = eval('UnitDisk' + e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    selectedInitUi = eval('init' + e.value)
+    SelectedUnitDisk = eval('UnitDisk' + e.value)
+    resetDom()
     init()
 }
 
 function setDataSource(e)
 {
-    dataLoader = eval(e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    selectedDataLoader = eval(e.value)
+    resetDom()
     init()
 }
 
 function setLayout(e)
 {
-    layout = eval(e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    selectedLayout = eval(e.value)
+    resetDom()
     init()
 }
+
+//----------------------------------------------------------------------------------------
+
+/*
+ * R2 = { x:Number , y:Number }
+ * R2-Arr = [ x, y ]
+ */
+var R2neg =   (p)=>       ({ x:-p.x,                           y:-p.y })
+var R2mulR =  (p1, s)=>   ({ x:p1.x * s,                       y:p1.y * s })
+var R2addR2 = (p1, p2)=>  ({ x:p1.x +p2.x,                     y:p1.y + p2.y })
+var R2toArr = (p)=>       ([ p.x,                              p.y ])
+var R2toC =   (p)=>       ({ re:p.x,                           im:p.y })
+
+/*
+ * C = { re:Number , im:Number }
+ * C-Arr = [ re, im ]
+ */
+var Ccon =    (p)=>       ({ re:p.re,                          im:-p.im })
+var CmulR =   (p1, s)=>   ({ re:p1.re * s,                     im:p1.im * s })
+var CmulC =   (p1, p2)=>  ({ re:p1.re * p2.re - p1.im * p2.im, im:p1.im * p2.re + p1.re * p2.im })
+var CaddC =   (p1, p2)=>  ({ re:p1.re + p2.re,                 im:p1.im + p2.im })
+var CtoArr =  (p)=>       ([ p.re,                             p.im ])
+var CtoR2 =   (p)=>       ({ x:p.re,                           y:p.im })
+
+//----------------------------------------------------------------------------------------
 
 window.onload = function()
 {
-    initUi = eval('init' + document.getElementById("rendererSelect").value)
-    UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value)
-    dataLoader = eval(document.getElementById("dataSourceSelect").value)
-    layout = eval(document.getElementById("layoutSelect").value)
+    selectedInitUi = eval('init' + (<HTMLInputElement>document.getElementById("rendererSelect")).value)
+    SelectedUnitDisk = eval('UnitDisk' + (<HTMLInputElement>document.getElementById("rendererSelect")).value)
+    selectedDataLoader = eval((<HTMLInputElement>document.getElementById("dataSourceSelect")).value)
+    selectedLayout = eval((<HTMLInputElement>document.getElementById("layoutSelect")).value)
     init()
 }
-
