@@ -1,6 +1,6 @@
 function oneNode(ok) {
     ok(d3.hierarchy({
-        parent:null,
+        parent?:null,
         children:[],
         data:{},
         depth:0,
@@ -30,21 +30,23 @@ function path(ok, max) {
     })
 }
 
-var star1 = ok=> star(ok, 50)
-var star2 = ok=> star(ok, 500)
-var star3 = ok=> star(ok, 5000)
-var path1 = ok=> path(ok, 50)
-var path2 = ok=> path(ok, 500)
-var path3 = ok=> path(ok, 5000)
-
-function d3csv(ok) {
-    d3.csv("flare.csv", function(error, data) {
+function d3csv(ok, file) {
+    d3.csv(file, function(error, data) {
         if (error)
             throw error;
         ok(d3.stratify().parentId(d=> d.id.substring(0, d.id.lastIndexOf(".")))(data))
     });
 }
 
-function json(ok) {
-    ok(d3.hierarchy(JSON.parse("{}")))
+function json(ok, jsonStr) {
+    ok(d3.hierarchy(JSON.parse(jsonStr)))
 }
+
+var star1 = ok=> star(ok, 50)
+var star2 = ok=> star(ok, 500)
+var star3 = ok=> star(ok, 5000)
+var path1 = ok=> path(ok, 50)
+var path2 = ok=> path(ok, 500)
+var path3 = ok=> path(ok, 5000)
+var d3csvFlare = ok=> d3csv(ok, "flare.csv")
+var jsonConst = ok=> json(ok, "{}")

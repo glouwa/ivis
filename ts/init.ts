@@ -8,6 +8,8 @@
  * e is immer ein event arg. es gibt ja kein error handling
  */
 
+//import * as d3 from "d3";
+
 function dfs(n, fpre, fpost) {
     if (fpre)
         fpre(n)
@@ -24,25 +26,32 @@ function flat(n, f) {
     return r
 }
 
-function R2inv(p)        { return { x:-p.x,           y:-p.y }}
-function R2mulR(p1, s)   { return { x:p1.x * s,       y:p1.y * s }}
-function R2addR2(p1, p2) { return { x:p1.x +p2.x,     y:p1.y + p2.y }}
+/*
+ * R2 = { x:Number , y:Number }
+ * R2-Arr = [ x, y ]
+ */
+var R2neg =   (p)=>       ({ x:-p.x,                           y:-p.y })
+var R2mulR =  (p1, s)=>   ({ x:p1.x * s,                       y:p1.y * s })
+var R2addR2 = (p1, p2)=>  ({ x:p1.x +p2.x,                     y:p1.y + p2.y })
+var R2toArr = (p)=>       ([ p.x,                              p.y ])
+var R2toC =   (p)=>       ({ re:p.x,                           im:p.y })
 
-function R2toC(p)        { return { re:p.x,           im:p.y }}
-function R2toArr(p)      { return [ p.x,              p.y ]}
-
-function Cinv(p)         { return { re:-p.re,         im:-p.im }} // todo
-function CmulR(p1, s)    { return { re:p1.re * s,     im:p1.im * s }} // todo
-function CaddC(p1, p2)   { return { re:p1.re + p2.re, im:p1.im + p2.im }}
-
-function CtoR2(p)        { return { x:p.re,           y:p.im }}
-function CtoArr(p)       { return [ p.re,             p.im ]}
+/*
+ * C = { re:Number , im:Number }
+ * C-Arr = [ re, im ]
+ */
+var Ccon =    (p)=>       ({ re:p.re,                          im:-p.im })
+var CmulR =   (p1, s)=>   ({ re:p1.re * s,                     im:p1.im * s })
+var CmulC =   (p1, p2)=>  ({ re:p1.re * p2.re - p1.im * p2.im, im:p1.im * p2.re + p1.re * p2.im })
+var CaddC =   (p1, p2)=>  ({ re:p1.re + p2.re,                 im:p1.im + p2.im })
+var CtoArr =  (p)=>       ([ p.re,                             p.im ])
+var CtoR2 =   (p)=>       ({ x:p.re,                           y:p.im })
 
 function HyperboicTree(args)
 {
     args.dataloader(d3h=> {
 
-        data = args.layout(d3h) // data ok. calc init layout
+        var data = args.layout(d3h) // data ok. calc init layout
 
         var s = { x:0, y:0 }    // common state. wird vermutlich mehr rein kommen. theta und P?
         function setS(ns) {
@@ -66,8 +75,8 @@ function HyperboicTree(args)
             radius:navR+5,            
             pos:[55+args.pos[0], 55+args.pos[1]],
             data:layoutAtCenter(oneNode),
-            transform: n=> R2toArr(R2inv(R2mulR(args.t(n, s), navR))),
-            onS: s=> setS(R2inv(s))
+            transform: n=> R2toArr(R2neg(R2mulR(args.t(n, s), navR))),
+            onS: s=> setS(R2neg(s))
         })
 
         var viewR = 190
@@ -106,31 +115,31 @@ function init() {
     })
 }
 
+function resetDom()
+{
+    document.getElementById("ivis-canvas-div").innerText = ''
+    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+}
+
 function setRenderer(e)
 {
     initUi = eval('init' + e.value)
     UnitDisk = eval('UnitDisk' + e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    resetDom()
     init()
 }
 
 function setDataSource(e)
 {
     dataLoader = eval(e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    resetDom()
     init()
 }
 
 function setLayout(e)
 {
     layout = eval(e.value)
-
-    document.getElementById("ivis-canvas-div").innerText = ''
-    document.getElementById("ivis-canvas-debug-panel").innerText = ''
+    resetDom()
     init()
 }
 

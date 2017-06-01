@@ -4,7 +4,17 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>PLEXX.JS Example: OnHover and Mark</title>
+    <title>HyperbolicTree</title>
+
+    <link rel="stylesheet" href="/all.css">
+
+    <script type="text/javascript" src="node_modules/plexx/framework/build/plexx.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/layouts.js"></script>
+    <script type="text/javascript" src="js/loaders.js"></script>
+    <script type="text/javascript" src="js/ui-d3.js"></script>
+    <script type="text/javascript" src="js/ui-plexx.js"></script>
 </head>
 
 <body>
@@ -16,8 +26,8 @@
     </select>
 
     <select id="dataSourceSelect" onchange="setDataSource(this)">
-      <option value="d3csv">flare.csv</option>
-      <option value="json">flare.json</option>
+      <option value="d3csvFlare">flare.csv</option>
+      <option value="jsonConst">flare.json</option>
       <option value="oneNode">one node</option>
       <option value="path1">path (50)</option>
       <option value="path2">path (500)</option>
@@ -35,18 +45,7 @@
       <option value="layoutUnitVectors">unit vectors</option>      
     </select>
 
-    <div class="plexx" id="ivis-canvas-div"></div>
+    <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>
-
-    <link rel="stylesheet" href="/all.css">
-
-    <script type="text/javascript" src="node_modules/plexx/framework/build/plexx.js"> </script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/layouts.js"></script>
-    <script type="text/javascript" src="js/loaders.js"></script>
-    <script type="text/javascript" src="js/ui-d3.js"></script>
-    <script type="text/javascript" src="js/ui-plexx.js"></script>
-
 </body>
 </html>
