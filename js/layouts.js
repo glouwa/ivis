@@ -21,8 +21,8 @@ function layoutSpiral(root) {
     var nrN = flatNodes.length;
     var nrRounds = Math.floor(nrN / 24);
     for (var i = 0; i < nrN; i++) {
-        a = i / nrN * 2 * Math.PI * (nrRounds + 1);
-        r = Math.pow(2, i / nrN) - 1;
+        var a = i / nrN * 2 * Math.PI * (nrRounds + 1);
+        var r = Math.pow(2, i / nrN) - 1;
         flatNodes[i].x = r * Math.cos(a);
         flatNodes[i].y = r * Math.sin(a);
     }

@@ -1,10 +1,10 @@
 function oneNode(ok) {
     ok(d3.hierarchy({
+        id: 'root',
         parent: null,
         children: [],
         data: {},
         depth: 0,
-        id: 'root',
     }));
 }
 function star(ok, max) {
@@ -31,7 +31,7 @@ function d3csv(ok, file) {
     d3.csv(file, function (error, data) {
         if (error)
             throw error;
-        ok(d3.stratify().parentId(d => d.id.substring(0, d.id.lastIndexOf(".")))(data));
+        ok(d3.stratify().parentId((d) => d.id.substring(0, d.id.lastIndexOf(".")))(data));
     });
 }
 function json(ok, jsonStr) {

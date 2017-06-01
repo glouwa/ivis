@@ -7,41 +7,28 @@
  * d wie immer bei d3
  * e is immer ein event arg. es gibt ja kein error handling
  */
-//import * as d3 from "d3";
-function dfs(n, fpre, fpost) {
-    if (fpre)
-        fpre(n);
-    if (n.children)
-        for (var i = 0; i < n.children.length; i++)
-            dfs(n.children[i], fpre, fpost);
-    if (fpost)
-        fpost(n);
+//----------------------------------------------------------------------------------------
+var initUi = null;
+var UnitDisk = null;
+var dataLoader = null;
+var layout = null;
+function init() {
+    var uiRoot = initUi();
+    HyperboicTree({
+        parent: uiRoot,
+        pos: [0, 0],
+        dataloader: dataLoader,
+        layout: layoutRadial,
+        t: (n, s) => R2addR2(n, s) // simple paning. s = verschiebe vektor
+    });
+    HyperboicTree({
+        parent: uiRoot,
+        pos: [550, 0],
+        dataloader: dataLoader,
+        layout: layout,
+        t: (n, s) => R2addR2(n, s) // todo: return z prime = .. S.46 oder 47
+    });
 }
-function flat(n, f) {
-    var r = [];
-    dfs(n, n => { if (!f || f(n))
-        r.push(n); });
-    return r;
-}
-/*
- * R2 = { x:Number , y:Number }
- * R2-Arr = [ x, y ]
- */
-var R2neg = (p) => ({ x: -p.x, y: -p.y });
-var R2mulR = (p1, s) => ({ x: p1.x * s, y: p1.y * s });
-var R2addR2 = (p1, p2) => ({ x: p1.x + p2.x, y: p1.y + p2.y });
-var R2toArr = (p) => ([p.x, p.y]);
-var R2toC = (p) => ({ re: p.x, im: p.y });
-/*
- * C = { re:Number , im:Number }
- * C-Arr = [ re, im ]
- */
-var Ccon = (p) => ({ re: p.re, im: -p.im });
-var CmulR = (p1, s) => ({ re: p1.re * s, im: p1.im * s });
-var CmulC = (p1, p2) => ({ re: p1.re * p2.re - p1.im * p2.im, im: p1.im * p2.re + p1.re * p2.im });
-var CaddC = (p1, p2) => ({ re: p1.re + p2.re, im: p1.im + p2.im });
-var CtoArr = (p) => ([p.re, p.im]);
-var CtoR2 = (p) => ({ x: p.re, y: p.im });
 function HyperboicTree(args) {
     args.dataloader(d3h => {
         var data = args.layout(d3h); // data ok. calc init layout
@@ -80,24 +67,21 @@ function HyperboicTree(args) {
         });
     });
 }
-var initUi = null;
-var UnitDisk = null;
-var dataLoader = null;
-var layout = null;
-function init() {
-    initUi();
-    HyperboicTree({
-        pos: [0, 0],
-        dataloader: dataLoader,
-        layout: layoutRadial,
-        t: (n, s) => R2addR2(n, s) // simple paning. s = verschiebe vektor
-    });
-    HyperboicTree({
-        pos: [550, 0],
-        dataloader: dataLoader,
-        layout: layout,
-        t: (n, s) => R2addR2(n, s) // todo: return z prime = .. S.46 oder 47
-    });
+//----------------------------------------------------------------------------------------
+function dfs(n, fpre, fpost) {
+    if (fpre)
+        fpre(n);
+    if (n.children)
+        for (var i = 0; i < n.children.length; i++)
+            dfs(n.children[i], fpre, fpost);
+    if (fpost)
+        fpost(n);
+}
+function flat(n, f) {
+    var r = [];
+    dfs(n, n => { if (!f || f(n))
+        r.push(n); });
+    return r;
 }
 function resetDom() {
     document.getElementById("ivis-canvas-div").innerText = '';
@@ -119,6 +103,27 @@ function setLayout(e) {
     resetDom();
     init();
 }
+//----------------------------------------------------------------------------------------
+/*
+ * R2 = { x:Number , y:Number }
+ * R2-Arr = [ x, y ]
+ */
+var R2neg = (p) => ({ x: -p.x, y: -p.y });
+var R2mulR = (p1, s) => ({ x: p1.x * s, y: p1.y * s });
+var R2addR2 = (p1, p2) => ({ x: p1.x + p2.x, y: p1.y + p2.y });
+var R2toArr = (p) => ([p.x, p.y]);
+var R2toC = (p) => ({ re: p.x, im: p.y });
+/*
+ * C = { re:Number , im:Number }
+ * C-Arr = [ re, im ]
+ */
+var Ccon = (p) => ({ re: p.re, im: -p.im });
+var CmulR = (p1, s) => ({ re: p1.re * s, im: p1.im * s });
+var CmulC = (p1, p2) => ({ re: p1.re * p2.re - p1.im * p2.im, im: p1.im * p2.re + p1.re * p2.im });
+var CaddC = (p1, p2) => ({ re: p1.re + p2.re, im: p1.im + p2.im });
+var CtoArr = (p) => ([p.re, p.im]);
+var CtoR2 = (p) => ({ x: p.re, y: p.im });
+//----------------------------------------------------------------------------------------
 window.onload = function () {
     initUi = eval('init' + document.getElementById("rendererSelect").value);
     UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);

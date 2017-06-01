@@ -1,10 +1,19 @@
 var myCanvas = null;
 var renderContext = null;
 function initPlexx() {
-    myCanvas = new Plexx.DrawingArea({ width: "1000", height: "500", align: "xMidYMid", });
+    myCanvas = new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", });
     renderContext = new Plexx.RenderContext({ id: "ivis-canvas-div" });
     var debugPanel = new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
     myCanvas.run(renderContext);
+}
+class UnitDiskPlexx1 {
+    constructor() {
+        this.positionUpdateable = [];
+    }
+    create() {
+    }
+    update() {
+    }
 }
 function UnitDiskPlexx(args) {
     var plexxObj = new Plexx.Group({ translation: args.pos });
@@ -48,6 +57,9 @@ function UnitDiskPlexx(args) {
                     width: 0.5,
                     type: Constants.LineType.Default,
                     colour: "black",
+                    startArrow: null,
+                    endArrow: null,
+                    arrowScale: 1,
                 });
                 link.model = n;
                 link.update = function (t) {
