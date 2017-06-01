@@ -8,24 +8,27 @@
  * e is immer ein event arg. es gibt ja kein error handling
  */
 //----------------------------------------------------------------------------------------
-var initUi = null;
-var UnitDisk = null;
-var dataLoader = null;
-var layout = null;
+/**
+ * werden abhängig von den html selects gewählt
+ */
+var selectedInitUi = null;
+var SelectedUnitDisk = null;
+var selectedDataLoader = null;
+var selectedLayout = null;
 function init() {
-    var uiRoot = initUi();
+    var uiRoot = selectedInitUi();
     HyperboicTree({
         parent: uiRoot,
         pos: [0, 0],
-        dataloader: dataLoader,
+        dataloader: selectedDataLoader,
         layout: layoutRadial,
         t: (n, s) => R2addR2(n, s) // simple paning. s = verschiebe vektor
     });
     HyperboicTree({
         parent: uiRoot,
         pos: [550, 0],
-        dataloader: dataLoader,
-        layout: layout,
+        dataloader: selectedDataLoader,
+        layout: selectedLayout,
         t: (n, s) => R2addR2(n, s) // todo: return z prime = .. S.46 oder 47
     });
 }
@@ -39,7 +42,7 @@ function HyperboicTree(args) {
             view.update();
         }
         var navR = 50; // create components
-        var navbg = UnitDisk({
+        var navbg = new SelectedUnitDisk({
             r: 2,
             radius: navR + 5,
             pos: [55 + args.pos[0], 55 + args.pos[1]],
@@ -47,7 +50,7 @@ function HyperboicTree(args) {
             transform: n => R2toArr(R2mulR(args.t(n, s), navR)),
             onS: s => { }
         });
-        var nav = UnitDisk({
+        var nav = new SelectedUnitDisk({
             r: 7,
             opacity: .8,
             radius: navR + 5,
@@ -57,7 +60,7 @@ function HyperboicTree(args) {
             onS: s => setS(R2neg(s))
         });
         var viewR = 190;
-        var view = UnitDisk({
+        var view = new SelectedUnitDisk({
             r: 7,
             radius: viewR + 10,
             pos: [240 + args.pos[0], 240 + args.pos[1]],
@@ -88,18 +91,18 @@ function resetDom() {
     document.getElementById("ivis-canvas-debug-panel").innerText = '';
 }
 function setRenderer(e) {
-    initUi = eval('init' + e.value);
-    UnitDisk = eval('UnitDisk' + e.value);
+    selectedInitUi = eval('init' + e.value);
+    SelectedUnitDisk = eval('UnitDisk' + e.value);
     resetDom();
     init();
 }
 function setDataSource(e) {
-    dataLoader = eval(e.value);
+    selectedDataLoader = eval(e.value);
     resetDom();
     init();
 }
 function setLayout(e) {
-    layout = eval(e.value);
+    selectedLayout = eval(e.value);
     resetDom();
     init();
 }
@@ -125,9 +128,9 @@ var CtoArr = (p) => ([p.re, p.im]);
 var CtoR2 = (p) => ({ x: p.re, y: p.im });
 //----------------------------------------------------------------------------------------
 window.onload = function () {
-    initUi = eval('init' + document.getElementById("rendererSelect").value);
-    UnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
-    dataLoader = eval(document.getElementById("dataSourceSelect").value);
-    layout = eval(document.getElementById("layoutSelect").value);
+    selectedInitUi = eval('init' + document.getElementById("rendererSelect").value);
+    SelectedUnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
+    selectedDataLoader = eval(document.getElementById("dataSourceSelect").value);
+    selectedLayout = eval(document.getElementById("layoutSelect").value);
     init();
 };
