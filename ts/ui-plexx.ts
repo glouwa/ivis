@@ -11,21 +11,19 @@ function initPlexx()
 
 class UnitDiskPlexx implements UnitDisk
 {
-    args : UnitDiskArgs
+    args : UnitDiskConfig
 
     plexxObj : Plexx.Group
     positionUpdateable = []
 
-    constructor(args : UnitDiskArgs)
+    constructor(args : UnitDiskConfig)
     {
         this.args = args
 
         this.plexxObj = new Plexx.Group({ translation:args.pos});
         var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7" });
-
         myCanvas.add(this.plexxObj)
-        this.plexxObj.add(unitDiscBg);
-
+        this.plexxObj.add(unitDiscBg)
         this.create()
     }
 
@@ -50,7 +48,7 @@ class UnitDiskPlexx implements UnitDisk
                 colour: "#90caf9"
             })
             node.model = n
-            node = addMouseActHov(node)
+            node = this.addMouseActHov(node)
             node.update = function(t) {
                 console.log('UN');
                 this.position = t(this.model)
@@ -82,25 +80,26 @@ class UnitDiskPlexx implements UnitDisk
             }
         })
     }
+
+    private addMouseActHov(v)
+    {
+        v.isActive = false;
+        v.on("mousedown", function (e) {
+            v.isActive = !v.isActive;
+            if (v.isActive)
+                v.setColour("#e91e63");
+            else
+                v.setColour("#9c27b0");
+        });
+
+        v.on("mousein", function (e) {
+            if(!v.isActive) v.setColour("#9c27b0");
+        });
+
+        v.on("mouseout", function (e) {
+            if(!v.isActive) v.setColour(v.colour);
+        });
+        return v
+    }
 }
 
-function addMouseActHov(v)
-{
-    v.isActive = false;
-    v.on("mousedown", function (e) {
-        v.isActive = !v.isActive;
-        if (v.isActive)
-            v.setColour("#e91e63");
-        else
-            v.setColour("#9c27b0");
-    });
-
-    v.on("mousein", function (e) {
-        if(!v.isActive) v.setColour("#9c27b0");
-    });
-
-    v.on("mouseout", function (e) {
-        if(!v.isActive) v.setColour(v.colour);
-    });
-    return v
-}

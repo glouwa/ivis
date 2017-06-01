@@ -33,7 +33,7 @@ class UnitDiskPlexx {
                 colour: "#90caf9"
             });
             node.model = n;
-            node = addMouseActHov(node);
+            node = this.addMouseActHov(node);
             node.update = function (t) {
                 console.log('UN');
                 this.position = t(this.model);
@@ -62,23 +62,23 @@ class UnitDiskPlexx {
             }
         });
     }
-}
-function addMouseActHov(v) {
-    v.isActive = false;
-    v.on("mousedown", function (e) {
-        v.isActive = !v.isActive;
-        if (v.isActive)
-            v.setColour("#e91e63");
-        else
-            v.setColour("#9c27b0");
-    });
-    v.on("mousein", function (e) {
-        if (!v.isActive)
-            v.setColour("#9c27b0");
-    });
-    v.on("mouseout", function (e) {
-        if (!v.isActive)
-            v.setColour(v.colour);
-    });
-    return v;
+    addMouseActHov(v) {
+        v.isActive = false;
+        v.on("mousedown", function (e) {
+            v.isActive = !v.isActive;
+            if (v.isActive)
+                v.setColour("#e91e63");
+            else
+                v.setColour("#9c27b0");
+        });
+        v.on("mousein", function (e) {
+            if (!v.isActive)
+                v.setColour("#9c27b0");
+        });
+        v.on("mouseout", function (e) {
+            if (!v.isActive)
+                v.setColour(v.colour);
+        });
+        return v;
+    }
 }

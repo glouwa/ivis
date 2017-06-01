@@ -11,6 +11,7 @@
     <script type="text/javascript" src="node_modules/plexx/framework/build/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/components.js"></script>
     <script type="text/javascript" src="js/layouts.js"></script>
     <script type="text/javascript" src="js/loaders.js"></script>
     <script type="text/javascript" src="js/ui-d3.js"></script>
@@ -20,10 +21,9 @@
 <body>
     <h1>RadialTree vs HyperbolicTree</h1>
 
-    <select id="rendererSelect" onchange="setRenderer(this)">
-      <option value="Plexx">plexx</option>
+    <select id="rendererSelect" onchange="setRenderer(this)">      
       <option value="D3">d3</option>
-
+      <option value="Plexx">plexx</option>
     </select>
 
     <select id="dataSourceSelect" onchange="setDataSource(this)">

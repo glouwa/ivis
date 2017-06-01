@@ -17,31 +17,15 @@ interface N {
     id: string,
     parent: N,
     children: Array<N>,
-    data: {},
+    data: any,
     depth: 0,
     x: number,
-    y : number
+    y: number
 }
 
 type LoaderFunction = (ok : (root:N) => void) => void
 type LayoutFunction = (root : N) => N
 type InitUiFunction = (args) => void
-
-interface UnitDiskArgs
-{
-    r: number,
-    radius: number,
-    pos: [number, number],
-    opacity: number,
-    data: N,
-    transform: (n : N) => [number, number],
-    onS: ({ x, y }) => { x, y },
-}
-
-interface UnitDisk
-{
-    update:() => void
-}
 
 //----------------------------------------------------------------------------------------
 
@@ -57,64 +41,20 @@ function init() {
 
     var uiRoot = selectedInitUi()
 
-    HyperboicTree({
+    new HyperbolicTree({
         parent:uiRoot,
         pos:[0,0],
         dataloader:selectedDataLoader,
         layout:layoutRadial,
-        t: (n,s)=> R2addR2(n,s) // simple paning. s = verschiebe vektor
+        t: (n,s) => R2addR2(n,s) // simple paning. s = verschiebe vektor
     })
 
-    HyperboicTree({
+    new HyperbolicTree({
         parent:uiRoot,
         pos:[550,0],
         dataloader:selectedDataLoader,
         layout:selectedLayout,
-        t: (n,s)=> R2addR2(n,s) // todo: return z prime = .. S.46 oder 47
-    })
-}
-
-function HyperboicTree(args)
-{
-    args.dataloader(d3h=> {
-
-        var data = args.layout(d3h) // data ok. calc init layout
-
-        var s = { x:0, y:0 }    // common state. wird vermutlich mehr rein kommen. theta und P?
-        function setS(ns) {
-            s = ns
-            nav.update()
-            view.update()
-        }
-
-        var navR = 50           // create components
-        var navbg = new SelectedUnitDisk({
-            r:2,
-            radius:navR+5,            
-            pos:[55+args.pos[0], 55+args.pos[1]],
-            data:data,
-            transform: n=> R2toArr(R2mulR(args.t(n, s), navR)),
-            onS: s=>{}
-        })
-        var nav = new SelectedUnitDisk({
-            r:7,
-            opacity:.8,
-            radius:navR+5,            
-            pos:[55+args.pos[0], 55+args.pos[1]],
-            data:layoutAtCenter(oneNode),
-            transform: n=> R2toArr(R2neg(R2mulR(args.t(n, s), navR))),
-            onS: s=> setS(R2neg(s))
-        })
-
-        var viewR = 190
-        var view = new SelectedUnitDisk({
-            r:7,
-            radius:viewR+10,            
-            pos:[240+args.pos[0], 240+args.pos[1]],
-            data:data,
-            transform: n=> R2toArr(R2mulR(args.t(n, s), viewR)),
-            onS: s=> setS(s)
-        })
+        t: (n,s) => R2addR2(n,s) // todo: return z prime = .. S.46 oder 47
     })
 }
 

@@ -10,13 +10,13 @@ function initD3(args)
 
 class UnitDiskD3 implements UnitDisk
 {
-    args : UnitDiskArgs
+    args : UnitDiskConfig
     nodeLayer : any
     linkLayer : any
     nodes : any
     links : any
 
-    constructor(args : UnitDiskArgs)
+    constructor(args : UnitDiskConfig)
     {
         this.args = args
 
