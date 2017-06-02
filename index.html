@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>HyperbolicTree</title>
+    <title>Hyperbolic tree</title>
 
     <link rel="stylesheet" href="/all.css">
 
     <script type="text/javascript" src="node_modules/plexx/framework/build/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/components.js"></script>
+    <script type="text/javascript" src="js/tools.js"></script>
     <script type="text/javascript" src="js/layouts.js"></script>
     <script type="text/javascript" src="js/loaders.js"></script>
     <script type="text/javascript" src="js/ui-d3.js"></script>
@@ -19,13 +19,13 @@
 </head>
 
 <body>
-    <h1>RadialTree vs HyperbolicTree</h1>
+    <h1>Radial tree vs Hyperbolic tree</h1>
 
     <select id="rendererSelect" onchange="setRenderer(this)">      
       <option value="D3">d3</option>
       <option value="Plexx">plexx</option>
     </select>
-
+✕
     <select id="dataSourceSelect" onchange="setDataSource(this)">
       <option value="d3csvFlare">flare.csv</option>
       <option value="jsonConst">flare.json</option>
@@ -37,7 +37,7 @@
       <option value="star2">star (500)</option>
       <option value="star3">star (5000)</option>
     </select>
-
+✕ ( 1 +
     <select id="layoutSelect" onchange="setLayout(this)">
       <option value="layoutSpiral">spiral</option>
       <option value="layoutRadial">radial</option>
@@ -45,7 +45,7 @@
       <option value="layoutAtCenter">center</option>
       <option value="layoutUnitVectors">unit vectors</option>      
     </select>
-
+) - 1 = |tests|
     <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>
 </body>

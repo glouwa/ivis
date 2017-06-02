@@ -9,14 +9,15 @@ function initPlexx()
     myCanvas.run(renderContext);
 }
 
-class UnitDiskPlexx implements UnitDisk
+class UnitDiskPlexx implements TreeOnUnitDisk
 {
-    args : UnitDiskConfig
+    args : TreeOnUnitDiskConfig
 
     plexxObj : Plexx.Group
     positionUpdateable = []
+    t = (d:N) => R2toArr(this.args.transform(d))
 
-    constructor(args : UnitDiskConfig)
+    constructor(args : TreeOnUnitDiskConfig)
     {
         this.args = args
 
@@ -43,7 +44,7 @@ class UnitDiskPlexx implements UnitDisk
         dfs(model, (n : N)=> {
             // add blue circle
             var node = new Plexx.Circle({
-                radius: this.args.r,
+                radius: this.args.nodeRadius,
                 position: [n.x * s, n.y * s],
                 colour: "#90caf9"
             })

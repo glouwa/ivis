@@ -9,6 +9,7 @@ function initPlexx() {
 class UnitDiskPlexx {
     constructor(args) {
         this.positionUpdateable = [];
+        this.t = (d) => R2toArr(this.args.transform(d));
         this.args = args;
         this.plexxObj = new Plexx.Group({ translation: args.pos });
         var unitDiscBg = new Plexx.Circle({ radius: args.radius, position: [0, 0], colour: "#f9fbe7" });
@@ -28,7 +29,7 @@ class UnitDiskPlexx {
         dfs(model, (n) => {
             // add blue circle
             var node = new Plexx.Circle({
-                radius: this.args.r,
+                radius: this.args.nodeRadius,
                 position: [n.x * s, n.y * s],
                 colour: "#90caf9"
             });
