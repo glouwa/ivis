@@ -66,12 +66,9 @@ var R2toC =   (p:R2)=>           ({ re:p.x,                         im:p.y })
 var Cneg =    (p:C)=>            ({ re:-p.re,                       im:-p.im })
 var Ccon =    (p:C)=>            ({ re:p.re,                        im:-p.im })
 var CmulR =   (p:C, s:number)=>  ({ re:p.re * s,                    im:p.im * s })
-var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,
-                                    im:a.im * b.re + a.re * b.im })
-var CdivC =   (a:C, b:C)=>       ({ re:(a.re * b.re + a.im * b.im) /
-                                       (b.re * b.re + b.im * b.im),
-                                    im:(a.im * b.re - a.re * b.im) /
-                                       (b.re * b.re + b.im * b.im)})
+var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
+var CdivC =   (a:C, b:C)=>       ({ re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+                                    im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)})
 var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
 var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
 var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
@@ -106,9 +103,8 @@ class TreeWithNavigation
         })
     }
 
-    setS(ns) : void
+    update(ns) : void
     {
-        this.args.onPan(ns)
         this.nav.update()
         this.view.update()
     }
@@ -124,27 +120,30 @@ class TreeWithNavigation
             pos:ArrAddR(this.args.pos, navR),
             radius:navR,
             nodeRadius:2,
+            clip: true
         })
 
         this.nav = new UnitDiskD3({
             data:this.navData,
             transform: (n:N)=> R2neg(this.args.t(n)),
-            onPan: (m:R2) => this.setS(R2neg(m)),
+            onPan: (m:R2) => this.args.onPan(R2neg(m))
             parent:null,
             pos:ArrAddR(this.args.pos, navR),
             opacity:.8,
             radius:navR,
             nodeRadius:7,
+            clip: true
         })
 
         this.view = new UnitDiskD3({ // view disk
             data:this.data,
             transform: (n:N)=> this.args.t(n),
-            onPan: (m:R2) => this.setS(m),
+            onPan: (m:R2) => this.args.onPan(m)
             parent:null,
             pos:ArrAddR(this.args.pos, 240),
             radius:200,
             nodeRadius:7,
+            clip: this.args.clip
         })
     }
 }
@@ -162,43 +161,40 @@ function init() {
     var uiRoot = selectedInitUi()
 
     var o = { x:0, y:0 }
-    new TreeWithNavigation({        
+    var offsetPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
-        layout:     layoutRadial,
-        t:          (n:N) => R2addR2(n,o), // simple paning. s = verschiebe vektor
-        onPan:      (m:R2) => o=m,
+        layout:     selectedLayout,
+        t:          (n:N) => R2addR2(n,o),
+        onPan:      (m:R2) => { s.P=R2toC(m); o=m; offsetPan.update(); hyperbolicPan.update(); }
         parent:     uiRoot,
         pos:        [0,0],
+        clip:       true
     })
 
     var s = { P:{ re:0, im:0 }, T:{ re:0, im:1 }}
-    function h2e(z : C, p : C, t : C) : C
-    {
-        // (T * z + P) / ( 1 + Ccon(P) * T * z)
-        // (s.T * R2toC(z) + s.P) / ( 1 + Ccon(s.P) * s.T * R2toC(z))
-        var oben = CaddC(CmulC(s.T, z), s.P)
-        var unten = CaddR(CmulC(CmulC(Ccon(s.P), s.T), z), 1)
-        var zprime = CdivC(oben, unten)
-        return zprime
-    }
-    function e2h(z : C, p : C, t : C) : C
-    {
-        var pp = Cneg(CmulC(Ccon(t), p))
-        var tp = Ccon(t)
-        return h2e(z, pp, tp)
-    }
-
-    new TreeWithNavigation({        
+    var hyperbolicPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         layout:     selectedLayout,
-        t:          (n:N) => CtoR2(e2h(R2toC(n), s.P, s.T)),
-        //t:          (n:N) => R2addR2(n,o),
-        onPan:      (m:R2) => { s.P = R2toC(m); o=m },
+        t:          (n:N) => CtoR2(h2e(R2toC(n), s.P, s.T)),        
+        onPan:      (m:R2) => { s.P=R2toC(m); o=m; offsetPan.update(); hyperbolicPan.update(); },
         parent:     uiRoot,
         pos:        [550,0],
     })
 }
 
+function h2e(z:C, p:C, t:C) : C
+{
+    var oben = CaddC(CmulC(t, z), p)
+    var unten = CaddR(CmulC(CmulC(Ccon(p), t), z), 1)
+    var zprime = CdivC(oben, unten)
+    return zprime
+}
+function e2h(z:C, p:C, t:C) : C
+{
+    var pp = Cneg(CmulC(Ccon(t), p))
+    var tp = Ccon(t)
+    return h2e(z, pp, tp)
+}
 
 
 

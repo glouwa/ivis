@@ -31,8 +31,16 @@ class UnitDiskD3 implements TreeOnUnitDisk
             .attr("fill-opacity", args.opacity)
             .call(d3.drag().on("drag", d=> args.onPan(this.ti(d3.event))))
 
-        this.linkLayer = mainGroup.append('g')
-        this.nodeLayer = mainGroup.append('g')
+        mainGroup.append("clipPath")
+            .attr("id", "circle-clip")
+            .append("circle")
+                .attr("r", args.radius)
+
+        var layers = mainGroup.append('g')
+        this.linkLayer = layers.append('g')
+        this.nodeLayer = layers.append('g')
+        if (args.clip)
+            layers.attr("clip-path", "url(#circle-clip)")
         this.create()
     }
 
