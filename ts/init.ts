@@ -32,7 +32,8 @@ interface TreeOnUnitDiskConfig
     pos: [number, number],
     radius: number,
     nodeRadius: number,
-    opacity?: number
+    opacity?: number,
+    clip?: boolean
 }
 
 /**
@@ -42,11 +43,13 @@ interface TreeWithNavigationConfig
 {
     parent: any,
     dataloader: LoaderFunction,
+    navData: N,
     layout: LayoutFunction,
     t: (n:N) => R2
     onPan: (m:R2) => void
 
     pos: [number, number],
+    clip?: boolean
 }
 
 //----------------------------------------------------------------------------------------
@@ -111,7 +114,7 @@ class TreeWithNavigation
         })
     }
 
-    update(ns) : void
+    update() : void
     {
         this.nav.update()
         this.view.update()
@@ -120,9 +123,9 @@ class TreeWithNavigation
     private create() : void
     {
         var navR = 55
-        var navbg = new UnitDiskD3({ // navigation disk
+        var navbg = new UnitDiskD3({ // navigation disk background
             data:this.data,
-            transform: (n:N) => this.args.t(n),
+            transform: (n:N) => n,
             onPan: (m:R2) => {},
             parent:null,
             pos:ArrAddR(this.args.pos, navR),
@@ -131,7 +134,7 @@ class TreeWithNavigation
             clip: true
         })
 
-        this.nav = new UnitDiskD3({
+        this.nav = new UnitDiskD3({ // navigation disk with transformation parameters as nodes
             data:this.navData,
             transform: (n:N) => R2neg(this.args.t(n)),
             onPan: (m:R2) => this.args.onPan(R2neg(m)),
@@ -159,7 +162,7 @@ class TreeWithNavigation
 //----------------------------------------------------------------------------------------
 
 var o = { v:{ x:0, y:0 } }
-var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, X:{ re:1, im:1 }}
+var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
 
 /**
  * create a euclidien and a hyperbolic tree view
@@ -171,23 +174,23 @@ function init() {
 
     var uiRoot = selectedInitUi()
 
-    var offsetPan = new TreeWithNavigation({
+    var offsetTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData:    obj2data(o, x=>x),
         layout:     selectedLayout,
         t:          (n:N) => R2addR2(n,o.v),
-        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); },
+        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetTwn.update(); hyperbolicTwn.update(); },
         parent:     uiRoot,
         pos:        [0,30],
         clip:       true
     })
 
-    var hyperbolicPan = new TreeWithNavigation({
+    var hyperbolicTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData:    obj2data(s, x=>CtoR2(x)),
         layout:     selectedLayout,
         t:          (n:N) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); },
+        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetTwn.update(); hyperbolicTwn.update(); },
         parent:     uiRoot,
         pos:        [550,30],
     })

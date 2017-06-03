@@ -31,7 +31,7 @@ class TreeWithNavigation {
                 this.create();
             });
     }
-    update(ns) {
+    update() {
         this.nav.update();
         this.view.update();
     }
@@ -39,7 +39,7 @@ class TreeWithNavigation {
         var navR = 55;
         var navbg = new UnitDiskD3({
             data: this.data,
-            transform: (n) => this.args.t(n),
+            transform: (n) => n,
             onPan: (m) => { },
             parent: null,
             pos: ArrAddR(this.args.pos, navR),
@@ -72,7 +72,7 @@ class TreeWithNavigation {
 }
 //----------------------------------------------------------------------------------------
 var o = { v: { x: 0, y: 0 } };
-var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, X: { re: 1, im: 1 } };
+var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
 /**
  * create a euclidien and a hyperbolic tree view
  * same data
@@ -81,22 +81,22 @@ var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, X: { re: 1, im: 1 } };
  */
 function init() {
     var uiRoot = selectedInitUi();
-    var offsetPan = new TreeWithNavigation({
+    var offsetTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(o, x => x),
         layout: selectedLayout,
         t: (n) => R2addR2(n, o.v),
-        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
+        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetTwn.update(); hyperbolicTwn.update(); },
         parent: uiRoot,
         pos: [0, 30],
         clip: true
     });
-    var hyperbolicPan = new TreeWithNavigation({
+    var hyperbolicTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(s, x => CtoR2(x)),
         layout: selectedLayout,
         t: (n) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
+        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetTwn.update(); hyperbolicTwn.update(); },
         parent: uiRoot,
         pos: [550, 30],
     });

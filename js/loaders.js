@@ -4,7 +4,8 @@
  */
 function obj2data(o, unitConv) {
     var cur = null;
-    for (name in o) {
+    var root = null;
+    for (var name in o) {
         var pos = unitConv(o[name]);
         var newN = { name: name, parent: cur, children: [], x: pos.x, y: pos.y };
         if (cur)
