@@ -11,8 +11,14 @@ h1 {
     font-weight: normal;
 }
 
+body > div {
+    margin-top: 8px;
+}
+
 #ivis-canvas-div {
     margin-top: 40px;    
+    margin-left: 80px;
+    margin-right: 80px;
 }
 
 .unitDiscBg {

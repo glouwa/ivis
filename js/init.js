@@ -71,6 +71,8 @@ class TreeWithNavigation {
     }
 }
 //----------------------------------------------------------------------------------------
+var o = { v: { x: 0, y: 0 } };
+var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, X: { re: 1, im: 1 } };
 /**
  * create a euclidien and a hyperbolic tree view
  * same data
@@ -79,7 +81,6 @@ class TreeWithNavigation {
  */
 function init() {
     var uiRoot = selectedInitUi();
-    var o = { v: { x: 0, y: 0 } };
     var offsetPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(o, x => x),
@@ -87,10 +88,9 @@ function init() {
         t: (n) => R2addR2(n, o.v),
         onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
         parent: uiRoot,
-        pos: [0, 0],
+        pos: [0, 30],
         clip: true
     });
-    var s = { P: { re: 0, im: 0 }, θ: { re: 0, im: 1 } };
     var hyperbolicPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(s, x => CtoR2(x)),
@@ -98,7 +98,7 @@ function init() {
         t: (n) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
         onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
         parent: uiRoot,
-        pos: [550, 0],
+        pos: [550, 30],
     });
 }
 function h2e(z, p, t) {

@@ -7,8 +7,8 @@ var svg = null;
 function initD3(args) {
     svg = d3.select("#ivis-canvas-div")
         .append('svg')
-        .attr("width", "1000")
-        .attr("height", "500");
+        .attr("width", "100%")
+        .attr("viewBox", "0 0 1000 500");
 }
 class UnitDiskD3 {
     constructor(args) {

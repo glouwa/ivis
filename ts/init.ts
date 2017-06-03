@@ -53,7 +53,7 @@ interface TreeWithNavigationConfig
 
 type R2 = {x:number,y:number}
 type Ck = {re:number,im:number}
-type Cp = {t,r}
+type Cp = {θ:number,r:number}
 type C = Ck
 
 var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
@@ -158,6 +158,9 @@ class TreeWithNavigation
 
 //----------------------------------------------------------------------------------------
 
+var o = { v:{ x:0, y:0 } }
+var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, X:{ re:1, im:1 }}
+
 /**
  * create a euclidien and a hyperbolic tree view
  * same data
@@ -168,7 +171,6 @@ function init() {
 
     var uiRoot = selectedInitUi()
 
-    var o = { v:{ x:0, y:0 } }
     var offsetPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData:    obj2data(o, x=>x),
@@ -176,11 +178,10 @@ function init() {
         t:          (n:N) => R2addR2(n,o.v),
         onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); },
         parent:     uiRoot,
-        pos:        [0,0],
+        pos:        [0,30],
         clip:       true
     })
 
-    var s = { P:{ re:0, im:0 }, θ:{ re:0, im:1 }}
     var hyperbolicPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData:    obj2data(s, x=>CtoR2(x)),
@@ -188,7 +189,7 @@ function init() {
         t:          (n:N) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
         onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); },
         parent:     uiRoot,
-        pos:        [550,0],
+        pos:        [550,30],
     })
 }
 
