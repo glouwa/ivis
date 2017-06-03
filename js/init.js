@@ -56,7 +56,7 @@ class TreeWithNavigation {
             opacity: .8,
             radius: navR,
             nodeRadius: 7,
-            clip: true
+            clip: false
         });
         this.view = new UnitDiskD3({
             data: this.data,

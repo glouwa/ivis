@@ -134,19 +134,19 @@ class TreeWithNavigation
         this.nav = new UnitDiskD3({
             data:this.navData,
             transform: (n:N) => R2neg(this.args.t(n)),
-            onPan: (m:R2) => this.args.onPan(R2neg(m))
+            onPan: (m:R2) => this.args.onPan(R2neg(m)),
             parent:null,
             pos:ArrAddR(this.args.pos, navR),
             opacity:.8,
             radius:navR,
             nodeRadius:7,
-            clip: true
+            clip: false
         })
 
         this.view = new UnitDiskD3({ // view disk
             data:this.data,
             transform: (n:N) => this.args.t(n),
-            onPan: (m:R2) => this.args.onPan(m)
+            onPan: (m:R2) => this.args.onPan(m),
             parent:null,
             pos:ArrAddR(this.args.pos, 240),
             radius:200,
@@ -174,7 +174,7 @@ function init() {
         navData:    obj2data(o, x=>x),
         layout:     selectedLayout,
         t:          (n:N) => R2addR2(n,o.v),
-        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); }
+        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetPan.update(); hyperbolicPan.update(); },
         parent:     uiRoot,
         pos:        [0,0],
         clip:       true

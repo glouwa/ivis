@@ -8,7 +8,7 @@ function obj2data(o, unitConv)
     var cur = null
     for (name in o) {
         var pos = unitConv(o[name])
-        var newN = { id:name, parent:cur, children:[], x:pos.x, y:pos.y }
+        var newN = { name:name, parent:cur, children:[], x:pos.x, y:pos.y }
         if (cur)
             cur.children.push(newN)
         else
@@ -22,7 +22,7 @@ function obj2data(o, unitConv)
 
 function oneNode(ok) {
     ok(d3.hierarchy({
-        id:'root',
+        name:'root',
         parent:null,
         children:[],
         data:{},
@@ -48,6 +48,38 @@ function path(ok, max) {
             cur.children.push(newN)
             cur = newN
         }
+        ok(d3.hierarchy(d))
+    })
+}
+
+function nTreeAtFirst(ok, max=10) {
+    oneNode(d=> {
+        d.children = []
+        var cur = d
+        for (var i=0; i<max; i++) {
+            for (var j=0; j<10; j++) {
+                var newN = { parent:d, children:[] }
+                cur.children.push(newN)
+            }
+            cur = newN
+        }
+        ok(d3.hierarchy(d))
+    })
+}
+
+function nTree(ok, depth=3, childs=5) {
+    oneNode(d=> {
+        d.children = []
+        function processNode(parent, l)
+        {
+            if (l>=depth) return
+            for (var i=0; i<childs; i++) {
+                var newN = { name:l+'-'+i, parent:parent, children:[] }
+                parent.children.push(newN)
+                processNode(newN, l+1)
+            }
+        }
+        processNode(d, 0)
         ok(d3.hierarchy(d))
     })
 }

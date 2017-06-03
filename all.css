@@ -20,10 +20,21 @@ h1 {
 }
 
 .node {
+}
+
+.node > circle {
     fill: #90caf9;
     fill-opacity: .8;
     stroke: #777;
     pointer-events: none;
+}
+
+.node > text {
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-size: 13px;
+    fill: #444;
 }
 
 .link {

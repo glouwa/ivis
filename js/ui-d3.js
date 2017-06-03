@@ -1,3 +1,8 @@
+/**
+ * args enthält alle injections: auch die event callbacks
+ * - onPan
+ * - ...
+ */
 var svg = null;
 function initD3(args) {
     svg = d3.select("#ivis-canvas-div")
@@ -29,20 +34,19 @@ class UnitDiskD3 {
         this.create();
     }
     update() {
-        this.nodes
-            .attr("cx", d => this.t(d)[0])
-            .attr("cy", d => this.t(d)[1]);
-        this.links
-            .attr("d", d => "M " + this.t(d) + " L " + this.t(d.parent));
+        this.nodes.attr("transform", d => "translate(" + this.t(d) + " )");
+        this.links.attr("d", d => "M " + this.t(d) + " L " + this.t(d.parent));
     }
     create() {
         this.nodes = this.nodeLayer.selectAll(".node")
             .data(flat(this.args.data, n => true))
-            .enter().append("circle")
+            .enter().append("g")
             .attr("class", "node")
-            .attr("r", this.args.nodeRadius)
-            .attr("cx", d => this.t(d)[0])
-            .attr("cy", d => this.t(d)[1]);
+            .attr("transform", d => "translate(" + this.t(d) + " )");
+        this.nodes.append("circle")
+            .attr("r", this.args.nodeRadius);
+        this.nodes.append("text")
+            .text(d => (d.name ? d.name : ""));
         this.links = this.linkLayer.selectAll(".link")
             .data(flat(this.args.data, n => n.parent))
             .enter().append("path")
