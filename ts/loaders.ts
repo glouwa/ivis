@@ -1,3 +1,8 @@
+//----------------------------------------------------------------------------------------
+
+/**
+ * spaecial tactics loader for navDisks
+ */
 function obj2data(o, unitConv)
 {
     var cur = null
@@ -12,6 +17,8 @@ function obj2data(o, unitConv)
     }
     return root
 }
+
+//----------------------------------------------------------------------------------------
 
 function oneNode(ok) {
     ok(d3.hierarchy({

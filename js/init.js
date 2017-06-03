@@ -18,16 +18,18 @@ var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
 var CtoArr = (p) => ([p.re, p.im]);
 var CtoR2 = (p) => ({ x: p.re, y: p.im });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
+/**
+ * a viewdisk and a navigation disk together.
+ * navdisk gets pan state as model
+ */
 class TreeWithNavigation {
     constructor(args) {
         this.args = args;
-        oneNode(node => {
-            this.navData = layoutAtCenter(node);
-        });
-        args.dataloader(d3h => {
-            this.data = args.layout(d3h); // data ok. calc init layout
-            this.create();
-        });
+        this.navData = args.navData,
+            args.dataloader(d3h => {
+                this.data = args.layout(d3h); // data ok. calc init layout
+                this.create();
+            });
     }
     update(ns) {
         this.nav.update();
@@ -77,22 +79,24 @@ class TreeWithNavigation {
  */
 function init() {
     var uiRoot = selectedInitUi();
-    var o = { x: 0, y: 0 };
+    var o = { v: { x: 0, y: 0 } };
     var offsetPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
+        navData: obj2data(o, x => x),
         layout: selectedLayout,
-        t: (n) => R2addR2(n, o),
-        onPan: (m) => { s.P = R2toC(m); o = m; offsetPan.update(); hyperbolicPan.update(); },
+        t: (n) => R2addR2(n, o.v),
+        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
         parent: uiRoot,
         pos: [0, 0],
         clip: true
     });
-    var s = { P: { re: 0, im: 0 }, T: { re: 0, im: 1 } };
+    var s = { P: { re: 0, im: 0 }, θ: { re: 0, im: 1 } };
     var hyperbolicPan = new TreeWithNavigation({
         dataloader: selectedDataLoader,
+        navData: obj2data(s, x => CtoR2(x)),
         layout: selectedLayout,
-        t: (n) => CtoR2(h2e(R2toC(n), s.P, s.T)),
-        onPan: (m) => { s.P = R2toC(m); o = m; offsetPan.update(); hyperbolicPan.update(); },
+        t: (n) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
+        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetPan.update(); hyperbolicPan.update(); },
         parent: uiRoot,
         pos: [550, 0],
     });

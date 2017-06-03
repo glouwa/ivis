@@ -15,8 +15,8 @@ interface N {
     depth: 0,
     x: number,
     y: number,
-    z: C,
-    zprime: C
+    z: C, // not used jet
+    zprime: C // not used jet
 }
 
 /**
@@ -78,11 +78,21 @@ function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0]
 
 //----------------------------------------------------------------------------------------
 
-interface TreeOnUnitDisk // see plexx and d3 implementations
+/**
+ * der graue kreis mit blauen punkten...
+ * is hier aber nicht implementiert weils plexx und d3 gibt...
+ *
+ * see plexx and d3 implementations
+ */
+interface TreeOnUnitDisk
 {
     update:() => void
 }
 
+/**
+ * a viewdisk and a navigation disk together.
+ * navdisk gets pan state as model
+ */
 class TreeWithNavigation
 {
     args : TreeWithNavigationConfig

@@ -1,3 +1,21 @@
+//----------------------------------------------------------------------------------------
+/**
+ * spaecial tactics loader for navDisks
+ */
+function obj2data(o, unitConv) {
+    var cur = null;
+    for (name in o) {
+        var pos = unitConv(o[name]);
+        var newN = { id: name, parent: cur, children: [], x: pos.x, y: pos.y };
+        if (cur)
+            cur.children.push(newN);
+        else
+            root = newN;
+        cur = newN;
+    }
+    return root;
+}
+//----------------------------------------------------------------------------------------
 function oneNode(ok) {
     ok(d3.hierarchy({
         id: 'root',
