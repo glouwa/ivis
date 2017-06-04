@@ -3,18 +3,35 @@ function layoutAtCenter(root) {
     return root
 }
 
+var unitVectors = [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x:-1, y: 0 }, { x: 0, y:-1 }]
 function layoutUnitVectors(root) {
-    var some = [{ x: 0, y: 0 },
-                { x: 1, y: 0 },
-                { x: 0, y: 1 },
-                { x:-1, y: 0 },
-                { x: 0, y:-1 }]
+    var some = [{ x: 0, y: 0 }].concat(unitVectors)
     var i=0
     dfs(root, n=> {
         n.x=some[i%some.length].x;
         n.y=some[i%some.length].y;
         i++
     })
+    return root
+}
+
+function layoutUnitLines(root) {
+    root.x = 0
+    root.y = 0
+    for (var i=0; i<4; i++)
+        layoutPath(root.children[i], unitVectors[i])
+
+    function layoutPath(pathBegin, target, depth=30)
+    {
+        var i = 0
+        var rt = r=> 0.1+r*.9
+        dfs(pathBegin, n=> {
+            var r = i/depth
+            n.x = rt(r) * target.x
+            n.y = rt(r) * target.y
+            i++
+        })
+    }
     return root
 }
 

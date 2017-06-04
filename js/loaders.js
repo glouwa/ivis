@@ -11,9 +11,8 @@ function obj2data(o, unitConv) {
         newN.name = name;
         //newN.parent = cur
         newN.children = [];
-        var pos = unitConv(newN);
-        newN.x = pos.x;
-        newN.y = pos.y;
+        newN.x = unitConv(newN).x;
+        newN.y = unitConv(newN).y;
         if (cur)
             cur.children.push(newN);
         else
@@ -34,6 +33,21 @@ function star(ok, max) {
     oneNode(d => {
         for (var i = 0; i < max - 1; i++)
             d.children.push({ parent: d, children: [] });
+        ok(d);
+    });
+}
+function deepStar(ok, arms = 4, depth = 30) {
+    oneNode(d => {
+        for (var i = 0; i < arms; i++) {
+            var l1 = { parent: d, children: [] };
+            d.children.push(l1);
+            var cur = l1;
+            for (var j = 0; j < depth; j++) {
+                var newN = { parent: d, children: [] };
+                cur.children.push(newN);
+                cur = newN;
+            }
+        }
         ok(d);
     });
 }

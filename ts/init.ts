@@ -8,15 +8,15 @@
  * Node
  */
 interface N {
-    id: string,
-    parent: N,
+    id:       string,
+    parent:   N,
     children: Array<N>,
-    data: any,
-    depth: 0,
-    x: number,
-    y: number,
-    z: C, // not used jet
-    zprime: C // not used jet
+    data:     any,
+    depth:    0,
+    x:        number,
+    y:        number,
+    z:        C, // not used jet
+    zprime:   C // not used jet
 }
 
 /**
@@ -24,16 +24,16 @@ interface N {
  */
 interface TreeOnUnitDiskConfig
 {
-    parent: any,
-    data: N,
-    transform: (n:N) => R2,
-    onPan: (m:R2)  => void,
+    parent:     any,
+    data:       N,
+    transform:  (n:N) => R2,
+    onPan:      (m:R2)  => void,
 
-    pos: [number, number],
-    radius: number,
+    pos:        [number, number],
+    radius:     number,
     nodeRadius: number,
-    opacity?: number,
-    clip?: boolean
+    opacity?:   number,
+    clip?:      boolean
 }
 
 /**
@@ -41,15 +41,15 @@ interface TreeOnUnitDiskConfig
  */
 interface TreeWithNavigationConfig
 {
-    parent: any,
+    parent:     any,
     dataloader: LoaderFunction,
-    navData: N,
-    layout: LayoutFunction,
-    t: (n:N) => R2
-    onPan: (m:R2) => void
+    navData:    N,
+    layout:     LayoutFunction,
+    t:          (n:N) => R2
+    onPan:      (m:R2) => void
 
-    pos: [number, number],
-    clip?: boolean
+    pos:        [number, number],
+    clip?:      boolean
 }
 
 //----------------------------------------------------------------------------------------
@@ -123,38 +123,38 @@ class TreeWithNavigation
     private create() : void
     {
         this.view = new UnitDiskD3({ // view disk
-            data:this.data,
-            transform: (n:N) => this.args.t(n),
-            onPan: (m:R2) => this.args.onPan(m),
-            parent:null,
-            pos:ArrAddR(this.args.pos, 240),
-            radius:200,
-            nodeRadius:7,
-            clip: this.args.clip
+            data:       this.data,
+            transform:  (n:N) => this.args.t(n),
+            onPan:      (m:R2) => this.args.onPan(m),
+            parent:     null,
+            pos:        ArrAddR(this.args.pos, 240),
+            radius:     200,
+            nodeRadius: 7,
+            clip:       this.args.clip
         })
 
         var navR = 55
         var navbg = new UnitDiskD3({ // navigation disk background
-            data:this.data,
-            transform: (n:N) => n,
-            onPan: (m:R2) => {},
-            parent:null,
-            pos:ArrAddR(this.args.pos, navR),
-            radius:navR,
-            nodeRadius:2,
-            clip: true
+            data:       this.data,
+            transform:  (n:N) => n,
+            onPan:      (m:R2) => {},
+            parent:     null,
+            pos:        ArrAddR(this.args.pos, navR),
+            radius:     navR,
+            nodeRadius: 2,
+            clip:       true
         })
 
         this.nav = new UnitDiskD3({ // navigation disk with transformation parameters as nodes
-            data:this.navData,
-            transform: (n:N) => R2neg(n),
-            onPan: (m:R2) => this.args.onPan(R2neg(m)),
-            parent:null,
-            pos:ArrAddR(this.args.pos, navR),
-            opacity:.8,
-            radius:navR,
-            nodeRadius:7,
-            clip: false
+            data:       this.navData,
+            transform:  (n:N) => R2neg(n),
+            onPan:      (m:R2) => this.args.onPan(R2neg(m)),
+            parent:     null,
+            pos:        ArrAddR(this.args.pos, navR),
+            opacity:    .8,
+            radius:     navR,
+            nodeRadius: 7,
+            clip:       false
         })        
     }
 }

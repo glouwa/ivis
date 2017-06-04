@@ -77,10 +77,11 @@ var slides = [
     { ds:'d3csvFlare',   ls:'layoutRadial',      name:"Left side: <b>z' = z-v</b> &emsp; Right side: <b>z' = h(θ,P)(z)</b>" },
     { ds:'nTree',        ls:'layoutRadial',      name:"Full tree. Nodes on unit circle. |Tree| = 5³ -1 = 124" },
     { ds:'star1',        ls:'layoutRadial',      name:"Unit vectors, almost" },
-    { ds:'star1',        ls:'layoutUnitVectors', name:"Unit vectors" },
+    { ds:'star1',        ls:'layoutUnitVectors', name:"Unit vectors " },
+    { ds:'deepStar',     ls:'layoutUnitLines',   name:"Unit lines" },
     { ds:'star2',        ls:'layoutSpiral',      name:"Star spiral" },
     { ds:'path1',        ls:'layoutSpiral',      name:"Path spiral" },
-    { ds:'path1',        ls:'layoutRadial',      name:"Line from (0,0) to (1,1)" },
+    { ds:'path1',        ls:'layoutRadial',      name:"Line from [0,0] to [1,1]" },
     { ds:'path2',        ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
     { ds:'nTreeAtFirst', ls:'layoutRadial',      name:"Center is never magnified" }
 ]
