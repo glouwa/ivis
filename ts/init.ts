@@ -109,7 +109,7 @@ class TreeWithNavigation
         this.args  = args        
         this.navData = args.navData,
         args.dataloader(d3h=> {
-            this.data = args.layout(d3h) // data ok. calc init layout
+            this.data = args.layout(d3.hierarchy(d3h)) // data ok. calc init layout
             this.create()
         })
     }

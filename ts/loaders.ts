@@ -29,40 +29,35 @@ function obj2data(o, unitConv)
 //----------------------------------------------------------------------------------------
 
 function oneNode(ok) {
-    ok(d3.hierarchy({
-        name:'root',
+    ok({
         parent:null,
         children:[],
-        data:{},
-        depth:0,
-    }))
+        data:{}
+    })
 }
 
 function star(ok, max) {
-    oneNode(d=> {
-        d.children = []
+    oneNode(d=> {        
         for (var i=0; i<max-1; i++)
             d.children.push({ parent:d, children:[] })
-        ok(d3.hierarchy(d))
+        ok(d)
     })
 }
 
 function path(ok, max) {
-    oneNode(d=> {
-        d.children = []
+    oneNode(d=> {        
         var cur = d
         for (var i=0; i<max; i++) {
             var newN = { parent:d, children:[] }
             cur.children.push(newN)
             cur = newN
         }
-        ok(d3.hierarchy(d))
+        ok(d)
     })
 }
 
 function nTreeAtFirst(ok, max=10) {
-    oneNode(d=> {
-        d.children = []
+    oneNode(d=> {        
         var cur = d
         for (var i=0; i<max; i++) {
             for (var j=0; j<10; j++) {
@@ -71,13 +66,12 @@ function nTreeAtFirst(ok, max=10) {
             }
             cur = newN
         }
-        ok(d3.hierarchy(d))
+        ok(d)
     })
 }
 
 function nTree(ok, depth=3, childs=5) {
-    oneNode(d=> {
-        d.children = []
+    oneNode(d=> {        
         function processNode(parent, l)
         {
             if (l>=depth) return
@@ -88,7 +82,7 @@ function nTree(ok, depth=3, childs=5) {
             }
         }
         processNode(d, 0)
-        ok(d3.hierarchy(d))
+        ok(d)
     })
 }
 
@@ -101,7 +95,7 @@ function d3csv(ok, file) {
 }
 
 function json(ok, jsonStr) {
-    ok(d3.hierarchy(JSON.parse(jsonStr)))
+    ok(JSON.parse(jsonStr))
 }
 
 var star1 = ok=> star(ok, 5)
