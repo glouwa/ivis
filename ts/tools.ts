@@ -18,7 +18,7 @@ function dfs(n, fpre, fpost?) {
     if (fpost) fpost(n)
 }
 
-function flat(n, f?) {
+function dfsFlat(n, f?) {
     var r = []
     dfs(n, n=> { if(!f || f(n)) r.push(n) })
     return r
@@ -29,6 +29,7 @@ function flat(n, f?) {
 window.onload = function()
 {
     selectedInitUi = eval('init' + (<HTMLInputElement>document.getElementById("rendererSelect")).value)
+    SelectedUnitDisk = eval('UnitDisk' + (<HTMLInputElement>document.getElementById("rendererSelect")).value)
     next(1)
 }
 

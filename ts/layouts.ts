@@ -19,12 +19,13 @@ function layoutUnitLines(root) {
     root.x = 0
     root.y = 0
     for (var i=0; i<4; i++)
-        layoutPath(root.children[i], unitVectors[i])
+        layoutPath(root.children[i], unitVectors[i], root.children[i].height)
 
     function layoutPath(pathBegin, target, depth=30)
     {
         var i = 0
-        var rt = r=> 0.1+r*.9
+        var pa = 1/depth
+        var rt = r=> pa + r * (1-pa)
         dfs(pathBegin, n=> {
             var r = i/depth
             n.x = rt(r) * target.x
@@ -36,10 +37,10 @@ function layoutUnitLines(root) {
 }
 
 function layoutSpiral(root) {
-    var flatNodes = flat(root)
+    var flatNodes = dfsFlat(root)
     var nrN = flatNodes.length
     var nrRounds = Math.floor(nrN/24)
-    for (var i=0; i<nrN; i++) {
+    for (var i=0; i < nrN; i++) {
         var a = i/nrN * 2*Math.PI * (nrRounds+1)
         var r = Math.pow(2, i/nrN)-1
         flatNodes[i].x = r*Math.cos(a)

@@ -1,8 +1,3 @@
-/**
- * args enthält alle injections: auch die event callbacks
- * - onPan
- * - ...
- */
 var svg = null;
 function initD3(args) {
     svg = d3.select("#ivis-canvas-div")
@@ -40,7 +35,7 @@ class UnitDiskD3 {
     }
     create() {
         this.nodes = this.nodeLayer.selectAll(".node")
-            .data(flat(this.args.data, n => true))
+            .data(dfsFlat(this.args.data, n => true))
             .enter().append("g")
             .attr("class", "node")
             .attr("transform", d => "translate(" + this.t(d) + " )");
@@ -49,7 +44,7 @@ class UnitDiskD3 {
         this.nodes.append("text")
             .text(d => (d.name ? d.name : ""));
         this.links = this.linkLayer.selectAll(".link")
-            .data(flat(this.args.data, n => n.parent))
+            .data(dfsFlat(this.args.data, n => n.parent))
             .enter().append("path")
             .attr("class", "link")
             .attr("d", d => "M " + this.t(d) + " L " + this.t(d.parent));

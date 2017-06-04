@@ -1,9 +1,3 @@
-/**
- * args enthält alle injections: auch die event callbacks
- * - onPan
- * - ...
- */
-
 var svg = null
 
 function initD3(args)
@@ -46,8 +40,7 @@ class UnitDiskD3 implements TreeOnUnitDisk
         var layers = mainGroup.append('g')
         this.linkLayer = layers.append('g')
         this.nodeLayer = layers.append('g')
-        if (args.clip)
-            layers.attr("clip-path", "url(#circle-clip)")
+        if (args.clip) layers.attr("clip-path", "url(#circle-clip)")
         this.create()
     }
 
@@ -60,7 +53,7 @@ class UnitDiskD3 implements TreeOnUnitDisk
     private create() : void
     {
         this.nodes = this.nodeLayer.selectAll(".node")
-            .data(flat(this.args.data, n=>true))
+            .data(dfsFlat(this.args.data, n=>true))
             .enter().append("g")
                 .attr("class", "node")
                 .attr("transform", d=> "translate(" + this.t(d) + " )")
@@ -72,7 +65,7 @@ class UnitDiskD3 implements TreeOnUnitDisk
             .text(d=> (d.name?d.name:""))
 
         this.links = this.linkLayer.selectAll(".link")
-            .data(flat(this.args.data, n=>n.parent))
+            .data(dfsFlat(this.args.data, n=>n.parent))
             .enter().append("path")
                 .attr("class", "link")
                 .attr("d", d=> "M "+ this.t(d) + " L " + this.t(d.parent))

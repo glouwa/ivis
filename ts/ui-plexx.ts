@@ -38,12 +38,12 @@ class UnitDiskPlexx implements TreeOnUnitDisk
 
     private create() : void
     {
-        // create view stuff from data
-        var model = this.args.data
+
+        var model = this.args.data // create view stuff from data
         var s = this.args.radius
         dfs(model, (n : N)=> {
-            // add blue circle
-            var node = new Plexx.Circle({
+
+            var node = new Plexx.Circle({ // add blue circle
                 radius: this.args.nodeRadius,
                 position: [n.x * s, n.y * s],
                 colour: "#90caf9"
@@ -57,8 +57,7 @@ class UnitDiskPlexx implements TreeOnUnitDisk
             this.plexxObj.add(node)
             this.positionUpdateable.push(node)
 
-            // add line (root has no link)
-            if (n.parent) {
+            if (n.parent) { // add line (root has no link)
                 var link = new Plexx.Line({
                     points: [n.parent.x*s, n.parent.y*s, n.x*s, n.y*s],
                     width: 0.5,

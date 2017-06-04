@@ -12,7 +12,7 @@ interface N {
     parent:   N,
     children: Array<N>,
     data:     any,
-    depth:    0,
+    depth:    number,
     x:        number,
     y:        number,
     z:        C, // not used jet
@@ -109,7 +109,7 @@ class TreeWithNavigation
         this.args  = args        
         this.navData = args.navData,
         args.dataloader(d3h=> {
-            this.data = args.layout(d3.hierarchy(d3h)) // data ok. calc init layout
+            this.data = args.layout(<N>d3.hierarchy(d3h)) // data ok. calc init layout
             this.create()
         })
     }
@@ -122,7 +122,7 @@ class TreeWithNavigation
 
     private create() : void
     {
-        this.view = new UnitDiskD3({ // view disk
+        this.view = new SelectedUnitDisk({ // view disk
             data:       this.data,
             transform:  (n:N) => this.args.t(n),
             onPan:      (m:R2) => this.args.onPan(m),
@@ -134,7 +134,7 @@ class TreeWithNavigation
         })
 
         var navR = 55
-        var navbg = new UnitDiskD3({ // navigation disk background
+        var navbg = new SelectedUnitDisk({ // navigation disk background
             data:       this.data,
             transform:  (n:N) => n,
             onPan:      (m:R2) => {},
@@ -145,7 +145,7 @@ class TreeWithNavigation
             clip:       true
         })
 
-        this.nav = new UnitDiskD3({ // navigation disk with transformation parameters as nodes
+        this.nav = new SelectedUnitDisk({ // navigation disk with transformation parameters as nodes
             data:       this.navData,
             transform:  (n:N) => R2neg(n),
             onPan:      (m:R2) => this.args.onPan(R2neg(m)),

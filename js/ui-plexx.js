@@ -23,11 +23,9 @@ class UnitDiskPlexx {
         myCanvas.renderFrame(renderContext);
     }
     create() {
-        // create view stuff from data
-        var model = this.args.data;
+        var model = this.args.data; // create view stuff from data
         var s = this.args.radius;
         dfs(model, (n) => {
-            // add blue circle
             var node = new Plexx.Circle({
                 radius: this.args.nodeRadius,
                 position: [n.x * s, n.y * s],
@@ -41,7 +39,6 @@ class UnitDiskPlexx {
             };
             this.plexxObj.add(node);
             this.positionUpdateable.push(node);
-            // add line (root has no link)
             if (n.parent) {
                 var link = new Plexx.Line({
                     points: [n.parent.x * s, n.parent.y * s, n.x * s, n.y * s],

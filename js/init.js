@@ -36,7 +36,7 @@ class TreeWithNavigation {
         this.view.update();
     }
     create() {
-        this.view = new UnitDiskD3({
+        this.view = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => this.args.t(n),
             onPan: (m) => this.args.onPan(m),
@@ -47,7 +47,7 @@ class TreeWithNavigation {
             clip: this.args.clip
         });
         var navR = 55;
-        var navbg = new UnitDiskD3({
+        var navbg = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => n,
             onPan: (m) => { },
@@ -57,7 +57,7 @@ class TreeWithNavigation {
             nodeRadius: 2,
             clip: true
         });
-        this.nav = new UnitDiskD3({
+        this.nav = new SelectedUnitDisk({
             data: this.navData,
             transform: (n) => R2neg(n),
             onPan: (m) => this.args.onPan(R2neg(m)),

@@ -9,7 +9,7 @@ function dfs(n, fpre, fpost) {
     if (fpost)
         fpost(n);
 }
-function flat(n, f) {
+function dfsFlat(n, f) {
     var r = [];
     dfs(n, n => { if (!f || f(n))
         r.push(n); });
@@ -18,6 +18,7 @@ function flat(n, f) {
 //----------------------------------------------------------------------------------------
 window.onload = function () {
     selectedInitUi = eval('init' + document.getElementById("rendererSelect").value);
+    SelectedUnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
     next(1);
 };
 /**
