@@ -2,24 +2,39 @@
 
 body {
     text-align: center;
+    font-family: Helvetica;
+
+
 }
 
-h1 {
-    font-family: 'Segoe UI',Arial,sans-serif;
+h1 {    
     letter-spacing: 0.2em;
     font-size: 2em;
     font-weight: normal;
+    margin-bottom:0;
 }
 
-body > div {
-    margin-top: 8px;
+#slide {
+    letter-spacing: 0.07em;
+    padding-bottom:1em;
+    margin-top: 0.5em;
+}
+
+#selectCaption {
+    font-size: .7em;
+    word-spacing:4.3em;
 }
 
 #ivis-canvas-div {
-    margin-top: 40px;    
+    margin-top: 10px;
     margin-left: 80px;
     margin-right: 80px;
 }
+
+
+/*--------------------------------------------------------------------------------------- */
+/* svg only in pixel? :( */
+
 
 .unitDiscBg {
     fill: #f9fbe7;
@@ -29,10 +44,14 @@ body > div {
 }
 
 .node > circle {
-    fill: #90caf9;
+    fill: #BBDEFB; //#fff59d; gelb
     fill-opacity: .8;
-    stroke: #777;
+    stroke: #888;
     pointer-events: none;
+}
+
+.unitDiscParam .node > circle {
+    fill: #a5d6a7;
 }
 
 .node > text {
@@ -44,6 +63,6 @@ body > div {
 }
 
 .link {
-    stroke: gray;
+    stroke: #ccc;
     pointer-events: none;
 }

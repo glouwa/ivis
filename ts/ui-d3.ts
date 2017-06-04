@@ -29,6 +29,7 @@ class UnitDiskD3 implements TreeOnUnitDisk
         this.args = args
 
         var mainGroup = svg.append('g')
+            .attr("class", "unitDisc"+(args.opacity?"Param":""))
             .attr("transform", "translate(" + args.pos + ")");
 
         var unitDiscBg = mainGroup.append('circle')

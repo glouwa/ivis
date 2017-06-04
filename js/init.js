@@ -36,6 +36,16 @@ class TreeWithNavigation {
         this.view.update();
     }
     create() {
+        this.view = new UnitDiskD3({
+            data: this.data,
+            transform: (n) => this.args.t(n),
+            onPan: (m) => this.args.onPan(m),
+            parent: null,
+            pos: ArrAddR(this.args.pos, 240),
+            radius: 200,
+            nodeRadius: 7,
+            clip: this.args.clip
+        });
         var navR = 55;
         var navbg = new UnitDiskD3({
             data: this.data,
@@ -49,7 +59,7 @@ class TreeWithNavigation {
         });
         this.nav = new UnitDiskD3({
             data: this.navData,
-            transform: (n) => R2neg(this.args.t(n)),
+            transform: (n) => R2neg(n),
             onPan: (m) => this.args.onPan(R2neg(m)),
             parent: null,
             pos: ArrAddR(this.args.pos, navR),
@@ -58,21 +68,13 @@ class TreeWithNavigation {
             nodeRadius: 7,
             clip: false
         });
-        this.view = new UnitDiskD3({
-            data: this.data,
-            transform: (n) => this.args.t(n),
-            onPan: (m) => this.args.onPan(m),
-            parent: null,
-            pos: ArrAddR(this.args.pos, 240),
-            radius: 200,
-            nodeRadius: 7,
-            clip: this.args.clip
-        });
     }
 }
 //----------------------------------------------------------------------------------------
 var o = { v: { x: 0, y: 0 } };
 var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
+function R2assignR2(a, b) { a.x = b.x; a.y = b.y; }
+function CassignR2(a, b) { a.re = b.x; a.im = b.y; }
 /**
  * create a euclidien and a hyperbolic tree view
  * same data
@@ -86,9 +88,15 @@ function init() {
         navData: obj2data(o, x => x),
         layout: selectedLayout,
         t: (n) => R2addR2(n, o.v),
-        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetTwn.update(); hyperbolicTwn.update(); },
+        onPan: (m) => {
+            R2assignR2(s.P, m); // x,y wird als position der nac nodes verwendet
+            CassignR2(s.P, m); // re,im als parameter für die transformation
+            R2assignR2(o.v, m);
+            offsetTwn.update();
+            hyperbolicTwn.update();
+        },
         parent: uiRoot,
-        pos: [0, 30],
+        pos: [25, 30],
         clip: true
     });
     var hyperbolicTwn = new TreeWithNavigation({
@@ -96,9 +104,15 @@ function init() {
         navData: obj2data(s, x => CtoR2(x)),
         layout: selectedLayout,
         t: (n) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan: (m) => { s.P = R2toC(m); o.v = m; offsetTwn.update(); hyperbolicTwn.update(); },
+        onPan: (m) => {
+            R2assignR2(s.P, m);
+            CassignR2(s.P, m);
+            R2assignR2(o.v, m);
+            offsetTwn.update();
+            hyperbolicTwn.update();
+        },
         parent: uiRoot,
-        pos: [550, 30],
+        pos: [525, 30],
     });
 }
 function h2e(z, p, t) {

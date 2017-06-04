@@ -54,9 +54,9 @@ interface TreeWithNavigationConfig
 
 //----------------------------------------------------------------------------------------
 
-type R2 = {x:number,y:number}
-type Ck = {re:number,im:number}
-type Cp = {θ:number,r:number}
+type R2 = { x:number, y:number }
+type Ck = { re:number, im:number }
+type Cp = { θ:number, r:number }
 type C = Ck
 
 var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
@@ -122,6 +122,17 @@ class TreeWithNavigation
 
     private create() : void
     {
+        this.view = new UnitDiskD3({ // view disk
+            data:this.data,
+            transform: (n:N) => this.args.t(n),
+            onPan: (m:R2) => this.args.onPan(m),
+            parent:null,
+            pos:ArrAddR(this.args.pos, 240),
+            radius:200,
+            nodeRadius:7,
+            clip: this.args.clip
+        })
+
         var navR = 55
         var navbg = new UnitDiskD3({ // navigation disk background
             data:this.data,
@@ -136,7 +147,7 @@ class TreeWithNavigation
 
         this.nav = new UnitDiskD3({ // navigation disk with transformation parameters as nodes
             data:this.navData,
-            transform: (n:N) => R2neg(this.args.t(n)),
+            transform: (n:N) => R2neg(n),
             onPan: (m:R2) => this.args.onPan(R2neg(m)),
             parent:null,
             pos:ArrAddR(this.args.pos, navR),
@@ -144,18 +155,7 @@ class TreeWithNavigation
             radius:navR,
             nodeRadius:7,
             clip: false
-        })
-
-        this.view = new UnitDiskD3({ // view disk
-            data:this.data,
-            transform: (n:N) => this.args.t(n),
-            onPan: (m:R2) => this.args.onPan(m),
-            parent:null,
-            pos:ArrAddR(this.args.pos, 240),
-            radius:200,
-            nodeRadius:7,
-            clip: this.args.clip
-        })
+        })        
     }
 }
 
@@ -163,6 +163,9 @@ class TreeWithNavigation
 
 var o = { v:{ x:0, y:0 } }
 var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
+
+function R2assignR2(a, b) { a.x=b.x; a.y=b.y; }
+function CassignR2(a, b) { a.re=b.x; a.im=b.y; }
 
 /**
  * create a euclidien and a hyperbolic tree view
@@ -179,9 +182,15 @@ function init() {
         navData:    obj2data(o, x=>x),
         layout:     selectedLayout,
         t:          (n:N) => R2addR2(n,o.v),
-        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetTwn.update(); hyperbolicTwn.update(); },
+        onPan:      (m:R2) => {
+                        R2assignR2(s.P, m) // x,y wird als position der nac nodes verwendet
+                        CassignR2(s.P, m)  // re,im als parameter für die transformation
+                        R2assignR2(o.v, m)
+                        offsetTwn.update();
+                        hyperbolicTwn.update();
+                    },
         parent:     uiRoot,
-        pos:        [0,30],
+        pos:        [25,30],
         clip:       true
     })
 
@@ -190,9 +199,15 @@ function init() {
         navData:    obj2data(s, x=>CtoR2(x)),
         layout:     selectedLayout,
         t:          (n:N) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan:      (m:R2) => { s.P=R2toC(m); o.v=m; offsetTwn.update(); hyperbolicTwn.update(); },
+        onPan:      (m:R2) => {
+                        R2assignR2(s.P, m)
+                        CassignR2(s.P, m)
+                        R2assignR2(o.v, m)
+                        offsetTwn.update();
+                        hyperbolicTwn.update();
+                    },
         parent:     uiRoot,
-        pos:        [550,30],
+        pos:        [525,30],
     })
 }
 

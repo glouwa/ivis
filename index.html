@@ -19,41 +19,40 @@
 </head>
 
 <body>
-    <h1>Radial tree vs Hyperbolic tree</h1>
 
-    <select id="rendererSelect" onchange="setRenderer(this)">      
+    <h1>Radial tree vs. Hyperbolic tree</h1>
+    <div id="slide">
+        <div id="slideName">1 / 7</div>
+        <button onclick="next(-1)">◄</button><button onclick="next(1)">►</button>
+    </div>
+    <div id="selectCaption">Renderer Tree-structure Node-layout</div>
+
+    <select id="rendererSelect" onchange="setRenderer(this.value)">
       <option value="D3">d3</option>
       <option value="Plexx">plexx</option>
+      <option value="Plexx">plexx+d</option>
     </select>
-✕
-    <select id="dataSourceSelect" onchange="setDataSource(this)">
+
+    <select id="dataSourceSelect" onchange="setDataSource(this.value)">
       <option value="d3csvFlare">flare.csv (d3)</option>
-      <option value="oneNode">one node</option>
-      <option value="path2">path (500)</option>
-      <option value="star2">star (500)</option>
-      <option value="nTree">n tree</option>
-      <option value="nTreeAtFirst">n beim ersten</option>
-      <option value="path1">path (50)</option>
-      <option value="path3">path (5000)</option>
-      <option value="star1">star (50)</option>
-      <option value="star3">star (5000)</option>
+      <option value="oneNode">Only root (1)</option>
+      <option value="star1">Star (1+4)</option>      
+      <option value="path2">Path (500)</option>
+      <option value="nTree">𝕋 (5³ -1)</option>
+      <option value="nTreeAtFirst">𝕋 (1+10✕10)</option>
+      <option value="path1">Path (50)</option>
+      <option value="path3">Path (5000)</option>
+      <option value="star2">Star (1+50)</option>
+      <option value="star3">Star (1+500)</option>
       <option value="jsonConst">flare.json</option>
     </select>
-✕
-    <select id="layoutSelect" onchange="setLayout(this)">
-      <option value="layoutRadial">radial (d3)</option>
-      <option value="layoutSpiral">spiral</option>      
-      <option value="layoutUnitVectors">unit vectors</option>
-      <option value="layoutHyperbolic">wedge</option>
-      <option value="layoutAtCenter">center</option>
+
+    <select id="layoutSelect" onchange="setLayout(this.value)">
+      <option value="layoutRadial">Reingold-Tilford</option>
+      <option value="layoutSpiral">DFS spiral</option>
+      <option value="layoutUnitVectors">Unit vectors</option>
+      <option value="layoutHyperbolic">Wedge</option>
     </select>
-
-
-    <div>
-        <button>◄</button>
-        <button>►</button>
-        <div>1/7</div>
-    </div>
 
     <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>

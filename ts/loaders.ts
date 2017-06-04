@@ -2,14 +2,21 @@
 
 /**
  * spaecial tactics loader for navDisks
+ * generates a path containing nodes for each member of 'o'
  */
 function obj2data(o, unitConv)
 {
     var cur = null
     var root = null
     for (var name in o) {
-        var pos = unitConv(o[name])
-        var newN = { name:name, parent:cur, children:[], x:pos.x, y:pos.y }
+        var newN = o[name]
+        newN.name = name
+        //newN.parent = cur
+        newN.children = []
+        var pos = unitConv(newN)
+        newN.x = pos.x
+        newN.y = pos.y
+
         if (cur)
             cur.children.push(newN)
         else
@@ -34,7 +41,7 @@ function oneNode(ok) {
 function star(ok, max) {
     oneNode(d=> {
         d.children = []
-        for (var i=0; i<max; i++)
+        for (var i=0; i<max-1; i++)
             d.children.push({ parent:d, children:[] })
         ok(d3.hierarchy(d))
     })
@@ -97,9 +104,9 @@ function json(ok, jsonStr) {
     ok(d3.hierarchy(JSON.parse(jsonStr)))
 }
 
-var star1 = ok=> star(ok, 50)
-var star2 = ok=> star(ok, 500)
-var star3 = ok=> star(ok, 5000)
+var star1 = ok=> star(ok, 5)
+var star2 = ok=> star(ok, 50)
+var star3 = ok=> star(ok, 500)
 var path1 = ok=> path(ok, 50)
 var path2 = ok=> path(ok, 500)
 var path3 = ok=> path(ok, 5000)
