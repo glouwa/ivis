@@ -49,7 +49,6 @@ function layoutHyperbolic(root) {
         // var d = S. 47
         // n.z = { re:0.4, im:0.3 } // das z aus m paper. z strich wird erst von der transformation berechnet
 
-
         n.x=0; // n.x n.y wird derzeit zum zeichnen verwendet. kannst aber auch ändern
         n.y=0  // in der transformationsfunktion HyperboicTree argument 't'
     })

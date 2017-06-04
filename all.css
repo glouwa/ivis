@@ -22,7 +22,7 @@ h1 {
 
 #selectCaption {
     font-size: .7em;
-    word-spacing:4.3em;
+    word-spacing:4.5em;
 }
 
 #ivis-canvas-div {
@@ -44,7 +44,7 @@ h1 {
 }
 
 .node > circle {
-    fill: #BBDEFB; //#fff59d; gelb
+    fill: #BBDEFB; /*#fff59d; gelb*/
     fill-opacity: .8;
     stroke: #888;
     pointer-events: none;
