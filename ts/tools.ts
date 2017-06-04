@@ -50,6 +50,8 @@ function resetDom()
 function setRenderer(name)
 {
     selectedInitUi = eval('init' + name)
+
+    if (name.endsWith("Dbg")) name = name.slice(0, -3)
     SelectedUnitDisk = eval('UnitDisk' + name)
     resetDom()
     init()

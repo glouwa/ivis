@@ -3,10 +3,15 @@ var renderContext = null
 
 function initPlexx()
 {
-    myCanvas =       new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", });
-    renderContext =  new Plexx.RenderContext({ id: "ivis-canvas-div"});
-    var debugPanel = new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
+    myCanvas =       new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", })
+    renderContext =  new Plexx.RenderContext({ id: "ivis-canvas-div"})
     myCanvas.run(renderContext);
+}
+
+function initPlexxDbg()
+{
+    initPlexx()
+    new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas)
 }
 
 class UnitDiskPlexx implements TreeOnUnitDisk
