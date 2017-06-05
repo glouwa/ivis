@@ -77,6 +77,9 @@ var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
 var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
 var CtoR2 =   (p:C)=>            ({ x:p.re,                         y:p.im })
 
+var CktoCp =   (k:Ck)=>          ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
+var CptoCk =   (p:Cp)=>          ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
+
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
 
 //----------------------------------------------------------------------------------------
@@ -126,6 +129,7 @@ class TreeWithNavigation
             data:       this.data,
             transform:  (n:N) => this.args.t(n),
             onPan:      (m:R2) => this.args.onPan(m),
+
             parent:     null,
             pos:        ArrAddR(this.args.pos, 240),
             radius:     200,
@@ -138,6 +142,7 @@ class TreeWithNavigation
             data:       this.data,
             transform:  (n:N) => n,
             onPan:      (m:R2) => {},
+
             parent:     null,
             pos:        ArrAddR(this.args.pos, navR),
             radius:     navR,
@@ -149,6 +154,7 @@ class TreeWithNavigation
             data:       this.navData,
             transform:  (n:N) => R2neg(n),
             onPan:      (m:R2) => this.args.onPan(R2neg(m)),
+
             parent:     null,
             pos:        ArrAddR(this.args.pos, navR),
             opacity:    .8,
@@ -160,6 +166,12 @@ class TreeWithNavigation
 }
 
 //----------------------------------------------------------------------------------------
+/*
+interface Transforamtion {
+    point:
+    line:
+    area:
+}*/
 
 var o = { v:{ x:0, y:0 } }
 var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
@@ -211,10 +223,10 @@ function init() {
     })
 }
 
-function h2e(z:C, p:C, t:C) : C
+function h2e(z:C, P:C, θ:C) : C
 {
-    var oben = CaddC(CmulC(t, z), p)
-    var unten = CaddR(CmulC(CmulC(Ccon(p), t), z), 1)
+    var oben = CaddC(CmulC(θ, z), P)
+    var unten = CaddR(CmulC(CmulC(Ccon(P), θ), z), 1)
     var zprime = CdivC(oben, unten)
     return zprime
 }
