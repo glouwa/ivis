@@ -17,6 +17,8 @@ var CaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
 var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
 var CtoArr = (p) => ([p.re, p.im]);
 var CtoR2 = (p) => ({ x: p.re, y: p.im });
+var CktoCp = (k) => ({ θ: Math.atan2(k.im, k.re), r: Math.sqrt(k.re * k.re + k.im * k.im) });
+var CptoCk = (p) => ({ re: p.r * Math.cos(p.θ), im: p.r * Math.sin(p.θ) });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
 /**
  * a viewdisk and a navigation disk together.
@@ -71,6 +73,12 @@ class TreeWithNavigation {
     }
 }
 //----------------------------------------------------------------------------------------
+/*
+interface Transforamtion {
+    point:
+    line:
+    area:
+}*/
 var o = { v: { x: 0, y: 0 } };
 var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
 function R2assignR2(a, b) { a.x = b.x; a.y = b.y; }
@@ -115,9 +123,9 @@ function init() {
         pos: [525, 30],
     });
 }
-function h2e(z, p, t) {
-    var oben = CaddC(CmulC(t, z), p);
-    var unten = CaddR(CmulC(CmulC(Ccon(p), t), z), 1);
+function h2e(z, P, θ) {
+    var oben = CaddC(CmulC(θ, z), P);
+    var unten = CaddR(CmulC(CmulC(Ccon(P), θ), z), 1);
     var zprime = CdivC(oben, unten);
     return zprime;
 }

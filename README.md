@@ -8,14 +8,14 @@
 - e is immer ein event arg. es gibt ja kein error handling
 
 todos:
-    - plex basics
-    - wedge layout
-    - coole dataloader
+- plex basics
+- wedge layout
+- coole dataloader
 
-    - drag behavoir nach paper
-    - node size transformation interface
-    - line transformation interface
-    - interaction interface ui-controler
-    - multiple focui
+- drag behavoir nach paper
+- node size transformation interface
+- line transformation interface
+- interaction interface ui-controler
+- multiple focui
 
 
