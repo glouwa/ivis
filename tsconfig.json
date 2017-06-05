@@ -1,10 +1,16 @@
 {
     "compilerOptions": {
         "target": "ES6",
+        "module": "es6",
+        "moduleResolution": "node",
+        "lib": ["dom", "es2015", "es2016"],
+        //"sourceMap": true,
+        "typeRoots": ["node_modules/@types"],
         "outDir": "js",
         "rootDir": "ts",
         "types": [
-          "d3"
+          "d3",
+          "node"
         ]
     }
 }

@@ -24,13 +24,14 @@
   },
   "homepage": "https://github.com/glouwa/ivis#readme",
   "dependencies": {
-    "d3": "^4.0.0",
-    "typescript": "^2.3.4",
-    "watch": "^1.0.2",
     "connect": "^3.4.1",
-    "serve-static": "^1.10.3"
+    "d3": "^4.0.0",
+    "serve-static": "^1.10.3",
+    "typescript": "^2.3.4",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
-    "@types/d3": "^4.9.0"
+    "@types/d3": "^4.9.0",
+    "@types/node": "^7.0.27"
   }
 }

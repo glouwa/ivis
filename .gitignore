@@ -73,3 +73,5 @@ typings/
 .creator
 .files
 .includes
+/js/*.map
+.idea/

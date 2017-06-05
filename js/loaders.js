@@ -1,4 +1,3 @@
-//----------------------------------------------------------------------------------------
 /**
  * spaecial tactics loader for navDisks
  * generates a path containing nodes for each member of 'o'
@@ -108,3 +107,5 @@ var path2 = ok => path(ok, 500);
 var path3 = ok => path(ok, 5000);
 var d3csvFlare = ok => d3csv(ok, "flare.csv");
 var jsonConst = ok => json(ok, "{}");
+const jsonFilePath = ""; //TODO: get user selected path here - then uncomment next line
+//let jsonFile = new Tree(jsonFilePath);
