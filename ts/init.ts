@@ -28,6 +28,8 @@ interface TreeOnUnitDiskConfig
     data:       N,
     transform:  (n:N) => R2,
     onPan:      (m:R2)  => void,
+    //onPanθ:     (m:R2)  => void,
+    //onPanH:     (m:R2)  => void,
 
     pos:        [number, number],
     radius:     number,
@@ -228,6 +230,11 @@ function h2e(z:C, P:C, θ:C) : C
     var oben = CaddC(CmulC(θ, z), P)
     var unten = CaddR(CmulC(CmulC(Ccon(P), θ), z), 1)
     var zprime = CdivC(oben, unten)
+    if (isNaN(zprime.re) || isNaN(zprime.im)) {
+        //console.warn("zprime is nan")
+        zprime = { re:0, im:0 }
+    }
+
     return zprime
 }
 function e2h(z:C, p:C, t:C) : C

@@ -74,7 +74,7 @@ function nTreeAtFirst(ok, max = 10) {
         ok(d);
     });
 }
-function nTree(ok, depth = 3, childs = 5) {
+function nTree(ok, depth = 8, childs = 2) {
     oneNode(d => {
         function processNode(parent, l) {
             if (l >= depth)
