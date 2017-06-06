@@ -86,7 +86,7 @@ function nTreeAtFirst(ok, max=10) {
     })
 }
 
-function nTree(ok, depth=2, childs=2) {
+function nTree(ok, depth=7, childs=2) {
     oneNode(d=> {        
         function processNode(parent, l)
         {

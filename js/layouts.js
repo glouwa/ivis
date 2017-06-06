@@ -44,7 +44,7 @@ function layoutSpiral(root) {
     return root;
 }
 function layoutRadial(root) {
-    root = d3.tree().size([2 * Math.PI, 1])(root);
+    root = d3.tree().size([2 * Math.PI, 0.9])(root);
     dfs(root, n => {
         var a = n.x - Math.PI / 2;
         n.x = n.y * Math.cos(a);
