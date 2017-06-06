@@ -78,8 +78,15 @@ var Cneg =    (p:C)=>            ({ re:-p.re,                       im:-p.im })
 var Ccon =    (p:C)=>            ({ re:p.re,                        im:-p.im })
 var CmulR =   (p:C, s:number)=>  ({ re:p.re * s,                    im:p.im * s })
 var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
-var CdivC =   (a:C, b:C)=>       ({ re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-                                    im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)})
+var CdivC =   (a:C, b:C)=>       {
+                                    var r = {
+                                        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+                                        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+                                    }
+                                    if (isNaN(r.re) || isNaN(r.im))
+                                        return { re:0, im:0 }
+                                    return r
+                                 }
 var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
 var CsubC =   (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
 var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
@@ -212,7 +219,7 @@ function init() {
         onDrag:      (m:R2) => {
                           var dragVector = R2subR2(m, dSP)
                           var newP = R2addR2(CtoR2(dSTh.P), dragVector)
-                          var newV = R2addR2(dSTo.v, dragVector)
+                          var newV = newP //R2addR2(dSTo.v, dragVector)
 
                           R2assignR2(h.P, newP) // x,y wird als position der nac nodes verwendet
                           CassignR2(h.P, newP)  // re,im als parameter für die transformation
@@ -257,11 +264,6 @@ function h2e(t:T, z:C) : C
     var oben = CaddC(CmulC(t.θ, z), t.P)
     var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1)
     var zprime = CdivC(oben, unten)
-    if (isNaN(zprime.re) || isNaN(zprime.im)) {
-        //console.warn("zprime is nan")
-        zprime = { re:0, im:0 }
-    }
-
     return zprime
 }
 

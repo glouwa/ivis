@@ -81,8 +81,7 @@ function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, α:2*
             var s = .42
             var it = ((1-s*s) * Math.sin(cα)) / (2*s)
             console.log('it',it)
-            var d = Math.sqrt(Math.pow(it,2)+1) - it
-            d =  d/2
+            var d = Math.sqrt(Math.pow(it,2)+1) - it           
             console.assert(isFinite(d))
             console.log('d',d)
 

@@ -14,8 +14,15 @@ var Cneg = (p) => ({ re: -p.re, im: -p.im });
 var Ccon = (p) => ({ re: p.re, im: -p.im });
 var CmulR = (p, s) => ({ re: p.re * s, im: p.im * s });
 var CmulC = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.im * b.re + a.re * b.im });
-var CdivC = (a, b) => ({ re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-    im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im) });
+var CdivC = (a, b) => {
+    var r = {
+        re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+        im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+    };
+    if (isNaN(r.re) || isNaN(r.im))
+        return { re: 0, im: 0 };
+    return r;
+};
 var CaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
 var CsubC = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
 var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
@@ -107,7 +114,7 @@ function init() {
         onDrag: (m) => {
             var dragVector = R2subR2(m, dSP);
             var newP = R2addR2(CtoR2(dSTh.P), dragVector);
-            var newV = R2addR2(dSTo.v, dragVector);
+            var newV = newP; //R2addR2(dSTo.v, dragVector)
             R2assignR2(h.P, newP); // x,y wird als position der nac nodes verwendet
             CassignR2(h.P, newP); // re,im als parameter für die transformation
             R2assignR2(o.v, newV);
@@ -146,10 +153,6 @@ function h2e(t, z) {
     var oben = CaddC(CmulC(t.θ, z), t.P);
     var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1);
     var zprime = CdivC(oben, unten);
-    if (isNaN(zprime.re) || isNaN(zprime.im)) {
-        //console.warn("zprime is nan")
-        zprime = { re: 0, im: 0 };
-    }
     return zprime;
 }
 function e2h(t, z) {
