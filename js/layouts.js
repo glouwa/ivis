@@ -72,11 +72,11 @@ function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 },
             d = d / 2;
             console.assert(isFinite(d));
             console.log('d', d);
-            var np = h2e(CmulR(wedge.m, d), wedge.p, one);
+            var np = h2e(makeT(wedge.p, one), CmulR(wedge.m, d));
             console.log('np', np);
-            var nm = h2e(h2e(wedge.m, wedge.p, one), Cneg(np), one);
+            var nm = h2e(makeT(Cneg(np), one), h2e(makeT(wedge.p, one), wedge.m));
             console.log('nm', nm);
-            var nα = Cklog(h2e(Cpow(cα), { re: -d, im: 0 }, one)).im;
+            var nα = Cklog(h2e(makeT({ re: -d, im: 0 }, one), Cpow(cα))).im;
             console.assert(isFinite(nα));
             var subwedge = { p: np, m: nm, α: nα };
             layoutHyperbolic(n.children[i], subwedge);
@@ -102,11 +102,11 @@ function layoutHyperbolic(root) {
             var it = ((1-s*s) * Math.sin(ca))/(2*s)
             var d = Math.sqrt(Math.pow(it,2)+1) - it
 
-            var np = h2e(CmulR(wedge.m, d), wedge.p, one)
+            var np = h2e(wedge.p, one, CmulR(wedge.m, d))
             n.wedge = {
                 p:np,
-                m:h2e(h2e(wedge.m, wedge.p, one), Cneg(np), one),
-                a:Cklog(h2e(Cpow(ca), { re:-d, im:0 }, one)).im
+                m:h2e(Cneg(np), one, h2e(wedge.p, one, wedge.m)),
+                a:Cklog(h2e({ re:-d, im:0 }, one, Cpow(ca))).im
             }
         }
     })

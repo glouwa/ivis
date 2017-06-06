@@ -13,6 +13,9 @@ function dfsFlat(n, f) {
         r.push(n); });
     return r;
 }
+function clone(o) {
+    return JSON.parse(JSON.stringify(o));
+}
 //----------------------------------------------------------------------------------------
 window.onload = function () {
     selectedInitUi = eval('init' + document.getElementById("rendererSelect").value);
@@ -53,8 +56,8 @@ function setLayout(name) {
 //----------------------------------------------------------------------------------------
 var slide = -1;
 var slides = [
-    { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
     { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
+    { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
     { ds: 'nTree', ls: 'layoutRadial', name: "Full tree. Nodes on unit circle. |Tree| = 5³ -1 = 124" },
     { ds: 'star1', ls: 'layoutRadial', name: "Unit vectors, almost" },
     { ds: 'star1', ls: 'layoutUnitVectors', name: "Unit vectors " },

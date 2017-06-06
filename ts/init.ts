@@ -81,12 +81,13 @@ var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.
 var CdivC =   (a:C, b:C)=>       ({ re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
                                     im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)})
 var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
+var CsubC =   (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
 var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
 var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
 var CtoR2 =   (p:C)=>            ({ x:p.re,                         y:p.im })
 
-var CktoCp =   (k:Ck)=>          ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
-var CptoCk =   (p:Cp)=>          ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
+var CktoCp =  (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
+var CptoCk =  (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
 
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
 
@@ -178,9 +179,12 @@ class TreeWithNavigation
 
 //----------------------------------------------------------------------------------------
 
+interface T { P:C, θ:C }
+function makeT(a, b) { return { P:a, θ:b }}
+
 var one = { re:1, im:0 }
 var o = { v:{ x:0, y:0 } }
-var h = { P:{ re:0, im:0 }, θ:one }
+var h:T = { P:{ re:0, im:0 }, θ:one }
 
 /**
  * create a euclidien and a hyperbolic tree view
@@ -225,16 +229,17 @@ function init() {
         dataloader:  selectedDataLoader,
         navData:     obj2data(h, x=>CtoR2(x)),
         layout:      selectedLayout,
-        t:           (n:N) => CtoR2(h2e(R2toC(n), h.P, h.θ)),
+        t:           (n:N) => CtoR2(h2e(h, R2toC(n))),
         onDragStart: (p:R2) => {
                           dSP = p
                           dSTo = clone(o)
                           dSTh = clone(h)
                      },
         onDrag:      (m:R2) => {
-                          var dragVector = R2subR2(m, dSP)
-                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)
-                          var newV = R2addR2(dSTo.v, dragVector)
+
+                          var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)))
+                          var newP = CtoR2(newT.P)
+                          var newV = CtoR2(newT.P)
 
                           R2assignR2(h.P, newP)
                           CassignR2(h.P, newP)
@@ -247,10 +252,10 @@ function init() {
     })
 }
 
-function h2e(z:C, P:C, θ:C) : C
+function h2e(t:T, z:C) : C
 {
-    var oben = CaddC(CmulC(θ, z), P)
-    var unten = CaddR(CmulC(CmulC(Ccon(P), θ), z), 1)
+    var oben = CaddC(CmulC(t.θ, z), t.P)
+    var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1)
     var zprime = CdivC(oben, unten)
     if (isNaN(zprime.re) || isNaN(zprime.im)) {
         //console.warn("zprime is nan")
@@ -259,30 +264,33 @@ function h2e(z:C, P:C, θ:C) : C
 
     return zprime
 }
-function e2h(z:C, p:C, t:C) : C
+
+function e2h(t:T, z:C) : C
 {
-    var pp = Cneg(CmulC(Ccon(t), p))
-    var tp = Ccon(t)
-    return h2e(z, pp, tp)
+    var θ = Cneg(CmulC(Ccon(t.θ), t.P))
+    var P = Ccon(t.θ)
+    return h2e(makeT(P, θ), z)
 }
 
-function compose(P1:C, θ1:C, P2:C, θ2:C)
+function compose(t1:T, t2:T) : T
 {
-    var divisor = CaddC(CmulC(θ2, CmulC(P1, Ccon(P2))), one)
-    return {
-        P:CdivC(CaddC(CmulC(θ2, P1), P2), divisor),
-        θ:CdivC(CaddC(CmulC(θ1, θ2), CmulC(θ1, CmulC(Ccon(P1), P2))), divisor)
+    var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one)
+    return ({
+        P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
+        θ: CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
+    })
+}
+
+function shift(s:C, e:C)
+{
+    var p = h2e(h, { re:0, im:0 })
+    var a = h2e(makeT(Cneg(p), one), s)
+    var esuba = CsubC(e, a)
+    var aec = Ccon(CmulC(a, e))
+    var divisor = 1 - Math.pow(CktoCp(CmulC(a, e)).r, 2)
+    var b = {
+        re: CmulC(esuba, CaddC(one, aec)).re / divisor,
+        im: CmulC(esuba, CsubC(one, aec)).im / divisor
     }
-}
-
-function shift(s:C, e:C, P:C)
-{
-    //var a = e2h(s, Cneg(P))
-    return compose()
-}
-
-
-function clone(o)
-{
-    return JSON.parse(JSON.stringify(o))
+    return compose(makeT(Cneg(p), one), makeT(b, one))
 }
