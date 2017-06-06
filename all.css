@@ -2,14 +2,12 @@
 
 body {
     text-align: center;
-    font-family: Helvetica;
-
-
+    font-family: Helvetica;    
 }
 
 h1 {    
-    letter-spacing: 0.2em;
-    font-size: 2em;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
     font-weight: normal;
     margin-bottom:0;
 }

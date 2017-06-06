@@ -70,6 +70,7 @@ function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 },
             var it = ((1 - s * s) * Math.sin(cα)) / (2 * s);
             console.log('it', it);
             var d = Math.sqrt(Math.pow(it, 2) + 1) - it;
+            d = d / 2;
             console.assert(isFinite(d));
             console.log('d', d);
             var np = h2e(CmulR(wedge.m, d), wedge.p, one);

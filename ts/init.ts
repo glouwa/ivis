@@ -200,8 +200,8 @@ function init() {
                         R2assignR2(s.P, m) // x,y wird als position der nac nodes verwendet
                         CassignR2(s.P, m)  // re,im als parameter für die transformation
                         R2assignR2(o.v, m)
-                        offsetTwn.update();
-                        hyperbolicTwn.update();
+                        offsetTwn.update()
+                        hyperbolicTwn.update()
                     },
         parent:     uiRoot,
         pos:        [25,30],
@@ -217,8 +217,8 @@ function init() {
                         R2assignR2(s.P, m)
                         CassignR2(s.P, m)
                         R2assignR2(o.v, m)
-                        offsetTwn.update();
-                        hyperbolicTwn.update();
+                        offsetTwn.update()
+                        hyperbolicTwn.update()
                     },
         parent:     uiRoot,
         pos:        [525,30],

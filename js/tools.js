@@ -55,8 +55,8 @@ function setLayout(name) {
 //----------------------------------------------------------------------------------------
 var slide = -1;
 var slides = [
-    { ds: 'nTree', ls: 'layoutHyperbolic', name: "bitte bitte geh!" },
-    { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Left side: <b>z' = z-v</b> &emsp; Right side: <b>z' = h(θ,P)(z)</b>" },
+    { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
+    { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
     { ds: 'nTree', ls: 'layoutRadial', name: "Full tree. Nodes on unit circle. |Tree| = 5³ -1 = 124" },
     { ds: 'star1', ls: 'layoutRadial', name: "Unit vectors, almost" },
     { ds: 'star1', ls: 'layoutUnitVectors', name: "Unit vectors " },
