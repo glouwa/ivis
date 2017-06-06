@@ -65,17 +65,21 @@ type C = Ck
 var R2assignR2 = (a, b)=>        { a.x=b.x;                         a.y=b.y; }
 var CassignR2 = (a, b)=>         { a.re=b.x;                        a.im=b.y; }
 
-
-var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
-var R2mulR =  (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
-var R2divR =  (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
-var R2addR2 = (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
-var R2subR2 = (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
 var R2toArr = (p:R2)=>           ([ p.x,                            p.y ])
 var R2toC =   (p:R2)=>           ({ re:p.x,                         im:p.y })
+var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
+var R2addR2 = (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
+var R2subR2 = (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
+var R2mulR =  (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
+var R2divR =  (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
 
+var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
+var CtoR2 =   (p:C)=>            ({ x:p.re,                         y:p.im })
 var Cneg =    (p:C)=>            ({ re:-p.re,                       im:-p.im })
 var Ccon =    (p:C)=>            ({ re:p.re,                        im:-p.im })
+var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
+var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
+var CsubC =   (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
 var CmulR =   (p:C, s:number)=>  ({ re:p.re * s,                    im:p.im * s })
 var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
 var CdivC =   (a:C, b:C)=>       {
@@ -83,15 +87,11 @@ var CdivC =   (a:C, b:C)=>       {
                                         re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
                                         im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
                                     }
-                                    if (isNaN(r.re) || isNaN(r.im))
-                                        return { re:0, im:0 }
+                                    //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
+                                    if (isNaN(r.re) r.re = 0
+                                    if (isNaN(r.im) r.im = 0
                                     return r
                                  }
-var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
-var CsubC =   (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
-var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
-var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
-var CtoR2 =   (p:C)=>            ({ x:p.re,                         y:p.im })
 
 var CktoCp =  (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
 var CptoCk =  (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
@@ -243,10 +243,9 @@ function init() {
                           dSTh = clone(h)
                      },
         onDrag:      (m:R2) => {
-
                           var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)))
                           var newP = CtoR2(newT.P)
-                          var newV = CtoR2(newT.P)
+                          var newV = newP
 
                           R2assignR2(h.P, newP)
                           CassignR2(h.P, newP)

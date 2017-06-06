@@ -7,6 +7,7 @@ function layoutUnitVectors(root) {
     var some = [{ x: 0, y: 0 }].concat(unitVectors);
     var i = 0;
     dfs(root, n => {
+        //n.z = { re:some[i%some.length].x, im:some[i%some.length].y }
         n.x = some[i % some.length].x;
         n.y = some[i % some.length].y;
         i++;
@@ -69,6 +70,7 @@ function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 },
             var it = ((1 - s * s) * Math.sin(cα)) / (2 * s);
             console.log('it', it);
             var d = Math.sqrt(Math.pow(it, 2) + 1) - it;
+            d = d / 2;
             console.assert(isFinite(d));
             console.log('d', d);
             var np = h2e(makeT(wedge.p, one), CmulR(wedge.m, d));

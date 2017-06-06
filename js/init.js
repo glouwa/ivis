@@ -3,15 +3,20 @@
  */
 var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
 var CassignR2 = (a, b) => { a.re = b.x; a.im = b.y; };
-var R2neg = (p) => ({ x: -p.x, y: -p.y });
-var R2mulR = (p, s) => ({ x: p.x * s, y: p.y * s });
-var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
-var R2addR2 = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
-var R2subR2 = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
 var R2toArr = (p) => ([p.x, p.y]);
 var R2toC = (p) => ({ re: p.x, im: p.y });
+var R2neg = (p) => ({ x: -p.x, y: -p.y });
+var R2addR2 = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+var R2subR2 = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+var R2mulR = (p, s) => ({ x: p.x * s, y: p.y * s });
+var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
+var CtoArr = (p) => ([p.re, p.im]);
+var CtoR2 = (p) => ({ x: p.re, y: p.im });
 var Cneg = (p) => ({ re: -p.re, im: -p.im });
 var Ccon = (p) => ({ re: p.re, im: -p.im });
+var CaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
+var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
+var CsubC = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
 var CmulR = (p, s) => ({ re: p.re * s, im: p.im * s });
 var CmulC = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.im * b.re + a.re * b.im });
 var CdivC = (a, b) => {
@@ -19,15 +24,13 @@ var CdivC = (a, b) => {
         re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
         im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
     };
-    if (isNaN(r.re) || isNaN(r.im))
-        return { re: 0, im: 0 };
+    //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
+    if (isNaN(r.re))
+        r.re = 0;
+    if (isNaN(r.im))
+        r.im = 0;
     return r;
 };
-var CaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
-var CsubC = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
-var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
-var CtoArr = (p) => ([p.re, p.im]);
-var CtoR2 = (p) => ({ x: p.re, y: p.im });
 var CktoCp = (k) => ({ θ: Math.atan2(k.im, k.re), r: Math.sqrt(k.re * k.re + k.im * k.im) });
 var CptoCk = (p) => ({ re: p.r * Math.cos(p.θ), im: p.r * Math.sin(p.θ) });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
@@ -138,7 +141,7 @@ function init() {
         onDrag: (m) => {
             var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)));
             var newP = CtoR2(newT.P);
-            var newV = CtoR2(newT.P);
+            var newV = newP;
             R2assignR2(h.P, newP);
             CassignR2(h.P, newP);
             R2assignR2(o.v, newV);

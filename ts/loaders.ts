@@ -38,7 +38,7 @@ function oneNode(ok) {
 
 function star(ok, max) {
     oneNode(d=> {        
-        for (var i=0; i<max-1; i++)
+        for (var i=0; i < max-1; i++)
             d.children.push({ parent:d, children:[] })
         ok(d)
     })
@@ -46,7 +46,7 @@ function star(ok, max) {
 
 function deepStar(ok, arms=4, depth=30) {
     oneNode(d=> {
-        for (var i=0; i<arms; i++) {
+        for (var i=0; i < arms; i++) {
             var l1 = { parent:d, children:[] }
             d.children.push(l1)
             var cur = l1
@@ -63,7 +63,7 @@ function deepStar(ok, arms=4, depth=30) {
 function path(ok, max) {
     oneNode(d=> {        
         var cur = d
-        for (var i=0; i<max; i++) {
+        for (var i=0; i < max; i++) {
             var newN = { parent:d, children:[] }
             cur.children.push(newN)
             cur = newN
