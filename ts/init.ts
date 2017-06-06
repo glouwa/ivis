@@ -24,18 +24,17 @@ interface N {
  */
 interface TreeOnUnitDiskConfig
 {
-    parent:     any,
-    data:       N,
-    transform:  (n:N) => R2,
-    onPan:      (m:R2)  => void,
-    //onPanθ:     (m:R2)  => void,
-    //onPanH:     (m:R2)  => void,
+    parent:      any,
+    data:        N,
+    transform:   (n:N) => R2,
+    onDragStart: (m:R2)  => void,
+    onDrag:      (m:R2)  => void,
 
-    pos:        [number, number],
-    radius:     number,
-    nodeRadius: number,
-    opacity?:   number,
-    clip?:      boolean
+    pos:         [number, number],
+    radius:      number,
+    nodeRadius:  number,
+    opacity?:    number,
+    clip?:       boolean
 }
 
 /**
@@ -43,12 +42,14 @@ interface TreeOnUnitDiskConfig
  */
 interface TreeWithNavigationConfig
 {
-    parent:     any,
-    dataloader: LoaderFunction,
-    navData:    N,
-    layout:     LayoutFunction,
-    t:          (n:N) => R2
-    onPan:      (m:R2) => void
+    parent:      any,
+    dataloader:  LoaderFunction,
+    navData:     N,
+    layout:      LayoutFunction,
+    t:           (n:N) => R2
+    onDragStart: (m:R2)  => void,
+    onDrag:      (m:R2)  => void,
+    //onDragθ:     (m:R2)  => void,
 
     pos:        [number, number],
     clip?:      boolean
@@ -61,10 +62,15 @@ type Ck = { re:number, im:number }
 type Cp = { θ:number, r:number }
 type C = Ck
 
+var R2assignR2 = (a, b)=>        { a.x=b.x;                         a.y=b.y; }
+var CassignR2 = (a, b)=>         { a.re=b.x;                        a.im=b.y; }
+
+
 var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
 var R2mulR =  (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
 var R2divR =  (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
 var R2addR2 = (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
+var R2subR2 = (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
 var R2toArr = (p:R2)=>           ([ p.x,                            p.y ])
 var R2toC =   (p:R2)=>           ({ re:p.x,                         im:p.y })
 
@@ -128,58 +134,53 @@ class TreeWithNavigation
     private create() : void
     {
         this.view = new SelectedUnitDisk({ // view disk
-            data:       this.data,
-            transform:  (n:N) => this.args.t(n),
-            onPan:      (m:R2) => this.args.onPan(m),
+            data:        this.data,
+            transform:   (n:N) => this.args.t(n),
+            onDragStart: this.args.onDragStart,
+            onDrag:      (m:R2) => this.args.onDrag(m),
 
-            parent:     null,
-            pos:        ArrAddR(this.args.pos, 240),
-            radius:     200,
-            nodeRadius: 7,
-            clip:       this.args.clip
+            parent:      null,
+            pos:         ArrAddR(this.args.pos, 240),
+            radius:      200,
+            nodeRadius:  7,
+            clip:        this.args.clip
         })
 
         var navR = 55
         var navbg = new SelectedUnitDisk({ // navigation disk background
-            data:       this.data,
-            transform:  (n:N) => n,
-            onPan:      (m:R2) => {},
+            data:        this.data,
+            transform:   (n:N) => n,
+            onDragStart: (m:R2) => {},
+            onDrag:      (m:R2) => {},
 
-            parent:     null,
-            pos:        ArrAddR(this.args.pos, navR),
-            radius:     navR,
-            nodeRadius: 2,
-            clip:       true
+            parent:      null,
+            pos:         ArrAddR(this.args.pos, navR),
+            radius:      navR,
+            nodeRadius:  2,
+            clip:        true
         })
 
         this.nav = new SelectedUnitDisk({ // navigation disk with transformation parameters as nodes
-            data:       this.navData,
-            transform:  (n:N) => R2neg(n),
-            onPan:      (m:R2) => this.args.onPan(R2neg(m)),
+            data:        this.navData,
+            transform:   (n:N) => (n),
+            onDragStart: this.args.onDragStart,
+            onDrag:      (m:R2) => this.args.onDrag((m)),
 
-            parent:     null,
-            pos:        ArrAddR(this.args.pos, navR),
-            opacity:    .8,
-            radius:     navR,
-            nodeRadius: 7,
-            clip:       false
+            parent:      null,
+            pos:         ArrAddR(this.args.pos, navR),
+            opacity:     .8,
+            radius:      navR,
+            nodeRadius:  7,
+            clip:        false
         })        
     }
 }
 
 //----------------------------------------------------------------------------------------
-/*
-interface Transforamtion {
-    point:
-    line:
-    area:
-}*/
 
+var one = { re:1, im:0 }
 var o = { v:{ x:0, y:0 } }
-var s = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
-
-function R2assignR2(a, b) { a.x=b.x; a.y=b.y; }
-function CassignR2(a, b) { a.re=b.x; a.im=b.y; }
+var h = { P:{ re:0, im:0 }, θ:one }
 
 /**
  * create a euclidien and a hyperbolic tree view
@@ -190,38 +191,59 @@ function CassignR2(a, b) { a.re=b.x; a.im=b.y; }
 function init() {
 
     var uiRoot = selectedInitUi()
+    var dSP = null  // drag start point
+    var dSTo = null // drag start transformation offset
+    var dSTh = null // drag start transformation hyperbolic origin preseving
 
     var offsetTwn = new TreeWithNavigation({
-        dataloader: selectedDataLoader,
-        navData:    obj2data(o, x=>x),
-        layout:     selectedLayout,
-        t:          (n:N) => R2addR2(n,o.v),
-        onPan:      (m:R2) => {
-                        R2assignR2(s.P, m) // x,y wird als position der nac nodes verwendet
-                        CassignR2(s.P, m)  // re,im als parameter für die transformation
-                        R2assignR2(o.v, m)
-                        offsetTwn.update()
-                        hyperbolicTwn.update()
-                    },
-        parent:     uiRoot,
-        pos:        [25,30],
-        clip:       true
+        dataloader:  selectedDataLoader,
+        navData:     obj2data(o, x=>x),
+        layout:      selectedLayout,
+        t:           (n:N) => R2addR2(n, o.v),
+        onDragStart: (p:R2) => {
+                          dSP = p
+                          dSTo = clone(o)
+                          dSTh = clone(h)
+                     },
+        onDrag:      (m:R2) => {
+                          var dragVector = R2subR2(m, dSP)
+                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)
+                          var newV = R2addR2(dSTo.v, dragVector)
+
+                          R2assignR2(h.P, newP) // x,y wird als position der nac nodes verwendet
+                          CassignR2(h.P, newP)  // re,im als parameter für die transformation
+                          R2assignR2(o.v, newV)
+                          offsetTwn.update()
+                          hyperbolicTwn.update()
+                     },
+        parent:      uiRoot,
+        pos:         [25,30],
+        clip:        true
     })
 
     var hyperbolicTwn = new TreeWithNavigation({
-        dataloader: selectedDataLoader,
-        navData:    obj2data(s, x=>CtoR2(x)),
-        layout:     selectedLayout,
-        t:          (n:N) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan:      (m:R2) => {
-                        R2assignR2(s.P, m)
-                        CassignR2(s.P, m)
-                        R2assignR2(o.v, m)
-                        offsetTwn.update()
-                        hyperbolicTwn.update()
-                    },
-        parent:     uiRoot,
-        pos:        [525,30],
+        dataloader:  selectedDataLoader,
+        navData:     obj2data(h, x=>CtoR2(x)),
+        layout:      selectedLayout,
+        t:           (n:N) => CtoR2(h2e(R2toC(n), h.P, h.θ)),
+        onDragStart: (p:R2) => {
+                          dSP = p
+                          dSTo = clone(o)
+                          dSTh = clone(h)
+                     },
+        onDrag:      (m:R2) => {
+                          var dragVector = R2subR2(m, dSP)
+                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)
+                          var newV = R2addR2(dSTo.v, dragVector)
+
+                          R2assignR2(h.P, newP)
+                          CassignR2(h.P, newP)
+                          R2assignR2(o.v, newV)
+                          offsetTwn.update()
+                          hyperbolicTwn.update()
+                     },
+        parent:      uiRoot,
+        pos:         [525,30],
     })
 }
 
@@ -244,5 +266,23 @@ function e2h(z:C, p:C, t:C) : C
     return h2e(z, pp, tp)
 }
 
+function compose(P1:C, θ1:C, P2:C, θ2:C)
+{
+    var divisor = CaddC(CmulC(θ2, CmulC(P1, Ccon(P2))), one)
+    return {
+        P:CdivC(CaddC(CmulC(θ2, P1), P2), divisor),
+        θ:CdivC(CaddC(CmulC(θ1, θ2), CmulC(θ1, CmulC(Ccon(P1), P2))), divisor)
+    }
+}
+
+function shift(s:C, e:C, P:C)
+{
+    //var a = e2h(s, Cneg(P))
+    return compose()
+}
 
 
+function clone(o)
+{
+    return JSON.parse(JSON.stringify(o))
+}

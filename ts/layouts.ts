@@ -62,7 +62,6 @@ function layoutRadial(root) {
 function Cplog(a:Cp):Cp { return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ } }
 function Cklog(a:Ck):Ck { return CptoCk(Cplog(CktoCp(a))) }
 function Cpow(a:number):C { return { re:Math.cos(a), im:Math.sin(a) }}
-var one = { re:1, im:0 }
 
 function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, α:2*Math.PI }) {
 

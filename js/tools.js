@@ -1,13 +1,11 @@
 //----------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------
-function dfs(n, fpre, fpost, idx) {
+function dfs(n, fpre, idx = 0) {
     if (fpre)
         fpre(n, idx);
     if (n.children)
         for (var i = 0; i < n.children.length; i++)
-            dfs(n.children[i], fpre, fpost, i);
-    if (fpost)
-        fpost(n, idx);
+            dfs(n.children[i], fpre, i);
 }
 function dfsFlat(n, f) {
     var r = [];

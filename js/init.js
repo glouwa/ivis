@@ -1,10 +1,13 @@
 /**
  * Created by julian on 31.05.17.
  */
+var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
+var CassignR2 = (a, b) => { a.re = b.x; a.im = b.y; };
 var R2neg = (p) => ({ x: -p.x, y: -p.y });
 var R2mulR = (p, s) => ({ x: p.x * s, y: p.y * s });
 var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
 var R2addR2 = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
+var R2subR2 = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
 var R2toArr = (p) => ([p.x, p.y]);
 var R2toC = (p) => ({ re: p.x, im: p.y });
 var Cneg = (p) => ({ re: -p.re, im: -p.im });
@@ -41,7 +44,8 @@ class TreeWithNavigation {
         this.view = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => this.args.t(n),
-            onPan: (m) => this.args.onPan(m),
+            onDragStart: this.args.onDragStart,
+            onDrag: (m) => this.args.onDrag(m),
             parent: null,
             pos: ArrAddR(this.args.pos, 240),
             radius: 200,
@@ -52,7 +56,8 @@ class TreeWithNavigation {
         var navbg = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => n,
-            onPan: (m) => { },
+            onDragStart: (m) => { },
+            onDrag: (m) => { },
             parent: null,
             pos: ArrAddR(this.args.pos, navR),
             radius: navR,
@@ -61,8 +66,9 @@ class TreeWithNavigation {
         });
         this.nav = new SelectedUnitDisk({
             data: this.navData,
-            transform: (n) => R2neg(n),
-            onPan: (m) => this.args.onPan(R2neg(m)),
+            transform: (n) => (n),
+            onDragStart: this.args.onDragStart,
+            onDrag: (m) => this.args.onDrag((m)),
             parent: null,
             pos: ArrAddR(this.args.pos, navR),
             opacity: .8,
@@ -73,16 +79,9 @@ class TreeWithNavigation {
     }
 }
 //----------------------------------------------------------------------------------------
-/*
-interface Transforamtion {
-    point:
-    line:
-    area:
-}*/
+var one = { re: 1, im: 0 };
 var o = { v: { x: 0, y: 0 } };
-var s = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
-function R2assignR2(a, b) { a.x = b.x; a.y = b.y; }
-function CassignR2(a, b) { a.re = b.x; a.im = b.y; }
+var h = { P: { re: 0, im: 0 }, θ: one };
 /**
  * create a euclidien and a hyperbolic tree view
  * same data
@@ -91,15 +90,26 @@ function CassignR2(a, b) { a.re = b.x; a.im = b.y; }
  */
 function init() {
     var uiRoot = selectedInitUi();
+    var dSP = null; // drag start point
+    var dSTo = null; // drag start transformation offset
+    var dSTh = null; // drag start transformation hyperbolic origin preseving
     var offsetTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(o, x => x),
         layout: selectedLayout,
         t: (n) => R2addR2(n, o.v),
-        onPan: (m) => {
-            R2assignR2(s.P, m); // x,y wird als position der nac nodes verwendet
-            CassignR2(s.P, m); // re,im als parameter für die transformation
-            R2assignR2(o.v, m);
+        onDragStart: (p) => {
+            dSP = p;
+            dSTo = clone(o);
+            dSTh = clone(h);
+        },
+        onDrag: (m) => {
+            var dragVector = R2subR2(m, dSP);
+            var newP = R2addR2(CtoR2(dSTh.P), dragVector);
+            var newV = R2addR2(dSTo.v, dragVector);
+            R2assignR2(h.P, newP); // x,y wird als position der nac nodes verwendet
+            CassignR2(h.P, newP); // re,im als parameter für die transformation
+            R2assignR2(o.v, newV);
             offsetTwn.update();
             hyperbolicTwn.update();
         },
@@ -109,13 +119,21 @@ function init() {
     });
     var hyperbolicTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
-        navData: obj2data(s, x => CtoR2(x)),
+        navData: obj2data(h, x => CtoR2(x)),
         layout: selectedLayout,
-        t: (n) => CtoR2(h2e(R2toC(n), s.P, s.θ)),
-        onPan: (m) => {
-            R2assignR2(s.P, m);
-            CassignR2(s.P, m);
-            R2assignR2(o.v, m);
+        t: (n) => CtoR2(h2e(R2toC(n), h.P, h.θ)),
+        onDragStart: (p) => {
+            dSP = p;
+            dSTo = clone(o);
+            dSTh = clone(h);
+        },
+        onDrag: (m) => {
+            var dragVector = R2subR2(m, dSP);
+            var newP = R2addR2(CtoR2(dSTh.P), dragVector);
+            var newV = R2addR2(dSTo.v, dragVector);
+            R2assignR2(h.P, newP);
+            CassignR2(h.P, newP);
+            R2assignR2(o.v, newV);
             offsetTwn.update();
             hyperbolicTwn.update();
         },
@@ -137,4 +155,18 @@ function e2h(z, p, t) {
     var pp = Cneg(CmulC(Ccon(t), p));
     var tp = Ccon(t);
     return h2e(z, pp, tp);
+}
+function compose(P1, θ1, P2, θ2) {
+    var divisor = CaddC(CmulC(θ2, CmulC(P1, Ccon(P2))), one);
+    return {
+        P: CdivC(CaddC(CmulC(θ2, P1), P2), divisor),
+        θ: CdivC(CaddC(CmulC(θ1, θ2), CmulC(θ1, CmulC(Ccon(P1), P2))), divisor)
+    };
+}
+function shift(s, e, P) {
+    //var a = e2h(s, Cneg(P))
+    return compose();
+}
+function clone(o) {
+    return JSON.parse(JSON.stringify(o));
 }

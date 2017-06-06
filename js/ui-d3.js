@@ -17,7 +17,9 @@ class UnitDiskD3 {
             .attr("class", "unitDiscBg")
             .attr("r", args.radius)
             .attr("fill-opacity", args.opacity)
-            .call(d3.drag().on("drag", d => args.onPan(this.ti(d3.event))));
+            .call(d3.drag()
+            .on("start", d => args.onDragStart(this.ti(d3.event)))
+            .on("drag", d => args.onDrag(this.ti(d3.event))));
         mainGroup.append("clipPath")
             .attr("id", "circle-clip")
             .append("circle")
