@@ -53,7 +53,13 @@ function layoutRadial(root) {
     });
     return root;
 }
-function Cplog(a) { return { r: isFinite(Math.log(a.r)) ? Math.log(a.r) : 0, θ: a.θ }; }
+function Cplog(a) {
+    if (isFinite(Math.log(a.r)))
+        return { r: Math.log(a.r), θ: a.θ };
+    else
+        return { r: 0, θ: 0 };
+    //return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ }
+}
 function Cklog(a) { return CptoCk(Cplog(CktoCp(a))); }
 function Cpow(a) { return { re: Math.cos(a), im: Math.sin(a) }; }
 function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 }, α: 2 * Math.PI }) {

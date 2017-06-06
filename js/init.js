@@ -118,7 +118,7 @@ function init() {
             var dragVector = R2subR2(m, dSP);
             var newP = R2addR2(CtoR2(dSTh.P), dragVector);
             var newV = newP; //R2addR2(dSTo.v, dragVector)
-            R2assignR2(h.P, newP); // x,y wird als position der nac nodes verwendet
+            R2assignR2(h.P, newP); // x,y wird als position der nav nodes verwendet
             CassignR2(h.P, newP); // re,im als parameter für die transformation
             R2assignR2(o.v, newV);
             offsetTwn.update();

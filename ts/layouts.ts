@@ -60,7 +60,14 @@ function layoutRadial(root) {
     return root
 }
 
-function Cplog(a:Cp):Cp { return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ } }
+function Cplog(a:Cp):Cp {
+    if (isFinite(Math.log(a.r)))
+        return { r:Math.log(a.r), θ:a.θ }
+    else
+        return { r:0, θ:0 }
+
+    //return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ }
+}
 function Cklog(a:Ck):Ck { return CptoCk(Cplog(CktoCp(a))) }
 function Cpow(a:number):C { return { re:Math.cos(a), im:Math.sin(a) }}
 
