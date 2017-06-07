@@ -8,8 +8,6 @@ function layoutUnitVectors(root) {
     var i = 0;
     dfs(root, n => {
         n.z = { re: some[i % some.length].re, im: some[i % some.length].im };
-        //n.x=some[i%some.length].x;
-        //n.y=some[i%some.length].y;
         i++;
     });
     return root;
@@ -25,8 +23,6 @@ function layoutUnitLines(root) {
         dfs(pathBegin, n => {
             var r = i / depth;
             n.z = { re: rt(r) * target.re, im: rt(r) * target.im };
-            //n.x = rt(r) * target.x
-            //n.y = rt(r) * target.y
             i++;
         });
     }
@@ -40,8 +36,6 @@ function layoutSpiral(root) {
         var a = i / nrN * 2 * Math.PI * (nrRounds + 1);
         var r = Math.pow(2, i / nrN) - 1;
         flatNodes[i].z = { re: r * Math.cos(a), im: r * Math.sin(a) };
-        //flatNodes[i].x = r*Math.cos(a)
-        //flatNodes[i].y = r*Math.sin(a)
     }
     return root;
 }
@@ -50,8 +44,6 @@ function layoutRadial(root) {
     dfs(root, n => {
         var a = n.x - Math.PI / 2;
         n.z = { re: n.y * Math.cos(a), im: n.y * Math.sin(a) };
-        //n.x = n.y * Math.cos(a)
-        //n.y = n.y * Math.sin(a)
     });
     return root;
 }
@@ -68,8 +60,6 @@ function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 },
     console.log('--------------------------------------------------------', n.depth);
     console.log(wedge.p, wedge.m, wedge.α);
     n.z = wedge.p;
-    //n.x = wedge.p.re
-    //n.y = wedge.p.im
     if (n.children) {
         for (var i = 0; i < n.children.length; i++) {
             var cα = 2 * Math.PI / n.children.length * i;

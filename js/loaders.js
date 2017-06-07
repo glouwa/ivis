@@ -4,7 +4,7 @@
  * spaecial tactics loader for navDisks
  * generates a path containing nodes for each member of 'o'
  */
-function obj2data(o, unitConv) {
+function obj2data(o) {
     var cur = null;
     var root = null;
     for (var name in o) {
@@ -12,9 +12,6 @@ function obj2data(o, unitConv) {
         newN.name = name;
         //newN.parent = cur
         newN.children = [];
-        //newN.z = { re:newN.re, im:newN.im }
-        //newN.x = unitConv(newN).x
-        //newN.y = unitConv(newN).y
         if (cur)
             cur.children.push(newN);
         else

@@ -43,7 +43,6 @@ class UnitDiskPlexx implements TreeOnUnitDisk
 
     private create() : void
     {
-
         var model = this.args.data // create view stuff from data
         var s = this.args.radius
         dfs(model, (n : N)=> {
@@ -71,7 +70,6 @@ class UnitDiskPlexx implements TreeOnUnitDisk
                     startArrow:null,
                     endArrow:null,
                     arrowScale:1,
-
                 })
                 link.model = n
                 link.update = function(t)
