@@ -279,8 +279,7 @@ function compose(t1:T, t2:T) : T
 {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one)
     var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
-    var θp = CktoCp(θ)
-    θp.r = 1
+    var θp = CktoCp(θ); θp.r = 1
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
         θ: CptoCk(θp)
