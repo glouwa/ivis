@@ -12,11 +12,9 @@ interface N {
     parent:   N,
     children: Array<N>,
     data:     any,
-    depth:    number,
-    x:        number,
-    y:        number,
+    depth:    number,    
     z:        C, // not used jet
-    zprime:   C // not used jet
+    zprime:   C // not used jet. will be just cache
 }
 
 /**
@@ -157,7 +155,7 @@ class TreeWithNavigation
         var navR = 55
         var navbg = new SelectedUnitDisk({ // navigation disk background
             data:        this.data,
-            transform:   (n:N) => n,
+            transform:   (n:N) => CtoR2(n.z),
             onDragStart: (m:R2) => {},
             onDrag:      (m:R2) => {},
 
@@ -170,7 +168,7 @@ class TreeWithNavigation
 
         this.nav = new SelectedUnitDisk({ // navigation disk with transformation parameters as nodes
             data:        this.navData,
-            transform:   (n:N) => (n),
+            transform:   (n:N) => CtoR2(n),
             onDragStart: this.args.onDragStart,
             onDrag:      (m:R2) => this.args.onDrag((m)),
 
@@ -190,7 +188,7 @@ interface T { P:C, θ:C }
 function makeT(a, b) { return { P:a, θ:b }}
 
 var one = { re:1, im:0 }
-var o = { v:{ x:0, y:0 } }
+var o   = { v:{ re:0, im:0 } }
 var h:T = { P:{ re:0, im:0 }, θ:one }
 
 /**
@@ -204,13 +202,14 @@ function init() {
     var uiRoot = selectedInitUi()
     var dSP = null  // drag start point
     var dSTo = null // drag start transformation offset
-    var dSTh = null // drag start transformation hyperbolic origin preseving
+    var dSTh = null // drag start transformation hyperbolic origin preseving P
+    var dSTh = null // drag start transformation hyperbolic origin preseving θ
 
     var offsetTwn = new TreeWithNavigation({
         dataloader:  selectedDataLoader,
         navData:     obj2data(o, x=>x),
         layout:      selectedLayout,
-        t:           (n:N) => R2addR2(n, o.v),
+        t:           (n:N) => CtoR2(CaddC(n.z, o.v)),
         onDragStart: (m:R2) => {
                           dSP = m
                           dSTo = clone(o)
@@ -218,12 +217,11 @@ function init() {
                      },
         onDrag:      (m:R2) => {
                           var dragVector = R2subR2(m, dSP)
-                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)
-                          var newV = newP //R2addR2(dSTo.v, dragVector)
+                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)                          
 
-                          R2assignR2(h.P, newP) // x,y wird als position der nav nodes verwendet
                           CassignR2(h.P, newP)  // re,im als parameter für die transformation
-                          R2assignR2(o.v, newV)
+                          CassignR2(o.v, newP)
+
                           offsetTwn.update()
                           hyperbolicTwn.update()
                      },
@@ -236,7 +234,7 @@ function init() {
         dataloader:  selectedDataLoader,
         navData:     obj2data(h, x=>CtoR2(x)),
         layout:      selectedLayout,
-        t:           (n:N) => CtoR2(h2e(h, R2toC(n))),
+        t:           (n:N) => CtoR2(h2e(h, n.z)),
         onDragStart: (m:R2) => {
                           dSP = m
                           dSTo = clone(o)
@@ -244,14 +242,13 @@ function init() {
                      },
         onDrag:      (m:R2) => {
                           var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)))
-                          var newP = CtoR2(newT.P)
-                          var newV = newP
+                          var newP = CtoR2(newT.P)                          
 
                           console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)),h.θ)) != 0)
 
-                          R2assignR2(h.P, newP)
                           CassignR2(h.P, newP)
-                          R2assignR2(o.v, newV)
+                          CassignR2(o.v, newP)
+
                           offsetTwn.update()
                           hyperbolicTwn.update()
                      },

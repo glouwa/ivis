@@ -1,24 +1,23 @@
 function layoutAtCenter(root) {
-    dfs(root, n=> { n.x=0; n.y=0 })
+    dfs(root, n=> n.z = { re:0, im:0 })
     return root
 }
 
-var unitVectors = [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x:-1, y: 0 }, { x: 0, y:-1 }]
+var unitVectors = [{ re:1, im:0 }, { re:0, im:1 }, { re:-1, im:0 }, { re:0, im:-1 }]
 function layoutUnitVectors(root) {
-    var some = [{ x: 0, y: 0 }].concat(unitVectors)
+    var some = [{ re:0, im:0 }].concat(unitVectors)
     var i=0
     dfs(root, n=> {
-        //n.z = { re:some[i%some.length].x, im:some[i%some.length].y }
-        n.x=some[i%some.length].x;
-        n.y=some[i%some.length].y;
+        n.z = { re:some[i%some.length].re, im:some[i%some.length].im }
+        //n.x=some[i%some.length].x;
+        //n.y=some[i%some.length].y;
         i++
     })
     return root
 }
 
 function layoutUnitLines(root) {
-    root.x = 0
-    root.y = 0
+    root.z = { re:0, im:0 }
     for (var i=0; i<4; i++)
         layoutPath(root.children[i], unitVectors[i], root.children[i].height)
 
@@ -29,8 +28,9 @@ function layoutUnitLines(root) {
         var rt = r=> pa + r * (1-pa)
         dfs(pathBegin, n=> {
             var r = i/depth
-            n.x = rt(r) * target.x
-            n.y = rt(r) * target.y
+            n.z = { re:rt(r) * target.re, im:rt(r) * target.im }
+            //n.x = rt(r) * target.x
+            //n.y = rt(r) * target.y
             i++
         })
     }
@@ -44,8 +44,9 @@ function layoutSpiral(root) {
     for (var i=0; i < nrN; i++) {
         var a = i/nrN * 2*Math.PI * (nrRounds+1)
         var r = Math.pow(2, i/nrN)-1
-        flatNodes[i].x = r*Math.cos(a)
-        flatNodes[i].y = r*Math.sin(a)
+        flatNodes[i].z = { re:r*Math.cos(a), im:r*Math.sin(a) }
+        //flatNodes[i].x = r*Math.cos(a)
+        //flatNodes[i].y = r*Math.sin(a)
     }
     return root
 }
@@ -54,8 +55,9 @@ function layoutRadial(root) {
     root = d3.tree().size([2 * Math.PI, 0.9])(root)
     dfs(root, n=> {
         var a = n.x - Math.PI/2
-        n.x = n.y * Math.cos(a)
-        n.y = n.y * Math.sin(a)        
+        n.z = { re:n.y * Math.cos(a), im:n.y * Math.sin(a) }
+        //n.x = n.y * Math.cos(a)
+        //n.y = n.y * Math.sin(a)
     })    
     return root
 }
@@ -76,8 +78,9 @@ function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, α:2*
     console.log('--------------------------------------------------------', n.depth)
     console.log(wedge.p, wedge.m, wedge.α)
 
-    n.x = wedge.p.re    
-    n.y = wedge.p.im
+    n.z = wedge.p
+    //n.x = wedge.p.re
+    //n.y = wedge.p.im
 
     if (n.children) {
         for (var i=0; i < n.children.length; i++) {

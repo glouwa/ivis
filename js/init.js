@@ -70,7 +70,7 @@ class TreeWithNavigation {
         var navR = 55;
         var navbg = new SelectedUnitDisk({
             data: this.data,
-            transform: (n) => n,
+            transform: (n) => CtoR2(n.z),
             onDragStart: (m) => { },
             onDrag: (m) => { },
             parent: null,
@@ -81,7 +81,7 @@ class TreeWithNavigation {
         });
         this.nav = new SelectedUnitDisk({
             data: this.navData,
-            transform: (n) => (n),
+            transform: (n) => CtoR2(n),
             onDragStart: this.args.onDragStart,
             onDrag: (m) => this.args.onDrag((m)),
             parent: null,
@@ -95,7 +95,7 @@ class TreeWithNavigation {
 }
 function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };
-var o = { v: { x: 0, y: 0 } };
+var o = { v: { re: 0, im: 0 } };
 var h = { P: { re: 0, im: 0 }, θ: one };
 /**
  * create a euclidien and a hyperbolic tree view
@@ -107,12 +107,13 @@ function init() {
     var uiRoot = selectedInitUi();
     var dSP = null; // drag start point
     var dSTo = null; // drag start transformation offset
-    var dSTh = null; // drag start transformation hyperbolic origin preseving
+    var dSTh = null; // drag start transformation hyperbolic origin preseving P
+    var dSTh = null; // drag start transformation hyperbolic origin preseving θ
     var offsetTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(o, x => x),
         layout: selectedLayout,
-        t: (n) => R2addR2(n, o.v),
+        t: (n) => CtoR2(CaddC(n.z, o.v)),
         onDragStart: (m) => {
             dSP = m;
             dSTo = clone(o);
@@ -121,10 +122,8 @@ function init() {
         onDrag: (m) => {
             var dragVector = R2subR2(m, dSP);
             var newP = R2addR2(CtoR2(dSTh.P), dragVector);
-            var newV = newP; //R2addR2(dSTo.v, dragVector)
-            R2assignR2(h.P, newP); // x,y wird als position der nav nodes verwendet
             CassignR2(h.P, newP); // re,im als parameter für die transformation
-            R2assignR2(o.v, newV);
+            CassignR2(o.v, newP);
             offsetTwn.update();
             hyperbolicTwn.update();
         },
@@ -136,7 +135,7 @@ function init() {
         dataloader: selectedDataLoader,
         navData: obj2data(h, x => CtoR2(x)),
         layout: selectedLayout,
-        t: (n) => CtoR2(h2e(h, R2toC(n))),
+        t: (n) => CtoR2(h2e(h, n.z)),
         onDragStart: (m) => {
             dSP = m;
             dSTo = clone(o);
@@ -145,11 +144,9 @@ function init() {
         onDrag: (m) => {
             var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)));
             var newP = CtoR2(newT.P);
-            var newV = newP;
             console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)), h.θ)) != 0);
-            R2assignR2(h.P, newP);
             CassignR2(h.P, newP);
-            R2assignR2(o.v, newV);
+            CassignR2(o.v, newP);
             offsetTwn.update();
             hyperbolicTwn.update();
         },
