@@ -21,6 +21,8 @@
 
  *
  */
+import * as fs from 'file-system';
+
 declare type WeightFunction = (node: Node) => void;
 
 class MissingFieldError extends Error {
@@ -87,6 +89,24 @@ export class Tree {
   private tree_ : Node[];
 
   constructor(filepath: string) {
+    fs.readFileSync(filepath, (err, data) => {
+      if (err) {
+        console.log('problem with opening json file: ' + err.toString());
+      } else {
+        let json : string = JSON.parse(data);
+        console.log(data);
+        try {
+          this.tree_ = data.map(node => new Node().deserialize(node));
+        } catch(e) {
+          console.log("Invalid JSON input file.");
+        }
+
+        this.addReferences();
+      }
+    });
+
+
+    /*
     fetch(filepath).then(function(response) {
       return response.json();
     }).then(function(data) {
@@ -104,7 +124,9 @@ export class Tree {
       });
 
       this.addReferences();
-    });
+    });*/
+
+
   }
 
   private getNodeById(id : number): Node {
