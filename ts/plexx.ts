@@ -563,18 +563,24 @@ declare namespace Plexx {
         borderWidth?: number;
     }
     class Rectangle extends Plexx.PrimitiveNode {
-        width: number;
-        height: number;
-        position: Mathlib.Vec2;
-        colour: string;
-        borderColour: string;
-        borderWidth: number;
+        private width;
+        private height;
+        private position;
+        private colour;
+        private borderColour;
+        private borderWidth;
         private colourNode;
         private borderColourNode;
         constructor(values: RectangleInterface);
         setColour(colour: string): void;
         clone(): Rectangle;
         toString(): string;
+        setWidth(width: number): void;
+        getWidth(): number;
+        setHeight(height: number): void;
+        getHeight(): number;
+        setPosition(position: number[]): void;
+        getPosition(): number[];
         hitBox(renderContext: RenderContext, position: Plexx.Mathlib.Vec2): boolean;
         getBoundingBox(): Plexx.BoundingBox2d;
         updateCanvas2d(renderContext: RenderContext, preTransformationMatrix: Plexx.Mathlib.Mat3): boolean;
@@ -673,12 +679,12 @@ declare namespace Plexx {
         borderColour?: string;
         borderWidth?: number;
     }
-    class Circle extends Plexx.PrimitiveNode implements CircleInterface {
-        radius: number;
-        position: number[];
-        colour: string;
-        borderColour: string;
-        borderWidth: number;
+    class Circle extends Plexx.PrimitiveNode {
+        private radius;
+        private position;
+        private colour;
+        private borderColour;
+        private borderWidth;
         private static CIRCLE_SIDES;
         private colourNode;
         private borderColourNode;
@@ -686,7 +692,7 @@ declare namespace Plexx {
         toString(): string;
         setColour(colour: string): void;
         hitBox(renderContext: RenderContext, position: Plexx.Mathlib.Vec2): boolean;
-        boundingBox(renderContext: RenderContext, position: Plexx.Mathlib.Vec2): boolean;
+        getBoundingBox(): Plexx.BoundingBox2d;
         updateCanvas2d(renderContext: RenderContext, preTransformationMatrix: Plexx.Mathlib.Mat3): boolean;
         generateSvg(renderContext: RenderContext, preTransformationMatrix: Plexx.Mathlib.Mat3): Plexx.XMLTag;
         updateWebGl(renderContext: RenderContext, transformationMatrix: Plexx.Mathlib.Mat3): boolean;
@@ -700,18 +706,18 @@ declare namespace Plexx {
         position: number[];
         colour?: string;
     }
-    class Ellipse extends Plexx.PrimitiveNode implements EllipseInterface {
+    class Ellipse extends Plexx.PrimitiveNode {
         radiusX: number;
         radiusY: number;
-        position: number[];
-        colour: string;
-        private colourNode;
+        position: Mathlib.Vec2;
+        private colour;
         private circleSides;
         constructor(values: EllipseInterface);
         toString(): string;
         setColour(colour: string): void;
         updateCanvas2d(renderContext: RenderContext, preTransformationMatrix: Plexx.Mathlib.Mat3): boolean;
         hitBox(renderContext: RenderContext, position: Plexx.Mathlib.Vec2): boolean;
+        getBoundingBox(): Plexx.BoundingBox2d;
         generateSvg(renderContext: RenderContext, preTransformationMatrix: Plexx.Mathlib.Mat3): Plexx.XMLTag;
         updateWebGl(renderContext: RenderContext, transformationMatrix: Plexx.Mathlib.Mat3): boolean;
     }

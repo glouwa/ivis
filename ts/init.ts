@@ -88,8 +88,8 @@ var CdivC =   (a:C, b:C)=>       {
                                         im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
                                     }
                                     //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
-                                    if (isNaN(r.re) {r.re = 0; console.log('r.re=NaN') }
-                                    if (isNaN(r.im) {r.im = 0; console.log('r.im=NaN') }
+                                    if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
+                                    if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
                                     return r
                                  }
 
