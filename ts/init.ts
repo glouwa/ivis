@@ -88,8 +88,8 @@ var CdivC =   (a:C, b:C)=>       {
                                         im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
                                     }
                                     //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
-                                    if (isNaN(r.re) r.re = 0
-                                    if (isNaN(r.im) r.im = 0
+                                    if (isNaN(r.re) {r.re = 0; console.log('r.re=NaN') }
+                                    if (isNaN(r.im) {r.im = 0; console.log('r.im=NaN') }
                                     return r
                                  }
 
@@ -211,8 +211,8 @@ function init() {
         navData:     obj2data(o, x=>x),
         layout:      selectedLayout,
         t:           (n:N) => R2addR2(n, o.v),
-        onDragStart: (p:R2) => {
-                          dSP = p
+        onDragStart: (m:R2) => {
+                          dSP = m
                           dSTo = clone(o)
                           dSTh = clone(h)
                      },
@@ -237,8 +237,8 @@ function init() {
         navData:     obj2data(h, x=>CtoR2(x)),
         layout:      selectedLayout,
         t:           (n:N) => CtoR2(h2e(h, R2toC(n))),
-        onDragStart: (p:R2) => {
-                          dSP = p
+        onDragStart: (m:R2) => {
+                          dSP = m
                           dSTo = clone(o)
                           dSTh = clone(h)
                      },
@@ -246,6 +246,8 @@ function init() {
                           var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)))
                           var newP = CtoR2(newT.P)
                           var newV = newP
+
+                          console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)),h.θ)) != 0)
 
                           R2assignR2(h.P, newP)
                           CassignR2(h.P, newP)
@@ -276,9 +278,12 @@ function e2h(t:T, z:C) : C
 function compose(t1:T, t2:T) : T
 {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one)
+    var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
+    var θp = CktoCp(θ)
+    θp.r = 1
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
-        θ: CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
+        θ: CptoCk(θp)
     })
 }
 
