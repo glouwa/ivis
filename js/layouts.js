@@ -47,15 +47,6 @@ function layoutRadial(root) {
     });
     return root;
 }
-function Cplog(a) {
-    if (isFinite(Math.log(a.r)))
-        return { r: Math.log(a.r), θ: a.θ };
-    else
-        return { r: 0, θ: 0 };
-    //return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ }
-}
-function Cklog(a) { return CptoCk(Cplog(CktoCp(a))); }
-function Cpow(a) { return { re: Math.cos(a), im: Math.sin(a) }; }
 function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 }, α: 2 * Math.PI }) {
     console.log('--------------------------------------------------------', n.depth);
     console.log(wedge.p, wedge.m, wedge.α);
@@ -76,7 +67,7 @@ function layoutHyperbolic(n, wedge = { p: { re: 0, im: 0 }, m: { re: 1, im: 0 },
             console.log('np', np);
             var nm = h2e(makeT(Cneg(np), one), h2e(makeT(wedge.p, one), wedge.m));
             console.log('nm', nm);
-            var nα = Cklog(h2e(makeT({ re: -d, im: 0 }, one), Cpow(cα))).im;
+            var nα = Clog(h2e(makeT({ re: -d, im: 0 }, one), Cpow(cα))).im;
             console.assert(isFinite(nα));
             var subwedge = { p: np, m: nm, α: nα };
             layoutHyperbolic(n.children[i], subwedge);

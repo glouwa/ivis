@@ -97,7 +97,6 @@ function init() {
         onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
         onDrag: (m) => {
             var newP = compose(dSTh, shift(dSP, m)).P;
-            console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)), h.θ)) != 0);
             CassignC(h.P, newP);
             CassignC(o.v, newP);
             offsetTwn.update();
@@ -107,9 +106,10 @@ function init() {
         pos: [525, 30],
     });
 }
+//----------------------------------------------------------------------------------------
 function h2e(t, z) {
     var oben = CaddC(CmulC(t.θ, z), t.P);
-    var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1);
+    var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one);
     var zprime = CdivC(oben, unten);
     return zprime;
 }
@@ -150,23 +150,44 @@ var R2mulR = (p, s) => ({ x: p.x * s, y: p.y * s });
 var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
 var CktoCp = (k) => ({ θ: Math.atan2(k.im, k.re), r: Math.sqrt(k.re * k.re + k.im * k.im) });
 var CptoCk = (p) => ({ re: p.r * Math.cos(p.θ), im: p.r * Math.sin(p.θ) });
-//type CtoArr =
-var CtoArr = (p) => ([p.re, p.im]);
-var CassignC = (a, b) => { a.re = b.re; a.im = b.im; };
-var CtoR2 = (p) => ({ x: p.re, y: p.im });
-var Cneg = (p) => ({ re: -p.re, im: -p.im });
-var Ccon = (p) => ({ re: p.re, im: -p.im });
-var CaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
-var CaddR = (a, s) => ({ re: a.re + s, im: a.im });
-var CsubC = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
-var CmulR = (p, s) => ({ re: p.re * s, im: p.im * s });
-var CmulC = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.im * b.re + a.re * b.im });
-var CdivC = (a, b) => {
+var CktoArr = (p) => ([p.re, p.im]);
+var CkassignCk = (a, b) => { a.re = b.re; a.im = b.im; };
+var CktoR2 = (p) => ({ x: p.re, y: p.im });
+var Ckneg = (p) => ({ re: -p.re, im: -p.im });
+var Ckcon = (p) => ({ re: p.re, im: -p.im });
+var CkaddC = (a, b) => ({ re: a.re + b.re, im: a.im + b.im });
+var CksubCk = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
+var CkmulR = (p, s) => ({ re: p.re * s, im: p.im * s });
+var CkmulCk = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.im * b.re + a.re * b.im });
+var Ckpow = (a) => ({ re: Math.cos(a), im: Math.sin(a) });
+var Cklog = (a) => CptoCk(Cplog(CktoCp(a)));
+var CkdivCk = (a, b) => CkdivCkImpl2(a, b);
+var CpmulCp = (a, b) => CktoCp({ re: a.r * b.r * Math.cos(a.θ + b.θ), im: a.r * b.r * Math.sin(a.θ + b.θ) });
+var CpdivCp = (a, b) => CktoCp({ re: a.r / b.r * Math.cos(a.θ - b.θ), im: a.r / b.r * Math.sin(a.θ - b.θ) });
+var Cplog = (a) => {
+    if (isFinite(Math.log(a.r)))
+        return { r: Math.log(a.r), θ: a.θ };
+    else
+        return { r: 0, θ: 0 };
+};
+var CtoArr = CktoArr;
+var CassignC = CkassignCk;
+var CtoR2 = CktoR2;
+var Cneg = Ckneg;
+var Ccon = Ckcon;
+var CaddC = CkaddC;
+var CsubC = CksubCk;
+var CmulR = CkmulR;
+var CmulC = CkmulCk;
+var Cpow = Ckpow;
+var Clog = Cklog;
+var CdivC = CkdivCk;
+function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
+function CkdivCkImpl(a, b) {
     var r = {
         re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
         im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
     };
-    //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
     if (isNaN(r.re)) {
         r.re = 0;
         console.log('r.re=NaN');
@@ -176,5 +197,12 @@ var CdivC = (a, b) => {
         console.log('r.im=NaN');
     }
     return r;
-};
-function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
+}
+function CkdivCkImpl2(a, b) {
+    var ap = CktoCp(a);
+    var bp = CktoCp(b);
+    return {
+        re: ap.r / bp.r * Math.cos(ap.θ - bp.θ),
+        im: ap.r / bp.r * Math.sin(ap.θ - bp.θ)
+    };
+}

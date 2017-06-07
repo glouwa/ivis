@@ -170,10 +170,8 @@ function init() {
         onDrag:      (m:C) => {
                           var dragVector = CsubC(m, dSP)
                           var newP = CaddC(dSTh.P, dragVector)
-
                           CassignC(h.P, newP)
                           CassignC(o.v, newP)
-
                           offsetTwn.update()
                           hyperbolicTwn.update()
                      },
@@ -190,11 +188,8 @@ function init() {
         onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
         onDrag:      (m:C) => {
                           var newP = compose(dSTh, shift(dSP, m)).P
-                          console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)),h.θ)) != 0)
-
                           CassignC(h.P, newP)
                           CassignC(o.v, newP)
-
                           offsetTwn.update()
                           hyperbolicTwn.update()
                      },
@@ -203,10 +198,12 @@ function init() {
     })
 }
 
+//----------------------------------------------------------------------------------------
+
 function h2e(t:T, z:C) : C
 {
     var oben = CaddC(CmulC(t.θ, z), t.P)
-    var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1)
+    var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one)
     var zprime = CdivC(oben, unten)
     return zprime
 }
@@ -243,48 +240,76 @@ function shift(s:C, e:C)
     return compose(makeT(Cneg(p), one), makeT(b, one))
 }
 
-
 //----------------------------------------------------------------------------------------
 
 type R2 = { x:number, y:number }
 type Ck = { re:number, im:number }
 type Cp = { θ:number, r:number }
-type C = Ck
+type C  = Ck
 
-var R2toArr =    (p:R2)=>           ([ p.x,                            p.y ])
-var R2assignR2 = (a, b)=>           {  a.x=b.x;                        a.y=b.y; }
-var R2toC =      (p:R2)=>           ({ re:p.x,                         im:p.y })
-var R2neg =      (p:R2)=>           ({ x:-p.x,                         y:-p.y })
-var R2addR2 =    (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
-var R2subR2 =    (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
-var R2mulR =     (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
-var R2divR =     (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
+var R2toArr =    (p:R2)=>            ([ p.x,                            p.y ])
+var R2assignR2 = (a, b)=>            {  a.x=b.x;                        a.y=b.y; }
+var R2toC =      (p:R2)=>            ({ re:p.x,                         im:p.y })
+var R2neg =      (p:R2)=>            ({ x:-p.x,                         y:-p.y })
+var R2addR2 =    (a:R2, b:R2)=>      ({ x:a.x + b.x,                    y:a.y + b.y })
+var R2subR2 =    (a:R2, b:R2)=>      ({ x:a.x - b.x,                    y:a.y - b.y })
+var R2mulR =     (p:R2, s:number)=>  ({ x:p.x * s,                      y:p.y * s })
+var R2divR =     (p:R2, s:number)=>  ({ x:p.x / s,                      y:p.y / s })
 
-var CktoCp =     (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
-var CptoCk =     (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
+var CktoCp =     (k:Ck)=>            ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
+var CptoCk =     (p:Cp)=>            ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
 
-//type CtoArr =
+var CktoArr =     (p:Ck)=>           ([ p.re,                           p.im ])
+var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; }
+var CktoR2 =      (p:Ck)=>           ({ x:p.re,                         y:p.im })
+var Ckneg =       (p:Ck)=>           ({ re:-p.re,                       im:-p.im })
+var Ckcon =       (p:Ck)=>           ({ re:p.re,                        im:-p.im })
+var CkaddC =      (a:Ck, b:Ck)=>     ({ re:a.re + b.re,                 im:a.im + b.im })
+var CksubCk =     (a:Ck, b:Ck)=>     ({ re:a.re - b.re,                 im:a.im - b.im })
+var CkmulR =      (p:Ck, s:number)=> ({ re:p.re * s,                    im:p.im * s })
+var CkmulCk =     (a:Ck, b:Ck)=>     ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
+var Ckpow =       (a:number)=>       ({ re:Math.cos(a),                 im:Math.sin(a) })
+var Cklog =       (a:Ck)=>           CptoCk(Cplog(CktoCp(a)))
+var CkdivCk =     (a:Ck, b:Ck)=>     CkdivCkImpl2(a, b)
 
-var CtoArr =     (p:C)=>            ([ p.re,                           p.im ])
-var CassignC =   (a, b)=>           {  a.re=b.re;                      a.im=b.im; }
-var CtoR2 =      (p:C)=>            ({ x:p.re,                         y:p.im })
-var Cneg =       (p:C)=>            ({ re:-p.re,                       im:-p.im })
-var Ccon =       (p:C)=>            ({ re:p.re,                        im:-p.im })
-var CaddC =      (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
-var CaddR =      (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
-var CsubC =      (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
-var CmulR =      (p:C, s:number)=>  ({ re:p.re * s,                    im:p.im * s })
-var CmulC =      (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
-var CdivC =      (a:C, b:C)=>       {
-                                       var r = {
-                                           re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-                                           im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
-                                       }
-                                       //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
-                                       if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
-                                       if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
-                                       return r
-                                    }
-
+var CpmulCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r*b.r * Math.cos(a.θ+b.θ), im:a.r*b.r * Math.sin(a.θ+b.θ) })
+var CpdivCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r/b.r * Math.cos(a.θ-b.θ), im:a.r/b.r * Math.sin(a.θ-b.θ) })
+var Cplog =       (a:Cp)=>           {
+                                        if (isFinite(Math.log(a.r))) return { r:Math.log(a.r), θ:a.θ }
+                                        else return { r:0, θ:0 }
+                                     }
+var CtoArr =      CktoArr
+var CassignC =    CkassignCk
+var CtoR2 =       CktoR2
+var Cneg =        Ckneg
+var Ccon =        Ckcon
+var CaddC =       CkaddC
+var CsubC =       CksubCk
+var CmulR =       CkmulR
+var CmulC =       CkmulCk
+var Cpow =        Ckpow
+var Clog =        Cklog
+var CdivC =       CkdivCk
 
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
+
+function CkdivCkImpl(a:C, b:C)
+{
+    var r = {
+        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+    }
+    if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
+    if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
+    return r
+}
+
+function CkdivCkImpl2(a:C, b:C)
+{
+    var ap = CktoCp(a)
+    var bp = CktoCp(b)
+    return {
+        re:ap.r/bp.r * Math.cos(ap.θ-bp.θ),
+        im:ap.r/bp.r * Math.sin(ap.θ-bp.θ)
+    }
+}
