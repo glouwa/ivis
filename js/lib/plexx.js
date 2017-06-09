@@ -128,7 +128,13 @@ var Plexx;
                         if (groupNode.eventMap["mousedown"]) {
                             clickEvent = "mousedown";
                             _this.event.type = clickEvent;
-                            groupNode.eventMap["mousedown"](groupNode);
+                            groupNode.eventMap["mousedown"]({
+                                sender:groupNode,
+                                mousePos: {
+                                    x:mousePositionRelative.x,
+                                    y:mousePositionRelative.y,
+                                }
+                            });
                         }
                     }
                     else if (_this.mouseEvent.type === "mouseup") {
@@ -287,21 +293,42 @@ var Plexx;
                     if (primitiveNode.eventMap["mousedown"]) {
                         clickEvent = "mousedown";
                         this.event.type = clickEvent;
-                        primitiveNode.eventMap["mousedown"](primitiveNode);
+                        //primitiveNode.eventMap["mousedown"](primitiveNode);
+                        primitiveNode.eventMap["mousedown"]({
+                            sender:primitiveNode,
+                            mousePos: {
+                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
+                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                            }
+                        });
                     }
                 }
                 else if (this.mouseEvent.type === "mouseup") {
                     if (primitiveNode.eventMap["mouseup"]) {
                         clickEvent = "mouseup";
                         this.event.type = clickEvent;
-                        primitiveNode.eventMap["mouseup"](primitiveNode);
+                        //primitiveNode.eventMap["mouseup"](primitiveNode);
+                        primitiveNode.eventMap["mouseup"]({
+                            sender:primitiveNode,
+                            mousePos: {
+                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
+                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                            }
+                        });
                     }
                 }
                 else if (this.mouseEvent.type === "mousemove") {
                     if (primitiveNode.eventMap["mousemove"]) {
                         clickEvent = "mousemove";
                         this.event.type = clickEvent;
-                        primitiveNode.eventMap["mousemove"](primitiveNode);
+                        //primitiveNode.eventMap["mousemove"](primitiveNode);
+                        primitiveNode.eventMap["mousemove"]({
+                            sender:primitiveNode,
+                            mousePos: {
+                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
+                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                            }
+                        });
                     }
                 }
                 if (!primitiveNode.mouseOver) {

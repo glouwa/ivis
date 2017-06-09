@@ -48,9 +48,8 @@ class LinkLine extends Plexx.Line {
         this.args = args;
         this.args.positionUpdateable.push(this);
     }
-    update(t) {
-        console.log('UL', t(this.args.model.parent).concat(t(this.args.model)));
-        this.setPoints(t(this.args.model.parent).concat(t(this.args.model)));
+    update() {
+        this.setPoints(this.args.t(this.args.model.parent).concat(this.args.t(this.args.model)));
     }
 }
 class UnitDiskPlexx {
@@ -61,6 +60,19 @@ class UnitDiskPlexx {
         this.args = args;
         this.plexxObj = new Plexx.Group({ translation: args.pos });
         var unitDiscBg = new Plexx.Circle({ radius: args.radius, position: [0, 0], colour: "#f9fbe7" });
+        var dragFlag = false;
+        unitDiscBg.on("mousedown", e => {
+            dragFlag = true;
+            args.onDragStart(this.ti(e.mousePos));
+        });
+        unitDiscBg.on("mousemove", e => {
+            if (dragFlag)
+                args.onDrag(this.ti(e.mousePos));
+        });
+        unitDiscBg.on("mouseup", e => {
+            dragFlag = false;
+            args.onDrag(this.ti(e.mousePos));
+        });
         myCanvas.add(this.plexxObj);
         this.plexxObj.add(unitDiscBg);
         this.create();
@@ -85,8 +97,6 @@ class UnitDiskPlexx {
                 radius: this.args.nodeRadius,
                 position: this.t(n),
                 colour: "#90caf9",
-                draggable: true,
-                draggingSpace: [0, 0, 2000, 2000]
             }));
             if (n.parent)
                 this.plexxObj.add(new LinkLine({

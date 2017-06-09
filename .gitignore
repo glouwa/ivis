@@ -68,10 +68,10 @@ typings/
 .env
 
 # qt cerator
-.directory
-.config
-.creator
-.files
-.includes
+*.directory
+*.config
+*.creator
+*.files
+*.includes
 /js/*.map
 .idea/
