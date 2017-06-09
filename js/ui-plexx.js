@@ -9,6 +9,10 @@ function initPlexxDbg() {
     initPlexx();
     new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
 }
+class NodeCircle {
+}
+class LinkLine {
+}
 class UnitDiskPlexx {
     constructor(args) {
         this.positionUpdateable = [];

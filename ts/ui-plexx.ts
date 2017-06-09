@@ -14,6 +14,14 @@ function initPlexxDbg()
     new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas)
 }
 
+class NodeCircle
+{
+}
+
+class LinkLine
+{
+}
+
 class UnitDiskPlexx implements TreeOnUnitDisk
 {
     args : TreeOnUnitDiskConfig
