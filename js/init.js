@@ -76,8 +76,9 @@ function init() {
         navData: obj2data(o),
         layout: selectedLayout,
         t: (n) => CaddC(n.z, o.v),
-        onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
+        onDragStart: (m) => { console.log("onDragStart fired", m); dSP = m; dSTo = clone(o); dSTh = clone(h); },
         onDrag: (m) => {
+            console.log("onDrag fired", m);
             var dragVector = CsubC(m, dSP);
             var newP = CaddC(dSTh.P, dragVector);
             CassignC(h.P, newP);

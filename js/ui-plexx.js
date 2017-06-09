@@ -28,14 +28,22 @@ class UnitDiskPlexx {
     create() {
         var model = this.args.data; // create view stuff from data
         var s = this.args.radius;
+        let args = this.args;
+        let ti = (e) => R2divR(e.translation, this.args.radius);
         dfs(model, (n) => {
             var node = new Plexx.Circle({
                 radius: this.args.nodeRadius,
                 position: [n.x * s, n.y * s],
-                colour: "#90caf9"
+                colour: "#90caf9",
+                draggable: true,
+                draggingSpace: [0, 0, 2000, 2000]
             });
             node.model = n;
             node = this.addMouseActHov(node);
+            node.on("dragmove", function (e) {
+                console.log("event: ", e);
+                ti(e);
+            });
             node.update = function (t) {
                 console.log('UN');
                 this.position = t(this.model);
