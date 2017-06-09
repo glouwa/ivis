@@ -14,12 +14,64 @@ function initPlexxDbg()
     new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas)
 }
 
-class NodeCircle
-{
+class NodeCircle extends Plexx.Circle
+{   
+    args : any
+    isActive : boolean = false
+
+    constructor(args)
+    {
+        super(args)
+        this.args = args
+        this.addMouseActHov(this)
+        this.args.positionUpdateable.push(this)
+
+        this.on("dragmove", function (e) {
+            console.log("event: ", e);
+
+        });
+    }
+
+    update(t) {
+        console.log('UN');
+        this.setTranslation(this.args.t(this.args.model))
+    }
+
+    private addMouseActHov(v)
+    {
+        this.on("mousedown", e => {
+            this.isActive = !this.isActive;
+            if (this.isActive)
+                this.setColour("#e91e63");
+            else
+                this.setColour("#9c27b0");
+        });
+
+        this.on("mousein", e=> {
+            if(!this.isActive) this.setColour("#9c27b0");
+        });
+
+        this.on("mouseout", e=> {
+            if(!this.isActive) this.setColour(this.args.colour);
+        })
+    }
 }
 
-class LinkLine
+class LinkLine extends Plexx.Line
 {
+    args : any
+
+    constructor(args)
+    {
+        super(args)
+        this.args = args
+        this.args.positionUpdateable.push(this)
+    }
+
+    update(t) {
+        console.log('UL', t(this.args.model.parent).concat(t(this.args.model)));
+        this.setPoints(t(this.args.model.parent).concat(t(this.args.model)))
+    }
 }
 
 class UnitDiskPlexx implements TreeOnUnitDisk
@@ -28,7 +80,8 @@ class UnitDiskPlexx implements TreeOnUnitDisk
 
     plexxObj : Plexx.Group
     positionUpdateable = []
-    t = (d:N) => R2toArr(this.args.transform(d))
+    t  = (d:N)  => R2toArr(R2mulR(this.args.transform(d), this.args.radius))
+    ti = (e:R2) =>         R2divR(e, this.args.radius)
 
     constructor(args : TreeOnUnitDiskConfig)
     {
@@ -43,10 +96,10 @@ class UnitDiskPlexx implements TreeOnUnitDisk
 
     update() : void
     {
-        for(var i=0; i<this.positionUpdateable.length; i++)
+        for(var i=0; i < this.positionUpdateable.length; i++)
             this.positionUpdateable[i].update()
 
-        myCanvas.renderFrame(renderContext);
+        //myCanvas.renderFrame(renderContext);
     }
 
     private create() : void
@@ -55,73 +108,39 @@ class UnitDiskPlexx implements TreeOnUnitDisk
         var s = this.args.radius
         let args = this.args;
 
-        let ti = (e) => R2divR(e.translation, this.args.radius);
         dfs(model, (n : N)=> {
 
-            var node = new Plexx.Circle({ // add blue circle
+            this.plexxObj.add(new NodeCircle({ // add blue circle
+                model: n,
+                t: this.t,
+                ti: this.ti,
+                positionUpdateable: this.positionUpdateable,
+                onDrag: this.args.onDrag,
+                onDragStart: this.args.onDragStart,
+
                 radius: this.args.nodeRadius,
-                position: [n.x * s, n.y * s],
+                position: this.t(n),
                 colour: "#90caf9",
                 draggable: true,
                 draggingSpace: [0, 0, 2000, 2000]
+            }))
 
-            })
-            node.model = n
-            node = this.addMouseActHov(node)
-            node.on("dragmove", function (e) {
-                console.log("event: ", e);
-                ti(e);
-            });
-            node.update = function(t) {
-                console.log('UN');
-                this.position = t(this.model)
-            }
-            this.plexxObj.add(node)
-            this.positionUpdateable.push(node)
+            if (n.parent)
+                this.plexxObj.add(new LinkLine({ // add line (root has no link)
+                    model: n,
+                    t: this.t,
+                    ti: this.ti,
+                    positionUpdateable: this.positionUpdateable,
 
-            if (n.parent) { // add line (root has no link)
-                var link = new Plexx.Line({
-                    points: [n.parent.x*s, n.parent.y*s, n.x*s, n.y*s],
+                    points: this.t(n.parent).concat(this.t(n)),
                     width: 0.5,
                     type: Constants.LineType.Default,
                     colour: "black",
                     startArrow:null,
                     endArrow:null,
                     arrowScale:1,
-                })
-                link.model = n
-                link.update = function(t)
-                {
-                    console.log('UL', t(this.model.parent).concat(t(this.model)));
-                    this.points = t(this.model.parent).concat(t(this.model))
-                    //this.points = [0, 0, 100, 100] doesnt work either
-                }
-                this.plexxObj.add(link)
-                this.positionUpdateable.push(link)
-            }
+                }))
         })
-    }
-
-    private addMouseActHov(v)
-    {
-        v.isActive = false;
-        v.on("mousedown", function (e) {
-            v.isActive = !v.isActive;
-            if (v.isActive)
-                v.setColour("#e91e63");
-            else
-                v.setColour("#9c27b0");
-        });
-
-        v.on("mousein", function (e) {
-            if(!v.isActive) v.setColour("#9c27b0");
-        });
-
-        v.on("mouseout", function (e) {
-            if(!v.isActive) v.setColour(v.colour);
-        });
-
-        return v
-    }
+    }    
 }
 

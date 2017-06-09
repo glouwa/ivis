@@ -100,7 +100,7 @@ function init() {
         t: (n) => h2e(h, n.z),
         onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
         onDrag: (m) => {
-            mp = CktoCp(m);
+            var mp = CktoCp(m);
             mp.r = mp.r > 1 ? .95 : mp.r;
             m = CptoCk(mp);
             updateTransformation(compose(dSTh, shift(dSP, m)).P);

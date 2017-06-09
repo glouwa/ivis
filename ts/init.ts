@@ -193,7 +193,7 @@ function init() {
         t:           (n:N) => h2e(h, n.z),
         onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
         onDrag:      (m:C) => {
-                          mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
+                          var mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
                           updateTransformation(compose(dSTh, shift(dSP, m)).P)
                      },
         parent:      uiRoot,
