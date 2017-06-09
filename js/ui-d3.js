@@ -26,6 +26,7 @@ class UnitDiskD3 {
             .attr("r", args.radius);
         var layers = mainGroup.append('g');
         this.linkLayer = layers.append('g');
+        this.arcLayer = layers.append('g');
         this.nodeLayer = layers.append('g');
         if (args.clip)
             layers.attr("clip-path", "url(#circle-clip)");
@@ -34,6 +35,7 @@ class UnitDiskD3 {
     update() {
         this.nodes.attr("transform", d => "translate(" + this.t(d) + " )");
         this.links.attr("d", d => "M " + this.t(d) + " L " + this.t(d.parent));
+        //this.arcs.attr("d", d=> this.d3arc(this.t(d), this.t(d.parent)))
     }
     create() {
         this.nodes = this.nodeLayer.selectAll(".node")
@@ -50,5 +52,18 @@ class UnitDiskD3 {
             .enter().append("path")
             .attr("class", "link")
             .attr("d", d => "M " + this.t(d) + " L " + this.t(d.parent));
+        /*
+                this.arcs = this.arcLayer.selectAll(".arc")
+                    .data(dfsFlat(this.args.data, n=>n.parent))
+                    .enter().append("path")
+                        .attr("class", "arc")
+                        .attr("d", d=> this.d3arc(this.t(d), this.t(d.parent)))*/
+    }
+    d3arc(c, a1, a2) {
+        return d3.arc()
+            .innerRadius(115)
+            .outerRadius(115)
+            .startAngle(0)
+            .endAngle(1 * Math.PI);
     }
 }

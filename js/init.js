@@ -71,19 +71,23 @@ function init() {
     var dSP = null; // drag start point
     var dSTo = null; // drag start transformation offset
     var dSTh = null; // drag start transformation hyperbolic origin preseving
+    function updateTransformation(newP) {
+        CassignC(h.P, newP);
+        CassignC(o.v, newP);
+        offsetTwn.update();
+        hyperbolicTwn.update();
+    }
     var offsetTwn = new TreeWithNavigation({
         dataloader: selectedDataLoader,
         navData: obj2data(o),
         layout: selectedLayout,
         t: (n) => CaddC(n.z, o.v),
+        //circleT:     (n:N) => 4
+        //lineT:       (n1:N,n1:N) => [n1, n2]
         onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
         onDrag: (m) => {
             var dragVector = CsubC(m, dSP);
-            var newP = CaddC(dSTh.P, dragVector);
-            CassignC(h.P, newP);
-            CassignC(o.v, newP);
-            offsetTwn.update();
-            hyperbolicTwn.update();
+            updateTransformation(CaddC(dSTh.P, dragVector));
         },
         parent: uiRoot,
         pos: [25, 30],
@@ -96,11 +100,10 @@ function init() {
         t: (n) => h2e(h, n.z),
         onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
         onDrag: (m) => {
-            var newP = compose(dSTh, shift(dSP, m)).P;
-            CassignC(h.P, newP);
-            CassignC(o.v, newP);
-            offsetTwn.update();
-            hyperbolicTwn.update();
+            mp = CktoCp(m);
+            mp.r = mp.r > 1 ? .95 : mp.r;
+            m = CptoCk(mp);
+            updateTransformation(compose(dSTh, shift(dSP, m)).P);
         },
         parent: uiRoot,
         pos: [525, 30],
@@ -140,6 +143,10 @@ function shift(s, e) {
     };
     return compose(makeT(Cneg(p), one), makeT(b, one));
 }
+function arcCenter(a, b) {
+    var d = CsubC(CmulC(a.re, b.im), CmulC(b.re, a.im));
+    var c = 1;
+}
 var R2toArr = (p) => ([p.x, p.y]);
 var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
 var R2toC = (p) => ({ re: p.x, im: p.y });
@@ -164,12 +171,7 @@ var Cklog = (a) => CptoCk(Cplog(CktoCp(a)));
 var CkdivCk = (a, b) => CkdivCkImpl2(a, b);
 var CpmulCp = (a, b) => CktoCp({ re: a.r * b.r * Math.cos(a.θ + b.θ), im: a.r * b.r * Math.sin(a.θ + b.θ) });
 var CpdivCp = (a, b) => CktoCp({ re: a.r / b.r * Math.cos(a.θ - b.θ), im: a.r / b.r * Math.sin(a.θ - b.θ) });
-var Cplog = (a) => {
-    if (isFinite(Math.log(a.r)))
-        return { r: Math.log(a.r), θ: a.θ };
-    else
-        return { r: 0, θ: 0 };
-};
+var Cplog = (a) => CplogImpl(a);
 var CtoArr = CktoArr;
 var CassignC = CkassignCk;
 var CtoR2 = CktoR2;
@@ -205,4 +207,10 @@ function CkdivCkImpl2(a, b) {
         re: ap.r / bp.r * Math.cos(ap.θ - bp.θ),
         im: ap.r / bp.r * Math.sin(ap.θ - bp.θ)
     };
+}
+function CplogImpl(a) {
+    if (isFinite(Math.log(a.r)))
+        return { r: Math.log(a.r), θ: a.θ };
+    else
+        return { r: 0, θ: 0 };
 }

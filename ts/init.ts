@@ -161,19 +161,25 @@ function init() {
     var dSTo = null // drag start transformation offset
     var dSTh = null // drag start transformation hyperbolic origin preseving
 
+    function updateTransformation(newP)
+    {
+        CassignC(h.P, newP)
+        CassignC(o.v, newP)
+        offsetTwn.update()
+        hyperbolicTwn.update()
+    }
+
     var offsetTwn = new TreeWithNavigation({
         dataloader:  selectedDataLoader,
         navData:     obj2data(o),
         layout:      selectedLayout,
         t:           (n:N) => CaddC(n.z, o.v),
+        //circleT:     (n:N) => 4
+        //lineT:       (n1:N,n1:N) => [n1, n2]
         onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
         onDrag:      (m:C) => {
-                          var dragVector = CsubC(m, dSP)
-                          var newP = CaddC(dSTh.P, dragVector)
-                          CassignC(h.P, newP)
-                          CassignC(o.v, newP)
-                          offsetTwn.update()
-                          hyperbolicTwn.update()
+                          var dragVector = CsubC(m, dSP)                          
+                          updateTransformation(CaddC(dSTh.P, dragVector))
                      },
         parent:      uiRoot,
         pos:         [25,30],
@@ -187,11 +193,8 @@ function init() {
         t:           (n:N) => h2e(h, n.z),
         onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
         onDrag:      (m:C) => {
-                          var newP = compose(dSTh, shift(dSP, m)).P
-                          CassignC(h.P, newP)
-                          CassignC(o.v, newP)
-                          offsetTwn.update()
-                          hyperbolicTwn.update()
+                          mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
+                          updateTransformation(compose(dSTh, shift(dSP, m)).P)
                      },
         parent:      uiRoot,
         pos:         [525,30],
@@ -226,7 +229,7 @@ function compose(t1:T, t2:T) : T
     })
 }
 
-function shift(s:C, e:C)
+function shift(s:C, e:C) : T
 {
     var p = h2e(h, { re:0, im:0 })
     var a = h2e(makeT(Cneg(p), one), s)
@@ -238,6 +241,12 @@ function shift(s:C, e:C)
         im: CmulC(esuba, CsubC(one, aec)).im / divisor
     }
     return compose(makeT(Cneg(p), one), makeT(b, one))
+}
+
+function arcCenter(a:C, b:C) // asuming a,b are in euclidien space
+{
+    var d = CsubC(CmulC(a.re, b.im), CmulC(b.re, a.im))
+    var c = 1
 }
 
 //----------------------------------------------------------------------------------------
@@ -274,10 +283,7 @@ var CkdivCk =     (a:Ck, b:Ck)=>     CkdivCkImpl2(a, b)
 
 var CpmulCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r*b.r * Math.cos(a.θ+b.θ), im:a.r*b.r * Math.sin(a.θ+b.θ) })
 var CpdivCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r/b.r * Math.cos(a.θ-b.θ), im:a.r/b.r * Math.sin(a.θ-b.θ) })
-var Cplog =       (a:Cp)=>           {
-                                        if (isFinite(Math.log(a.r))) return { r:Math.log(a.r), θ:a.θ }
-                                        else return { r:0, θ:0 }
-                                     }
+var Cplog =       (a:Cp)=>           CplogImpl(a)
 var CtoArr =      CktoArr
 var CassignC =    CkassignCk
 var CtoR2 =       CktoR2
@@ -293,7 +299,7 @@ var CdivC =       CkdivCk
 
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
 
-function CkdivCkImpl(a:C, b:C)
+function CkdivCkImpl(a:Ck, b:Ck)
 {
     var r = {
         re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
@@ -304,7 +310,7 @@ function CkdivCkImpl(a:C, b:C)
     return r
 }
 
-function CkdivCkImpl2(a:C, b:C)
+function CkdivCkImpl2(a:Ck, b:Ck)
 {
     var ap = CktoCp(a)
     var bp = CktoCp(b)
@@ -312,4 +318,12 @@ function CkdivCkImpl2(a:C, b:C)
         re:ap.r/bp.r * Math.cos(ap.θ-bp.θ),
         im:ap.r/bp.r * Math.sin(ap.θ-bp.θ)
     }
+}
+
+function CplogImpl(a:Cp)
+{
+    if (isFinite(Math.log(a.r)))
+        return { r:Math.log(a.r), θ:a.θ }
+    else
+        return { r:0, θ:0 }
 }
