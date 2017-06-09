@@ -99,13 +99,14 @@ class TreeWithNavigation
         this.view = new SelectedUnitDisk({ // view disk
             data:        this.data,
             transform:   (n:N) => CtoR2(this.args.t(n)),
+            transformR:  (n:N) => this.nodeR(CtoR2(this.args.t(n))),
             onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
             onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
 
             parent:      null,
             pos:         ArrAddR(this.args.pos, 240),
             radius:      200,
-            nodeRadius:  7,
+            nodeRadius:  8,
             clip:        this.args.clip
         })
 
@@ -113,6 +114,7 @@ class TreeWithNavigation
         var navbg = new SelectedUnitDisk({ // navigation disk background
             data:        this.data,
             transform:   (n:N) => CtoR2(n.z),
+            transformR:  (n:N) => 1,
             onDragStart: (m:R2) => {},
             onDrag:      (m:R2) => {},
 
@@ -126,6 +128,7 @@ class TreeWithNavigation
         this.nav = new SelectedUnitDisk({ // navigation disk with transformation parameters as nodes
             data:        this.navData,
             transform:   (n:N) => CtoR2(n),
+            transformR:  (n:N) => 1,
             onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
             onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
 
@@ -136,6 +139,14 @@ class TreeWithNavigation
             nodeRadius:  7,
             clip:        false
         })        
+    }
+
+    private nodeR(np:R2)
+    {
+        var r = Math.sqrt(np.x*np.x + np.y*np.y)
+        if (r > 1)
+            r = 1
+        return Math.sin(Math.acos(r))
     }
 }
 
@@ -192,7 +203,7 @@ function init() {
         layout:      selectedLayout,
         t:           (n:N) => h2e(h, n.z),
         onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
-        onDrag:      (m:C) => {
+        onDrag:      (m:C) => {                          
                           var mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
                           updateTransformation(compose(dSTh, shift(dSP, m)).P)
                      },
@@ -207,8 +218,7 @@ function h2e(t:T, z:C) : C
 {
     var oben = CaddC(CmulC(t.θ, z), t.P)
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one)
-    var zprime = CdivC(oben, unten)
-    return zprime
+    return CdivC(oben, unten)
 }
 
 function e2h(t:T, z:C) : C
@@ -245,8 +255,11 @@ function shift(s:C, e:C) : T
 
 function arcCenter(a:C, b:C) // asuming a,b are in euclidien space
 {
-    var d = CsubC(CmulC(a.re, b.im), CmulC(b.re, a.im))
-    var c = 1
+    var d = a.re * b.im - b.re * a.im
+    var br = CktoCp(b).r
+    var ar = CktoCp(a).r
+    var numerator = CsubC(CmulR(a, (1 + br*br)), CmulR(b, (1 + ar*ar)))
+    return { c:CmulC({ re:0, im:1 }, CdivR(numerator, 2*d)), d:d }
 }
 
 //----------------------------------------------------------------------------------------
@@ -256,17 +269,17 @@ type Ck = { re:number, im:number }
 type Cp = { θ:number, r:number }
 type C  = Ck
 
-var R2toArr =    (p:R2)=>            ([ p.x,                            p.y ])
-var R2assignR2 = (a, b)=>            {  a.x=b.x;                        a.y=b.y; }
-var R2toC =      (p:R2)=>            ({ re:p.x,                         im:p.y })
-var R2neg =      (p:R2)=>            ({ x:-p.x,                         y:-p.y })
-var R2addR2 =    (a:R2, b:R2)=>      ({ x:a.x + b.x,                    y:a.y + b.y })
-var R2subR2 =    (a:R2, b:R2)=>      ({ x:a.x - b.x,                    y:a.y - b.y })
-var R2mulR =     (p:R2, s:number)=>  ({ x:p.x * s,                      y:p.y * s })
-var R2divR =     (p:R2, s:number)=>  ({ x:p.x / s,                      y:p.y / s })
+var R2toArr =     (p:R2)=>           ([ p.x,                            p.y ])
+var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; }
+var R2toC =       (p:R2)=>           ({ re:p.x,                         im:p.y })
+var R2neg =       (p:R2)=>           ({ x:-p.x,                         y:-p.y })
+var R2addR2 =     (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
+var R2subR2 =     (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
+var R2mulR =      (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
+var R2divR =      (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
 
-var CktoCp =     (k:Ck)=>            ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
-var CptoCk =     (p:Cp)=>            ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
+var CktoCp =      (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
+var CptoCk =      (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
 
 var CktoArr =     (p:Ck)=>           ([ p.re,                           p.im ])
 var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; }
@@ -278,8 +291,10 @@ var CksubCk =     (a:Ck, b:Ck)=>     ({ re:a.re - b.re,                 im:a.im 
 var CkmulR =      (p:Ck, s:number)=> ({ re:p.re * s,                    im:p.im * s })
 var CkmulCk =     (a:Ck, b:Ck)=>     ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
 var Ckpow =       (a:number)=>       ({ re:Math.cos(a),                 im:Math.sin(a) })
-var Cklog =       (a:Ck)=>           CptoCk(Cplog(CktoCp(a)))
+var CkdivR =      (p:Ck, s:number)=> ({ re:p.re / s,                    im:p.im / s })
 var CkdivCk =     (a:Ck, b:Ck)=>     CkdivCkImpl2(a, b)
+var Cklog =       (a:Ck)=>           CptoCk(Cplog(CktoCp(a)))
+
 
 var CpmulCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r*b.r * Math.cos(a.θ+b.θ), im:a.r*b.r * Math.sin(a.θ+b.θ) })
 var CpdivCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r/b.r * Math.cos(a.θ-b.θ), im:a.r/b.r * Math.sin(a.θ-b.θ) })
@@ -296,7 +311,9 @@ var CmulC =       CkmulCk
 var Cpow =        Ckpow
 var Clog =        Cklog
 var CdivC =       CkdivCk
+var CdivR =       CkdivR
 
+var ArrtoC =      (p:number[])=>     ({ re:p[0],                        im:p[1] })
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
 
 function CkdivCkImpl(a:Ck, b:Ck)

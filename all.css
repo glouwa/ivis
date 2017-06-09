@@ -68,7 +68,8 @@ h1 {
 
 .arc {
     stroke: #ccc;
-    fill: #eee;
+    //fill: #eee;
+    fill: none;
     pointer-events: none;
-    shape-rendering: optimizeSpeed;
+    //shape-rendering: optimizeSpeed;
 }

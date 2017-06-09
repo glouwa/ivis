@@ -33,7 +33,6 @@ class NodeCircle extends Plexx.Circle
     }
 
     update(t) {
-        console.log('UN');
         this.setTranslation(this.args.t(this.args.model))
     }
 
@@ -134,7 +133,8 @@ class UnitDiskPlexx implements TreeOnUnitDisk
                 onDragStart: this.args.onDragStart,
 
                 radius: this.args.nodeRadius,
-                position: this.t(n),
+                position: [0, 0],
+                translation: this.t(n),
                 colour: "#90caf9",
                 //draggable: true,
                 //draggingSpace: [0, 0, 2000, 2000]
@@ -150,8 +150,8 @@ class UnitDiskPlexx implements TreeOnUnitDisk
                     points: this.t(n.parent).concat(this.t(n)),
                     width: 0.5,
                     type: Constants.LineType.Default,
-                    colour: "black",
-                    startArrow:null,
+                    colour: "#777777",
+                    //startArrow:Plexx.Triangle,
                     endArrow:null,
                     arrowScale:1,
                 }))

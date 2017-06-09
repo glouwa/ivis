@@ -22,18 +22,20 @@ class TreeWithNavigation {
         this.view = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => CtoR2(this.args.t(n)),
+            transformR: (n) => this.nodeR(CtoR2(this.args.t(n))),
             onDragStart: (m) => this.args.onDragStart(R2toC(m)),
             onDrag: (m) => this.args.onDrag(R2toC(m)),
             parent: null,
             pos: ArrAddR(this.args.pos, 240),
             radius: 200,
-            nodeRadius: 7,
+            nodeRadius: 8,
             clip: this.args.clip
         });
         var navR = 55;
         var navbg = new SelectedUnitDisk({
             data: this.data,
             transform: (n) => CtoR2(n.z),
+            transformR: (n) => 1,
             onDragStart: (m) => { },
             onDrag: (m) => { },
             parent: null,
@@ -45,6 +47,7 @@ class TreeWithNavigation {
         this.nav = new SelectedUnitDisk({
             data: this.navData,
             transform: (n) => CtoR2(n),
+            transformR: (n) => 1,
             onDragStart: (m) => this.args.onDragStart(R2toC(m)),
             onDrag: (m) => this.args.onDrag(R2toC(m)),
             parent: null,
@@ -54,6 +57,12 @@ class TreeWithNavigation {
             nodeRadius: 7,
             clip: false
         });
+    }
+    nodeR(np) {
+        var r = Math.sqrt(np.x * np.x + np.y * np.y);
+        if (r > 1)
+            r = 1;
+        return Math.sin(Math.acos(r));
     }
 }
 function makeT(a, b) { return { P: a, θ: b }; }
@@ -113,8 +122,7 @@ function init() {
 function h2e(t, z) {
     var oben = CaddC(CmulC(t.θ, z), t.P);
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one);
-    var zprime = CdivC(oben, unten);
-    return zprime;
+    return CdivC(oben, unten);
 }
 function e2h(t, z) {
     var θ = Cneg(CmulC(Ccon(t.θ), t.P));
@@ -144,8 +152,11 @@ function shift(s, e) {
     return compose(makeT(Cneg(p), one), makeT(b, one));
 }
 function arcCenter(a, b) {
-    var d = CsubC(CmulC(a.re, b.im), CmulC(b.re, a.im));
-    var c = 1;
+    var d = a.re * b.im - b.re * a.im;
+    var br = CktoCp(b).r;
+    var ar = CktoCp(a).r;
+    var numerator = CsubC(CmulR(a, (1 + br * br)), CmulR(b, (1 + ar * ar)));
+    return { c: CmulC({ re: 0, im: 1 }, CdivR(numerator, 2 * d)), d: d };
 }
 var R2toArr = (p) => ([p.x, p.y]);
 var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
@@ -167,8 +178,9 @@ var CksubCk = (a, b) => ({ re: a.re - b.re, im: a.im - b.im });
 var CkmulR = (p, s) => ({ re: p.re * s, im: p.im * s });
 var CkmulCk = (a, b) => ({ re: a.re * b.re - a.im * b.im, im: a.im * b.re + a.re * b.im });
 var Ckpow = (a) => ({ re: Math.cos(a), im: Math.sin(a) });
-var Cklog = (a) => CptoCk(Cplog(CktoCp(a)));
+var CkdivR = (p, s) => ({ re: p.re / s, im: p.im / s });
 var CkdivCk = (a, b) => CkdivCkImpl2(a, b);
+var Cklog = (a) => CptoCk(Cplog(CktoCp(a)));
 var CpmulCp = (a, b) => CktoCp({ re: a.r * b.r * Math.cos(a.θ + b.θ), im: a.r * b.r * Math.sin(a.θ + b.θ) });
 var CpdivCp = (a, b) => CktoCp({ re: a.r / b.r * Math.cos(a.θ - b.θ), im: a.r / b.r * Math.sin(a.θ - b.θ) });
 var Cplog = (a) => CplogImpl(a);
@@ -184,6 +196,8 @@ var CmulC = CkmulCk;
 var Cpow = Ckpow;
 var Clog = Cklog;
 var CdivC = CkdivCk;
+var CdivR = CkdivR;
+var ArrtoC = (p) => ({ re: p[0], im: p[1] });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
 function CkdivCkImpl(a, b) {
     var r = {
