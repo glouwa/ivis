@@ -30,11 +30,11 @@ class MissingFieldError extends Error {
 
 class TreeNode {
   //required fields
-  id : number;
-  parent : TreeNode = null;
+  id : string;
   children : TreeNode[] = null;
 
   //optional fields:
+  parent? : TreeNode = null;
   name? : string;
   weight? : number;
 
@@ -44,13 +44,12 @@ class TreeNode {
     if (!this.hasOwnProperty('id')){
       throw new MissingFieldError('id');
     }
-    if (!this.hasOwnProperty('parent')) {
-      throw new MissingFieldError('parent');
-    }
+    console.log('deserialize ' + this.id);
     if (!this.hasOwnProperty('children')) {
       throw new MissingFieldError('children');
     }
 
+    this.parent = null;
     if (!this.hasOwnProperty('name')) {
       this.name = '';
     }
@@ -68,33 +67,48 @@ class TreeNode {
   }
 
   setParent(parent : TreeNode) {
+    //console.log('setParent ' + parent.getId() + ' of node ' + this.getId());
     this.parent = parent;
   }
 
   addChild(child : TreeNode) {
+    //console.log('addChild ' + child.getId() + ' to node ' + this.getId());
     if (this.children.indexOf(child) == -1)
       this.children.push(child);
+  }
+
+  getId() : string {
+    return this.id;
+  }
+
+  getChildCount() : number {
+    let count : number = 0;
+    this.children.forEach((child : TreeNode) => {
+      //count += child.getChildCount();
+    });
+
+    return count;
   }
 }
 
 
 class Tree {
-  private tree_ : TreeNode[] = null;
+  private tree_ : TreeNode[] = [];
 
-  constructor(filepath: string) {
-    console.log('Tree constructor');
+  constructor(ok, filepath: string) {
     let xhr: XMLHttpRequest = new XMLHttpRequest();
     xhr.open('GET', filepath, true);
-
-    xhr.onreadystatechange = (callback) => {
+    xhr.onreadystatechange = () => {
       if (xhr.readyState == 4 && xhr.status == 200) {
         let json = JSON.parse(xhr.responseText);
-        console.log(json);
         try {
+          let _this = this;
           this.setupTreeHierarchy(json, null);
-          console.log("tree size: " + this.getNodeCount());
+          console.log(this.tree_);
+          ok(this.tree_[0]);
         } catch(e) {
-          console.log("Invalid JSON input file.");
+          console.log("Invalid JSON data file.");
+          console.log(e);
         }
       }
     };
@@ -104,16 +118,22 @@ class Tree {
   private setupTreeHierarchy(json : Object[], parent : TreeNode) {
     json.forEach((obj : Object) => {
       let node = new TreeNode().deserialize(obj);
-      node.setParent(parent);
+
       let children : TreeNode[] = node.getChildren();
-      this.setupTreeHierarchy(children, node);
-      children.forEach((child : TreeNode) => {
-        node.addChild(child);
-      });
+      if (children !== null) {
+        this.setupTreeHierarchy(children, node);
+      }
+
+      if (parent !== null) {
+        node.setParent(parent);
+        parent.addChild(node);
+      } else {
+        this.tree_.push(node);
+      }
     });
   }
 
-  private getNodeById(id : number): TreeNode {
+  private getNodeById(id : string): TreeNode {
     return this.tree_.find((node : TreeNode) => (node.id == id));
   }
 
@@ -128,12 +148,13 @@ class Tree {
   getNodeCount() {
     let count : number = 0;
     this.tree_.forEach((node: TreeNode) => {
-      count++;
+       count += node.getChildCount();
     });
     return count;
   }
 
   getTree() : TreeNode[]{
+    //console.log('getTree' + this.getNodeCount());
     return this.tree_;
   }
 

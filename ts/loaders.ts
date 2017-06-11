@@ -111,10 +111,11 @@ function json(ok, jsonStr) {
     ok(JSON.parse(jsonStr))
 }
 
-function loadJsonFile(path : string) : TreeNode[] {
+function loadJsonFile(ok, path : string) : TreeNode[] {
     console.log('loadJsonFile');
-    let tree = new Tree(path);
-
+    let tree = new Tree(ok, path);
+    console.log('treesize: ' + tree.getNodeCount());
+    //TODO: problem: this function returns before tree hierarchy setup is done!
     return tree.getTree();
 }
 
@@ -124,7 +125,5 @@ var star3 = ok=> star(ok, 500)
 var path1 = ok=> path(ok, 50)
 var path2 = ok=> path(ok, 500)
 var path3 = ok=> path(ok, 5000)
-var d3csvFlare = ok=> d3csv(ok, "flare.csv")
-var jsonConst = ok=> json(ok, "{}");
-const jsonFilePath="app/input/basicTree.json"; //TODO: get user selected path here
-let jsonFile = loadJsonFile(jsonFilePath);
+var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
+var jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");

@@ -1,23 +1,19 @@
 [
   {
     "id": 0,
-    "parent": null,
     "name": "root",
     "children": [
       {
         "id": 1,
-        "parent": 0,
         "name": "left child",
         "children":[
           {
             "id": 3,
-            "parent": 1,
             "name" : "leafA left child",
             "children": []
           },
           {
             "id": 4,
-            "parent": 1,
             "name": "leafB left child",
             "children": []
           }
@@ -25,18 +21,15 @@
       },
       {
         "id": 2,
-        "parent": 0,
         "name": "right child",
         "children": [
           {
             "id": 5,
-            "parent": 2,
             "name": "leafA right child",
             "children": []
           },
           {
             "id": 6,
-            "parent": 2,
             "name": "leafB right child",
             "children": []
           }
@@ -44,5 +37,4 @@
       }
     ]
   }
-  ]
-
+]

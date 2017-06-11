@@ -80,6 +80,7 @@ function setLayout(name)
 
 var slide = -1
 var slides = [
+    { ds:'jsonFile',     ls:'layoutRadial',      name:"use data from basicTree.json" },
     { ds:'d3csvFlare',   ls:'layoutRadial',      name:"Point transformation seems to work" },
     { ds:'nTree',        ls:'layoutHyperbolic',  name:"Wedge layout" },    
     { ds:'nTree',        ls:'layoutRadial',      name:"Full tree. Nodes on unit circle. |Tree| = 5³ -1 = 124" },
@@ -91,7 +92,7 @@ var slides = [
     { ds:'path1',        ls:'layoutRadial',      name:"Line from [0,0] to [1,1]" },
     { ds:'path2',        ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
     { ds:'nTreeAtFirst', ls:'layoutRadial',      name:"Center is never magnified" },
-    { ds:'jsonFile',     ls:'layoutRadial',      name:"use data from basicTree.json" }
+
 ]
 function next(d)
 {
