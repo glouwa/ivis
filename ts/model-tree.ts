@@ -21,7 +21,7 @@
 
  *
  */
-import * as fs from 'file-system';
+//import * as fs from 'file-system';
 
 declare type WeightFunction = (node: Node) => void;
 
@@ -85,7 +85,7 @@ class Node {
 
 
 
-export class Tree {
+class Tree {
   private tree_ : Node[];
 
   constructor(filepath: string) {

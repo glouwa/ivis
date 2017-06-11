@@ -1,105 +1,101 @@
-var svg = null
-
-function initD3(args)
+namespace ivis.ui.D3
 {
-    svg = d3.select("#ivis-canvas-div")
-        .append('svg')
-        .attr("width", "100%")
-        .attr("viewBox", "0 0 1000 500")
-}
+    var svg = null
 
-class UnitDiskD3 implements TreeOnUnitDisk
-{
-    args : TreeOnUnitDiskConfig
-    nodeLayer : any
-    linkLayer : any
-    arcLayer : any
-    nodes : any    
-    links : any
-    arcs : any
-    t  = (d:N)  => R2toArr(R2mulR(this.args.transform(d), this.args.radius))
-    ti = (e:R2) =>         R2divR(e, this.args.radius)
-    tr = (d:N)  => this.args.transformR(d)
-
-    constructor(args : TreeOnUnitDiskConfig)
+    export function initD3(args)
     {
-        this.args = args
+        svg = d3.select("#ivis-canvas-div")
+            .append('svg')
+            .attr("width", "100%")
+            .attr("viewBox", "0 0 1000 500")
+    }
 
-        var mainGroup = svg.append('g')
-            .attr("class", "unitDisc"+(args.opacity?"Param":""))
-            .attr("transform", "translate(" + args.pos + ")");
+    export class UnitDiskD3 implements TreeOnUnitDisk
+    {
+        args : ivis.ui.TreeOnUnitDiskConfig
+        nodeLayer : any
+        linkLayer : any
+        arcLayer : any
+        nodes : any
+        links : any
+        captions : any
+        arcs : any
+        t  = (d:N)  => R2toArr(R2mulR(this.args.transform(d), this.args.radius))
+        ti = (e:R2) =>         R2divR(e, this.args.radius)
+        tr = (d:N)  => this.args.transformR(d)
 
-        var unitDiscBg = mainGroup.append('circle')
-            .attr("class", "unitDiscBg")
-            .attr("r", args.radius)
-            .attr("fill-opacity", args.opacity)
-            .call(d3.drag()
-                .on("start", d=> args.onDragStart(this.ti(d3.event)))
-                .on("drag", d=> args.onDrag(this.ti(d3.event))))
+        constructor(args : ivis.ui.TreeOnUnitDiskConfig)
+        {
+            this.args = args
 
-        mainGroup.append("clipPath")
-            .attr("id", "circle-clip")
-            .append("circle")
+            var mainGroup = svg.append('g')
+                .attr("class", "unitDisc"+(args.opacity?"Param":""))
+                .attr("transform", "translate(" + args.pos + ")");
+
+            var unitDiscBg = mainGroup.append('circle')
+                .attr("class", "unitDiscBg")
                 .attr("r", args.radius)
+                .attr("fill-opacity", args.opacity)
+                .call(d3.drag()
+                    .on("start", ()=> { args.onDragStart(this.ti(d3.event)); this.captions.text(d=> ""); })
+                    .on("drag",  ()=> args.onDrag(this.ti(d3.event)) )
+                    .on("end",   ()=> this.captions.call(this.updateText))
+                )
 
-        var layers = mainGroup.append('g')
-        this.linkLayer = layers.append('g')
-        this.arcLayer = layers.append('g')
-        this.nodeLayer = layers.append('g')
-        if (args.clip) layers.attr("clip-path", "url(#circle-clip)")
-        this.create()
-    }
+            mainGroup.append("clipPath")
+                .attr("id", "circle-clip")
+                .append("circle")
+                    .attr("r", args.radius)
 
-    update() : void
-    {
-        this.nodes
-            .attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
+            var layers = mainGroup.append('g')
+            this.linkLayer = layers.append('g')
+            this.arcLayer = layers.append('g')
+            this.nodeLayer = layers.append('g')
+            if (args.clip) layers.attr("clip-path", "url(#circle-clip)")
+            this.create()
+        }
 
-        this.arcs
-            .attr("d", d=> this.d3arc(d, d.parent))
-    }
+        private create() : void
+        {
+            this.nodes = this.nodeLayer.selectAll(".node")
+                .data(dfsFlat(this.args.data, n=>true))
+                .enter().append("g")
+                    .attr("class", "node")
+                    .call(this.updateNode)
+            this.nodes.append("circle")
+                .attr("r", this.args.nodeRadius)
 
-    private create() : void
-    {
-        this.nodes = this.nodeLayer.selectAll(".node")
-            .data(dfsFlat(this.args.data, n=>true))
-            .enter().append("g")
-                .attr("class", "node")
-                .attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
+            if (this.args.caption)
+                this.captions = this.nodes.append("text")
+                    .call(this.updateText)
 
-        this.nodes.append("circle")
-            .attr("r", this.args.nodeRadius)
+            this.arcs = this.arcLayer.selectAll(".arc")
+                .data(dfsFlat(this.args.data, n=>n.parent))
+                .enter().append("path")
+                    .attr("class", "arc")
+                    .call(this.updateArc)
+        }
 
-        this.nodes.append("text")
-            .text(d=> (d.name?d.name:""))
+        updateNode = x=> x.attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
+        updateText = x=> x.text(d=> (d.name?d.name:(d.data?(d.data.name?d.data.name:""):"")))
+        updateArc  = x=> x.attr("d", d=> {
+            //this.d3arc(d, d.parent)
+            var arcP1 = R2toC(this.args.transform(d))
+            var arcP2 = R2toC(this.args.transform(d.parent))
+            var arcC = arcCenter(arcP1, arcP2)
+            var r = CktoCp(CsubC(R2toC(this.args.transform(d.parent)), arcC.c)).r * -200
+            var d2SvglargeArcFlag : string = arcC.d>0?'1':'0'
+            if (isNaN(r))
+                r = 0
+            var s = this.t(d)
+            var e = this.t(d.parent)
+            return "M" +s+ " A " +r+ " " +r+ ", 0, 0, " + d2SvglargeArcFlag+ ", " +e
+        })
 
-/*      this.links = this.linkLayer.selectAll(".link")
-            .data(dfsFlat(this.args.data, n=>n.parent))
-            .enter().append("path")
-                .attr("class", "link")
-                .attr("d", d=> "M "+ this.t(d) + " L " + this.t(d.parent))*/
-
-        this.arcs = this.arcLayer.selectAll(".arc")
-            .data(dfsFlat(this.args.data, n=>n.parent))
-            .enter().append("path")
-                .attr("class", "arc")
-                .attr("d", d=> this.d3arc(d, d.parent))
-    }
-
-    private d3arc(a:N, b:N)
-    {
-        var arcP1 = R2toC(this.args.transform(a))
-        var arcP2 = R2toC(this.args.transform(b))
-        var arcC = arcCenter(arcP1, arcP2)
-        var c:C = arcC.c
-        if (!isNaN(c))
-            console.log("hit")
-        var r = CktoCp(CsubC(R2toC(this.args.transform(b)), c)).r * -200
-        if (isNaN(r))
-            r = 0
-        var s = this.t(a)
-        var e = this.t(b)
-        //var d = s[0] * e[1] - e[0] * s[1]
-        return "M" +s[0]+ " " +s[1]+ " A " +r+ " " +r+ ", 0, 0, " +(arcC.d>0?0:1)+ ", " +e[0]+ " " +e[1]
+        update() : void
+        {
+            this.nodes.call(this.updateNode)
+            this.arcs.call(this.updateArc)
+        }
     }
 }

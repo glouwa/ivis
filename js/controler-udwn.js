@@ -1,11 +1,5 @@
 //----------------------------------------------------------------------------------------
 /**
- * der graue kreis mit blauen punkten...
- * is hier aber nicht implementiert weils plexx und d3 gibt...
- *
- * see plexx and d3 implementations
- */
-/**
  * a viewdisk and a navigation disk together.
  * navdisk gets pan state as model
  */
