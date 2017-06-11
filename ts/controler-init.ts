@@ -7,6 +7,11 @@ window.onload = function()
     next(1)
 }
 
+namespace ivis.controler {
+    export var runtimeRoot = {
+    }
+}
+
 /**
  * extensions. set by html selects
  */

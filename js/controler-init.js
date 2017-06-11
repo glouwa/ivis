@@ -4,6 +4,13 @@ window.onload = function () {
     SelectedUnitDisk = eval('ivis.ui.' + name + '.UnitDisk' + name);
     next(1);
 };
+var ivis;
+(function (ivis) {
+    var controler;
+    (function (controler) {
+        controler.runtimeRoot = {};
+    })(controler = ivis.controler || (ivis.controler = {}));
+})(ivis || (ivis = {}));
 /**
  * extensions. set by html selects
  */

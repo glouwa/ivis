@@ -108,11 +108,6 @@ class TreeWithNavigation
 
 //----------------------------------------------------------------------------------------
 
-namespace ivis.init {
-    export var runtimeRoot = {
-    }
-}
-
 namespace ivis.controler
 {
     var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
