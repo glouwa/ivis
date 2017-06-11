@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc -w",
-    "prestart": "npm install && kde-open index.html || gnome-open index.html || chrome index.html || firefox index.html"
+    "start": "node server.js & tsc -w  ",
+    "prestart": "npm install && open http://localhost:8080 || chrome http://localhost:8080 || firefox http://localhost:8080 &"
   },
   "repository": {
     "type": "git",

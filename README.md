@@ -16,6 +16,6 @@ todos:
 - node size transformation interface
 - line transformation interface
 - interaction interface ui-controler
-- multiple focui
+- multiple foci
 
 

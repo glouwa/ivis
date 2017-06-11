@@ -44,7 +44,7 @@ h1 {
 
 .node > circle {
     fill: #BBDEFB; /*#fff59d; gelb*/
-    fill-opacity: .8;
+    //fill-opacity: .8;
     stroke: #888;
     pointer-events: none;
 }
@@ -64,4 +64,12 @@ h1 {
 .link {
     stroke: #ccc;
     pointer-events: none;
+}
+
+.arc {
+    stroke: #ccc;
+    //fill: #eee;
+    fill: none;
+    pointer-events: none;
+    //shape-rendering: optimizeSpeed;
 }

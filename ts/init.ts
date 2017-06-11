@@ -12,11 +12,9 @@ interface N {
     parent:   N,
     children: Array<N>,
     data:     any,
-    depth:    number,
-    x:        number,
-    y:        number,
+    depth:    number,    
     z:        C, // not used jet
-    zprime:   C // not used jet
+    zprime:   C // not used jet. will be just cache
 }
 
 /**
@@ -46,57 +44,14 @@ interface TreeWithNavigationConfig
     dataloader:  LoaderFunction,
     navData:     N,
     layout:      LayoutFunction,
-    t:           (n:N) => R2
-    onDragStart: (m:R2)  => void,
-    onDrag:      (m:R2)  => void,
-    //onDragθ:     (m:R2)  => void,
+    t:           (n:N) => C
+    onDragStart: (m:C) => void,
+    onDrag:      (m:C) => void,
+    //onDragθ:   (m:C) => void,
 
     pos:        [number, number],
     clip?:      boolean
 }
-
-//----------------------------------------------------------------------------------------
-
-type R2 = { x:number, y:number }
-type Ck = { re:number, im:number }
-type Cp = { θ:number, r:number }
-type C = Ck
-
-var R2assignR2 = (a, b)=>        { a.x=b.x;                         a.y=b.y; }
-var CassignR2 = (a, b)=>         { a.re=b.x;                        a.im=b.y; }
-
-var R2toArr = (p:R2)=>           ([ p.x,                            p.y ])
-var R2toC =   (p:R2)=>           ({ re:p.x,                         im:p.y })
-var R2neg =   (p:R2)=>           ({ x:-p.x,                         y:-p.y })
-var R2addR2 = (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
-var R2subR2 = (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
-var R2mulR =  (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
-var R2divR =  (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
-
-var CtoArr =  (p:C)=>            ([ p.re,                           p.im ])
-var CtoR2 =   (p:C)=>            ({ x:p.re,                         y:p.im })
-var Cneg =    (p:C)=>            ({ re:-p.re,                       im:-p.im })
-var Ccon =    (p:C)=>            ({ re:p.re,                        im:-p.im })
-var CaddC =   (a:C, b:C)=>       ({ re:a.re + b.re,                 im:a.im + b.im })
-var CaddR =   (a:C, s:number)=>  ({ re:a.re + s,                    im:a.im })
-var CsubC =   (a:C, b:C)=>       ({ re:a.re - b.re,                 im:a.im - b.im })
-var CmulR =   (p:C, s:number)=>  ({ re:p.re * s,                    im:p.im * s })
-var CmulC =   (a:C, b:C)=>       ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
-var CdivC =   (a:C, b:C)=>       {
-                                    var r = {
-                                        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-                                        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
-                                    }
-                                    //if (isNaN(r.re) || isNaN(r.im)) return { re:0, im:0 }
-                                    if (isNaN(r.re) {r.re = 0; console.log('r.re=NaN') }
-                                    if (isNaN(r.im) {r.im = 0; console.log('r.im=NaN') }
-                                    return r
-                                 }
-
-var CktoCp =  (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
-var CptoCk =  (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
-
-function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
 
 //----------------------------------------------------------------------------------------
 
@@ -143,21 +98,23 @@ class TreeWithNavigation
     {
         this.view = new SelectedUnitDisk({ // view disk
             data:        this.data,
-            transform:   (n:N) => this.args.t(n),
-            onDragStart: this.args.onDragStart,
-            onDrag:      (m:R2) => this.args.onDrag(m),
+            transform:   (n:N) => CtoR2(this.args.t(n)),
+            transformR:  (n:N) => this.nodeR(CtoR2(this.args.t(n))),
+            onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
+            onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
 
             parent:      null,
             pos:         ArrAddR(this.args.pos, 240),
             radius:      200,
-            nodeRadius:  7,
+            nodeRadius:  8,
             clip:        this.args.clip
         })
 
         var navR = 55
         var navbg = new SelectedUnitDisk({ // navigation disk background
             data:        this.data,
-            transform:   (n:N) => n,
+            transform:   (n:N) => CtoR2(n.z),
+            transformR:  (n:N) => 1,
             onDragStart: (m:R2) => {},
             onDrag:      (m:R2) => {},
 
@@ -170,9 +127,10 @@ class TreeWithNavigation
 
         this.nav = new SelectedUnitDisk({ // navigation disk with transformation parameters as nodes
             data:        this.navData,
-            transform:   (n:N) => (n),
-            onDragStart: this.args.onDragStart,
-            onDrag:      (m:R2) => this.args.onDrag((m)),
+            transform:   (n:N) => CtoR2(n),
+            transformR:  (n:N) => 1,
+            onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
+            onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
 
             parent:      null,
             pos:         ArrAddR(this.args.pos, navR),
@@ -182,6 +140,14 @@ class TreeWithNavigation
             clip:        false
         })        
     }
+
+    private nodeR(np:R2)
+    {
+        var r = Math.sqrt(np.x*np.x + np.y*np.y)
+        if (r > 1)
+            r = 1
+        return Math.sin(Math.acos(r))
+    }
 }
 
 //----------------------------------------------------------------------------------------
@@ -190,7 +156,7 @@ interface T { P:C, θ:C }
 function makeT(a, b) { return { P:a, θ:b }}
 
 var one = { re:1, im:0 }
-var o = { v:{ x:0, y:0 } }
+var o   = { v:{ re:0, im:0 } }
 var h:T = { P:{ re:0, im:0 }, θ:one }
 
 /**
@@ -206,26 +172,25 @@ function init() {
     var dSTo = null // drag start transformation offset
     var dSTh = null // drag start transformation hyperbolic origin preseving
 
+    function updateTransformation(newP)
+    {
+        CassignC(h.P, newP)
+        CassignC(o.v, newP)
+        offsetTwn.update()
+        hyperbolicTwn.update()
+    }
+
     var offsetTwn = new TreeWithNavigation({
         dataloader:  selectedDataLoader,
-        navData:     obj2data(o, x=>x),
+        navData:     obj2data(o),
         layout:      selectedLayout,
-        t:           (n:N) => R2addR2(n, o.v),
-        onDragStart: (m:R2) => {
-                          dSP = m
-                          dSTo = clone(o)
-                          dSTh = clone(h)
-                     },
-        onDrag:      (m:R2) => {
-                          var dragVector = R2subR2(m, dSP)
-                          var newP = R2addR2(CtoR2(dSTh.P), dragVector)
-                          var newV = newP //R2addR2(dSTo.v, dragVector)
-
-                          R2assignR2(h.P, newP) // x,y wird als position der nav nodes verwendet
-                          CassignR2(h.P, newP)  // re,im als parameter für die transformation
-                          R2assignR2(o.v, newV)
-                          offsetTwn.update()
-                          hyperbolicTwn.update()
+        t:           (n:N) => CaddC(n.z, o.v),
+        //circleT:     (n:N) => 4
+        //lineT:       (n1:N,n1:N) => [n1, n2]
+        onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
+        onDrag:      (m:C) => {
+                          var dragVector = CsubC(m, dSP)                          
+                          updateTransformation(CaddC(dSTh.P, dragVector))
                      },
         parent:      uiRoot,
         pos:         [25,30],
@@ -234,38 +199,26 @@ function init() {
 
     var hyperbolicTwn = new TreeWithNavigation({
         dataloader:  selectedDataLoader,
-        navData:     obj2data(h, x=>CtoR2(x)),
+        navData:     obj2data(h),
         layout:      selectedLayout,
-        t:           (n:N) => CtoR2(h2e(h, R2toC(n))),
-        onDragStart: (m:R2) => {
-                          dSP = m
-                          dSTo = clone(o)
-                          dSTh = clone(h)
-                     },
-        onDrag:      (m:R2) => {
-                          var newT = compose(dSTh, shift(R2toC(dSP), R2toC(m)))
-                          var newP = CtoR2(newT.P)
-                          var newV = newP
-
-                          console.assert(CsubC(CmulC(h.θ, one), CmulC(CmulC(newP, Ccon(newP)),h.θ)) != 0)
-
-                          R2assignR2(h.P, newP)
-                          CassignR2(h.P, newP)
-                          R2assignR2(o.v, newV)
-                          offsetTwn.update()
-                          hyperbolicTwn.update()
+        t:           (n:N) => h2e(h, n.z),
+        onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
+        onDrag:      (m:C) => {                          
+                          var mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
+                          updateTransformation(compose(dSTh, shift(dSP, m)).P)
                      },
         parent:      uiRoot,
         pos:         [525,30],
     })
 }
 
+//----------------------------------------------------------------------------------------
+
 function h2e(t:T, z:C) : C
 {
     var oben = CaddC(CmulC(t.θ, z), t.P)
-    var unten = CaddR(CmulC(CmulC(Ccon(t.P), t.θ), z), 1)
-    var zprime = CdivC(oben, unten)
-    return zprime
+    var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one)
+    return CdivC(oben, unten)
 }
 
 function e2h(t:T, z:C) : C
@@ -279,15 +232,14 @@ function compose(t1:T, t2:T) : T
 {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one)
     var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
-    var θp = CktoCp(θ)
-    θp.r = 1
+    var θp = CktoCp(θ); θp.r = 1
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
         θ: CptoCk(θp)
     })
 }
 
-function shift(s:C, e:C)
+function shift(s:C, e:C) : T
 {
     var p = h2e(h, { re:0, im:0 })
     var a = h2e(makeT(Cneg(p), one), s)
@@ -299,4 +251,96 @@ function shift(s:C, e:C)
         im: CmulC(esuba, CsubC(one, aec)).im / divisor
     }
     return compose(makeT(Cneg(p), one), makeT(b, one))
+}
+
+function arcCenter(a:C, b:C) // asuming a,b are in euclidien space
+{
+    var d = a.re * b.im - b.re * a.im
+    var br = CktoCp(b).r
+    var ar = CktoCp(a).r
+    var numerator = CsubC(CmulR(a, (1 + br*br)), CmulR(b, (1 + ar*ar)))
+    return { c:CmulC({ re:0, im:1 }, CdivR(numerator, 2*d)), d:d }
+}
+
+//----------------------------------------------------------------------------------------
+
+type R2 = { x:number, y:number }
+type Ck = { re:number, im:number }
+type Cp = { θ:number, r:number }
+type C  = Ck
+
+var R2toArr =     (p:R2)=>           ([ p.x,                            p.y ])
+var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; }
+var R2toC =       (p:R2)=>           ({ re:p.x,                         im:p.y })
+var R2neg =       (p:R2)=>           ({ x:-p.x,                         y:-p.y })
+var R2addR2 =     (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
+var R2subR2 =     (a:R2, b:R2)=>     ({ x:a.x - b.x,                    y:a.y - b.y })
+var R2mulR =      (p:R2, s:number)=> ({ x:p.x * s,                      y:p.y * s })
+var R2divR =      (p:R2, s:number)=> ({ x:p.x / s,                      y:p.y / s })
+
+var CktoCp =      (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.sqrt(k.re*k.re + k.im*k.im) })
+var CptoCk =      (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
+
+var CktoArr =     (p:Ck)=>           ([ p.re,                           p.im ])
+var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; }
+var CktoR2 =      (p:Ck)=>           ({ x:p.re,                         y:p.im })
+var Ckneg =       (p:Ck)=>           ({ re:-p.re,                       im:-p.im })
+var Ckcon =       (p:Ck)=>           ({ re:p.re,                        im:-p.im })
+var CkaddC =      (a:Ck, b:Ck)=>     ({ re:a.re + b.re,                 im:a.im + b.im })
+var CksubCk =     (a:Ck, b:Ck)=>     ({ re:a.re - b.re,                 im:a.im - b.im })
+var CkmulR =      (p:Ck, s:number)=> ({ re:p.re * s,                    im:p.im * s })
+var CkmulCk =     (a:Ck, b:Ck)=>     ({ re:a.re * b.re - a.im * b.im,   im:a.im * b.re + a.re * b.im })
+var Ckpow =       (a:number)=>       ({ re:Math.cos(a),                 im:Math.sin(a) })
+var CkdivR =      (p:Ck, s:number)=> ({ re:p.re / s,                    im:p.im / s })
+var CkdivCk =     (a:Ck, b:Ck)=>     CkdivCkImpl2(a, b)
+var Cklog =       (a:Ck)=>           CptoCk(Cplog(CktoCp(a)))
+
+
+var CpmulCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r*b.r * Math.cos(a.θ+b.θ), im:a.r*b.r * Math.sin(a.θ+b.θ) })
+var CpdivCp =     (a:Cp, b:Cp)=>     CktoCp({ re:a.r/b.r * Math.cos(a.θ-b.θ), im:a.r/b.r * Math.sin(a.θ-b.θ) })
+var Cplog =       (a:Cp)=>           CplogImpl(a)
+var CtoArr =      CktoArr
+var CassignC =    CkassignCk
+var CtoR2 =       CktoR2
+var Cneg =        Ckneg
+var Ccon =        Ckcon
+var CaddC =       CkaddC
+var CsubC =       CksubCk
+var CmulR =       CkmulR
+var CmulC =       CkmulCk
+var Cpow =        Ckpow
+var Clog =        Cklog
+var CdivC =       CkdivCk
+var CdivR =       CkdivR
+
+var ArrtoC =      (p:number[])=>     ({ re:p[0],                        im:p[1] })
+function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
+
+function CkdivCkImpl(a:Ck, b:Ck)
+{
+    var r = {
+        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
+        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+    }
+    if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
+    if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
+    return r
+}
+
+function CkdivCkImpl2(a:Ck, b:Ck)
+{
+    var ap = CktoCp(a)
+    var bp = CktoCp(b)
+    return {
+        re:ap.r/bp.r * Math.cos(ap.θ-bp.θ),
+        im:ap.r/bp.r * Math.sin(ap.θ-bp.θ)
+    }
+}
+
+function CplogImpl(a:Cp)
+{
+    if (isFinite(Math.log(a.r)))
+        return { r:Math.log(a.r), θ:a.θ }
+    else
+        return { r:0, θ:0 }
 }

@@ -1,24 +1,21 @@
 function layoutAtCenter(root) {
-    dfs(root, n=> { n.x=0; n.y=0 })
+    dfs(root, n=> n.z = { re:0, im:0 })
     return root
 }
 
-var unitVectors = [{ x: 1, y: 0 }, { x: 0, y: 1 }, { x:-1, y: 0 }, { x: 0, y:-1 }]
+var unitVectors = [{ re:1, im:0 }, { re:0, im:1 }, { re:-1, im:0 }, { re:0, im:-1 }]
 function layoutUnitVectors(root) {
-    var some = [{ x: 0, y: 0 }].concat(unitVectors)
+    var some = [{ re:0, im:0 }].concat(unitVectors)
     var i=0
     dfs(root, n=> {
-        //n.z = { re:some[i%some.length].x, im:some[i%some.length].y }
-        n.x=some[i%some.length].x;
-        n.y=some[i%some.length].y;
+        n.z = { re:some[i%some.length].re, im:some[i%some.length].im }
         i++
     })
     return root
 }
 
 function layoutUnitLines(root) {
-    root.x = 0
-    root.y = 0
+    root.z = { re:0, im:0 }
     for (var i=0; i<4; i++)
         layoutPath(root.children[i], unitVectors[i], root.children[i].height)
 
@@ -29,8 +26,7 @@ function layoutUnitLines(root) {
         var rt = r=> pa + r * (1-pa)
         dfs(pathBegin, n=> {
             var r = i/depth
-            n.x = rt(r) * target.x
-            n.y = rt(r) * target.y
+            n.z = { re:rt(r) * target.re, im:rt(r) * target.im }
             i++
         })
     }
@@ -44,8 +40,7 @@ function layoutSpiral(root) {
     for (var i=0; i < nrN; i++) {
         var a = i/nrN * 2*Math.PI * (nrRounds+1)
         var r = Math.pow(2, i/nrN)-1
-        flatNodes[i].x = r*Math.cos(a)
-        flatNodes[i].y = r*Math.sin(a)
+        flatNodes[i].z = { re:r*Math.cos(a), im:r*Math.sin(a) }
     }
     return root
 }
@@ -54,30 +49,17 @@ function layoutRadial(root) {
     root = d3.tree().size([2 * Math.PI, 0.9])(root)
     dfs(root, n=> {
         var a = n.x - Math.PI/2
-        n.x = n.y * Math.cos(a)
-        n.y = n.y * Math.sin(a)        
+        n.z = { re:n.y * Math.cos(a), im:n.y * Math.sin(a) }
     })    
     return root
 }
-
-function Cplog(a:Cp):Cp {
-    if (isFinite(Math.log(a.r)))
-        return { r:Math.log(a.r), θ:a.θ }
-    else
-        return { r:0, θ:0 }
-
-    //return { r:isFinite(Math.log(a.r))?Math.log(a.r):0, θ:a.θ }
-}
-function Cklog(a:Ck):Ck { return CptoCk(Cplog(CktoCp(a))) }
-function Cpow(a:number):C { return { re:Math.cos(a), im:Math.sin(a) }}
 
 function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, α:2*Math.PI }) {
 
     console.log('--------------------------------------------------------', n.depth)
     console.log(wedge.p, wedge.m, wedge.α)
 
-    n.x = wedge.p.re    
-    n.y = wedge.p.im
+    n.z = wedge.p
 
     if (n.children) {
         for (var i=0; i < n.children.length; i++) {
@@ -100,7 +82,7 @@ function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, α:2*
             var nm = h2e(makeT(Cneg(np), one), h2e(makeT(wedge.p, one), wedge.m))
             console.log('nm',nm)
 
-            var nα = Cklog(h2e(makeT({ re:-d, im:0 }, one), Cpow(cα))).im
+            var nα = Clog(h2e(makeT({ re:-d, im:0 }, one), Cpow(cα))).im
             console.assert(isFinite(nα))
 
             var subwedge = { p:np, m:nm, α:nα }
