@@ -108,7 +108,7 @@ class TreeWithNavigation
 
 //----------------------------------------------------------------------------------------
 
-namespace ivis.controler
+namespace ivis.controller
 {
     var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
     var h:T = { P:{ re:0, im:0 }, θ:one }

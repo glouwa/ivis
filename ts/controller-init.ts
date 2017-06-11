@@ -7,7 +7,7 @@ window.onload = function()
     next(1)
 }
 
-namespace ivis.controler {
+namespace ivis.controller {
     export var runtimeRoot = {
     }
 }
@@ -33,7 +33,7 @@ function setRenderer(name)
     if (name.endsWith("Dbg")) name = name.slice(0, -3)
     SelectedUnitDisk = eval('UnitDisk' + name)
     resetDom()
-    ivis.controler.init()
+    ivis.controller.init()
 }
 
 function setDataSource(name, reset=true)
@@ -41,7 +41,7 @@ function setDataSource(name, reset=true)
     selectedDataLoader = eval('ivis.loaders.'+name)
     if (reset) {
         resetDom()
-        ivis.controler.init()
+        ivis.controller.init()
     }
 }
 
@@ -49,7 +49,7 @@ function setLayout(name)
 {
     selectedLayout = eval('ivis.layouts.'+name)
     resetDom()
-    ivis.controler.init()
+    ivis.controller.init()
 }
 
 //----------------------------------------------------------------------------------------
