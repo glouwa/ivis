@@ -105,7 +105,4 @@ var star3 = ok => star(ok, 500);
 var path1 = ok => path(ok, 50);
 var path2 = ok => path(ok, 500);
 var path3 = ok => path(ok, 5000);
-var d3csvFlare = ok => d3csv(ok, "flare.csv");
-var jsonConst = ok => json(ok, "{}");
-const jsonFilePath = ""; //TODO: get user selected path here - then uncomment next line
-//let jsonFile = new Tree(jsonFilePath);
+var d3csvFlare = ok => d3csv(ok, "data/flare.csv");

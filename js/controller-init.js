@@ -1,27 +1,16 @@
-//----------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------
-function dfs(n, fpre, idx = 0) {
-    if (fpre)
-        fpre(n, idx);
-    if (n.children)
-        for (var i = 0; i < n.children.length; i++)
-            dfs(n.children[i], fpre, i);
-}
-function dfsFlat(n, f) {
-    var r = [];
-    dfs(n, n => { if (!f || f(n))
-        r.push(n); });
-    return r;
-}
-function clone(o) {
-    return JSON.parse(JSON.stringify(o));
-}
-//----------------------------------------------------------------------------------------
 window.onload = function () {
-    selectedInitUi = eval('init' + document.getElementById("rendererSelect").value);
-    SelectedUnitDisk = eval('UnitDisk' + document.getElementById("rendererSelect").value);
+    var name = document.getElementById("rendererSelect").value;
+    selectedInitUi = eval('ivis.ui.' + name + '.init' + name);
+    SelectedUnitDisk = eval('ivis.ui.' + name + '.UnitDisk' + name);
     next(1);
 };
+var ivis;
+(function (ivis) {
+    var controller;
+    (function (controller) {
+        controller.runtimeRoot = {};
+    })(controller = ivis.controller || (ivis.controller = {}));
+})(ivis || (ivis = {}));
 /**
  * extensions. set by html selects
  */
@@ -34,30 +23,33 @@ function resetDom() {
     document.getElementById("ivis-canvas-debug-panel").innerText = '';
 }
 function setRenderer(name) {
-    selectedInitUi = eval('init' + name);
+    selectedInitUi = eval('ivis.ui.' + name + '.init' + name);
     if (name.endsWith("Dbg"))
         name = name.slice(0, -3);
     SelectedUnitDisk = eval('UnitDisk' + name);
     resetDom();
-    init();
+    ivis.controller.init();
 }
 function setDataSource(name, reset = true) {
-    selectedDataLoader = eval(name);
+    selectedDataLoader = eval('ivis.loaders.' + name);
     if (reset) {
         resetDom();
-        init();
+        ivis.controller.init();
     }
 }
 function setLayout(name) {
-    selectedLayout = eval(name);
+    selectedLayout = eval('ivis.layouts.' + name);
     resetDom();
-    init();
+    ivis.controller.init();
 }
 //----------------------------------------------------------------------------------------
 var slide = -1;
 var slides = [
-    { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
+    { ds: 'code', ls: 'layoutRadial', name: "Code (modules)" },
+    { ds: 'code', ls: 'layoutRadial', name: "Code (class hierarchy)" },
+    { ds: 'code', ls: 'layoutRadial', name: "viewmodel " },
     { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
+    { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
     { ds: 'nTree', ls: 'layoutRadial', name: "Full tree. Nodes on unit circle. |Tree| = 5³ -1 = 124" },
     { ds: 'star1', ls: 'layoutRadial', name: "Unit vectors, almost" },
     { ds: 'star1', ls: 'layoutUnitVectors', name: "Unit vectors " },

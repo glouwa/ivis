@@ -4,110 +4,100 @@
         - reads the file containing a json tree representation
         - creates a tree hierarchy based on the data
  */
-/*
- * node:
-      must be in json file
-      - id (unique)
-      - parent
-      - children
-
-      are optional or not contained in json file
-      - name
-      - cx, cy
-      - radius, theta
-      - weight
-        - get a weight function and apply it to all elements -> if weight is undefined in child - call weight funciton on child, then finish parent weight computation
-
- *
- */
-import * as fs from 'file-system';
 class MissingFieldError extends Error {
     constructor(field) {
         super(field);
         this.fieldname = field;
     }
 }
-class Node {
+class TreeNode {
     constructor() {
-        //additional fields:
-        this.cx = null;
-        this.cy = null;
-        this.radius = null;
-        this.theta = null;
-        this.weight = null;
-        //fields for quick access:
-        this.parentRef = null;
-        this.childrenRef = null;
+        this.children = null;
+        //optional fields:
+        this.parent = null;
     }
     deserialize(input) {
         Object.assign(this, input);
         if (!this.hasOwnProperty('id')) {
             throw new MissingFieldError('id');
         }
-        if (!this.hasOwnProperty('parent')) {
-            throw new MissingFieldError('parent');
-        }
+        console.log('deserialize ' + this.id);
         if (!this.hasOwnProperty('children')) {
             throw new MissingFieldError('children');
         }
+        this.parent = null;
         if (!this.hasOwnProperty('name')) {
             this.name = '';
         }
+        this.weight = null;
         return this;
     }
     getParent() {
-        return this.parentRef;
+        return this.parent;
     }
     getChildren() {
-        return this.childrenRef;
+        return this.children;
+    }
+    setParent(parent) {
+        //console.log('setParent ' + parent.getId() + ' of node ' + this.getId());
+        this.parent = parent;
+    }
+    addChild(child) {
+        //console.log('addChild ' + child.getId() + ' to node ' + this.getId());
+        if (this.children.indexOf(child) == -1)
+            this.children.push(child);
+    }
+    getId() {
+        return this.id;
+    }
+    getChildCount() {
+        let count = 0;
+        this.children.forEach((child) => {
+            //count += child.getChildCount();
+        });
+        return count;
     }
 }
-export class Tree {
-    constructor(filepath) {
-        fs.readFileSync(filepath, (err, data) => {
-            if (err) {
-                console.log('problem with opening json file: ' + err.toString());
-            }
-            else {
-                let json = JSON.parse(data);
-                console.log(data);
+class Tree {
+    constructor(ok, filepath) {
+        this.tree_ = [];
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', filepath, true);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let json = JSON.parse(xhr.responseText);
                 try {
-                    this.tree_ = data.map(node => new Node().deserialize(node));
+                    let _this = this;
+                    this.setupTreeHierarchy(json, null);
+                    console.log(this.tree_);
+                    ok(this.tree_[0]);
                 }
                 catch (e) {
-                    console.log("Invalid JSON input file.");
+                    console.log("Invalid JSON data file.");
+                    console.log(e);
                 }
-                this.addReferences();
+            }
+        };
+        xhr.send();
+    }
+    setupTreeHierarchy(json, parent) {
+        json.forEach((obj) => {
+            let node = new TreeNode().deserialize(obj);
+            let children = node.getChildren();
+            if (children !== null) {
+                this.setupTreeHierarchy(children, node);
+            }
+            if (parent !== null) {
+                node.setParent(parent);
+                parent.addChild(node);
+            }
+            else {
+                this.tree_.push(node);
             }
         });
-        /*
-        fetch(filepath).then(function(response) {
-          return response.json();
-        }).then(function(data) {
-          console.log(data);
-          try {
-            this.tree_ = data.map(node => new Node().deserialize(node));
-          } catch(e) {
-            console.log("Invalid JSON input file.");
-          }
-    
-          this.tree_.sort((nodeA : Node, nodeB : Node) => {
-            if (nodeA.id < nodeB.id)
-              return true;
-            return false;
-          });
-    
-          this.addReferences();
-        });*/
     }
     getNodeById(id) {
         return this.tree_.find((node) => (node.id == id));
-    }
-    addReferences() {
-        this.tree_.forEach((node) => {
-            node.parentRef = node.parent ? this.getNodeById(node.parent) : null;
-            node.childrenRef = node.children ? node.children.map(childId => this.getNodeById(childId)) : null;
-        });
     }
     computeWeight(callback) {
         this.tree_.forEach((node) => callback(node));
@@ -116,8 +106,19 @@ export class Tree {
         return this.tree_.find((node) => (node.parent == null));
     }
     getNodeCount() {
-        return this.tree_.length;
+        let count = 0;
+        this.tree_.forEach((node) => {
+            count += node.getChildCount();
+        });
+        return count;
+    }
+    getTree() {
+        //console.log('getTree' + this.getNodeCount());
+        return this.tree_;
     }
 }
-//TODO: 
-//  - index.html in js/ dir -> make it app dir -> should not access node_modules,...
+//TODO: get it working with JSON
+//test all functions with JSON
+//implement SKOS, TREEML
+//implement treeoflife
+//implement file system

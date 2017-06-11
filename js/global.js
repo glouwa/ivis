@@ -1,123 +1,22 @@
-/**
- * Created by julian on 31.05.17.
- */
-/**
- * a viewdisk and a navigation disk together.
- * navdisk gets pan state as model
- */
-class TreeWithNavigation {
-    constructor(args) {
-        this.args = args;
-        this.navData = args.navData,
-            args.dataloader(d3h => {
-                this.data = args.layout(d3.hierarchy(d3h)); // data ok. calc init layout
-                this.create();
-            });
-    }
-    update() {
-        this.nav.update();
-        this.view.update();
-    }
-    create() {
-        this.view = new SelectedUnitDisk({
-            data: this.data,
-            transform: (n) => CtoR2(this.args.t(n)),
-            transformR: (n) => this.nodeR(CtoR2(this.args.t(n))),
-            onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-            onDrag: (m) => this.args.onDrag(R2toC(m)),
-            parent: null,
-            pos: ArrAddR(this.args.pos, 240),
-            radius: 200,
-            nodeRadius: 8,
-            clip: this.args.clip
-        });
-        var navR = 55;
-        var navbg = new SelectedUnitDisk({
-            data: this.data,
-            transform: (n) => CtoR2(n.z),
-            transformR: (n) => 1,
-            onDragStart: (m) => { },
-            onDrag: (m) => { },
-            parent: null,
-            pos: ArrAddR(this.args.pos, navR),
-            radius: navR,
-            nodeRadius: 2,
-            clip: true
-        });
-        this.nav = new SelectedUnitDisk({
-            data: this.navData,
-            transform: (n) => CtoR2(n),
-            transformR: (n) => 1,
-            onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-            onDrag: (m) => this.args.onDrag(R2toC(m)),
-            parent: null,
-            pos: ArrAddR(this.args.pos, navR),
-            opacity: .8,
-            radius: navR,
-            nodeRadius: 7,
-            clip: false
-        });
-    }
-    nodeR(np) {
-        var r = Math.sqrt(np.x * np.x + np.y * np.y);
-        if (r > 1)
-            r = 1;
-        return Math.sin(Math.acos(r));
-    }
+//----------------------------------------------------------------------------------------
+function dfs(n, fpre, idx = 0) {
+    if (fpre)
+        fpre(n, idx);
+    if (n.children)
+        for (var i = 0; i < n.children.length; i++)
+            dfs(n.children[i], fpre, i);
+}
+function dfsFlat(n, f) {
+    var r = [];
+    dfs(n, n => { if (!f || f(n))
+        r.push(n); });
+    return r;
+}
+function clone(o) {
+    return JSON.parse(JSON.stringify(o));
 }
 function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };
-var o = { v: { re: 0, im: 0 } };
-var h = { P: { re: 0, im: 0 }, θ: one };
-/**
- * create a euclidien and a hyperbolic tree view
- * same data
- * same initial layout
- * different states and
- */
-function init() {
-    var uiRoot = selectedInitUi();
-    var dSP = null; // drag start point
-    var dSTo = null; // drag start transformation offset
-    var dSTh = null; // drag start transformation hyperbolic origin preseving
-    function updateTransformation(newP) {
-        CassignC(h.P, newP);
-        CassignC(o.v, newP);
-        offsetTwn.update();
-        hyperbolicTwn.update();
-    }
-    var offsetTwn = new TreeWithNavigation({
-        dataloader: selectedDataLoader,
-        navData: obj2data(o),
-        layout: selectedLayout,
-        t: (n) => CaddC(n.z, o.v),
-        //circleT:     (n:N) => 4
-        //lineT:       (n1:N,n1:N) => [n1, n2]
-        onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
-        onDrag: (m) => {
-            var dragVector = CsubC(m, dSP);
-            updateTransformation(CaddC(dSTh.P, dragVector));
-        },
-        parent: uiRoot,
-        pos: [25, 30],
-        clip: true
-    });
-    var hyperbolicTwn = new TreeWithNavigation({
-        dataloader: selectedDataLoader,
-        navData: obj2data(h),
-        layout: selectedLayout,
-        t: (n) => h2e(h, n.z),
-        onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
-        onDrag: (m) => {
-            var mp = CktoCp(m);
-            mp.r = mp.r > 1 ? .95 : mp.r;
-            m = CptoCk(mp);
-            updateTransformation(compose(dSTh, shift(dSP, m)).P);
-        },
-        parent: uiRoot,
-        pos: [525, 30],
-    });
-}
 //----------------------------------------------------------------------------------------
 function h2e(t, z) {
     var oben = CaddC(CmulC(t.θ, z), t.P);
@@ -139,7 +38,7 @@ function compose(t1, t2) {
         θ: CptoCk(θp)
     });
 }
-function shift(s, e) {
+function shift(h, s, e) {
     var p = h2e(h, { re: 0, im: 0 });
     var a = h2e(makeT(Cneg(p), one), s);
     var esuba = CsubC(e, a);

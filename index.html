@@ -10,11 +10,13 @@
 
     <script type="text/javascript" src="js/lib/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="js/tree.js"></script>
-    <script type="text/javascript" src="js/init.js"></script>
-    <script type="text/javascript" src="js/tools.js"></script>
-    <script type="text/javascript" src="js/layouts.js"></script>
-    <script type="text/javascript" src="js/loaders.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/controller-init.js"></script>
+    <script type="text/javascript" src="js/controller-interact.js"></script>
+    <script type="text/javascript" src="js/controller-layouts.js"></script>
+    <script type="text/javascript" src="js/model-loaders.js"></script>
+    <script type="text/javascript" src="js/model-tree.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="js/ui-d3.js"></script>
     <script type="text/javascript" src="js/ui-plexx.js"></script>
 </head>
@@ -37,6 +39,7 @@
     <select id="dataSourceSelect" onchange="setDataSource(this.value)">
       <option value="d3csvFlare">flare.csv (d3)</option>
       <option value="oneNode">Only root 1</option>
+      <option value="code">Code</option>
       <option value="star1">⋆ Star 1+4</option>
       <option value="deepStar">⋆ Star 4✕50</option>
       <option value="path2">⊶ Path 500</option>
@@ -50,12 +53,12 @@
       <option value="jsonFile">basicTree.json</option>
     </select>
 
-    <select id="layoutSelect" onchange="setLayout(this.value)">
-      <option value="layoutRadial">Reingold-Tilford</option>
+    <select id="layoutSelect" onchange="setLayout(this.value)">      
+      <option value="layoutHyperbolic">Wedge</option>
+      <option value="layoutRadial">Reingold-Tilford</option>      
       <option value="layoutSpiral">DFS spiral</option>
       <option value="layoutUnitVectors">Unit vectors</option>
-      <option value="layoutUnitLines">Unit lines</option>
-      <option value="layoutHyperbolic">Wedge</option>
+      <option value="layoutUnitLines">Unit lines</option>      
     </select>
 
     <div id="ivis-canvas-div" class="plexx"></div>

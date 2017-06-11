@@ -43,22 +43,28 @@ h1 {
 }
 
 .node > circle {
-    fill: #BBDEFB; /*#fff59d; gelb*/
+    fill: #a5d6a7;
     //fill-opacity: .8;
     stroke: #888;
     pointer-events: none;
 }
 
 .unitDiscParam .node > circle {
-    fill: #a5d6a7;
+
+    fill: #BBDEFB; /*#fff59d; gelb*/
+}
+
+.unitDiscParam .node > text {
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-size: 13px;    
 }
 
 .node > text {
     pointer-events: none;
-    text-anchor: middle;
+    font-size: 13px;    
     dominant-baseline: central;
-    font-size: 13px;
-    fill: #444;
 }
 
 .link {
