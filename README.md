@@ -22,7 +22,9 @@ todos:
 - wedge layout
 - coole dataloader
 
-- interaction interface ui-controler
+- click, transforamtion interface refactoring
+- init refactoring
+- cache reaftoring
 - multiple foci
 
 

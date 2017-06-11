@@ -9,8 +9,9 @@ namespace ivis.ui
         data:        N,
         transform:   (n:N) => R2,
         transformR:  (n:N) => number
-        onDragStart: (m:R2)  => void,
-        onDrag:      (m:R2)  => void,
+        onDragStart: (m:R2) => void,
+        onDrag:      (m:R2) => void,
+        onClick:     (m:R2) => void,
 
         pos:         [number, number],
         radius:      number,

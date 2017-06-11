@@ -146,7 +146,9 @@ var CdivC =       CkdivCk
 var CdivR =       CkdivR
 
 var ArrtoC =      (p:number[])=>     ({ re:p[0],                        im:p[1] })
+var ArrtoR2 =     (p:number[])=>     ({ x:p[0],                         y:p[1]  })
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
+function ArrDivR(p:[number, number], s:number) : [number,number] { return [ p[0] / s, p[1] / s ] }
 
 function CkdivCkImpl(a:Ck, b:Ck)
 {

@@ -1,9 +1,9 @@
 //----------------------------------------------------------------------------------------
 //import { Tree } from "./tree";
 
-namespace ivis.loaders {
+namespace ivis.model.loaders {
 
-    function path(ok, max) {
+    function path(ok, max) {        
         oneNode(d=> {
             var cur = d
             for (var i=0; i < max; i++) {
@@ -43,13 +43,12 @@ namespace ivis.loaders {
     export var path2 = ok=> path(ok, 500)
     export var path3 = ok=> path(ok, 5000)
     export var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
-    export var jsonConst = ok=> json(ok, "{}");
     export var jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");
 
-    export function nTreeAtFirst(ok, max=10) {
+    export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {
             var cur = d
-            for (var i=0; i<max; i++) {
+            for (var i=0; i < max; i++) {
                 for (var j=0; j<10; j++) {
                     var newN = { parent:d, children:[] }
                     cur.children.push(newN)
@@ -123,7 +122,7 @@ namespace ivis.loaders {
     function type2data(o, name)
     {
         var root = { name:name, children:[] }
-        for (var n in o)
+        for (var n in o)        
             root.children.push(type2data(o[n], n))
 
         return root
@@ -136,13 +135,11 @@ namespace ivis.loaders {
 
     //----------------------------------------------------------------------------------------
 
-    export function oneNode(ok) {
+    function oneNode(ok) {
         ok({
             parent:null,
             children:[],
             data:{}
         })
     }
-
-
 }

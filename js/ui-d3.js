@@ -20,11 +20,10 @@ var ivis;
                     this.updateNode = x => x.attr("transform", d => "translate(" + this.t(d) + ") scale(" + this.tr(d) + ")");
                     this.updateText = x => x.text(d => (d.name ? d.name : (d.data ? (d.data.name ? d.data.name : "") : "")));
                     this.updateArc = x => x.attr("d", d => {
-                        //this.d3arc(d, d.parent)
                         var arcP1 = R2toC(this.args.transform(d));
                         var arcP2 = R2toC(this.args.transform(d.parent));
                         var arcC = arcCenter(arcP1, arcP2);
-                        var r = CktoCp(CsubC(R2toC(this.args.transform(d.parent)), arcC.c)).r * -200;
+                        var r = CktoCp(CsubC(R2toC(this.args.transform(d.parent)), arcC.c)).r * this.args.radius;
                         var d2SvglargeArcFlag = arcC.d > 0 ? '1' : '0';
                         if (isNaN(r))
                             r = 0;
@@ -40,6 +39,10 @@ var ivis;
                         .attr("class", "unitDiscBg")
                         .attr("r", args.radius)
                         .attr("fill-opacity", args.opacity)
+                        .on("click", function () {
+                        var mouseArr = ArrDivR(d3.mouse(this), args.radius);
+                        args.onClick(ArrtoR2(mouseArr));
+                    })
                         .call(d3.drag()
                         .on("start", () => { args.onDragStart(this.ti(d3.event)); this.captions.text(d => ""); })
                         .on("drag", () => args.onDrag(this.ti(d3.event)))

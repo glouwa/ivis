@@ -21,45 +21,18 @@
     <script type="text/javascript" src="js/ui-plexx.js"></script>
 </head>
 
-<body>
+<body onload="ivis.controller.init()">
 
     <h1>Left side and Navigation: <b>z' = z+v</b> &emsp; Right side: <b>z' = h(θ,P)(z)</b></h1>
     <div id="slide">
-        <div id="slideName">1 / 7</div>
-        <button onclick="next(-1)">◄</button><button onclick="next(1)">►</button>
+        <div id="slideName"></div>
+        <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
     </div>
     <div id="selectCaption">Renderer Tree-structure Node-layout</div>
 
-    <select id="rendererSelect" onchange="setRenderer(this.value)">
-      <option value="D3">d3</option>
-      <option value="Plexx">plexx</option>      
-      <option value="PlexxDbg">plexx++</option>
-    </select>
-
-    <select id="dataSourceSelect" onchange="setDataSource(this.value)">
-      <option value="d3csvFlare">flare.csv (d3)</option>
-      <option value="oneNode">Only root 1</option>
-      <option value="code">Code</option>
-      <option value="star1">⋆ Star 1+4</option>
-      <option value="deepStar">⋆ Star 4✕50</option>
-      <option value="path2">⊶ Path 500</option>
-      <option value="nTree">𝕋 5³ -1</option>
-      <option value="nTreeAtFirst">𝕋 1+10✕10</option>
-      <option value="path1">⊶ Path 50</option>
-      <option value="path3">⊶ Path 5000</option>
-      <option value="star2">⋆ Star 1+50</option>
-      <option value="star3">⋆ Star 1+500</option>
-      <option value="jsonConst">flare.json</option>
-      <option value="jsonFile">basicTree.json</option>
-    </select>
-
-    <select id="layoutSelect" onchange="setLayout(this.value)">      
-      <option value="layoutHyperbolic">Wedge</option>
-      <option value="layoutRadial">Reingold-Tilford</option>      
-      <option value="layoutSpiral">DFS spiral</option>
-      <option value="layoutUnitVectors">Unit vectors</option>
-      <option value="layoutUnitLines">Unit lines</option>      
-    </select>
+    <select id="rendererSelect"></select>
+    <select id="dataSourceSelect"></select>
+    <select id="layoutSelect"></select>
 
     <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>
