@@ -90,7 +90,8 @@ var slides = [
     { ds:'path1',        ls:'layoutSpiral',      name:"Path spiral" },
     { ds:'path1',        ls:'layoutRadial',      name:"Line from [0,0] to [1,1]" },
     { ds:'path2',        ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
-    { ds:'nTreeAtFirst', ls:'layoutRadial',      name:"Center is never magnified" }
+    { ds:'nTreeAtFirst', ls:'layoutRadial',      name:"Center is never magnified" },
+    { ds:'jsonFile',     ls:'layoutRadial',      name:"use data from basicTree.json" }
 ]
 function next(d)
 {

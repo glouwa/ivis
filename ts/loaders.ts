@@ -1,6 +1,5 @@
 //----------------------------------------------------------------------------------------
 //import { Tree } from "./tree";
-
 /**
  * spaecial tactics loader for navDisks
  * generates a path containing nodes for each member of 'o'
@@ -114,6 +113,13 @@ function json(ok, jsonStr) {
     ok(JSON.parse(jsonStr))
 }
 
+function loadJsonFile(path : string) : TreeNode[] {
+    console.log('loadJsonFile');
+    let tree = new Tree(path);
+
+    return tree.getTree();
+}
+
 var star1 = ok=> star(ok, 5)
 var star2 = ok=> star(ok, 50)
 var star3 = ok=> star(ok, 500)
@@ -122,5 +128,5 @@ var path2 = ok=> path(ok, 500)
 var path3 = ok=> path(ok, 5000)
 var d3csvFlare = ok=> d3csv(ok, "flare.csv")
 var jsonConst = ok=> json(ok, "{}");
-const jsonFilePath=""; //TODO: get user selected path here - then uncomment next line
-//let jsonFile = new Tree(jsonFilePath);
+const jsonFilePath="app/input/basicTree.json"; //TODO: get user selected path here
+let jsonFile = loadJsonFile(jsonFilePath);
