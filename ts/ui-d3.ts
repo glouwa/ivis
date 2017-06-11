@@ -62,6 +62,7 @@ namespace ivis.ui.D3
                 .enter().append("g")
                     .attr("class", "node")
                     .call(this.updateNode)
+
             this.nodes.append("circle")
                 .attr("r", this.args.nodeRadius)
 

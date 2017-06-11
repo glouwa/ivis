@@ -23,138 +23,143 @@
  */
 //import * as fs from 'file-system';
 
-declare type WeightFunction = (node: Node) => void;
+namespace ivis.model
+{
 
-class MissingFieldError extends Error {
-  fieldname : string;
-  constructor(field: string) {
-    super(field);
-    this.fieldname = field;
-  }
-}
+    declare type WeightFunction = (node: Node) => void;
 
-class Node {
-  //required fields
-  id : number;
-  parent : number;
-  children : number[];
-
-  //optional fields:
-  name? : string;
-
-  //additional fields:
-  cx : number = null;
-  cy : number = null;
-  radius : number = null;
-  theta : number = null;
-  weight : number = null;
-
-  //fields for quick access:
-  parentRef : Node = null;
-  childrenRef : Node[] = null;
-
-  deserialize(input) {
-    Object.assign(this, input);
-
-    if (!this.hasOwnProperty('id')){
-      throw new MissingFieldError('id');
-    }
-    if (!this.hasOwnProperty('parent')) {
-      throw new MissingFieldError('parent');
-    }
-    if (!this.hasOwnProperty('children')) {
-      throw new MissingFieldError('children');
+    class MissingFieldError extends Error {
+      fieldname : string;
+      constructor(field: string) {
+        super(field);
+        this.fieldname = field;
+      }
     }
 
-    if (!this.hasOwnProperty('name')) {
-      this.name = '';
-    }
+    class Node {
+      //required fields
+      id : number;
+      parent : number;
+      children : number[];
 
-    return this;
-  }
+      //optional fields:
+      name? : string;
 
-  getParent() : Node{
-    return this.parentRef;
-  }
+      //additional fields:
+      cx : number = null;
+      cy : number = null;
+      radius : number = null;
+      theta : number = null;
+      weight : number = null;
 
-  getChildren() : Node[]{
-    return this.childrenRef;
-  }
+      //fields for quick access:
+      parentRef : Node = null;
+      childrenRef : Node[] = null;
 
-}
+      deserialize(input) {
+        Object.assign(this, input);
 
-
-
-class Tree {
-  private tree_ : Node[];
-
-  constructor(filepath: string) {
-    fs.readFileSync(filepath, (err, data) => {
-      if (err) {
-        console.log('problem with opening json file: ' + err.toString());
-      } else {
-        let json : string = JSON.parse(data);
-        console.log(data);
-        try {
-          this.tree_ = data.map(node => new Node().deserialize(node));
-        } catch(e) {
-          console.log("Invalid JSON input file.");
+        if (!this.hasOwnProperty('id')){
+          throw new MissingFieldError('id');
+        }
+        if (!this.hasOwnProperty('parent')) {
+          throw new MissingFieldError('parent');
+        }
+        if (!this.hasOwnProperty('children')) {
+          throw new MissingFieldError('children');
         }
 
-        this.addReferences();
-      }
-    });
+        if (!this.hasOwnProperty('name')) {
+          this.name = '';
+        }
 
-
-    /*
-    fetch(filepath).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log(data);
-      try {
-        this.tree_ = data.map(node => new Node().deserialize(node));
-      } catch(e) {
-        console.log("Invalid JSON input file.");
+        return this;
       }
 
-      this.tree_.sort((nodeA : Node, nodeB : Node) => {
-        if (nodeA.id < nodeB.id)
-          return true;
-        return false;
-      });
+      getParent() : Node{
+        return this.parentRef;
+      }
 
-      this.addReferences();
-    });*/
+      getChildren() : Node[]{
+        return this.childrenRef;
+      }
+
+    }
 
 
-  }
 
-  private getNodeById(id : number): Node {
-    return this.tree_.find((node : Node) => (node.id == id));
-  }
+    class Tree {
+      private tree_ : Node[];
 
-  addReferences() {
-    this.tree_.forEach((node : Node) => {
-      node.parentRef = node.parent ? this.getNodeById(node.parent) : null;
-      node.childrenRef = node.children ? node.children.map(childId => this.getNodeById(childId)) : null;
-    });
-  }
+      constructor(filepath: string) {
+        fs.readFileSync(filepath, (err, data) => {
+          if (err) {
+            console.log('problem with opening json file: ' + err.toString());
+          } else {
+            let json : string = JSON.parse(data);
+            console.log(data);
+            try {
+              this.tree_ = data.map(node => new Node().deserialize(node));
+            } catch(e) {
+              console.log("Invalid JSON input file.");
+            }
 
-  computeWeight(callback: WeightFunction) {
-    this.tree_.forEach((node : Node) => callback(node));
-  }
+            this.addReferences();
+          }
+        });
 
-  getRouteNode() {
-    return this.tree_.find((node : Node) => (node.parent == null));
-  }
 
-  getNodeCount() {
-    return this.tree_.length;
-  }
+        /*
+        fetch(filepath).then(function(response) {
+          return response.json();
+        }).then(function(data) {
+          console.log(data);
+          try {
+            this.tree_ = data.map(node => new Node().deserialize(node));
+          } catch(e) {
+            console.log("Invalid JSON input file.");
+          }
 
+          this.tree_.sort((nodeA : Node, nodeB : Node) => {
+            if (nodeA.id < nodeB.id)
+              return true;
+            return false;
+          });
+
+          this.addReferences();
+        });*/
+
+
+      }
+
+      private getNodeById(id : number): Node {
+        return this.tree_.find((node : Node) => (node.id == id));
+      }
+
+      addReferences() {
+        this.tree_.forEach((node : Node) => {
+          node.parentRef = node.parent ? this.getNodeById(node.parent) : null;
+          node.childrenRef = node.children ? node.children.map(childId => this.getNodeById(childId)) : null;
+        });
+      }
+
+      computeWeight(callback: WeightFunction) {
+        this.tree_.forEach((node : Node) => callback(node));
+      }
+
+      getRouteNode() {
+        return this.tree_.find((node : Node) => (node.parent == null));
+      }
+
+      getNodeCount() {
+        return this.tree_.length;
+      }
+
+
+    }
+
+
+    //TODO:
+    //  - index.html in js/ dir -> make it app dir -> should not access node_modules,...
 
 }
-
-
-//TODO: 
-//  - index.html in js/ dir -> make it app dir -> should not access node_modules,...
