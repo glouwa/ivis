@@ -74,6 +74,26 @@ var ivis;
         //----------------------------------------------------------------------------------------
         var o = { v: { re: 0, im: 0 }, α: { re: -1, im: 0, value: 0 }, ζ: { re: 1, im: 0, value: 1 } };
         var h = { P: { re: 0, im: 0 }, θ: one };
+        /*
+            interface Transforamtion
+            {
+                do
+                inverse
+                onmouse down
+                onclick
+                onDrag
+            }
+        
+            interface Twn
+            {
+                parent
+                navData
+                viewData
+                layout
+                navTransformation
+                viewTransformation
+        
+            }*/
         /**
          * create a euclidien and a hyperbolic tree view
          * same data
@@ -90,7 +110,7 @@ var ivis;
                 navData: ivis.model.loaders.obj2data(o),
                 layout: ivis.controller.slide.layout,
                 t: (n) => CaddC(n.z, o.v),
-                onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
+                onDragStart: (m) => { dSP = m; dSTo = clone(o); },
                 onDrag: (m) => {
                     var dragVector = CsubC(m, dSP);
                     var newP = CaddC(dSTo.v, dragVector);
@@ -110,7 +130,7 @@ var ivis;
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
                 t: (n) => h2e(h, n.z),
-                onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
+                onDragStart: (m) => { dSP = m; dSTh = clone(h); },
                 onDrag: (m) => {
                     var mp = CktoCp(m);
                     mp.r = mp.r > 1 ? .95 : mp.r;
@@ -121,7 +141,6 @@ var ivis;
                 },
                 onClick: (m) => {
                     dSP = m;
-                    dSTo = clone(o);
                     dSTh = clone(h);
                     var md = CktoCp(m);
                     var intervall = setInterval(() => {

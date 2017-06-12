@@ -109,6 +109,15 @@ namespace ivis.controller
 
     var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
     var h:T = { P:{ re:0, im:0 }, θ:one }
+/*
+    interface Transforamtion
+    {
+        do
+        inverse
+        onmouse down
+        onclick
+        onDrag
+    }
 
     interface Twn
     {
@@ -119,7 +128,7 @@ namespace ivis.controller
         navTransformation
         viewTransformation
 
-    }
+    }*/
 
     /**
      * create a euclidien and a hyperbolic tree view
@@ -139,7 +148,7 @@ namespace ivis.controller
             navData:     ivis.model.loaders.obj2data(o),
             layout:      ivis.controller.slide.layout,
             t:           (n:N) => CaddC(n.z, o.v),
-            onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
+            onDragStart: (m:C) => { dSP = m; dSTo = clone(o); },
             onDrag:      (m:C) => {
                               var dragVector = CsubC(m, dSP)
                               var newP = CaddC(dSTo.v, dragVector)
@@ -160,7 +169,7 @@ namespace ivis.controller
             navData:     ivis.model.loaders.obj2data(h),
             layout:      ivis.controller.slide.layout,
             t:           (n:N) => h2e(h, n.z),
-            onDragStart: (m:C) => { dSP = m; dSTo = clone(o); dSTh = clone(h) },
+            onDragStart: (m:C) => { dSP = m; dSTh = clone(h) },
             onDrag:      (m:C) => {
                               var mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
                               var newP = compose(dSTh, shift(h, dSP, m)).P
@@ -168,7 +177,7 @@ namespace ivis.controller
                               hyperbolicTwn.update()
                          },
             onClick:     (m:C) => {
-                              dSP = m; dSTo = clone(o); dSTh = clone(h)
+                              dSP = m; dSTh = clone(h)
                               var md = CktoCp(m)
                               var intervall = setInterval(()=> {
                                   md.r = md.r - 0.05
