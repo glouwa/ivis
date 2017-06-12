@@ -1,4 +1,8 @@
 # ivis
+use:
+npm update
+npm start
+
 
 Every HBPoint in the euclidean represented poincare disk is a complex number (x + iy) with restriction |p| < 1
 

@@ -98,7 +98,7 @@ var ivis;
                     offsetTwn.update();
                 },
                 onClick: (m) => {
-                    CassignC(o.v, Cneg(m));
+                    CassignC(o.v, CsubC(o.v, m));
                     offsetTwn.update();
                 },
                 parent: uiRoot,
@@ -120,9 +120,18 @@ var ivis;
                     hyperbolicTwn.update();
                 },
                 onClick: (m) => {
-                    var newP = compose(dSTh, shift(h, dSP, { re: 0, im: 0 })).P;
-                    CassignC(h.P, newP);
-                    hyperbolicTwn.update();
+                    dSP = m;
+                    dSTo = clone(o);
+                    dSTh = clone(h);
+                    var md = CktoCp(m);
+                    var intervall = setInterval(() => {
+                        md.r = md.r - 0.05;
+                        if (md.r < 0.00001)
+                            clearInterval(intervall);
+                        var newP = compose(dSTh, shift(h, dSP, CptoCk(md))).P;
+                        CassignC(h.P, newP);
+                        hyperbolicTwn.update();
+                    }, 20);
                 },
                 parent: uiRoot,
                 pos: [525, 30],

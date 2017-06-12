@@ -110,6 +110,17 @@ namespace ivis.controller
     var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
     var h:T = { P:{ re:0, im:0 }, θ:one }
 
+    interface Twn
+    {
+        parent
+        navData
+        viewData
+        layout
+        navTransformation
+        viewTransformation
+
+    }
+
     /**
      * create a euclidien and a hyperbolic tree view
      * same data
@@ -136,7 +147,7 @@ namespace ivis.controller
                               offsetTwn.update()
                          },
             onClick:     (m:C) => {
-                              CassignC(o.v, Cneg(m))
+                              CassignC(o.v, CsubC(o.v, m))
                               offsetTwn.update()
                          },
             parent:      uiRoot,
@@ -157,9 +168,17 @@ namespace ivis.controller
                               hyperbolicTwn.update()
                          },
             onClick:     (m:C) => {
-                              var newP = compose(dSTh, shift(h, dSP, { re:0, im:0 })).P
-                              CassignC(h.P, newP)
-                              hyperbolicTwn.update()
+                              dSP = m; dSTo = clone(o); dSTh = clone(h)
+                              var md = CktoCp(m)
+                              var intervall = setInterval(()=> {
+                                  md.r = md.r - 0.05
+                                  if (md.r < 0.00001)
+                                    clearInterval(intervall)
+
+                                  var newP = compose(dSTh, shift(h, dSP, CptoCk(md))).P
+                                  CassignC(h.P, newP)
+                                  hyperbolicTwn.update()
+                              },20)
                          },
             parent:      uiRoot,
             pos:         [525,30],
