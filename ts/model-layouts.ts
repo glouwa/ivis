@@ -1,4 +1,4 @@
-namespace ivis.controller.layouts {
+namespace ivis.model.layouts {
 
     var unitVectors = [{ re:1, im:0 }, { re:0, im:1 }, { re:-1, im:0 }, { re:0, im:-1 }]
     export function layoutUnitVectors(root) {

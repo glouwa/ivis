@@ -8,10 +8,10 @@ namespace ivis.ui
         parent:      any,
         class:       string,
         data:        N,
-        transform:   (n:N) => R2,
+        transform:   (n:N) => C,
         transformR:  (n:N) => number
-        onDragStart: (m:C) => void,
-        onDrag:      (s:C, e:C) => void,
+        onDragStart: (m:C, n:N) => void,
+        onDrag:      (s:C, e:C, n:N) => void,
         onDragEnd:   () => void,
         onClick:     (m:C) => void,
 

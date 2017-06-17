@@ -29,16 +29,10 @@ namespace ivis.controller
         {
             this.args  = args
             this.navData = args.navData,
-            args.dataloader(d3h=> {
+            args.dataloader(d3h => {
                 this.data = args.layout(<N>d3.hierarchy(d3h)) // data ok. calc init layout
                 this.create()
             })
-        }
-
-        updatePositions() : void
-        {
-            this.nav.updatePositions()
-            this.view.updatePositions()
         }
 
         private create() : void
@@ -46,12 +40,13 @@ namespace ivis.controller
             this.view = new ivis.controller.slide.unitDisk({ // view disk
                 class:       'unitDisc',
                 data:        this.data,
-                transform:   (n:N) => CtoR2(this.args.viewTT.transformPoint(n)),
-                transformR:  (n:N) => this.nodeR(CtoR2(this.args.viewTT.transformPoint(n))),
-                onDragStart: (m:C) => this.onDragStart(m, this.args.viewTT),
-                onDrag:      (s:C, e:C) => this.onDrag(s, e, this.args.viewTT),
+                transform:   (n:N) => this.args.viewTT.transformPoint(n),
+                transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.viewTT),
+                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.viewTT),
                 onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C) => this.onClick(m),
+                onClick:     (m:C) => this.onClick(m, this.args.viewTT),
+
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, 240),
                 radius:      200,
@@ -61,12 +56,12 @@ namespace ivis.controller
             })
 
             var navR = 55
-            var navbg = new ivis.controller.slide.unitDisk({ // navigation disk background
+            new ivis.controller.slide.unitDisk({ // navigation disk background
                 class:       'unitDiscParamBg',
                 data:        this.data,
-                transform:   (n:N) => CtoR2(n.z),
+                transform:   (n:N) => n.z,
                 transformR:  (n:N) => 1,
-                onDragStart: (m:C) => {},
+                onDragStart: (m:C, n:N) => {},
                 onDrag:      (s:C, e:C) => {},
                 onDragEnd:   () => {},
                 onClick:     (m:C) => {},
@@ -81,12 +76,13 @@ namespace ivis.controller
             this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
                 class:       'unitDiscParam',
                 data:        this.navData,
-                transform:   (n:N) => CtoR2(n),
+                transform:   (n:N) => n,
                 transformR:  (n:N) => 1,
-                onDragStart: (m:C) => this.onDragStart(m, this.args.navTT),
-                onDrag:      (s:C, e:C) => this.onDrag(s, e, this.args.navTT),
+                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
+                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
                 onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C) => this.onClick(m),
+                onClick:     (m:C) => this.onClick(m, this.args.navTT),
+
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
                 opacity:     .8,
@@ -97,15 +93,22 @@ namespace ivis.controller
             })
         }
 
-        private onDragStart(m:C, tt:TypedependentTransformation) : void
+        private updatePositions() : void
+        {
+            this.nav.updatePositions()
+            this.view.updatePositions()
+        }
+
+        private onDragStart(m:C, n:N, tt:TypedependentTransformation) : void
         {
             this.view.updateCaptions(false)
             tt.onDragStart(m)
         }
 
-        private onDrag(s:C, e:C, tt:TypedependentTransformation) : void
+        private onDrag(s:C, e:C, n:N, tt:TypedependentTransformation) : void
         {
-            tt.onDrag(s, e)
+            var postfix = n?(n.name?n.name:'P'):'P' // n.name bei parameter, n.data.name bei normalen nodes :(
+            tt['onDrag'+postfix](s, e)
             this.updatePositions()
         }
 
@@ -114,24 +117,25 @@ namespace ivis.controller
             this.view.updateCaptions(true)
         }
 
-        private onClick(m:C) : void
+        private onClick(m:C, tt:TypedependentTransformation) : void
         {
-            this.nav.args.onDragStart(m)
+            this.onDragStart(m, null, tt)
             var md = CktoCp(m)
             var intervall = setInterval(()=> {
                 md.r = md.r - 0.05
                 if (md.r < 0.00001) {
-                   this.nav.args.onDragEnd()
+                   this.onDragEnd()
                    clearInterval(intervall)
                 }
-                else
-                   this.nav.args.onDrag(m, CptoCk(md))
+                else {
+                   this.onDrag(m, CptoCk(md), null, tt)
+                }
             },20)
         }
 
-        private nodeR(np:R2) : number
+        private nodeR(np:C) : number
         {
-            var r = Math.sqrt(np.x*np.x + np.y*np.y)
+            var r = Math.sqrt(np.re*np.re + np.im*np.im)
             if (r > 1)
                 r = 1
             return Math.sin(Math.acos(r))
@@ -144,63 +148,69 @@ namespace ivis.controller
     {
         transformPoint: (n:N) => C,
         onDragStart:    (m:C) => void,
-        onDrag:         (s:C, e:C) => void
+        onDragP:        (s:C, e:C) => void,
+        onDragθ:        (s:C, e:C) => void
     }
 
-    var h:T = { P:{ re:0, im:0 }, θ:one }
     class HyperbolicTransformation implements TypedependentTransformation
     {
+        tp : any
         dST : any
-        public transformPoint(n:N) { return h2e(h, n.z) }
-        public onDragStart(m:C)    { this.dST = clone(h) }
-        public onDrag(s:C, e:C)    {
-            var mp = CktoCp(e); mp.r = mp.r>.95?.95:mp.r; e = CptoCk(mp)
-            var newP = compose(this.dST, shift(h, s, e)).P
-            CassignC(h.P, newP)
-        }
-        //onDragθ:   (m:C) => void,
-        //onDragP:   (m:C) => void,
+        constructor(tp)  { this.tp = tp }
+        transformPoint = (n:N) => h2e(h, n.z)
+        onDragStart =    (m:C) => this.dST = clone(this.tp)
+        onDragP =        (s:C, e:C) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P)
+        onDragθ:         (s:C, e:C) => {}
     }
 
-    var o   = { Δ:{ re:0, im:0 }, φ:{ re:-1, im:0, value:0 }, λ:{ re:1, im:0, value:1 } }
     class StandardPanAndZoomTransformation implements TypedependentTransformation
     {
+        tp : any
         dST : any
-        public transformPoint(n:N) { return CaddC(n.z, o.Δ) }
-        public onDragStart(m:C)    { this.dST = clone(o) }
-        public onDrag(s:C, e:C)    { CassignC(o.Δ, CaddC(this.dST.Δ, CsubC(e, s))) }
-        //onDragΔ:   (m:C) => void,
-        //onDragφ:   (m:C) => void,
-        //onDragλ:   (m:C) => void,
+        constructor(tp)  { this.tp = tp }
+        transformPoint = (n:N) => {
+                             var s = CktoCp(this.tp.λ).θ
+                             var w = CktoCp(this.tp.θ).θ
+                             var zp = CktoCp(n.z)
+                             var rz = CptoCk({ θ:zp.θ+w, r:zp.r })
+                             return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s)
+                         }
+        onDragStart =    (m:C) => this.dST = clone(this.tp)
+        onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)))
+        onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, onUnitCircle(e))
+        onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, onUnitCircle(e))
     }
+
+    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
+    var o   = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:{re: 0.5403023058681398, im: 0.8414709848078965} }
 
     /**
      * create a euclidien and a hyperbolic tree view
      * same data
      * same initial layout
-     * different states and
+     * different states and transformations
      */
     export function loadHyperTree()
     {
         var uiRoot = ivis.controller.slide.initUi()
 
-        var offsetTwn = new TreeWithNavigation({
+        new TreeWithNavigation({
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(o),
             layout:      ivis.controller.slide.layout,
-            viewTT:      new StandardPanAndZoomTransformation(),
-            navTT:       new StandardPanAndZoomTransformation(),
+            viewTT:      new StandardPanAndZoomTransformation(o),
+            navTT:       new StandardPanAndZoomTransformation(o),
             parent:      uiRoot,
             pos:         [25,30],
             clip:        true
         })
 
-        var hyperbolicTwn = new TreeWithNavigation({
+        new TreeWithNavigation({
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(h),
             layout:      ivis.controller.slide.layout,
-            viewTT:      new HyperbolicTransformation(),
-            navTT:       new HyperbolicTransformation(),
+            viewTT:      new HyperbolicTransformation(h),
+            navTT:       new StandardPanAndZoomTransformation(h),
             parent:      uiRoot,
             pos:         [525,30],
         })

@@ -16,20 +16,16 @@ var ivis;
                         this.create();
                     });
             }
-            updatePositions() {
-                this.nav.updatePositions();
-                this.view.updatePositions();
-            }
             create() {
                 this.view = new ivis.controller.slide.unitDisk({
                     class: 'unitDisc',
                     data: this.data,
-                    transform: (n) => CtoR2(this.args.viewTT.transformPoint(n)),
-                    transformR: (n) => this.nodeR(CtoR2(this.args.viewTT.transformPoint(n))),
-                    onDragStart: (m) => this.onDragStart(m, this.args.viewTT),
-                    onDrag: (s, e) => this.onDrag(s, e, this.args.viewTT),
+                    transform: (n) => this.args.viewTT.transformPoint(n),
+                    transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.viewTT),
+                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onClick: (m) => this.onClick(m),
+                    onClick: (m) => this.onClick(m, this.args.viewTT),
                     parent: null,
                     pos: ArrAddR(this.args.pos, 240),
                     radius: 200,
@@ -38,12 +34,12 @@ var ivis;
                     caption: true
                 });
                 var navR = 55;
-                var navbg = new ivis.controller.slide.unitDisk({
+                new ivis.controller.slide.unitDisk({
                     class: 'unitDiscParamBg',
                     data: this.data,
-                    transform: (n) => CtoR2(n.z),
+                    transform: (n) => n.z,
                     transformR: (n) => 1,
-                    onDragStart: (m) => { },
+                    onDragStart: (m, n) => { },
                     onDrag: (s, e) => { },
                     onDragEnd: () => { },
                     onClick: (m) => { },
@@ -56,12 +52,12 @@ var ivis;
                 this.nav = new ivis.controller.slide.unitDisk({
                     class: 'unitDiscParam',
                     data: this.navData,
-                    transform: (n) => CtoR2(n),
+                    transform: (n) => n,
                     transformR: (n) => 1,
-                    onDragStart: (m) => this.onDragStart(m, this.args.navTT),
-                    onDrag: (s, e) => this.onDrag(s, e, this.args.navTT),
+                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.navTT),
+                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onClick: (m) => this.onClick(m),
+                    onClick: (m) => this.onClick(m, this.args.navTT),
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
                     opacity: .8,
@@ -71,79 +67,93 @@ var ivis;
                     caption: true
                 });
             }
-            onDragStart(m, tt) {
+            updatePositions() {
+                this.nav.updatePositions();
+                this.view.updatePositions();
+            }
+            onDragStart(m, n, tt) {
                 this.view.updateCaptions(false);
                 tt.onDragStart(m);
             }
-            onDrag(s, e, tt) {
-                tt.onDrag(s, e);
+            onDrag(s, e, n, tt) {
+                var postfix = n ? (n.name ? n.name : 'P') : 'P'; // n.name bei parameter, n.data.name bei normalen nodes :(
+                tt['onDrag' + postfix](s, e);
                 this.updatePositions();
             }
             onDragEnd() {
                 this.view.updateCaptions(true);
             }
-            onClick(m) {
-                this.nav.args.onDragStart(m);
+            onClick(m, tt) {
+                this.onDragStart(m, null, tt);
                 var md = CktoCp(m);
                 var intervall = setInterval(() => {
                     md.r = md.r - 0.05;
                     if (md.r < 0.00001) {
-                        this.nav.args.onDragEnd();
+                        this.onDragEnd();
                         clearInterval(intervall);
                     }
-                    else
-                        this.nav.args.onDrag(m, CptoCk(md));
+                    else {
+                        this.onDrag(m, CptoCk(md), null, tt);
+                    }
                 }, 20);
             }
             nodeR(np) {
-                var r = Math.sqrt(np.x * np.x + np.y * np.y);
+                var r = Math.sqrt(np.re * np.re + np.im * np.im);
                 if (r > 1)
                     r = 1;
                 return Math.sin(Math.acos(r));
             }
         }
-        var h = { P: { re: 0, im: 0 }, θ: one };
         class HyperbolicTransformation {
-            transformPoint(n) { return h2e(h, n.z); }
-            onDragStart(m) { this.dST = clone(h); }
-            onDrag(s, e) {
-                var mp = CktoCp(e);
-                mp.r = mp.r > .95 ? .95 : mp.r;
-                e = CptoCk(mp);
-                var newP = compose(this.dST, shift(h, s, e)).P;
-                CassignC(h.P, newP);
+            constructor(tp) {
+                this.transformPoint = (n) => h2e(h, n.z);
+                this.onDragStart = (m) => this.dST = clone(this.tp);
+                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P);
+                this.tp = tp;
             }
         }
-        var o = { Δ: { re: 0, im: 0 }, φ: { re: -1, im: 0, value: 0 }, λ: { re: 1, im: 0, value: 1 } };
         class StandardPanAndZoomTransformation {
-            transformPoint(n) { return CaddC(n.z, o.Δ); }
-            onDragStart(m) { this.dST = clone(o); }
-            onDrag(s, e) { CassignC(o.Δ, CaddC(this.dST.Δ, CsubC(e, s))); }
+            constructor(tp) {
+                this.transformPoint = (n) => {
+                    var s = CktoCp(this.tp.λ).θ;
+                    var w = CktoCp(this.tp.θ).θ;
+                    var zp = CktoCp(n.z);
+                    var rz = CptoCk({ θ: zp.θ + w, r: zp.r });
+                    return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s);
+                };
+                this.onDragStart = (m) => this.dST = clone(this.tp);
+                this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)));
+                this.onDragθ = (s, e) => CassignC(this.tp.θ, onUnitCircle(e));
+                this.onDragλ = (s, e) => CassignC(this.tp.λ, onUnitCircle(e));
+                this.tp = tp;
+            }
         }
+        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
+        var o = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: { re: 0.5403023058681398, im: 0.8414709848078965 } };
         /**
          * create a euclidien and a hyperbolic tree view
          * same data
          * same initial layout
-         * different states and
+         * different states and transformations
          */
         function loadHyperTree() {
             var uiRoot = ivis.controller.slide.initUi();
-            var offsetTwn = new TreeWithNavigation({
+            new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(o),
                 layout: ivis.controller.slide.layout,
-                viewTT: new StandardPanAndZoomTransformation(),
-                navTT: new StandardPanAndZoomTransformation(),
+                viewTT: new StandardPanAndZoomTransformation(o),
+                navTT: new StandardPanAndZoomTransformation(o),
                 parent: uiRoot,
                 pos: [25, 30],
                 clip: true
             });
-            var hyperbolicTwn = new TreeWithNavigation({
+            new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
-                viewTT: new HyperbolicTransformation(),
-                navTT: new HyperbolicTransformation(),
+                viewTT: new HyperbolicTransformation(h),
+                navTT: new StandardPanAndZoomTransformation(h),
                 parent: uiRoot,
                 pos: [525, 30],
             });

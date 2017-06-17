@@ -178,3 +178,17 @@ function CplogImpl(a:Cp)
     else
         return { r:0, θ:0 }
 }
+
+function maxR(c:C, v:number)
+{
+    var mp = CktoCp(c);
+    mp.r = mp.r>v?v:mp.r;
+    return CptoCk(mp)
+}
+
+function onUnitCircle(c:C)
+{
+    var mp = CktoCp(c);
+    mp.r = 1
+    return CptoCk(mp)
+}

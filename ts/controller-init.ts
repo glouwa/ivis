@@ -122,7 +122,7 @@ namespace ivis.controller
 
     function setLayout(name)
     {
-        slide.layout = eval('ivis.controller.layouts.'+name)
+        slide.layout = eval('ivis.model.layouts.'+name)
         resetDom()
         ivis.controller.loadHyperTree()
     }

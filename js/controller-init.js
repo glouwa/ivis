@@ -106,7 +106,7 @@ var ivis;
             }
         }
         function setLayout(name) {
-            controller.slide.layout = eval('ivis.controller.layouts.' + name);
+            controller.slide.layout = eval('ivis.model.layouts.' + name);
             resetDom();
             ivis.controller.loadHyperTree();
         }

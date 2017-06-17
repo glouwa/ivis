@@ -47,7 +47,6 @@ h1 {
     fill: #a5d6a7;
     stroke: #888;
     stroke-width: .005;
-    //pointer-events: none;
 }
 
 .node > text {
@@ -70,15 +69,12 @@ h1 {
 }
 
 .unitDiscParam .node > circle {
-    fill: #BBDEFB; /*#fff59d; gelb*/
+    fill: #BBDEFB;
 }
 
 .unitDiscParam .node > text {
-
     text-anchor: middle;
-    dominant-baseline: middle;
     font-size: .17pt;
-    //pointer-events: none;
 }
 
 .unitDiscParamBg .link {
