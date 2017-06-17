@@ -11,20 +11,23 @@ namespace ivis.ui
         transform:   (n:N) => R2,
         transformR:  (n:N) => number
         onDragStart: (m:C) => void,
-        onDrag:      (s:C, m:C) => void,
+        onDrag:      (s:C, e:C) => void,
+        onDragEnd:   () => void,
         onClick:     (m:C) => void,
 
         pos:         [number, number],
         radius:      number,
         nodeRadius:  number,
-        caption:     boolean
+        caption:     boolean,
         opacity?:    number,
         clip?:       boolean,
     }
 
     export interface TreeOnUnitDisk
     {
-        update:() => void
+        args: TreeOnUnitDiskConfig,
+        updatePositions:() => void,
+        updateCaptions:(visible:boolean) => void,
     }
 
     export abstract class UiNode

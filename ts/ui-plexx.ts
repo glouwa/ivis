@@ -52,12 +52,16 @@ namespace ivis.ui.plexx
             this.create()
         }
 
-        update() : void
+        updatePositions() : void
         {
             for(var i=0; i < this.positionUpdateable.length; i++)
                 this.positionUpdateable[i].update()
 
             //myCanvas.renderFrame(renderContext);
+        }
+
+        updateCaptions(visible:boolean) : void
+        {
         }
 
         private create() : void

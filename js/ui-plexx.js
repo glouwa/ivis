@@ -42,10 +42,12 @@ var ivis;
                     this.plexxObj.add(unitDiscBg);
                     this.create();
                 }
-                update() {
+                updatePositions() {
                     for (var i = 0; i < this.positionUpdateable.length; i++)
                         this.positionUpdateable[i].update();
                     //myCanvas.renderFrame(renderContext);
+                }
+                updateCaptions(visible) {
                 }
                 create() {
                     var model = this.args.data; // create view stuff from data

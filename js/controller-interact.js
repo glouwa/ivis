@@ -6,7 +6,8 @@ var ivis;
          * a viewdisk and a navigation disk together.
          * navdisk gets pan state as model
          */
-        class TreeWithNavigation {
+        class TreeWithNavigation // Interaction
+         {
             constructor(args) {
                 this.args = args;
                 this.navData = args.navData,
@@ -15,19 +16,41 @@ var ivis;
                         this.create();
                     });
             }
-            update() {
-                this.nav.update();
-                this.view.update();
+            updatePositions() {
+                this.nav.updatePositions();
+                this.view.updatePositions();
             }
             create() {
+                var dragStartTransformation = null;
                 this.view = new ivis.controller.slide.unitDisk({
                     class: 'unitDisc',
                     data: this.data,
                     transform: (n) => CtoR2(this.args.t(n)),
                     transformR: (n) => this.nodeR(CtoR2(this.args.t(n))),
-                    onDragStart: (m) => this.args.onDragStart(m),
-                    onDrag: (s, m) => this.args.onDrag(m),
-                    onClick: (m) => this.args.onClick(m),
+                    onDragStart: (m) => {
+                        this.view.updateCaptions(false);
+                        this.args.onDragStart(m);
+                    },
+                    onDrag: (s, e) => {
+                        this.args.onDrag(s, e);
+                        this.updatePositions();
+                    },
+                    onDragEnd: () => {
+                        this.view.updateCaptions(true);
+                    },
+                    onClick: (m) => {
+                        this.nav.args.onDragStart(m);
+                        var md = CktoCp(m);
+                        var intervall = setInterval(() => {
+                            md.r = md.r - 0.05;
+                            if (md.r < 0.00001) {
+                                this.nav.args.onDragEnd();
+                                clearInterval(intervall);
+                            }
+                            else
+                                this.nav.args.onDrag(m, CptoCk(md));
+                        }, 20);
+                    },
                     parent: null,
                     pos: ArrAddR(this.args.pos, 240),
                     radius: 200,
@@ -42,7 +65,8 @@ var ivis;
                     transform: (n) => CtoR2(n.z),
                     transformR: (n) => 1,
                     onDragStart: (m) => { },
-                    onDrag: (s, m) => { },
+                    onDrag: (s, e) => { },
+                    onDragEnd: () => { },
                     onClick: (m) => { },
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
@@ -55,9 +79,30 @@ var ivis;
                     data: this.navData,
                     transform: (n) => CtoR2(n),
                     transformR: (n) => 1,
-                    onDragStart: (m) => this.args.onDragStart(m),
-                    onDrag: (s, m) => this.args.onDrag(m),
-                    onClick: (m) => this.args.onClick(m),
+                    onDragStart: (m) => {
+                        this.view.updateCaptions(false);
+                        this.args.onDragStart(m);
+                    },
+                    onDrag: (s, e) => {
+                        this.args.onDrag(s, e);
+                        this.updatePositions();
+                    },
+                    onDragEnd: () => {
+                        this.view.updateCaptions(true);
+                    },
+                    onClick: (m) => {
+                        this.nav.args.onDragStart(m);
+                        var md = CktoCp(m);
+                        var intervall = setInterval(() => {
+                            md.r = md.r - 0.05;
+                            if (md.r < 0.00001) {
+                                this.nav.args.onDragEnd();
+                                clearInterval(intervall);
+                            }
+                            else
+                                this.nav.args.onDrag(m, CptoCk(md));
+                        }, 20);
+                    },
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
                     opacity: .8,
@@ -84,7 +129,6 @@ var ivis;
          */
         function loadHyperTree() {
             var uiRoot = ivis.controller.slide.initUi();
-            var dSP = null; // drag start point
             var dSTo = null; // drag start transformation offset
             var dSTh = null; // drag start transformation hyperbolic origin preseving
             var offsetTwn = new TreeWithNavigation({
@@ -92,17 +136,8 @@ var ivis;
                 navData: ivis.model.loaders.obj2data(o),
                 layout: ivis.controller.slide.layout,
                 t: (n) => CaddC(n.z, o.v),
-                onDragStart: (m) => { dSP = m; dSTo = clone(o); },
-                onDrag: (m) => {
-                    var dragVector = CsubC(m, dSP);
-                    var newP = CaddC(dSTo.v, dragVector);
-                    CassignC(o.v, newP);
-                    offsetTwn.update();
-                },
-                onClick: (m) => {
-                    CassignC(o.v, CsubC(o.v, m));
-                    offsetTwn.update();
-                },
+                onDragStart: (m) => dSTo = clone(o),
+                onDrag: (s, e) => CassignC(o.v, CaddC(dSTo.v, CsubC(e, s))),
                 parent: uiRoot,
                 pos: [25, 30],
                 clip: true
@@ -112,27 +147,13 @@ var ivis;
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
                 t: (n) => h2e(h, n.z),
-                onDragStart: (m) => { dSP = m; dSTh = clone(h); },
-                onDrag: (m) => {
-                    var mp = CktoCp(m);
+                onDragStart: (m) => dSTh = clone(h),
+                onDrag: (s, e) => {
+                    var mp = CktoCp(e);
                     mp.r = mp.r > .95 ? .95 : mp.r;
-                    m = CptoCk(mp);
-                    var newP = compose(dSTh, shift(h, dSP, m)).P;
+                    e = CptoCk(mp);
+                    var newP = compose(dSTh, shift(h, s, e)).P;
                     CassignC(h.P, newP);
-                    hyperbolicTwn.update();
-                },
-                onClick: (m) => {
-                    dSP = m;
-                    dSTh = clone(h);
-                    var md = CktoCp(m);
-                    var intervall = setInterval(() => {
-                        md.r = md.r - 0.05;
-                        if (md.r < 0.00001)
-                            clearInterval(intervall);
-                        var newP = compose(dSTh, shift(h, dSP, CptoCk(md))).P;
-                        CassignC(h.P, newP);
-                        hyperbolicTwn.update();
-                    }, 20);
                 },
                 parent: uiRoot,
                 pos: [525, 30],

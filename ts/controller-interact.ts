@@ -8,8 +8,7 @@ namespace ivis.controller
         layout:      LayoutFunction,
         t:           (n:N) => C
         onDragStart: (m:C) => void,
-        onDrag:      (m:C) => void,
-        onClick:     (m:C) => void,
+        onDrag:      (s:C, e:C) => void,        
         //onDragθ:   (m:C) => void,
 
         pos:        [number, number],
@@ -20,7 +19,7 @@ namespace ivis.controller
      * a viewdisk and a navigation disk together.
      * navdisk gets pan state as model
      */
-    class TreeWithNavigation
+    class TreeWithNavigation // Interaction
     {
         args : TreeWithNavigationConfig
         data : N
@@ -38,23 +37,44 @@ namespace ivis.controller
             })
         }
 
-        update() : void
+        updatePositions() : void
         {
-            this.nav.update()
-            this.view.update()
+            this.nav.updatePositions()
+            this.view.updatePositions()
         }
 
         private create() : void
         {
+            var dragStartTransformation = null
             this.view = new ivis.controller.slide.unitDisk({ // view disk
                 class:       'unitDisc',
                 data:        this.data,
                 transform:   (n:N) => CtoR2(this.args.t(n)),
                 transformR:  (n:N) => this.nodeR(CtoR2(this.args.t(n))),
-                onDragStart: (m:C) => this.args.onDragStart(m),
-                onDrag:      (s:C, m:C) => this.args.onDrag(m),
-                onClick:     (m:C) => this.args.onClick(m),
-
+                onDragStart: (m:C) => {
+                                 this.view.updateCaptions(false)
+                                 this.args.onDragStart(m)
+                             },
+                onDrag:      (s:C, e:C) => {
+                                 this.args.onDrag(s, e)
+                                 this.updatePositions()
+                             },
+                onDragEnd:   () => {
+                                 this.view.updateCaptions(true)
+                             },
+                onClick:     (m:C) => {
+                                 this.nav.args.onDragStart(m)
+                                 var md = CktoCp(m)
+                                 var intervall = setInterval(()=> {
+                                     md.r = md.r - 0.05
+                                     if (md.r < 0.00001) {
+                                        this.nav.args.onDragEnd()
+                                        clearInterval(intervall)
+                                     }
+                                     else
+                                        this.nav.args.onDrag(m, CptoCk(md))
+                                 },20)
+                             },
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, 240),
                 radius:      200,
@@ -70,7 +90,8 @@ namespace ivis.controller
                 transform:   (n:N) => CtoR2(n.z),
                 transformR:  (n:N) => 1,
                 onDragStart: (m:C) => {},
-                onDrag:      (s:C, m:C) => {},
+                onDrag:      (s:C, e:C) => {},
+                onDragEnd:   () => {},
                 onClick:     (m:C) => {},
 
                 parent:      null,
@@ -85,10 +106,30 @@ namespace ivis.controller
                 data:        this.navData,
                 transform:   (n:N) => CtoR2(n),
                 transformR:  (n:N) => 1,
-                onDragStart: (m:C) => this.args.onDragStart(m),
-                onDrag:      (s:C, m:C) => this.args.onDrag(m),
-                onClick:     (m:C) => this.args.onClick(m),
-
+                onDragStart: (m:C) => {
+                                 this.view.updateCaptions(false)
+                                 this.args.onDragStart(m)
+                             },
+                onDrag:      (s:C, e:C) => {
+                                 this.args.onDrag(s, e)
+                                 this.updatePositions()
+                             },
+                onDragEnd:   () => {
+                                 this.view.updateCaptions(true)
+                             },
+                onClick:     (m:C) => {
+                                 this.nav.args.onDragStart(m)
+                                 var md = CktoCp(m)
+                                 var intervall = setInterval(()=> {
+                                     md.r = md.r - 0.05
+                                     if (md.r < 0.00001) {
+                                        this.nav.args.onDragEnd()
+                                        clearInterval(intervall)
+                                     }
+                                     else
+                                        this.nav.args.onDrag(m, CptoCk(md))
+                                 },20)
+                             },
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
                 opacity:     .8,
@@ -110,7 +151,7 @@ namespace ivis.controller
 
     //----------------------------------------------------------------------------------------
 
-    interface TransformationAndInteraction
+    interface Transformation
     {
         transformPoint: (n:N) => C,
         transformDrag: (m:C, usp:C, tsp:T) => T
@@ -137,7 +178,7 @@ namespace ivis.controller
     export function loadHyperTree()
     {
         var uiRoot = ivis.controller.slide.initUi()
-        var dSP = null  // drag start point
+
         var dSTo = null // drag start transformation offset
         var dSTh = null // drag start transformation hyperbolic origin preseving
 
@@ -146,17 +187,8 @@ namespace ivis.controller
             navData:     ivis.model.loaders.obj2data(o),
             layout:      ivis.controller.slide.layout,
             t:           (n:N) => CaddC(n.z, o.v),
-            onDragStart: (m:C) => { dSP = m; dSTo = clone(o); },
-            onDrag:      (m:C) => {
-                              var dragVector = CsubC(m, dSP)
-                              var newP = CaddC(dSTo.v, dragVector)
-                              CassignC(o.v, newP)
-                              offsetTwn.update()
-                         },
-            onClick:     (m:C) => {
-                              CassignC(o.v, CsubC(o.v, m))
-                              offsetTwn.update()
-                         },
+            onDragStart: (m:C) => dSTo = clone(o),
+            onDrag:      (s:C, e:C) => CassignC(o.v, CaddC(dSTo.v, CsubC(e, s))),
             parent:      uiRoot,
             pos:         [25,30],
             clip:        true
@@ -167,26 +199,12 @@ namespace ivis.controller
             navData:     ivis.model.loaders.obj2data(h),
             layout:      ivis.controller.slide.layout,
             t:           (n:N) => h2e(h, n.z),
-            onDragStart: (m:C) => { dSP = m; dSTh = clone(h) },
-            onDrag:      (m:C) => {
-                              var mp = CktoCp(m); mp.r = mp.r>.95?.95:mp.r; m = CptoCk(mp)
-                              var newP = compose(dSTh, shift(h, dSP, m)).P
+            onDragStart: (m:C) => dSTh = clone(h),
+            onDrag:      (s:C, e:C) => {
+                              var mp = CktoCp(e); mp.r = mp.r>.95?.95:mp.r; e = CptoCk(mp)
+                              var newP = compose(dSTh, shift(h, s, e)).P
                               CassignC(h.P, newP)
-                              hyperbolicTwn.update()
-                         },
-            onClick:     (m:C) => {
-                              dSP = m; dSTh = clone(h)
-                              var md = CktoCp(m)
-                              var intervall = setInterval(()=> {
-                                  md.r = md.r - 0.05
-                                  if (md.r < 0.00001)
-                                    clearInterval(intervall)
-
-                                  var newP = compose(dSTh, shift(h, dSP, CptoCk(md))).P
-                                  CassignC(h.P, newP)
-                                  hyperbolicTwn.update()
-                              },20)
-                         },
+                         },            
             parent:      uiRoot,
             pos:         [525,30],
         })

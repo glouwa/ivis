@@ -18,7 +18,7 @@ var ivis;
                     this.tr = (d) => this.args.transformR(d);
                     this.ti = (e) => ArrtoC(e);
                     this.updateNode = x => x.attr("transform", d => "translate(" + this.t(d) + ") scale(" + this.tr(d) + ")");
-                    this.updateText = x => x.text(d => (d.name ? d.name : (d.data ? (d.data.name ? d.data.name : "") : "")));
+                    this.updateText = x => x.text(d => (this.args.caption ? (d.name ? d.name : (d.data ? (d.data.name ? d.data.name : "") : "")) : ""));
                     this.updateArc = x => x.attr("d", d => {
                         var arcP1 = R2toC(this.args.transform(d));
                         var arcP2 = R2toC(this.args.transform(d.parent));
@@ -34,13 +34,9 @@ var ivis;
                     this.args = args;
                     var dragStartPoint = null;
                     this.drag = d3.drag()
-                        .on("start", () => {
-                        this.captions.text(d => "");
-                        dragStartPoint = this.ti(d3.mouse(this.layersSvg));
-                        args.onDragStart(dragStartPoint);
-                    })
+                        .on("start", () => args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg))))
                         .on("drag", () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg))))
-                        .on("end", () => this.captions.call(this.updateText));
+                        .on("end", () => args.onDragEnd());
                     var mainGroup = svg.append('g')
                         .attr("class", args.class)
                         .attr("transform", "translate(" + args.pos + ")");
@@ -67,6 +63,17 @@ var ivis;
                     }
                     this.create();
                 }
+                updatePositions() {
+                    this.nodes.call(this.updateNode);
+                    this.arcs.call(this.updateArc);
+                }
+                updateCaptions(visible) {
+                    this.args.caption = visible;
+                    this.captions.call(this.updateText);
+                    this.captions.transition()
+                        .duration(this.args.caption ? 750 : 0)
+                        .attr("opacity", d => this.args.caption ? 1 : 0);
+                }
                 create() {
                     this.nodes = this.nodeLayer.selectAll(".node")
                         .data(dfsFlat(this.args.data, n => true))
@@ -77,19 +84,14 @@ var ivis;
                         .call(this.updateNode);
                     this.nodes.append("circle")
                         .attr("r", this.args.nodeRadius);
-                    if (this.args.caption)
-                        this.captions = this.nodes.append("text")
-                            .attr("dy", this.args.nodeRadius / 5)
-                            .call(this.updateText);
+                    this.captions = this.nodes.append("text")
+                        .attr("dy", this.args.nodeRadius / 6)
+                        .call(this.updateText);
                     this.arcs = this.arcLayer.selectAll(".arc")
                         .data(dfsFlat(this.args.data, n => n.parent))
                         .enter().append("path")
                         .attr("class", "arc")
                         .call(this.updateArc);
-                }
-                update() {
-                    this.nodes.call(this.updateNode);
-                    this.arcs.call(this.updateArc);
                 }
             }
             D3.UnitDiskD3 = UnitDiskD3;

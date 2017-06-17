@@ -35,13 +35,9 @@ namespace ivis.ui.D3
             this.args = args                        
             var dragStartPoint = null
             this.drag = d3.drag()
-                .on("start", () => {
-                    this.captions.text(d=> "")
-                    dragStartPoint = this.ti(d3.mouse(this.layersSvg))
-                    args.onDragStart(dragStartPoint)
-                })
+                .on("start", () => args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg))))
                 .on("drag",  () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg))))
-                .on("end",   () => this.captions.call(this.updateText))
+                .on("end",   () => args.onDragEnd())
 
             var mainGroup = svg.append('g')
                 .attr("class", args.class)
@@ -74,6 +70,22 @@ namespace ivis.ui.D3
             this.create()
         }
 
+        updatePositions() : void
+        {
+            this.nodes.call(this.updateNode)
+            this.arcs.call(this.updateArc)
+        }
+
+        updateCaptions(visible:boolean) : void
+        {
+            this.args.caption = visible
+            this.captions.call(this.updateText)
+            this.captions.transition()
+                //.ease(d3.easeCubicInOut(750))
+                .duration(this.args.caption?750:0)
+                .attr("opacity", d=> this.args.caption?1:0)
+        }
+
         private create() : void
         {
             this.nodes = this.nodeLayer.selectAll(".node")
@@ -87,10 +99,9 @@ namespace ivis.ui.D3
             this.nodes.append("circle")
                 .attr("r", this.args.nodeRadius)
 
-            if (this.args.caption)
-                this.captions = this.nodes.append("text")
-                    .attr("dy", this.args.nodeRadius/5)
-                    .call(this.updateText)
+            this.captions = this.nodes.append("text")
+                .attr("dy", this.args.nodeRadius/6)
+                .call(this.updateText)
 
             this.arcs = this.arcLayer.selectAll(".arc")
                 .data(dfsFlat(this.args.data, n=>n.parent))
@@ -100,7 +111,7 @@ namespace ivis.ui.D3
         }
 
         private updateNode = x=> x.attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
-        private updateText = x=> x.text(d=> (d.name?d.name:(d.data?(d.data.name?d.data.name:""):"")))
+        private updateText = x=> x.text(d=> (this.args.caption?(d.name?d.name:(d.data?(d.data.name?d.data.name:""):"")):""))
         private updateArc  = x=> x.attr("d", d=> {
             var arcP1 = R2toC(this.args.transform(d))
             var arcP2 = R2toC(this.args.transform(d.parent))
@@ -112,12 +123,6 @@ namespace ivis.ui.D3
             var s = this.t(d)
             var e = this.t(d.parent)
             return "M" +s+ " A " +r+ " " +r+ ", 0, 0, " + d2SvglargeArcFlag+ ", " +e
-        })
-
-        update() : void
-        {
-            this.nodes.call(this.updateNode)
-            this.arcs.call(this.updateArc)
-        }
+        })        
     }
 }
