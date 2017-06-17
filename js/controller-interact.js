@@ -21,45 +21,48 @@ var ivis;
             }
             create() {
                 this.view = new ivis.controller.slide.unitDisk({
+                    class: 'unitDisc',
                     data: this.data,
                     transform: (n) => CtoR2(this.args.t(n)),
                     transformR: (n) => this.nodeR(CtoR2(this.args.t(n))),
-                    onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-                    onDrag: (m) => this.args.onDrag(R2toC(m)),
-                    onClick: (m) => this.args.onClick(R2toC(m)),
+                    onDragStart: (m) => this.args.onDragStart(m),
+                    onDrag: (s, m) => this.args.onDrag(m),
+                    onClick: (m) => this.args.onClick(m),
                     parent: null,
                     pos: ArrAddR(this.args.pos, 240),
                     radius: 200,
-                    nodeRadius: 8,
+                    nodeRadius: .04,
                     clip: this.args.clip,
                     caption: true
                 });
                 var navR = 55;
                 var navbg = new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParamBg',
                     data: this.data,
                     transform: (n) => CtoR2(n.z),
                     transformR: (n) => 1,
                     onDragStart: (m) => { },
-                    onDrag: (m) => { },
+                    onDrag: (s, m) => { },
                     onClick: (m) => { },
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
                     radius: navR,
-                    nodeRadius: 2,
+                    nodeRadius: .04,
                     clip: true
                 });
                 this.nav = new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParam',
                     data: this.navData,
                     transform: (n) => CtoR2(n),
                     transformR: (n) => 1,
-                    onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-                    onDrag: (m) => this.args.onDrag(R2toC(m)),
-                    onClick: (m) => this.args.onClick(R2toC(m)),
+                    onDragStart: (m) => this.args.onDragStart(m),
+                    onDrag: (s, m) => this.args.onDrag(m),
+                    onClick: (m) => this.args.onClick(m),
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
                     opacity: .8,
                     radius: navR,
-                    nodeRadius: 7,
+                    nodeRadius: .13,
                     clip: false,
                     caption: true
                 });
@@ -71,29 +74,8 @@ var ivis;
                 return Math.sin(Math.acos(r));
             }
         }
-        //----------------------------------------------------------------------------------------
         var o = { v: { re: 0, im: 0 }, α: { re: -1, im: 0, value: 0 }, ζ: { re: 1, im: 0, value: 1 } };
         var h = { P: { re: 0, im: 0 }, θ: one };
-        /*
-            interface Transforamtion
-            {
-                do
-                inverse
-                onmouse down
-                onclick
-                onDrag
-            }
-        
-            interface Twn
-            {
-                parent
-                navData
-                viewData
-                layout
-                navTransformation
-                viewTransformation
-        
-            }*/
         /**
          * create a euclidien and a hyperbolic tree view
          * same data
@@ -133,7 +115,7 @@ var ivis;
                 onDragStart: (m) => { dSP = m; dSTh = clone(h); },
                 onDrag: (m) => {
                     var mp = CktoCp(m);
-                    mp.r = mp.r > 1 ? .95 : mp.r;
+                    mp.r = mp.r > .95 ? .95 : mp.r;
                     m = CptoCk(mp);
                     var newP = compose(dSTh, shift(h, dSP, m)).P;
                     CassignC(h.P, newP);

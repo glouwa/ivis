@@ -47,50 +47,53 @@ namespace ivis.controller
         private create() : void
         {
             this.view = new ivis.controller.slide.unitDisk({ // view disk
+                class:       'unitDisc',
                 data:        this.data,
                 transform:   (n:N) => CtoR2(this.args.t(n)),
                 transformR:  (n:N) => this.nodeR(CtoR2(this.args.t(n))),
-                onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
-                onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
-                onClick:     (m:R2) => this.args.onClick(R2toC(m)),
+                onDragStart: (m:C) => this.args.onDragStart(m),
+                onDrag:      (s:C, m:C) => this.args.onDrag(m),
+                onClick:     (m:C) => this.args.onClick(m),
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, 240),
                 radius:      200,
-                nodeRadius:  8,
+                nodeRadius:  .04,
                 clip:        this.args.clip,
                 caption:     true
             })
 
             var navR = 55
             var navbg = new ivis.controller.slide.unitDisk({ // navigation disk background
+                class:       'unitDiscParamBg',
                 data:        this.data,
                 transform:   (n:N) => CtoR2(n.z),
                 transformR:  (n:N) => 1,
-                onDragStart: (m:R2) => {},
-                onDrag:      (m:R2) => {},
-                onClick:     (m:R2) => {},
+                onDragStart: (m:C) => {},
+                onDrag:      (s:C, m:C) => {},
+                onClick:     (m:C) => {},
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
                 radius:      navR,
-                nodeRadius:  2,
+                nodeRadius:  .04,
                 clip:        true
             })
 
             this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
+                class:       'unitDiscParam',
                 data:        this.navData,
                 transform:   (n:N) => CtoR2(n),
                 transformR:  (n:N) => 1,
-                onDragStart: (m:R2) => this.args.onDragStart(R2toC(m)),
-                onDrag:      (m:R2) => this.args.onDrag(R2toC(m)),
-                onClick:     (m:R2) => this.args.onClick(R2toC(m)),
+                onDragStart: (m:C) => this.args.onDragStart(m),
+                onDrag:      (s:C, m:C) => this.args.onDrag(m),
+                onClick:     (m:C) => this.args.onClick(m),
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
                 opacity:     .8,
                 radius:      navR,
-                nodeRadius:  7,
+                nodeRadius:  .13,
                 clip:        false,
                 caption:     true
             })
@@ -107,28 +110,23 @@ namespace ivis.controller
 
     //----------------------------------------------------------------------------------------
 
-    var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
-    var h:T = { P:{ re:0, im:0 }, θ:one }
-/*
-    interface Transforamtion
+    interface TransformationAndInteraction
     {
-        do
-        inverse
-        onmouse down
-        onclick
-        onDrag
+        transformPoint: (n:N) => C,
+        transformDrag: (m:C, usp:C, tsp:T) => T
+    }
+    /**
+    * komisches ding.
+    */
+    interface Interaction
+    {
+        onDragStart:    (m:C) => {},
+        onDrag:         (m:C) => {},
+        onClick:        (m:C) => {},
     }
 
-    interface Twn
-    {
-        parent
-        navData
-        viewData
-        layout
-        navTransformation
-        viewTransformation
-
-    }*/
+    var o   = { v:{ re:0, im:0 }, α:{ re:-1, im:0, value:0 }, ζ:{ re:1, im:0, value:1 } }
+    var h:T = { P:{ re:0, im:0 }, θ:one }
 
     /**
      * create a euclidien and a hyperbolic tree view
@@ -171,7 +169,7 @@ namespace ivis.controller
             t:           (n:N) => h2e(h, n.z),
             onDragStart: (m:C) => { dSP = m; dSTh = clone(h) },
             onDrag:      (m:C) => {
-                              var mp = CktoCp(m); mp.r = mp.r>1?.95:mp.r; m = CptoCk(mp)
+                              var mp = CktoCp(m); mp.r = mp.r>.95?.95:mp.r; m = CptoCk(mp)
                               var newP = compose(dSTh, shift(h, dSP, m)).P
                               CassignC(h.P, newP)
                               hyperbolicTwn.update()

@@ -6,12 +6,13 @@ namespace ivis.ui
     export interface TreeOnUnitDiskConfig
     {
         parent:      any,
+        class:       string,
         data:        N,
         transform:   (n:N) => R2,
         transformR:  (n:N) => number
-        onDragStart: (m:R2) => void,
-        onDrag:      (m:R2) => void,
-        onClick:     (m:R2) => void,
+        onDragStart: (m:C) => void,
+        onDrag:      (s:C, m:C) => void,
+        onClick:     (m:C) => void,
 
         pos:         [number, number],
         radius:      number,
@@ -25,8 +26,6 @@ namespace ivis.ui
     {
         update:() => void
     }
-
-
 
     export abstract class UiNode
     {

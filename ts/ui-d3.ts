@@ -13,49 +13,64 @@ namespace ivis.ui.D3
     export class UnitDiskD3 implements TreeOnUnitDisk
     {
         args : ivis.ui.TreeOnUnitDiskConfig
+
+        layers : any
+        layersSvg : HTMLElement
         nodeLayer : any
         linkLayer : any
         arcLayer : any
+
         nodes : any
         links : any
         captions : any
         arcs : any
-        t  = (d:N)  => R2toArr(R2mulR(this.args.transform(d), this.args.radius))
-        ti = (e:R2) =>         R2divR(e, this.args.radius)
-        tr = (d:N)  => this.args.transformR(d)
+        drag : any
+
+        t  = (d:N) => R2toArr(this.args.transform(d))
+        tr = (d:N) => this.args.transformR(d)
+        ti = (e:number[]) => ArrtoC(e)
 
         constructor(args : ivis.ui.TreeOnUnitDiskConfig)
         {
-            this.args = args
+            this.args = args                        
+            var dragStartPoint = null
+            this.drag = d3.drag()
+                .on("start", () => {
+                    this.captions.text(d=> "")
+                    dragStartPoint = this.ti(d3.mouse(this.layersSvg))
+                    args.onDragStart(dragStartPoint)
+                })
+                .on("drag",  () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg))))
+                .on("end",   () => this.captions.call(this.updateText))
 
             var mainGroup = svg.append('g')
-                .attr("class", "unitDisc"+(args.opacity?"Param":""))
-                .attr("transform", "translate(" + args.pos + ")");
+                .attr("class", args.class)
+                .attr("transform", "translate(" + args.pos + ")")
 
             var unitDiscBg = mainGroup.append('circle')
                 .attr("class", "unitDiscBg")
-                .attr("r", args.radius)
+                .attr("r", 1)
+                .attr("transform", "scale(" + args.radius + ")")
                 .attr("fill-opacity", args.opacity)
-                .on("click", function() {
-                    var mouseArr = ArrDivR(d3.mouse(this), args.radius)
-                    args.onClick(ArrtoR2(mouseArr))
-                })
-                .call(d3.drag()
-                    .on("start", ()=> { args.onDragStart(this.ti(d3.event)); this.captions.text(d=> ""); })
-                    .on("drag",  ()=> args.onDrag(this.ti(d3.event)) )
-                    .on("end",   ()=> this.captions.call(this.updateText))
-                )
+                .on("click", () => args.onClick(this.ti(d3.mouse(d3.event.srcElement))))
+                .call(this.drag)
 
-            mainGroup.append("clipPath")
-                .attr("id", "circle-clip")
-                .append("circle")
-                    .attr("r", args.radius)
+            this.layers = mainGroup.append('g')
+                .attr("class", "layers")
+                .attr("transform", "scale(" + args.radius + ")")
+            this.layersSvg = this.layers._groups[0][0]
+            this.linkLayer = this.layers.append('g')
+            this.arcLayer = this.layers.append('g')
+            this.nodeLayer = this.layers.append('g')
 
-            var layers = mainGroup.append('g')
-            this.linkLayer = layers.append('g')
-            this.arcLayer = layers.append('g')
-            this.nodeLayer = layers.append('g')
-            if (args.clip) layers.attr("clip-path", "url(#circle-clip)")
+            if (args.clip)
+            {
+                mainGroup.append("clipPath")
+                    .attr("id", "circle-clip")
+                    .append("circle")
+                        .attr("r", 1)
+                this.layers.attr("clip-path", "url(#circle-clip)")
+            }
             this.create()
         }
 
@@ -65,6 +80,8 @@ namespace ivis.ui.D3
                 .data(dfsFlat(this.args.data, n=>true))
                 .enter().append("g")
                     .attr("class", "node")
+                    .on("click", () => this.args.onClick(this.ti(d3.mouse(this.layersSvg))))
+                    .call(this.drag)
                     .call(this.updateNode)
 
             this.nodes.append("circle")
@@ -72,6 +89,7 @@ namespace ivis.ui.D3
 
             if (this.args.caption)
                 this.captions = this.nodes.append("text")
+                    .attr("dy", this.args.nodeRadius/5)
                     .call(this.updateText)
 
             this.arcs = this.arcLayer.selectAll(".arc")
@@ -87,7 +105,7 @@ namespace ivis.ui.D3
             var arcP1 = R2toC(this.args.transform(d))
             var arcP2 = R2toC(this.args.transform(d.parent))
             var arcC = arcCenter(arcP1, arcP2)
-            var r = CktoCp(CsubC(R2toC(this.args.transform(d.parent)), arcC.c)).r * this.args.radius
+            var r = CktoCp(CsubC(R2toC(this.args.transform(d.parent)), arcC.c)).r
             var d2SvglargeArcFlag : string = arcC.d>0?'1':'0'
             if (isNaN(r))
                 r = 0

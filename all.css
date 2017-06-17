@@ -29,53 +29,64 @@ h1 {
     margin-right: 80px;
 }
 
-
 /*--------------------------------------------------------------------------------------- */
-/* svg only in pixel? :( */
-
 
 .unitDiscBg {
     fill: #f9fbe7;
     stroke: #eef4be;
+    stroke-width: .005;
 }
+
+/*--------------------------------------------------------------------------------------- */
+/* svg only in pixel? :( */
 
 .node {
 }
 
 .node > circle {
     fill: #a5d6a7;
-    //fill-opacity: .8;
     stroke: #888;
-    pointer-events: none;
-}
-
-.unitDiscParam .node > circle {
-
-    fill: #BBDEFB; /*#fff59d; gelb*/
-}
-
-.unitDiscParam .node > text {
-    pointer-events: none;
-    text-anchor: middle;
-    dominant-baseline: central;
-    font-size: 13px;    
+    stroke-width: .005;
+    //pointer-events: none;
 }
 
 .node > text {
+    font-size: 0.05pt;
+    dominant-baseline: middle;
     pointer-events: none;
-    font-size: 13px;    
-    dominant-baseline: central;
 }
 
 .link {
     stroke: #ccc;
+    stroke-width: .005;
     pointer-events: none;
 }
 
 .arc {
     stroke: #ccc;
-    //fill: #eee;
+    stroke-width: .005;
     fill: none;
     pointer-events: none;
-    //shape-rendering: optimizeSpeed;
 }
+
+.unitDiscParam .node > circle {
+    fill: #BBDEFB; /*#fff59d; gelb*/
+}
+
+.unitDiscParam .node > text {
+
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: .18pt;
+    //pointer-events: none;
+}
+
+.unitDiscParamBg .link {
+    stroke-width: .02;
+}
+
+.unitDiscParamBg .arc {
+    stroke-width: .02;
+}
+
+
