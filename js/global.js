@@ -13,7 +13,12 @@ function dfsFlat(n, f) {
     return r;
 }
 function clone(o) {
-    return JSON.parse(JSON.stringify(o));
+    var str = JSON.stringify(o);
+    console.log(str);
+    return JSON.parse(str);
+}
+function sigmoid(x) {
+    return .5 + .5 * Math.tanh(x * 6 - 3);
 }
 function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };

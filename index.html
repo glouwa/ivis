@@ -24,17 +24,18 @@
 
 <body onload="ivis.controller.init()">
 
-    <h1>Left side and Navigation: <b>z' = z+v</b> &emsp; Right side: <b>z' = h(θ,P)(z)</b></h1>
-    <div id="slide">
-        <div id="slideName"></div>
-        <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
+    <div id="header">
+        <span id="slide">
+            <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
+            <span id="slideName"></span>
+        </span>
+        <span id="config">
+            <div id="selectCaption">Tree-structure Node-layout Renderer</div>
+            <select id="dataSourceSelect"></select>
+            <select id="layoutSelect"></select>
+            <select id="rendererSelect"></select>
+        </span>
     </div>
-    <div id="selectCaption">Tree-structure Node-layout Renderer</div>
-
-    <select id="dataSourceSelect"></select>
-    <select id="layoutSelect"></select>
-    <select id="rendererSelect"></select>
-
     <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>
 </body>

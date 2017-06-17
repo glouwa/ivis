@@ -1,21 +1,38 @@
 /* only used by d3 */
 
-body {
-    text-align: center;
-    font-family: Helvetica;    
+body {    
+    font-family: Helvetica;
+    margin: 0;
 }
 
 h1 {    
     letter-spacing: 0.1em;
     font-size: 1.3em;
     font-weight: normal;
-    margin-bottom:0;
+}
+
+#header {
+    background-color:#a5d6a7;
+    padding: 0.3em;
+    display: flow-root;
+    border-bottom: 1px solid #eaeaea;
 }
 
 #slide {
-    letter-spacing: 0.07em;
-    padding-bottom:1em;
-    margin-top: 0.5em;
+    letter-spacing: 0.07em;    
+    vertical-align: -webkit-baseline-middle;
+}
+
+button {
+    vertical-align: -webkit-baseline-middle;
+}
+
+#slideName {
+    vertical-align: -webkit-baseline-middle;
+}
+
+#config {
+    float:right;
 }
 
 #selectCaption {

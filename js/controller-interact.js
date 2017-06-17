@@ -86,16 +86,18 @@ var ivis;
             onClick(m, tt) {
                 this.onDragStart(m, null, tt);
                 var md = CktoCp(m);
+                var step = 0;
+                var initR = md.r;
                 var intervall = setInterval(() => {
-                    md.r = md.r - 0.05;
-                    if (md.r < 0.00001) {
+                    md.r = initR * (1 - sigmoid(step++ / 100));
+                    if (step > 100) {
                         this.onDragEnd();
                         clearInterval(intervall);
                     }
                     else {
                         this.onDrag(m, CptoCk(md), null, tt);
                     }
-                }, 20);
+                }, 7);
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);
@@ -129,7 +131,7 @@ var ivis;
             }
         }
         var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
-        var o = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: { re: 0.5403023058681398, im: 0.8414709848078965 } };
+        var o = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: { re: 0.5403023058681398, im: -0.8414709848078965 } };
         /**
          * create a euclidien and a hyperbolic tree view
          * same data

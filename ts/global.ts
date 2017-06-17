@@ -35,7 +35,14 @@ function dfsFlat(n, f?) {
 
 function clone(o)
 {
-    return JSON.parse(JSON.stringify(o))
+    var str = JSON.stringify(o)
+    console.log(str)
+    return JSON.parse(str)
+}
+
+function sigmoid(x)
+{
+    return .5 + .5 * Math.tanh(x*6-3)
 }
 
 //----------------------------------------------------------------------------------------
