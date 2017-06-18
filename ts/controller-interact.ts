@@ -49,10 +49,11 @@ namespace ivis.controller
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, 240),
+                arc:         this.args.arc,
                 radius:      200,
                 nodeRadius:  .04,
                 clip:        this.args.clip,
-                caption:     true
+                caption:     true,
             })
 
             var navR = 55
@@ -68,8 +69,9 @@ namespace ivis.controller
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
+                arc:         this.args.arc,
                 radius:      navR,
-                nodeRadius:  .04,
+                nodeRadius:  .03,
                 clip:        true
             })
 
@@ -85,6 +87,7 @@ namespace ivis.controller
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
+                arc:         this.args.arc,
                 opacity:     .8,
                 radius:      navR,
                 nodeRadius:  .13,
@@ -124,15 +127,15 @@ namespace ivis.controller
             var step = 0
             var initR = md.r
             var intervall = setInterval(() => {
-                md.r = initR * (1 - sigmoid(step++/100))
-                if (step > 100) {
+                md.r = initR * (1 - sigmoid(step++/50))
+                if (step > 50) {
                    this.onDragEnd()
                    clearInterval(intervall)
                 }
                 else {
                    this.onDrag(m, CptoCk(md), null, tt)
                 }
-            },7)
+            },15)
         }
 
         private nodeR(np:C) : number
@@ -184,7 +187,7 @@ namespace ivis.controller
     }
 
     var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
-    var o   = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:{re: 0.5403023058681398, im: -0.8414709848078965} }
+    var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
     /**
      * create a euclidien and a hyperbolic tree view
@@ -202,6 +205,7 @@ namespace ivis.controller
             layout:      ivis.controller.slide.layout,
             viewTT:      new StandardPanAndZoomTransformation(o),
             navTT:       new StandardPanAndZoomTransformation(o),
+            arc:         ivis.ui.arcLine,
             parent:      uiRoot,
             pos:         [25,30],
             clip:        true
@@ -213,6 +217,7 @@ namespace ivis.controller
             layout:      ivis.controller.slide.layout,
             viewTT:      new HyperbolicTransformation(h),
             navTT:       new StandardPanAndZoomTransformation(h),
+            arc:         ivis.controller.slide.arc,
             parent:      uiRoot,
             pos:         [525,30],
         })

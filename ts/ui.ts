@@ -30,6 +30,31 @@ namespace ivis.ui
         updateCaptions:(visible:boolean) => void,
     }
 
+    export function arc(a, b)
+    {
+        return function(d)
+        {
+            var arcP1 = d.cache //this.args.transform(d)
+            var arcP2 = d.parent.cache //this.args.transform(d.parent)
+            var arcC = arcCenter(arcP1, arcP2)
+            var r = CktoCp(CsubC(arcP2, arcC.c)).r
+            var d2SvglargeArcFlag : string = arcC.d>0?a:b
+            if (isNaN(r))
+                r = 0
+            var s = d.strCache //this.t(d)
+            var e = d.parent.strCache //this.t(d.parent)
+            return "M" +s+ " A " +r+ " " +r+ ", 0, 0, " + d2SvglargeArcFlag+ ", " +e
+        }
+    }
+
+    export function arcLine(d)
+    {
+        var s = d.strCache //this.t(d)
+        var e = d.parent.strCache //this.t(d.parent)
+        return "M" +s+ " L " +e
+    }
+
+/*
     export abstract class UiNode
     {
         args: {
@@ -46,5 +71,5 @@ namespace ivis.ui
         updateViewModel(sel:[string]) {}
 
         updateAll() {}
-    }
+    }*/
 }

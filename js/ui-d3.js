@@ -14,24 +14,17 @@ var ivis;
             D3.initD3 = initD3;
             class UnitDiskD3 {
                 constructor(args) {
-                    this.t = (d) => CtoArr(this.args.transform(d));
+                    this.t = (d) => {
+                        d.cache = d.cache || {};
+                        CassignC(d.cache, this.args.transform(d));
+                        return d.strCache = d.cache.re + ' ' + d.cache.im; //CtoArr(newPosC).toString()
+                    };
                     this.tr = (d) => this.args.transformR(d);
                     this.ti = (e) => ArrtoC(e);
                     this.d3mouseElem = () => d3.event.sourceEvent.target.__data__;
                     this.updateNode = x => x.attr("transform", d => "translate(" + this.t(d) + ") scale(" + this.tr(d) + ")");
                     this.updateText = x => x.text(d => (this.args.caption ? (d.name ? d.name : (d.data ? (d.data.name ? d.data.name : "") : "")) : ""));
-                    this.updateArc = x => x.attr("d", d => {
-                        var arcP1 = this.args.transform(d);
-                        var arcP2 = this.args.transform(d.parent);
-                        var arcC = arcCenter(arcP1, arcP2);
-                        var r = CktoCp(CsubC(arcP2, arcC.c)).r;
-                        var d2SvglargeArcFlag = arcC.d > 0 ? '1' : '0';
-                        if (isNaN(r))
-                            r = 0;
-                        var s = this.t(d);
-                        var e = this.t(d.parent);
-                        return "M" + s + " A " + r + " " + r + ", 0, 0, " + d2SvglargeArcFlag + ", " + e;
-                    });
+                    this.updateArc = x => x.attr("d", d => this.args.arc(d));
                     this.args = args;
                     var dragStartPoint = null;
                     var dragStartElement = null;

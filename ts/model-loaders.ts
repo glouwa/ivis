@@ -3,7 +3,15 @@
 
 namespace ivis.model.loaders {
 
-    function path(ok, max) {        
+    function oneNode(ok) {
+        ok({
+            parent:null,
+            children:[],
+            data:{}
+        })
+    }
+
+    function path(ok, max) {
         oneNode(d=> {
             var cur = d
             for (var i=0; i < max; i++) {
@@ -36,12 +44,8 @@ namespace ivis.model.loaders {
         new model.Tree(ok, path);
     }
 
-    export var star1 = ok=> star(ok, 5)
-    export var star2 = ok=> star(ok, 50)
-    export var star3 = ok=> star(ok, 500)
-    export var path1 = ok=> path(ok, 50)
-    export var path2 = ok=> path(ok, 500)
-    export var path3 = ok=> path(ok, 5000)
+    export var path_ = n=> ok=> path(ok, n)
+    export var star_ = n=> ok=> star(ok, n)
     export var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
     export var jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");
 
@@ -131,15 +135,5 @@ namespace ivis.model.loaders {
     export function code(ok)
     {
         ok(type2data(ivis, 'ivis'))
-    }
-
-    //----------------------------------------------------------------------------------------
-
-    function oneNode(ok) {
-        ok({
-            parent:null,
-            children:[],
-            data:{}
-        })
-    }
+    }    
 }

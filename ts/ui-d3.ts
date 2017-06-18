@@ -26,7 +26,11 @@ namespace ivis.ui.D3
         arcs : any
         drag : any
 
-        t  = (d:N) => CtoArr(this.args.transform(d))
+        t  = (d:N) => {
+            d.cache = d.cache || {}
+            CassignC(d.cache, this.args.transform(d))
+            return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
+        }
         tr = (d:N) => this.args.transformR(d)
         ti = (e:number[]) => ArrtoC(e)
 
@@ -115,17 +119,6 @@ namespace ivis.ui.D3
 
         private updateNode = x=> x.attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
         private updateText = x=> x.text(d=> (this.args.caption?(d.name?d.name:(d.data?(d.data.name?d.data.name:""):"")):""))
-        private updateArc  = x=> x.attr("d", d=> {
-            var arcP1 = this.args.transform(d)
-            var arcP2 = this.args.transform(d.parent)
-            var arcC = arcCenter(arcP1, arcP2)
-            var r = CktoCp(CsubC(arcP2, arcC.c)).r
-            var d2SvglargeArcFlag : string = arcC.d>0?'1':'0'
-            if (isNaN(r))
-                r = 0
-            var s = this.t(d)
-            var e = this.t(d.parent)
-            return "M" +s+ " A " +r+ " " +r+ ", 0, 0, " + d2SvglargeArcFlag+ ", " +e
-        })        
+        private updateArc  = x=> x.attr("d", d=> this.args.arc(d))
     }
 }

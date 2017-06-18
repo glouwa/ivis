@@ -6,6 +6,13 @@ var ivis;
     (function (model) {
         var loaders;
         (function (loaders) {
+            function oneNode(ok) {
+                ok({
+                    parent: null,
+                    children: [],
+                    data: {}
+                });
+            }
             function path(ok, max) {
                 oneNode(d => {
                     var cur = d;
@@ -35,12 +42,8 @@ var ivis;
                 console.log('loadJsonFile');
                 new model.Tree(ok, path);
             }
-            loaders.star1 = ok => star(ok, 5);
-            loaders.star2 = ok => star(ok, 50);
-            loaders.star3 = ok => star(ok, 500);
-            loaders.path1 = ok => path(ok, 50);
-            loaders.path2 = ok => path(ok, 500);
-            loaders.path3 = ok => path(ok, 5000);
+            loaders.path_ = n => ok => path(ok, n);
+            loaders.star_ = n => ok => star(ok, n);
             loaders.d3csvFlare = ok => d3csv(ok, "data/flare.csv");
             loaders.jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");
             function nTreeAtFirst(ok, max = 10) {
@@ -125,14 +128,6 @@ var ivis;
                 ok(type2data(ivis, 'ivis'));
             }
             loaders.code = code;
-            //----------------------------------------------------------------------------------------
-            function oneNode(ok) {
-                ok({
-                    parent: null,
-                    children: [],
-                    data: {}
-                });
-            }
         })(loaders = model.loaders || (model.loaders = {}));
     })(model = ivis.model || (ivis.model = {}));
 })(ivis || (ivis = {}));

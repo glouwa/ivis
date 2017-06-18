@@ -109,7 +109,7 @@ type Cp = { θ:number, r:number }
 type C  = Ck
 
 var R2toArr =     (p:R2)=>           ([ p.x,                            p.y ])
-var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; }
+var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; return a; }
 var R2toC =       (p:R2)=>           ({ re:p.x,                         im:p.y })
 var R2neg =       (p:R2)=>           ({ x:-p.x,                         y:-p.y })
 var R2addR2 =     (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
@@ -121,7 +121,7 @@ var CktoCp =      (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.
 var CptoCk =      (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
 
 var CktoArr =     (p:Ck)=>           ([ p.re,                           p.im ])
-var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; }
+var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; return a; }
 var CktoR2 =      (p:Ck)=>           ({ x:p.re,                         y:p.im })
 var Ckneg =       (p:Ck)=>           ({ re:-p.re,                       im:-p.im })
 var Ckcon =       (p:Ck)=>           ({ re:p.re,                        im:-p.im })

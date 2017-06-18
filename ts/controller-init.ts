@@ -8,13 +8,13 @@ namespace ivis.controller
         { ds:'nTree',        ls:'layoutHyperbolic',  name:"Wedge layout" },
         { ds:'d3csvFlare',   ls:'layoutRadial',      name:"Point transformation seems to work" },
         { ds:'nTree',        ls:'layoutRadial',      name:"Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
-        { ds:'star1',        ls:'layoutRadial',      name:"Unit vectors, almost" },
-        { ds:'star1',        ls:'layoutUnitVectors', name:"Unit vectors " },
+        { ds:'star_(5)',     ls:'layoutRadial',      name:"Unit vectors, almost" },
+        { ds:'star_(5)',     ls:'layoutUnitVectors', name:"Unit vectors " },
         { ds:'deepStar',     ls:'layoutUnitLines',   name:"Unit lines" },
-        { ds:'star2',        ls:'layoutSpiral',      name:"Star spiral" },
-        { ds:'path1',        ls:'layoutSpiral',      name:"Path spiral" },
-        { ds:'path1',        ls:'layoutRadial',      name:"Line from [0,0] to [1,1]" },
-        { ds:'path2',        ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
+        { ds:'star_(50)',    ls:'layoutSpiral',      name:"Star spiral" },
+        { ds:'path_(50)',    ls:'layoutSpiral',      name:"Path spiral" },
+        { ds:'path_(50)',    ls:'layoutRadial',      name:"Line from [0,0] to [1,1]" },
+        { ds:'path_(500)',   ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
         { ds:'nTreeAtFirst', ls:'layoutRadial',      name:"Center is never magnified" },
     ]
 
@@ -23,31 +23,37 @@ namespace ivis.controller
         unitDisk:null,
         loader:null,
         layout:null,
+        arc:null,
     }
 
     export function init()
     {
         var rendererOptions = ['D3', 'Plexx', 'PlexxDbg']
         var loaderOptions = [
-            { text:"flare.csv (d3)", value:"d3csvFlare",   },
-            { text:"basicTree.json", value:"jsonFile",     },
-            { text:"Code",           value:"code",         },
-            { text:"⋆ Star 1+4",     value:"star1",        },
-            { text:"⋆ Star 4✕50",    value:"deepStar",     },
-            { text:"⊶ Path 500",    value:"path2",        },
-            { text:"𝕋 5³ -1",        value:"nTree",        },
-            { text:"𝕋 1+10✕10",      value:"nTreeAtFirst", },
-            { text:"⊶ Path 50",     value:"path1",        },
-            { text:"⊶ Path 5000",   value:"path3",        },
-            { text:"⋆ Star 1+50",    value:"star2",        },
-            { text:"⋆ Star 1+500",   value:"star3",        },
+            { text:"flare.csv (d3)", value:"d3csvFlare",         },
+            { text:"basicTree.json", value:"jsonFile",           },
+            { text:"Code",           value:"code",               },
+            { text:"⋆ Star 1+4",     value:"star_(5)",           },
+            { text:"⋆ Star 4✕50",    value:"deepStar",           },
+            { text:"⊶ Path 500",    value:"path_(500)",         },
+            { text:"𝕋 5³ -1",        value:"nTree",              },
+            { text:"𝕋 1+10✕10",      value:"nTreeAtFirst",       },
+            { text:"⊶ Path 50",     value:"path_(50)",          },
+            { text:"⊶ Path 5000",   value:"path_(5000)",        },
+            { text:"⋆ Star 1+50",    value:"star_(50)",          },
+            { text:"⋆ Star 1+500",   value:"star_(500)",         },
         ]
         var layoutOptions = [
-            { text:"Wedge",           value:"layoutHyperbolic",  },
+            { text:"Lamping at al.",  value:"layoutHyperbolic",  },
             { text:"Buchheim et al.", value:"layoutRadial",      },
             { text:"DFS spiral",      value:"layoutSpiral",      },
             { text:"Unit vectors",    value:"layoutUnitVectors", },
             { text:"Unit lines",      value:"layoutUnitLines",   },
+        ]
+        var arcOptions = [
+            { text:"+Arc",            value:"arc('0', '1')",     },
+            { text:"-Arc",            value:"arc('1', '0')",     },
+            { text:"Line",            value:"arcLine",           },
         ]
 
         d3.select('#rendererSelect')
@@ -74,9 +80,20 @@ namespace ivis.controller
                 .attr('value', d=> d.value)
                 .text(d=> d.text)
 
+        d3.select('#arcSelect')
+            .on('change', ()=> setArc(d3.event.target.value))
+            .selectAll('option')
+            .data(arcOptions)
+            .enter().append('option')
+                .attr('value', d=> d.value)
+                .text(d=> d.text)
+
         var name = (<HTMLInputElement>document.getElementById("rendererSelect")).value
         slide.initUi = eval('ivis.ui.'+name+'.init' + name)
         slide.unitDisk = eval('ivis.ui.'+name+'.UnitDisk' + name)
+
+        var arcName = (<HTMLInputElement>document.getElementById("arcSelect")).value
+        slide.arc = eval('ivis.ui.' + arcName)
         next(1)
     }
 
@@ -123,6 +140,13 @@ namespace ivis.controller
     function setLayout(name)
     {
         slide.layout = eval('ivis.model.layouts.'+name)
+        resetDom()
+        ivis.controller.loadHyperTree()
+    }
+
+    function setArc(name)
+    {
+        slide.arc = eval('ivis.ui.'+name)
         resetDom()
         ivis.controller.loadHyperTree()
     }

@@ -63,7 +63,7 @@ function arcCenter(a, b) {
     return { c: CmulC({ re: 0, im: 1 }, CdivR(numerator, 2 * d)), d: d };
 }
 var R2toArr = (p) => ([p.x, p.y]);
-var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
+var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; return a; };
 var R2toC = (p) => ({ re: p.x, im: p.y });
 var R2neg = (p) => ({ x: -p.x, y: -p.y });
 var R2addR2 = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
@@ -73,7 +73,7 @@ var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
 var CktoCp = (k) => ({ θ: Math.atan2(k.im, k.re), r: Math.sqrt(k.re * k.re + k.im * k.im) });
 var CptoCk = (p) => ({ re: p.r * Math.cos(p.θ), im: p.r * Math.sin(p.θ) });
 var CktoArr = (p) => ([p.re, p.im]);
-var CkassignCk = (a, b) => { a.re = b.re; a.im = b.im; };
+var CkassignCk = (a, b) => { a.re = b.re; a.im = b.im; return a; };
 var CktoR2 = (p) => ({ x: p.re, y: p.im });
 var Ckneg = (p) => ({ re: -p.re, im: -p.im });
 var Ckcon = (p) => ({ re: p.re, im: -p.im });

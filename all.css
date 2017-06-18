@@ -12,7 +12,7 @@ h1 {
 }
 
 #header {
-    background-color:#a5d6a7;
+    background-color:#96ca98;
     padding: 0.3em;
     display: flow-root;
     border-bottom: 1px solid #eaeaea;
@@ -37,7 +37,7 @@ button {
 
 #selectCaption {
     font-size: .7em;
-    word-spacing:4.5em;
+    word-spacing:4.4em;
 }
 
 #ivis-canvas-div {
@@ -51,7 +51,7 @@ button {
 .unitDiscBg {
     fill: #f9fbe7;
     stroke: #eef4be;
-    stroke-width: .005;
+    stroke-width: .0025;
 }
 
 /*--------------------------------------------------------------------------------------- */
@@ -62,7 +62,7 @@ button {
 
 .node > circle {
     fill: #a5d6a7;
-    stroke: #888;
+    stroke: #888; /* #a1887f; */
     stroke-width: .005;
 }
 
@@ -70,6 +70,13 @@ button {
     font-size: 0.05pt;
     dominant-baseline: middle;
     pointer-events: none;
+
+    paint-order:stroke;
+    stroke: #fff;
+    stroke-width: .01;
+    stroke-opacity: 0.7;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
 }
 
 .link {
@@ -79,7 +86,7 @@ button {
 }
 
 .arc {
-    stroke: #ccc;
+    stroke: #ccc; /*#d7ccc8; */
     stroke-width: .005;
     fill: none;
     pointer-events: none;
