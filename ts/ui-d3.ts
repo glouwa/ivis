@@ -24,7 +24,9 @@ namespace ivis.ui.D3
         links : any
         captions : any
         arcs : any
+
         drag : any
+        d3mouseElem = () => d3.event.sourceEvent.target.__data__
 
         t  = (d:N) => {
             d.cache = d.cache || {}
@@ -33,8 +35,6 @@ namespace ivis.ui.D3
         }
         tr = (d:N) => this.args.transformR(d)
         ti = (e:number[]) => ArrtoC(e)
-
-        d3mouseElem = () => d3.event.sourceEvent.target.__data__
 
         constructor(args : ivis.ui.TreeOnUnitDiskConfig)
         {

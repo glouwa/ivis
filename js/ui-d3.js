@@ -14,6 +14,7 @@ var ivis;
             D3.initD3 = initD3;
             class UnitDiskD3 {
                 constructor(args) {
+                    this.d3mouseElem = () => d3.event.sourceEvent.target.__data__;
                     this.t = (d) => {
                         d.cache = d.cache || {};
                         CassignC(d.cache, this.args.transform(d));
@@ -21,7 +22,6 @@ var ivis;
                     };
                     this.tr = (d) => this.args.transformR(d);
                     this.ti = (e) => ArrtoC(e);
-                    this.d3mouseElem = () => d3.event.sourceEvent.target.__data__;
                     this.updateNode = x => x.attr("transform", d => "translate(" + this.t(d) + ") scale(" + this.tr(d) + ")");
                     this.updateText = x => x.text(d => (this.args.caption ? (d.name ? d.name : (d.data ? (d.data.name ? d.data.name : "") : "")) : ""));
                     this.updateArc = x => x.attr("d", d => this.args.arc(d));

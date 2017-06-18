@@ -25,6 +25,7 @@ var ivis;
             loader: null,
             layout: null,
             arc: null,
+            captions: null,
         };
         function init() {
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
@@ -54,6 +55,10 @@ var ivis;
                 { text: "-Arc", value: "arc('1', '0')", },
                 { text: "Line", value: "arcLine", },
             ];
+            var captionOptions = [
+                { text: "hide on drag", value: "true", },
+                { text: "show always", value: "false", },
+            ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))
                 .selectAll('option')
@@ -82,11 +87,20 @@ var ivis;
                 .enter().append('option')
                 .attr('value', d => d.value)
                 .text(d => d.text);
+            d3.select('#captionSelect')
+                .on('change', () => setCaption(d3.event.target.value))
+                .selectAll('option')
+                .data(captionOptions)
+                .enter().append('option')
+                .attr('value', d => d.value)
+                .text(d => d.text);
             var name = document.getElementById("rendererSelect").value;
             controller.slide.initUi = eval('ivis.ui.' + name + '.init' + name);
             controller.slide.unitDisk = eval('ivis.ui.' + name + '.UnitDisk' + name);
             var arcName = document.getElementById("arcSelect").value;
             controller.slide.arc = eval('ivis.ui.' + arcName);
+            var captionName = document.getElementById("captionSelect").value;
+            controller.slide.captions = eval(captionName);
             next(1);
         }
         controller.init = init;
@@ -129,6 +143,9 @@ var ivis;
             controller.slide.arc = eval('ivis.ui.' + name);
             resetDom();
             ivis.controller.loadHyperTree();
+        }
+        function setCaption(name) {
+            controller.slide.captions = eval(name);
         }
         function resetDom() {
             document.getElementById("ivis-canvas-div").innerText = '';

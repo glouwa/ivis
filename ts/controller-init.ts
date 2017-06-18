@@ -24,6 +24,7 @@ namespace ivis.controller
         loader:null,
         layout:null,
         arc:null,
+        captions:null,
     }
 
     export function init()
@@ -54,6 +55,10 @@ namespace ivis.controller
             { text:"+Arc",            value:"arc('0', '1')",     },
             { text:"-Arc",            value:"arc('1', '0')",     },
             { text:"Line",            value:"arcLine",           },
+        ]
+        var captionOptions = [
+            { text:"hide on drag",    value:"true",              },
+            { text:"show always",     value:"false",             },
         ]
 
         d3.select('#rendererSelect')
@@ -88,12 +93,24 @@ namespace ivis.controller
                 .attr('value', d=> d.value)
                 .text(d=> d.text)
 
+        d3.select('#captionSelect')
+            .on('change', ()=> setCaption(d3.event.target.value))
+            .selectAll('option')
+            .data(captionOptions)
+            .enter().append('option')
+                .attr('value', d=> d.value)
+                .text(d=> d.text)
+
         var name = (<HTMLInputElement>document.getElementById("rendererSelect")).value
         slide.initUi = eval('ivis.ui.'+name+'.init' + name)
         slide.unitDisk = eval('ivis.ui.'+name+'.UnitDisk' + name)
 
         var arcName = (<HTMLInputElement>document.getElementById("arcSelect")).value
         slide.arc = eval('ivis.ui.' + arcName)
+
+        var captionName = (<HTMLInputElement>document.getElementById("captionSelect")).value
+        slide.captions = eval(captionName)
+
         next(1)
     }
 
@@ -149,6 +166,11 @@ namespace ivis.controller
         slide.arc = eval('ivis.ui.'+name)
         resetDom()
         ivis.controller.loadHyperTree()
+    }
+
+    function setCaption(name)
+    {
+        slide.captions = eval(name)
     }
 
     function resetDom()

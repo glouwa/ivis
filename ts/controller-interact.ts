@@ -104,7 +104,8 @@ namespace ivis.controller
 
         private onDragStart(m:C, n:N, tt:TypedependentTransformation) : void
         {
-            this.view.updateCaptions(false)
+            if (ivis.controller.slide.captions)
+                this.view.updateCaptions(false)
             tt.onDragStart(m)
         }
 
@@ -117,7 +118,8 @@ namespace ivis.controller
 
         private onDragEnd() : void
         {
-            this.view.updateCaptions(true)
+            if (ivis.controller.slide.captions)
+                this.view.updateCaptions(true)
         }
 
         private onClick(m:C, tt:TypedependentTransformation) : void

@@ -75,7 +75,8 @@ var ivis;
                 this.view.updatePositions();
             }
             onDragStart(m, n, tt) {
-                this.view.updateCaptions(false);
+                if (ivis.controller.slide.captions)
+                    this.view.updateCaptions(false);
                 tt.onDragStart(m);
             }
             onDrag(s, e, n, tt) {
@@ -84,7 +85,8 @@ var ivis;
                 this.updatePositions();
             }
             onDragEnd() {
-                this.view.updateCaptions(true);
+                if (ivis.controller.slide.captions)
+                    this.view.updateCaptions(true);
             }
             onClick(m, tt) {
                 this.onDragStart(m, null, tt);
