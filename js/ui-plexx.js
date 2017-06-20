@@ -67,13 +67,8 @@ var ivis;
                             model: n,
                             t: this.t,
                             ti: this.ti,
+                            tr: this.tr,
                             positionUpdateable: this.positionUpdateable,
-                            onDrag: this.args.onDrag,
-                            onDragStart: this.args.onDragStart,
-                            radius: this.tr(n),
-                            position: [0, 0],
-                            translation: this.t(n),
-                            colour: "#90caf9",
                         }));
                         if (n.parent)
                             this.plexxObj.add(new LinkLine({
@@ -81,12 +76,6 @@ var ivis;
                                 t: this.t,
                                 ti: this.ti,
                                 positionUpdateable: this.positionUpdateable,
-                                points: this.t(n.parent).concat(this.t(n)),
-                                width: 0.5,
-                                type: Constants.LineType.Default,
-                                colour: "#777777",
-                                endArrow: null,
-                                arrowScale: 1,
                             }));
                     });
                 }
@@ -94,7 +83,12 @@ var ivis;
             plexx.UnitDiskPlexx = UnitDiskPlexx;
             class NodeCircle extends Plexx.Circle {
                 constructor(args) {
-                    super(args);
+                    super({
+                        position: [0, 0],
+                        radius: args.tr(args.model),
+                        translation: args.t(args.model),
+                        colour: "#90caf9",
+                    });
                     this.isActive = false;
                     this.args = args;
                     this.addMouseActHov(this);
@@ -104,6 +98,7 @@ var ivis;
                     });
                 }
                 update(t) {
+                    this.radius = this.args.tr(this.args.model);
                     this.setTranslation(this.args.t(this.args.model));
                 }
                 addMouseActHov(v) {
@@ -120,13 +115,20 @@ var ivis;
                     });
                     this.on("mouseout", e => {
                         if (!this.isActive)
-                            this.setColour(this.args.colour);
+                            this.setColour("#90caf9");
                     });
                 }
             }
             class LinkLine extends Plexx.Line {
                 constructor(args) {
-                    super(args);
+                    super({
+                        points: args.t(args.model.parent).concat(args.t(args.model)),
+                        width: 0.5,
+                        type: Constants.LineType.Default,
+                        colour: "#777777",
+                        endArrow: true,
+                        arrowScale: 1,
+                    });
                     this.args = args;
                     this.args.positionUpdateable.push(this);
                 }

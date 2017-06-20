@@ -81,31 +81,20 @@ namespace ivis.ui.plexx
 
             dfs(model, (n : N)=> {
 
-                this.plexxObj.add(new NodeCircle({ // add blue circle
+                this.plexxObj.add(new NodeCircle({
                     model: n,
                     t: this.t,
                     ti: this.ti,
-                    positionUpdateable: this.positionUpdateable,
-                    onDrag: this.args.onDrag,
-                    onDragStart: this.args.onDragStart,
-                    radius: this.tr(n),
-                    position: [0, 0],
-                    translation: this.t(n),
-                    colour: "#90caf9",                    
+                    tr: this.tr,
+                    positionUpdateable: this.positionUpdateable,                    
                 }))
 
                 if (n.parent)
-                    this.plexxObj.add(new LinkLine({ // add line (root has no link)
+                    this.plexxObj.add(new LinkLine({
                         model: n,
                         t: this.t,
                         ti: this.ti,
                         positionUpdateable: this.positionUpdateable,
-                        points: this.t(n.parent).concat(this.t(n)),
-                        width: 0.5,
-                        type: Constants.LineType.Default,
-                        colour: "#777777",                        
-                        endArrow:null,
-                        arrowScale:1,
                     }))
             })
         }
@@ -118,18 +107,24 @@ namespace ivis.ui.plexx
 
         constructor(args)
         {
-            super(args)
+            super({
+                position: [0, 0],
+                radius: args.tr(args.model),
+                translation: args.t(args.model),
+                colour: "#90caf9",
+            })
             this.args = args
             this.addMouseActHov(this)
             this.args.positionUpdateable.push(this)
 
             this.on("dragmove", function (e) {
                 console.log("event: ", e);
-
             });
         }
 
-        update(t) {
+        update(t)
+        {
+            this.radius = this.args.tr(this.args.model)
             this.setTranslation(this.args.t(this.args.model))
         }
 
@@ -148,7 +143,7 @@ namespace ivis.ui.plexx
             });
 
             this.on("mouseout", e=> {
-                if(!this.isActive) this.setColour(this.args.colour);
+                if(!this.isActive) this.setColour("#90caf9");
             })
         }
     }
@@ -159,12 +154,20 @@ namespace ivis.ui.plexx
 
         constructor(args)
         {
-            super(args)
+            super({
+                points: args.t(args.model.parent).concat(args.t(args.model)),
+                width: 0.5,
+                type: Constants.LineType.Default,
+                colour: "#777777",
+                endArrow: true,
+                arrowScale:1,
+            })
             this.args = args
-            this.args.positionUpdateable.push(this)
+            this.args.positionUpdateable.push(this)           
         }
 
-        update() {
+        update()
+        {
             this.setPoints(this.args.t(this.args.model.parent).concat(this.args.t(this.args.model)))
         }
     }
