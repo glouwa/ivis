@@ -5,32 +5,32 @@
     "children": [
       {
         "id": 1,
-        "name": "left child",
+        "name": "right child",
         "children":[
           {
             "id": 3,
-            "name" : "leafA left child",
+            "name" : "leafA right child",
             "children": []
           },
           {
             "id": 4,
-            "name": "leafB left child",
+            "name": "leafB right child",
             "children": []
           }
         ]
       },
       {
         "id": 2,
-        "name": "right child",
+        "name": "left child",
         "children": [
           {
             "id": 5,
-            "name": "leafA right child",
+            "name": "leafA left child",
             "children": []
           },
           {
             "id": 6,
-            "name": "leafB right child",
+            "name": "leafB left child",
             "children": []
           }
         ]
