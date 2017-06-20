@@ -22,42 +22,55 @@ namespace ivis.ui.plexx
 
         plexxObj : Plexx.Group
         positionUpdateable = []
-        t  = (d:N)  => R2toArr(R2mulR(this.args.transform(d), this.args.radius))
-        ti = (e:R2) =>         R2divR(e, this.args.radius)
+        t  = (d:N)  => CtoArr(CmulR(this.args.transform(d), this.args.radius))
+        ti = (e:R2) => CdivR(R2toC(e), this.args.radius) //R2toC(CdivC(e, this.args.radius))
+        tr = (d:N)  => this.args.nodeRadius * this.args.radius * this.args.transformR(d) //* 200//* this.args.radius
 
         constructor(args : ivis.ui.TreeOnUnitDiskConfig)
         {
             this.args = args
 
             this.plexxObj = new Plexx.Group({ translation:args.pos});
-            var unitDiscBg = new Plexx.Circle({ radius:args.radius, position:[0,0], colour:"#f9fbe7" });
+            var unitDiscBg = new Plexx.Circle({
+                radius:args.radius,
+                position:[0,0],
+                colour:(args.opacity?"#f9fbe7cc":"#f9fbe7"),
+                opacity:.5,
+            });
 
             var dragFlag = false
+            var dragStartPoint = null
+            var dragStartElement = null
             unitDiscBg.on("mousedown", e=> {
                 dragFlag = true
-                args.onDragStart(this.ti(e.mousePos))
+                dragStartPoint = this.ti(e.mousePos)
+                args.onDragStart(dragStartPoint, null)
             })
 
             unitDiscBg.on("mousemove", e=> {
                 if (dragFlag)
-                    args.onDrag(this.ti(e.mousePos))
+                    args.onDrag(dragStartPoint, this.ti(e.mousePos), null)
             })
 
             unitDiscBg.on("mouseup", e=> {
                 dragFlag = false
-                args.onDrag(this.ti(e.mousePos))
+                args.onDrag(dragStartPoint, this.ti(e.mousePos), null)
             })
             myCanvas.add(this.plexxObj)
             this.plexxObj.add(unitDiscBg)
             this.create()
         }
 
-        update() : void
+        updatePositions() : void
         {
             for(var i=0; i < this.positionUpdateable.length; i++)
                 this.positionUpdateable[i].update()
 
             //myCanvas.renderFrame(renderContext);
+        }
+
+        updateCaptions(visible:boolean) : void
+        {
         }
 
         private create() : void
@@ -75,13 +88,10 @@ namespace ivis.ui.plexx
                     positionUpdateable: this.positionUpdateable,
                     onDrag: this.args.onDrag,
                     onDragStart: this.args.onDragStart,
-
-                    radius: this.args.nodeRadius,
+                    radius: this.tr(n),
                     position: [0, 0],
                     translation: this.t(n),
-                    colour: "#90caf9",
-                    //draggable: true,
-                    //draggingSpace: [0, 0, 2000, 2000]
+                    colour: "#90caf9",                    
                 }))
 
                 if (n.parent)
@@ -90,12 +100,10 @@ namespace ivis.ui.plexx
                         t: this.t,
                         ti: this.ti,
                         positionUpdateable: this.positionUpdateable,
-
                         points: this.t(n.parent).concat(this.t(n)),
                         width: 0.5,
                         type: Constants.LineType.Default,
-                        colour: "#777777",
-                        //startArrow:Plexx.Triangle,
+                        colour: "#777777",                        
                         endArrow:null,
                         arrowScale:1,
                     }))

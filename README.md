@@ -1,4 +1,8 @@
 # ivis
+use:
+npm update
+npm start
+
 
 Every HBPoint in the euclidean represented poincare disk is a complex number (x + iy) with restriction |p| < 1
 
@@ -22,7 +26,9 @@ todos:
 - wedge layout
 - coole dataloader
 
-- interaction interface ui-controler
+- click, transforamtion interface refactoring
+- init refactoring
+- cache reaftoring
 - multiple foci
 
 

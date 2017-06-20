@@ -1,122 +1,172 @@
-//----------------------------------------------------------------------------------------
-/**
- * a viewdisk and a navigation disk together.
- * navdisk gets pan state as model
- */
-class TreeWithNavigation {
-    constructor(args) {
-        this.args = args;
-        this.navData = args.navData,
-            args.dataloader(d3h => {
-                this.data = args.layout(d3.hierarchy(d3h)); // data ok. calc init layout
-                this.create();
-            });
-    }
-    update() {
-        this.nav.update();
-        this.view.update();
-    }
-    create() {
-        this.view = new SelectedUnitDisk({
-            data: this.data,
-            transform: (n) => CtoR2(this.args.t(n)),
-            transformR: (n) => this.nodeR(CtoR2(this.args.t(n))),
-            onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-            onDrag: (m) => this.args.onDrag(R2toC(m)),
-            parent: null,
-            pos: ArrAddR(this.args.pos, 240),
-            radius: 200,
-            nodeRadius: 8,
-            clip: this.args.clip,
-            caption: true
-        });
-        var navR = 55;
-        var navbg = new SelectedUnitDisk({
-            data: this.data,
-            transform: (n) => CtoR2(n.z),
-            transformR: (n) => 1,
-            onDragStart: (m) => { },
-            onDrag: (m) => { },
-            parent: null,
-            pos: ArrAddR(this.args.pos, navR),
-            radius: navR,
-            nodeRadius: 2,
-            clip: true
-        });
-        this.nav = new SelectedUnitDisk({
-            data: this.navData,
-            transform: (n) => CtoR2(n),
-            transformR: (n) => 1,
-            onDragStart: (m) => this.args.onDragStart(R2toC(m)),
-            onDrag: (m) => this.args.onDrag(R2toC(m)),
-            parent: null,
-            pos: ArrAddR(this.args.pos, navR),
-            opacity: .8,
-            radius: navR,
-            nodeRadius: 7,
-            clip: false,
-            caption: true
-        });
-    }
-    nodeR(np) {
-        var r = Math.sqrt(np.x * np.x + np.y * np.y);
-        if (r > 1)
-            r = 1;
-        return Math.sin(Math.acos(r));
-    }
-}
-//----------------------------------------------------------------------------------------
 var ivis;
 (function (ivis) {
     var controller;
     (function (controller) {
-        var o = { v: { re: 0, im: 0 }, α: { re: -1, im: 0, value: 0 }, ζ: { re: 1, im: 0, value: 1 } };
-        var h = { P: { re: 0, im: 0 }, θ: one };
+        /**
+         * a viewdisk and a navigation disk together.
+         * navdisk gets pan state as model
+         */
+        class TreeWithNavigation // Interaction
+         {
+            constructor(args) {
+                this.args = args;
+                this.navData = args.navData,
+                    args.dataloader(d3h => {
+                        this.data = args.layout(d3.hierarchy(d3h)); // data ok. calc init layout
+                        this.create();
+                    });
+            }
+            create() {
+                this.view = new ivis.controller.slide.unitDisk({
+                    class: 'unitDisc',
+                    data: this.data,
+                    transform: (n) => this.args.viewTT.transformPoint(n),
+                    transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.viewTT),
+                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
+                    onDragEnd: () => this.onDragEnd(),
+                    onClick: (m) => this.onClick(m, this.args.viewTT),
+                    parent: null,
+                    pos: ArrAddR(this.args.pos, 240),
+                    arc: this.args.arc,
+                    radius: 200,
+                    nodeRadius: .04,
+                    clip: this.args.clip,
+                    caption: true,
+                });
+                var navR = 55;
+                new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParamBg',
+                    data: this.data,
+                    transform: (n) => n.z,
+                    transformR: (n) => 1,
+                    onDragStart: (m, n) => { },
+                    onDrag: (s, e) => { },
+                    onDragEnd: () => { },
+                    onClick: (m) => { },
+                    parent: null,
+                    pos: ArrAddR(this.args.pos, navR),
+                    arc: this.args.arc,
+                    radius: navR,
+                    nodeRadius: .03,
+                    clip: true
+                });
+                this.nav = new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParam',
+                    data: this.navData,
+                    transform: (n) => n,
+                    transformR: (n) => 1,
+                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.navTT),
+                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
+                    onDragEnd: () => this.onDragEnd(),
+                    onClick: (m) => this.onClick(m, this.args.navTT),
+                    parent: null,
+                    pos: ArrAddR(this.args.pos, navR),
+                    arc: this.args.arc,
+                    opacity: .8,
+                    radius: navR,
+                    nodeRadius: .13,
+                    clip: false,
+                    caption: true
+                });
+            }
+            updatePositions() {
+                this.nav.updatePositions();
+                this.view.updatePositions();
+            }
+            onDragStart(m, n, tt) {
+                if (ivis.controller.slide.captions)
+                    this.view.updateCaptions(false);
+                tt.onDragStart(m);
+            }
+            onDrag(s, e, n, tt) {
+                var postfix = n ? (n.name ? n.name : 'P') : 'P'; // n.name bei parameter, n.data.name bei normalen nodes :(
+                tt['onDrag' + postfix](s, e);
+                this.updatePositions();
+            }
+            onDragEnd() {
+                if (ivis.controller.slide.captions)
+                    this.view.updateCaptions(true);
+            }
+            onClick(m, tt) {
+                this.onDragStart(m, null, tt);
+                var md = CktoCp(m);
+                var step = 0;
+                var initR = md.r;
+                var intervall = setInterval(() => {
+                    md.r = initR * (1 - sigmoid(step++ / 50));
+                    if (step > 50) {
+                        this.onDragEnd();
+                        clearInterval(intervall);
+                    }
+                    else {
+                        this.onDrag(m, CptoCk(md), null, tt);
+                    }
+                }, 15);
+            }
+            nodeR(np) {
+                var r = Math.sqrt(np.re * np.re + np.im * np.im);
+                if (r > 1)
+                    r = 1;
+                return Math.sin(Math.acos(r));
+            }
+        }
+        class HyperbolicTransformation {
+            constructor(tp) {
+                this.transformPoint = (n) => h2e(h, n.z);
+                this.onDragStart = (m) => this.dST = clone(this.tp);
+                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P);
+                this.tp = tp;
+            }
+        }
+        class StandardPanAndZoomTransformation {
+            constructor(tp) {
+                this.transformPoint = (n) => {
+                    var s = CktoCp(this.tp.λ).θ;
+                    var w = CktoCp(this.tp.θ).θ;
+                    var zp = CktoCp(n.z);
+                    var rz = CptoCk({ θ: zp.θ + w, r: zp.r });
+                    return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s);
+                };
+                this.onDragStart = (m) => this.dST = clone(this.tp);
+                this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)));
+                this.onDragθ = (s, e) => CassignC(this.tp.θ, onUnitCircle(e));
+                this.onDragλ = (s, e) => CassignC(this.tp.λ, onUnitCircle(e));
+                this.tp = tp;
+            }
+        }
+        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
+        var o = { P: { re: 0, im: 0 }, θ: { re: -1, im: 0 }, λ: { re: 0.5403023058681398, im: -0.8414709848078965 } };
         /**
          * create a euclidien and a hyperbolic tree view
          * same data
          * same initial layout
-         * different states and
+         * different states and transformations
          */
-        function init() {
-            var uiRoot = selectedInitUi();
-            var dSP = null; // drag start point
-            var dSTo = null; // drag start transformation offset
-            var dSTh = null; // drag start transformation hyperbolic origin preseving
-            var offsetTwn = new TreeWithNavigation({
-                dataloader: selectedDataLoader,
-                navData: ivis.loaders.obj2data(o),
-                layout: selectedLayout,
-                t: (n) => CaddC(n.z, o.v),
-                onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
-                onDrag: (m) => {
-                    var dragVector = CsubC(m, dSP);
-                    var newP = CaddC(dSTo.v, dragVector);
-                    CassignC(o.v, newP);
-                    offsetTwn.update();
-                },
+        function loadHyperTree() {
+            var uiRoot = ivis.controller.slide.initUi();
+            new TreeWithNavigation({
+                dataloader: ivis.controller.slide.loader,
+                navData: ivis.model.loaders.obj2data(o),
+                layout: ivis.controller.slide.layout,
+                viewTT: new StandardPanAndZoomTransformation(o),
+                navTT: new StandardPanAndZoomTransformation(o),
+                arc: ivis.ui.arcLine,
                 parent: uiRoot,
                 pos: [25, 30],
                 clip: true
             });
-            var hyperbolicTwn = new TreeWithNavigation({
-                dataloader: selectedDataLoader,
-                navData: ivis.loaders.obj2data(h),
-                layout: selectedLayout,
-                t: (n) => h2e(h, n.z),
-                onDragStart: (m) => { dSP = m; dSTo = clone(o); dSTh = clone(h); },
-                onDrag: (m) => {
-                    var mp = CktoCp(m);
-                    mp.r = mp.r > 1 ? .95 : mp.r;
-                    m = CptoCk(mp);
-                    var newP = compose(dSTh, shift(h, dSP, m)).P;
-                    CassignC(h.P, newP);
-                    hyperbolicTwn.update();
-                },
+            new TreeWithNavigation({
+                dataloader: ivis.controller.slide.loader,
+                navData: ivis.model.loaders.obj2data(h),
+                layout: ivis.controller.slide.layout,
+                viewTT: new HyperbolicTransformation(h),
+                navTT: new StandardPanAndZoomTransformation(h),
+                arc: ivis.controller.slide.arc,
                 parent: uiRoot,
                 pos: [525, 30],
             });
         }
-        controller.init = init;
+        controller.loadHyperTree = loadHyperTree;
     })(controller = ivis.controller || (ivis.controller = {}));
 })(ivis || (ivis = {}));

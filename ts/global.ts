@@ -35,7 +35,14 @@ function dfsFlat(n, f?) {
 
 function clone(o)
 {
-    return JSON.parse(JSON.stringify(o))
+    var str = JSON.stringify(o)
+    console.log(str)
+    return JSON.parse(str)
+}
+
+function sigmoid(x)
+{
+    return .5 + .5 * Math.tanh(x*6-3)
 }
 
 //----------------------------------------------------------------------------------------
@@ -102,7 +109,7 @@ type Cp = { θ:number, r:number }
 type C  = Ck
 
 var R2toArr =     (p:R2)=>           ([ p.x,                            p.y ])
-var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; }
+var R2assignR2 =  (a, b)=>           {  a.x=b.x;                        a.y=b.y; return a; }
 var R2toC =       (p:R2)=>           ({ re:p.x,                         im:p.y })
 var R2neg =       (p:R2)=>           ({ x:-p.x,                         y:-p.y })
 var R2addR2 =     (a:R2, b:R2)=>     ({ x:a.x + b.x,                    y:a.y + b.y })
@@ -114,7 +121,7 @@ var CktoCp =      (k:Ck)=>           ({ θ:Math.atan2(k.im, k.re),       r:Math.
 var CptoCk =      (p:Cp)=>           ({ re:p.r*Math.cos(p.θ),           im:p.r*Math.sin(p.θ) })
 
 var CktoArr =     (p:Ck)=>           ([ p.re,                           p.im ])
-var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; }
+var CkassignCk =  (a:Ck, b:Ck)=>     {  a.re=b.re;                      a.im=b.im; return a; }
 var CktoR2 =      (p:Ck)=>           ({ x:p.re,                         y:p.im })
 var Ckneg =       (p:Ck)=>           ({ re:-p.re,                       im:-p.im })
 var Ckcon =       (p:Ck)=>           ({ re:p.re,                        im:-p.im })
@@ -146,13 +153,16 @@ var CdivC =       CkdivCk
 var CdivR =       CkdivR
 
 var ArrtoC =      (p:number[])=>     ({ re:p[0],                        im:p[1] })
+var ArrtoR2 =     (p:number[])=>     ({ x:p[0],                         y:p[1]  })
 function ArrAddR(p:[number, number], s:number) : [number,number] { return [ p[0] + s, p[1] + s ] }
+function ArrDivR(p:[number, number], s:number) : [number,number] { return [ p[0] / s, p[1] / s ] }
 
 function CkdivCkImpl(a:Ck, b:Ck)
 {
+    var dn = (b.re * b.re + b.im * b.im)
     var r = {
-        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+        re:(a.re * b.re + a.im * b.im) / dn,
+        im:(a.im * b.re - a.re * b.im) / dn
     }
     if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
     if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
@@ -175,4 +185,18 @@ function CplogImpl(a:Cp)
         return { r:Math.log(a.r), θ:a.θ }
     else
         return { r:0, θ:0 }
+}
+
+function maxR(c:C, v:number)
+{
+    var mp = CktoCp(c);
+    mp.r = mp.r>v?v:mp.r;
+    return CptoCk(mp)
+}
+
+function onUnitCircle(c:C)
+{
+    var mp = CktoCp(c);
+    mp.r = 1
+    return CptoCk(mp)
 }

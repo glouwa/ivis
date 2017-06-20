@@ -13,7 +13,12 @@ function dfsFlat(n, f) {
     return r;
 }
 function clone(o) {
-    return JSON.parse(JSON.stringify(o));
+    var str = JSON.stringify(o);
+    console.log(str);
+    return JSON.parse(str);
+}
+function sigmoid(x) {
+    return .5 + .5 * Math.tanh(x * 6 - 3);
 }
 function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };
@@ -58,7 +63,7 @@ function arcCenter(a, b) {
     return { c: CmulC({ re: 0, im: 1 }, CdivR(numerator, 2 * d)), d: d };
 }
 var R2toArr = (p) => ([p.x, p.y]);
-var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; };
+var R2assignR2 = (a, b) => { a.x = b.x; a.y = b.y; return a; };
 var R2toC = (p) => ({ re: p.x, im: p.y });
 var R2neg = (p) => ({ x: -p.x, y: -p.y });
 var R2addR2 = (a, b) => ({ x: a.x + b.x, y: a.y + b.y });
@@ -68,7 +73,7 @@ var R2divR = (p, s) => ({ x: p.x / s, y: p.y / s });
 var CktoCp = (k) => ({ θ: Math.atan2(k.im, k.re), r: Math.sqrt(k.re * k.re + k.im * k.im) });
 var CptoCk = (p) => ({ re: p.r * Math.cos(p.θ), im: p.r * Math.sin(p.θ) });
 var CktoArr = (p) => ([p.re, p.im]);
-var CkassignCk = (a, b) => { a.re = b.re; a.im = b.im; };
+var CkassignCk = (a, b) => { a.re = b.re; a.im = b.im; return a; };
 var CktoR2 = (p) => ({ x: p.re, y: p.im });
 var Ckneg = (p) => ({ re: -p.re, im: -p.im });
 var Ckcon = (p) => ({ re: p.re, im: -p.im });
@@ -97,11 +102,14 @@ var Clog = Cklog;
 var CdivC = CkdivCk;
 var CdivR = CkdivR;
 var ArrtoC = (p) => ({ re: p[0], im: p[1] });
+var ArrtoR2 = (p) => ({ x: p[0], y: p[1] });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
+function ArrDivR(p, s) { return [p[0] / s, p[1] / s]; }
 function CkdivCkImpl(a, b) {
+    var dn = (b.re * b.re + b.im * b.im);
     var r = {
-        re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-        im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+        re: (a.re * b.re + a.im * b.im) / dn,
+        im: (a.im * b.re - a.re * b.im) / dn
     };
     if (isNaN(r.re)) {
         r.re = 0;
@@ -126,4 +134,14 @@ function CplogImpl(a) {
         return { r: Math.log(a.r), θ: a.θ };
     else
         return { r: 0, θ: 0 };
+}
+function maxR(c, v) {
+    var mp = CktoCp(c);
+    mp.r = mp.r > v ? v : mp.r;
+    return CptoCk(mp);
+}
+function onUnitCircle(c) {
+    var mp = CktoCp(c);
+    mp.r = 1;
+    return CptoCk(mp);
 }
