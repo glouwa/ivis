@@ -41,13 +41,12 @@ namespace ivis.model {
     name?: string;
     weight?: number;
 
-    deserialize(input) {
+    deserialize(input) : TreeNode {
       Object.assign(this, input);
 
       if (!this.hasOwnProperty('id')) {
         throw new MissingFieldError('id');
       }
-      console.log('deserialize ' + this.id);
       if (!this.hasOwnProperty('children')) {
         throw new MissingFieldError('children');
       }
@@ -65,9 +64,9 @@ namespace ivis.model {
       return this.parent;
     }
 
-    getChildren(): TreeNode[] {
+    public getChildren = () => {
       return this.children;
-    }
+    };
 
     setParent(parent: TreeNode) {
       //console.log('setParent ' + parent.getId() + ' of node ' + this.getId());
@@ -75,23 +74,14 @@ namespace ivis.model {
     }
 
     addChild(child: TreeNode) {
-      //console.log('addChild ' + child.getId() + ' to node ' + this.getId());
       if (this.children.indexOf(child) == -1)
         this.children.push(child);
     }
 
-    getId(): string {
+    getId() {
       return this.id;
     }
 
-    getChildCount(): number {
-      let count: number = 0;
-      this.children.forEach((child: TreeNode) => {
-        //count += child.getChildCount();
-      });
-
-      return count;
-    }
   }
 
 
@@ -105,9 +95,7 @@ namespace ivis.model {
         if (xhr.readyState == 4 && xhr.status == 200) {
           let json = JSON.parse(xhr.responseText);
           try {
-            let _this = this;
-            this.setupTreeHierarchy(json, null);
-            console.log(this.tree_);
+            this.setupTreeHierarchy(json);
             ok(this.tree_[0]);
           } catch (e) {
             console.log("Invalid JSON data file.");
@@ -118,21 +106,10 @@ namespace ivis.model {
       xhr.send();
     }
 
-    private setupTreeHierarchy(json: Object[], parent: TreeNode) {
-      json.forEach((obj: Object) => {
-        let node = new TreeNode().deserialize(obj);
-
-        let children: TreeNode[] = node.getChildren();
-        if (children !== null) {
-          this.setupTreeHierarchy(children, node);
-        }
-
-        if (parent !== null) {
-          node.setParent(parent);
-          parent.addChild(node);
-        } else {
-          this.tree_.push(node);
-        }
+    private setupTreeHierarchy(json: Object[]) {
+      json.forEach((obj: TreeNode) => {
+        let node : TreeNode = new TreeNode().deserialize(obj);
+        this.tree_.push(node);
       });
     }
 
@@ -144,24 +121,38 @@ namespace ivis.model {
       this.tree_.forEach((node: TreeNode) => callback(node));
     }
 
-    getRouteNode() {
+    getRootNode() {
       return this.tree_.find((node: TreeNode) => (node.parent == null));
     }
 
-    getNodeCount() {
-      let count: number = 0;
-      this.tree_.forEach((node: TreeNode) => {
-        count += node.getChildCount();
+    /*getNodeCount() {
+      let counter = function(node : TreeNode) {
+        let count = 0;
+        node.getChildren().forEach((child : TreeNode) => {
+          count += counter(child);
+        });
+        return count + 1;
+      };
+
+      let nodeCount = 0;
+      this.tree_.forEach((node : TreeNode) => {
+        nodeCount += counter(node);
       });
-      return count;
-    }
 
-    getTree(): TreeNode[] {
-      //console.log('getTree' + this.getNodeCount());
-      return this.tree_;
-    }
+      return nodeCount + 1;
+    }*/
 
+    countNodes(node : TreeNode) : number {
+      let sum: number = 0;
+      let children : TreeNode[] = node.children;
+      children.forEach((child : TreeNode) => {
+        sum += this.countNodes(child) + 1;
+      });
+
+      return sum;
+    }
   }
+
 }
 
 //TODO: get it working with JSON
