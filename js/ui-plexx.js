@@ -20,23 +20,32 @@ var ivis;
             class UnitDiskPlexx {
                 constructor(args) {
                     this.positionUpdateable = [];
-                    this.t = (d) => R2toArr(R2mulR(this.args.transform(d), this.args.radius));
-                    this.ti = (e) => R2divR(e, this.args.radius);
+                    this.t = (d) => CtoArr(CmulR(this.args.transform(d), this.args.radius));
+                    this.ti = (e) => CdivR(R2toC(e), this.args.radius); //R2toC(CdivC(e, this.args.radius))
+                    this.tr = (d) => this.args.nodeRadius * this.args.radius * this.args.transformR(d); //* 200//* this.args.radius
                     this.args = args;
                     this.plexxObj = new Plexx.Group({ translation: args.pos });
-                    var unitDiscBg = new Plexx.Circle({ radius: args.radius, position: [0, 0], colour: "#f9fbe7" });
+                    var unitDiscBg = new Plexx.Circle({
+                        radius: args.radius,
+                        position: [0, 0],
+                        colour: (args.opacity ? "#f9fbe7cc" : "#f9fbe7"),
+                        opacity: .5,
+                    });
                     var dragFlag = false;
+                    var dragStartPoint = null;
+                    var dragStartElement = null;
                     unitDiscBg.on("mousedown", e => {
                         dragFlag = true;
-                        args.onDragStart(this.ti(e.mousePos));
+                        dragStartPoint = this.ti(e.mousePos);
+                        args.onDragStart(dragStartPoint, null);
                     });
                     unitDiscBg.on("mousemove", e => {
                         if (dragFlag)
-                            args.onDrag(this.ti(e.mousePos));
+                            args.onDrag(dragStartPoint, this.ti(e.mousePos), null);
                     });
                     unitDiscBg.on("mouseup", e => {
                         dragFlag = false;
-                        args.onDrag(this.ti(e.mousePos));
+                        args.onDrag(dragStartPoint, this.ti(e.mousePos), null);
                     });
                     myCanvas.add(this.plexxObj);
                     this.plexxObj.add(unitDiscBg);
@@ -61,7 +70,7 @@ var ivis;
                             positionUpdateable: this.positionUpdateable,
                             onDrag: this.args.onDrag,
                             onDragStart: this.args.onDragStart,
-                            radius: this.args.nodeRadius,
+                            radius: this.tr(n),
                             position: [0, 0],
                             translation: this.t(n),
                             colour: "#90caf9",
@@ -76,7 +85,6 @@ var ivis;
                                 width: 0.5,
                                 type: Constants.LineType.Default,
                                 colour: "#777777",
-                                //startArrow:Plexx.Triangle,
                                 endArrow: null,
                                 arrowScale: 1,
                             }));

@@ -106,9 +106,10 @@ var ArrtoR2 = (p) => ({ x: p[0], y: p[1] });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
 function ArrDivR(p, s) { return [p[0] / s, p[1] / s]; }
 function CkdivCkImpl(a, b) {
+    var dn = (b.re * b.re + b.im * b.im);
     var r = {
-        re: (a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-        im: (a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+        re: (a.re * b.re + a.im * b.im) / dn,
+        im: (a.im * b.re - a.re * b.im) / dn
     };
     if (isNaN(r.re)) {
         r.re = 0;

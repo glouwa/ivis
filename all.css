@@ -50,8 +50,8 @@ button {
 
 .unitDiscBg {
     fill: #f9fbe7;
-    stroke: #eef4be;
-    stroke-width: .0025;
+    stroke: #cbde3b; //#eef4be;
+    stroke-width: .001;
 }
 
 /*--------------------------------------------------------------------------------------- */

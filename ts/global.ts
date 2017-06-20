@@ -159,9 +159,10 @@ function ArrDivR(p:[number, number], s:number) : [number,number] { return [ p[0]
 
 function CkdivCkImpl(a:Ck, b:Ck)
 {
+    var dn = (b.re * b.re + b.im * b.im)
     var r = {
-        re:(a.re * b.re + a.im * b.im) / (b.re * b.re + b.im * b.im),
-        im:(a.im * b.re - a.re * b.im) / (b.re * b.re + b.im * b.im)
+        re:(a.re * b.re + a.im * b.im) / dn,
+        im:(a.im * b.re - a.re * b.im) / dn
     }
     if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
     if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
