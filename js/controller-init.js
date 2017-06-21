@@ -5,7 +5,7 @@ var ivis;
         var slideNr = -1;
         var slides = [
             { ds: 'code', ls: 'layoutRadial', name: "Code (modules)" },
-            { ds: 'jsonFile', ls: 'layoutRadial', name: "data from json" },
+            { ds: 'file', ls: 'layoutRadial', name: "data from file" },
             //{ ds:'code',         ls:'layoutRadial',      name:"viewmodel " },
             { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
             { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
@@ -31,7 +31,8 @@ var ivis;
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
             var loaderOptions = [
                 { text: "flare.csv (d3)", value: "d3csvFlare", },
-                { text: "basicTree.json", value: "jsonFile", },
+                { text: "data from file", value: "file", },
+                { text: "Tol", value: "tol", },
                 { text: "Code", value: "code", },
                 { text: "⋆ Star 1+4", value: "star_(5)", },
                 { text: "⋆ Star 1+50", value: "star_(50)", },
@@ -94,13 +95,13 @@ var ivis;
                 .enter().append('option')
                 .attr('value', d => d.value)
                 .text(d => d.text);
-            var name = document.getElementById("rendererSelect").value;
-            controller.slide.initUi = eval('ivis.ui.' + name + '.init' + name);
-            controller.slide.unitDisk = eval('ivis.ui.' + name + '.UnitDisk' + name);
-            var arcName = document.getElementById("arcSelect").value;
-            controller.slide.arc = eval('ivis.ui.' + arcName);
-            var captionName = document.getElementById("captionSelect").value;
-            controller.slide.captions = eval(captionName);
+            var rendererSelect = document.getElementById("rendererSelect");
+            var arcSelect = document.getElementById("arcSelect");
+            var captionSelect = document.getElementById("captionSelect");
+            controller.slide.initUi = eval('ivis.ui.' + rendererSelect.value + '.init' + rendererSelect.value);
+            controller.slide.unitDisk = eval('ivis.ui.' + rendererSelect.value + '.UnitDisk' + rendererSelect.value);
+            controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
+            controller.slide.captions = eval(captionSelect.value);
             next(1);
         }
         controller.init = init;
@@ -109,8 +110,10 @@ var ivis;
             var newDs = slides[slideNr % slides.length].ds;
             var newLs = slides[slideNr % slides.length].ls;
             var newName = slides[slideNr % slides.length].name;
-            document.getElementById("dataSourceSelect").value = newDs;
-            document.getElementById("layoutSelect").value = newLs;
+            var dataSourceSelect = document.getElementById("dataSourceSelect");
+            var layoutSelect = document.getElementById("layoutSelect");
+            dataSourceSelect.value = newDs;
+            layoutSelect.value = newLs;
             document.getElementById('slideName').innerHTML = newName;
             setDataSource(newDs, false);
             setLayout(newLs);

@@ -19,6 +19,7 @@ namespace ivis.ui.D3
         nodeLayer : any
         linkLayer : any
         arcLayer : any
+        textLayer : any
 
         nodes : any
         links : any
@@ -29,7 +30,7 @@ namespace ivis.ui.D3
         d3mouseElem = () => d3.event.sourceEvent.target.__data__
 
         t  = (d:N) => {
-            d.cache = d.cache || {}
+            d.cache = d.cache || { re:0, im:0 }
             CassignC(d.cache, this.args.transform(d))
             return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
         }
@@ -65,6 +66,7 @@ namespace ivis.ui.D3
             this.linkLayer = this.layers.append('g')
             this.arcLayer = this.layers.append('g')
             this.nodeLayer = this.layers.append('g')
+            this.textLayer = this.layers.append('g')
 
             if (args.clip)
             {
@@ -81,34 +83,36 @@ namespace ivis.ui.D3
         {
             this.nodes.call(this.updateNode)
             this.arcs.call(this.updateArc)
+            this.captions.call(this.updateText)
         }
 
+        showCaptions = true
         updateCaptions(visible:boolean) : void
         {
-            this.args.caption = visible
+            this.showCaptions = visible
             this.captions.call(this.updateText)
             this.captions.transition()
-                //.ease(d3.easeCubicInOut(750))
-                .duration(this.args.caption?750:0)
-                .attr("opacity", d=> this.args.caption?1:0)
+                .duration(this.showCaptions?750:0)
+                .attr("opacity", d=> this.showCaptions?1:0)
         }
 
         private create() : void
         {
             this.nodes = this.nodeLayer.selectAll(".node")
                 .data(dfsFlat(this.args.data, n=>true))
-                .enter().append("g")
+                .enter().append("circle")
                     .attr("class", "node")
+                    .attr("r", this.args.nodeRadius)
                     .on("click", () => this.args.onClick(this.ti(d3.mouse(this.layersSvg))))
                     .call(this.drag)
                     .call(this.updateNode)
 
-            this.nodes.append("circle")
-                .attr("r", this.args.nodeRadius)
-
-            this.captions = this.nodes.append("text")
-                .attr("dy", this.args.nodeRadius/6)
-                .call(this.updateText)
+            this.captions = this.textLayer.selectAll(".caption")
+                .data(dfsFlat(this.args.data, n=>true))
+                .enter().append('text')
+                    .attr("class", "caption")
+                    .attr("dy", this.args.nodeRadius/6)
+                    .call(this.updateText)
 
             this.arcs = this.arcLayer.selectAll(".arc")
                 .data(dfsFlat(this.args.data, n=>n.parent))
@@ -117,8 +121,12 @@ namespace ivis.ui.D3
                     .call(this.updateArc)
         }
 
-        private updateNode = x=> x.attr("transform", d=> "translate(" + this.t(d) + ") scale(" + this.tr(d) +  ")")
-        private updateText = x=> x.text(d=> (this.args.caption?(d.name?d.name:(d.data?(d.data.name?d.data.name:""):"")):""))
+        private transformStr = d=> " translate(" + this.t(d) + ")"
+        private scaleStr     = d=> " scale(" + this.tr(d) +  ")"
+        private calcText     = d=> (this.showCaptions?this.args.caption(d):"")
+
+        private updateNode = x=> x.attr("transform", d=> this.transformStr(d) + this.scaleStr(d))
         private updateArc  = x=> x.attr("d", d=> this.args.arc(d))
+        private updateText = x=> x.attr("transform", this.transformStr).text(this.calcText)
     }
 }

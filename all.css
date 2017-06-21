@@ -61,14 +61,14 @@ button {
 .node {
 }
 
-.node > circle {
+.node {
     fill: #a5d6a7;
     stroke: #888; /* #a1887f; */
     stroke-width: .005;
 }
 
-.node > text {
-    font-size: 0.05pt;
+.caption {
+    font-size: 0.03pt;
     dominant-baseline: middle;
     pointer-events: none;
 
@@ -93,11 +93,11 @@ button {
     pointer-events: none;
 }
 
-.unitDiscParam .node > circle {
+.unitDiscParam .node {
     fill: #BBDEFB;
 }
 
-.unitDiscParam .node > text {
+.unitDiscParam .caption {
     text-anchor: middle;
     font-size: .17pt;
 }

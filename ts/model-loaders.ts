@@ -48,6 +48,7 @@ namespace ivis.model.loaders {
     export var star_ = n=> ok=> star(ok, n)
     export var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
     export var file = ok => loadDataFromFile(ok, "data/treeml-sample.xml");
+    export var tol = ok => loadDataFromFile(ok, "data/carnivora.xml");
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {

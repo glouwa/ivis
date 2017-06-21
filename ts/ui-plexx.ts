@@ -160,6 +160,7 @@ namespace ivis.ui.plexx
                 type: Constants.LineType.Default,
                 colour: "#777777",
                 endArrow: true,
+                startArrow: false,
                 arrowScale:1,
             })
             this.args = args

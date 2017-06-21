@@ -26,13 +26,13 @@ var ivis;
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
                     onDragEnd: () => this.onDragEnd(),
                     onClick: (m) => this.onClick(m, this.args.viewTT),
+                    arc: this.args.arc,
+                    caption: this.caption(.8),
                     parent: null,
                     pos: ArrAddR(this.args.pos, 240),
-                    arc: this.args.arc,
                     radius: 200,
                     nodeRadius: .04,
                     clip: this.args.clip,
-                    caption: true,
                 });
                 var navR = 55;
                 new ivis.controller.slide.unitDisk({
@@ -44,9 +44,10 @@ var ivis;
                     onDrag: (s, e) => { },
                     onDragEnd: () => { },
                     onClick: (m) => { },
+                    arc: this.args.arc,
+                    caption: (n) => "",
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
-                    arc: this.args.arc,
                     radius: navR,
                     nodeRadius: .03,
                     clip: true
@@ -60,14 +61,14 @@ var ivis;
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
                     onDragEnd: () => this.onDragEnd(),
                     onClick: (m) => this.onClick(m, this.args.navTT),
+                    arc: this.args.arc,
+                    caption: this.caption(Number.POSITIVE_INFINITY),
                     parent: null,
                     pos: ArrAddR(this.args.pos, navR),
-                    arc: this.args.arc,
                     opacity: .8,
                     radius: navR,
                     nodeRadius: .13,
                     clip: false,
-                    caption: true
                 });
             }
             updatePositions() {
@@ -103,6 +104,17 @@ var ivis;
                         this.onDrag(m, CptoCk(md), null, tt);
                     }
                 }, 15);
+            }
+            caption(maxR) {
+                return function (n) {
+                    if (CktoCp(n.cache).r > maxR)
+                        return "";
+                    if (n.name)
+                        return n.name;
+                    if (n.data && n.data.name)
+                        return n.data.name;
+                    return "";
+                };
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);

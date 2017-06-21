@@ -1,0 +1,1504 @@
+<?xml version="1.0" standalone="yes"?>
+
+<TREE>
+  <NODE EXTINCT="0" ID="15971" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="15997" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+    <NAME><![CDATA[Carnivora]]></NAME>
+    <DESCRIPTION><![CDATA[(dogs, cats, bears, raccoons, weasels, mongooses, hyenas, seals, walruses)]]></DESCRIPTION>
+    <AUTHORITY></AUTHORITY>
+    <NAMECOMMENT></NAMECOMMENT>
+    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+    <AUTHDATE>null</AUTHDATE>
+    <OTHERNAMES>
+      <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+        <NAME><![CDATA[carnivores]]></NAME>
+        <AUTHORITY></AUTHORITY>
+        <COMMENTS></COMMENTS>
+      </OTHERNAME>
+      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+        <NAME><![CDATA[Dogs, cats, bears, raccoons, weasels, mongooses, hyenas, seals, walruses, etc.]]></NAME>
+        <AUTHORITY></AUTHORITY>
+        <COMMENTS></COMMENTS>
+      </OTHERNAME>
+    </OTHERNAMES>
+    <NODES>
+      <NODE EXTINCT="0" ID="16003" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="8">
+        <NAME><![CDATA[Feliformia]]></NAME>
+        <DESCRIPTION></DESCRIPTION>
+        <AUTHORITY></AUTHORITY>
+        <NAMECOMMENT></NAMECOMMENT>
+        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+        <AUTHDATE>null</AUTHDATE>
+        <NODES>
+          <NODE EXTINCT="2" ID="16004" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Viverravidae]]></NAME>
+            <DESCRIPTION></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="2" ID="16005" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Nimravidae]]></NAME>
+            <DESCRIPTION><![CDATA[(false saber-tooths)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16006" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+            <NAME><![CDATA[Felidae]]></NAME>
+            <DESCRIPTION><![CDATA[(cats)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <OTHERNAMES>
+              <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Cats]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+            </OTHERNAMES>
+            <NODES>
+              <NODE EXTINCT="0" ID="123610" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="16006" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="11">
+                <NAME><![CDATA[Felinae]]></NAME>
+                <DESCRIPTION></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <NODES>
+                  <NODE EXTINCT="0" ID="123524" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Acinonyx jubatus]]></NAME>
+                    <DESCRIPTION><![CDATA[(cheetah)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Cheetah]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123525" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Caracal caracal]]></NAME>
+                    <DESCRIPTION><![CDATA[(African lynx)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[African Lynx]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                      <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Caracal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123526" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+                    <NAME><![CDATA[Catopuma]]></NAME>
+                    <DESCRIPTION><![CDATA[(Asian golden cat and bay cat)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123527" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123526" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Catopuma badia]]></NAME>
+                        <DESCRIPTION><![CDATA[(bay cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Bay Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123528" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123526" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Catopuma temminckii]]></NAME>
+                        <DESCRIPTION><![CDATA[(Asian golden cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Asian Golden Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123529" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="7">
+                    <NAME><![CDATA[Felis]]></NAME>
+                    <DESCRIPTION><![CDATA[(domestic cat, wild cat, and relatives)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123530" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis bieti]]></NAME>
+                        <DESCRIPTION><![CDATA[(Chinese mountain cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Chinese Mountain Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123531" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis catus]]></NAME>
+                        <DESCRIPTION><![CDATA[(domestic cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Domestic Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123532" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis chaus]]></NAME>
+                        <DESCRIPTION><![CDATA[(jungle cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Jungle Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123533" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis manul]]></NAME>
+                        <DESCRIPTION><![CDATA[(Pallas' cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Pallas' Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123534" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis margarita]]></NAME>
+                        <DESCRIPTION><![CDATA[(sand cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Sand Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123535" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis nigripes]]></NAME>
+                        <DESCRIPTION><![CDATA[(black-footed cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Black-footed Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123536" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123529" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Felis silvestris]]></NAME>
+                        <DESCRIPTION><![CDATA[(wildcat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Wildcat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123537" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="9">
+                    <NAME><![CDATA[Leopardus]]></NAME>
+                    <DESCRIPTION><![CDATA[(ocelot, margay, and relatives)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123538" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus braccatus]]></NAME>
+                        <DESCRIPTION><![CDATA[(Pantanal cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Pantanal Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123539" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus colocolo]]></NAME>
+                        <DESCRIPTION><![CDATA[(colocolo)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Colocolo]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123540" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus geoffroyi]]></NAME>
+                        <DESCRIPTION><![CDATA[(Geoffroy's cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Geoffroy's Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123541" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus guigna]]></NAME>
+                        <DESCRIPTION><![CDATA[(kodkod, guigna)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Kodkod]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Guigna]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123542" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus jacobitus]]></NAME>
+                        <DESCRIPTION><![CDATA[(Andean cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Andean Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123543" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus pajeros]]></NAME>
+                        <DESCRIPTION><![CDATA[(pampas cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Pampas Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123544" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus pardalis]]></NAME>
+                        <DESCRIPTION><![CDATA[(ocelot)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Ocelot]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123545" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus tigrinus]]></NAME>
+                        <DESCRIPTION><![CDATA[(oncilla)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Oncilla]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123546" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123537" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Leopardus wiedii]]></NAME>
+                        <DESCRIPTION><![CDATA[(margay)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Margay]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123547" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Leptailurus serval]]></NAME>
+                    <DESCRIPTION><![CDATA[(serval)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Serval]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123548" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="4">
+                    <NAME><![CDATA[Lynx]]></NAME>
+                    <DESCRIPTION><![CDATA[(lynx and bobcat)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123549" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123548" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Lynx canadensis]]></NAME>
+                        <DESCRIPTION><![CDATA[(Canadian lynx)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Canadian Lynx]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123550" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123548" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Lynx lynx]]></NAME>
+                        <DESCRIPTION><![CDATA[(Eurasian lynx)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Eurasian Lynx]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123551" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123548" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Lynx pardinus]]></NAME>
+                        <DESCRIPTION><![CDATA[(Iberian lynx)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Iberian Lynx]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123552" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123548" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Lynx rufus]]></NAME>
+                        <DESCRIPTION><![CDATA[(bobcat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Bobcat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123553" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Pardofelis marmorata]]></NAME>
+                    <DESCRIPTION><![CDATA[(marbled cat)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Marbled Cat]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123554" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="5">
+                    <NAME><![CDATA[Prionailurus]]></NAME>
+                    <DESCRIPTION><![CDATA[(fishing cat, leopard cat, and relatives)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123555" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123554" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Prionailurus bengalensis]]></NAME>
+                        <DESCRIPTION><![CDATA[(leopard cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Leopard Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123556" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123554" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Prionailurus iriomotensis]]></NAME>
+                        <DESCRIPTION><![CDATA[(Iriomote cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Iriomote Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123557" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123554" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Prionailurus planiceps]]></NAME>
+                        <DESCRIPTION><![CDATA[(flat-headed cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Flat-headed Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123558" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123554" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Prionailurus rubiginosus]]></NAME>
+                        <DESCRIPTION><![CDATA[(rusty-spotted cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Rusty-spotted Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123559" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123554" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Prionailurus viverrinus]]></NAME>
+                        <DESCRIPTION><![CDATA[(fishing cat)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Fishing Cat]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123560" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Profelis aurata]]></NAME>
+                    <DESCRIPTION><![CDATA[(African golden cat)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[African Golden Cat]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123561" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+                    <NAME><![CDATA[Puma]]></NAME>
+                    <DESCRIPTION><![CDATA[(mountain lion and jaguarundi)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123563" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="123561" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Puma yagouaroundi]]></NAME>
+                        <DESCRIPTION><![CDATA[(jaguarundi )]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Jaguarundi]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123562" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123561" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Puma concolor]]></NAME>
+                        <DESCRIPTION><![CDATA[(mountain lion)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Mountain Lion]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Cougar]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="2" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Panther]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                </NODES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123611" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="16006" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="3">
+                <NAME><![CDATA[Pantherinae]]></NAME>
+                <DESCRIPTION></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <NODES>
+                  <NODE EXTINCT="0" ID="123565" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="4">
+                    <NAME><![CDATA[Panthera]]></NAME>
+                    <DESCRIPTION><![CDATA[(lion, jaguar, leopard, and tiger)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123566" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123565" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Panthera leo]]></NAME>
+                        <DESCRIPTION><![CDATA[(lion)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Lion]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123567" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123565" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Panthera onca]]></NAME>
+                        <DESCRIPTION><![CDATA[(jaguar)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Jaguar]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123568" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123565" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Panthera pardus]]></NAME>
+                        <DESCRIPTION><![CDATA[(leopard)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Leopard]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123569" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123565" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Panthera tigris]]></NAME>
+                        <DESCRIPTION><![CDATA[(tiger)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Tiger]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123564" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Neofelis nebulosa]]></NAME>
+                    <DESCRIPTION><![CDATA[(clouded leopard)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Clouded Leopard]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123570" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16006" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Uncia uncia]]></NAME>
+                    <DESCRIPTION><![CDATA[(snow leopard)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Snow Leopard]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                      <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="1">
+                        <NAME><![CDATA[Panthera uncia]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                </NODES>
+              </NODE>
+            </NODES>
+          </NODE>
+          <NODE EXTINCT="0" ID="16007" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Viverridae]]></NAME>
+            <DESCRIPTION><![CDATA[(civets, linsangs, genets, etc.)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16008" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Herpestidae]]></NAME>
+            <DESCRIPTION><![CDATA[(mongooses, meerkats, fossa)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16009" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Hyaenidae]]></NAME>
+            <DESCRIPTION><![CDATA[(hyaenas, aardwolf)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16010" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Nandinia binotata]]></NAME>
+            <DESCRIPTION><![CDATA[(African palm civet)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <OTHERNAMES>
+              <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[African palm civet]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+              <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Nandinia]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+              <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="2" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Nandiniidae]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+            </OTHERNAMES>
+          </NODE>
+          <NODE EXTINCT="0" ID="123669" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Eupleridae]]></NAME>
+            <DESCRIPTION><![CDATA[(fossa and other Malagasy carnivores)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+        </NODES>
+      </NODE>
+      <NODE EXTINCT="0" ID="16011" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="10">
+        <NAME><![CDATA[Caniformia]]></NAME>
+        <DESCRIPTION></DESCRIPTION>
+        <AUTHORITY></AUTHORITY>
+        <NAMECOMMENT></NAMECOMMENT>
+        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+        <AUTHDATE>null</AUTHDATE>
+        <NODES>
+          <NODE EXTINCT="2" ID="16012" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Miacidae]]></NAME>
+            <DESCRIPTION></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16013" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Canidae]]></NAME>
+            <DESCRIPTION><![CDATA[(wolves, dogs, coyotes, foxes, jackals)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="123869" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="15971" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Ailurus fulgens]]></NAME>
+            <DESCRIPTION><![CDATA[(red panda)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <OTHERNAMES>
+              <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Red Panda]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+              <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="1">
+                <NAME><![CDATA[Ailurus]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+              <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="2" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Firefox]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+            </OTHERNAMES>
+          </NODE>
+          <NODE EXTINCT="2" ID="16014" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Amphicyonidae]]></NAME>
+            <DESCRIPTION></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16015" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="8">
+            <NAME><![CDATA[Ursidae]]></NAME>
+            <DESCRIPTION><![CDATA[(bears and giant panda)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <OTHERNAMES>
+              <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Bears]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+            </OTHERNAMES>
+            <NODES>
+              <NODE EXTINCT="0" ID="123665" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Ursus americanus]]></NAME>
+                <DESCRIPTION><![CDATA[(American Black Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[American Black Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123666" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Ursus arctos]]></NAME>
+                <DESCRIPTION><![CDATA[(Brown Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Brown Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Grizzly Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="2" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Kodiak Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123667" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Ursus maritimus]]></NAME>
+                <DESCRIPTION><![CDATA[(Polar Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Polar Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123668" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Ursus thibetanus]]></NAME>
+                <DESCRIPTION><![CDATA[(Asiatic Black Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Asiatic Black Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123660" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Ailuropoda melanoleuca]]></NAME>
+                <DESCRIPTION><![CDATA[(Giant Panda)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Giant Panda]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Panda Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123661" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Helarctos malayanus]]></NAME>
+                <DESCRIPTION><![CDATA[(Sun Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Sun Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Malayan Sun Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123662" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Melursus ursinus]]></NAME>
+                <DESCRIPTION><![CDATA[(Sloth Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Sloth Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123663" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16015" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Tremarctos ornatus]]></NAME>
+                <DESCRIPTION><![CDATA[(Spectacled Bear)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Spectacled Bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[ Andean bear]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+            </NODES>
+          </NODE>
+          <NODE EXTINCT="2" ID="16016" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Hemicyonidae]]></NAME>
+            <DESCRIPTION></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="123833" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Mephitidae]]></NAME>
+            <DESCRIPTION><![CDATA[(skunks)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <OTHERNAMES>
+              <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                <NAME><![CDATA[Skunks]]></NAME>
+                <AUTHORITY></AUTHORITY>
+                <COMMENTS></COMMENTS>
+              </OTHERNAME>
+            </OTHERNAMES>
+          </NODE>
+          <NODE EXTINCT="0" ID="16017" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Mustelidae]]></NAME>
+            <DESCRIPTION><![CDATA[(weasels, otters, ferrets, badgers, skunks, wolverines, etc.)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16018" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+            <NAME><![CDATA[Procyonidae]]></NAME>
+            <DESCRIPTION><![CDATA[(raccoons, kinkajous, coatimundis, lesser panda, etc.)]]></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+          </NODE>
+          <NODE EXTINCT="0" ID="16019" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="3">
+            <NAME><![CDATA[Pinnipedia (Phocoidea)]]></NAME>
+            <DESCRIPTION></DESCRIPTION>
+            <AUTHORITY></AUTHORITY>
+            <NAMECOMMENT></NAMECOMMENT>
+            <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+            <AUTHDATE>null</AUTHDATE>
+            <NODES>
+              <NODE EXTINCT="0" ID="16020" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="13">
+                <NAME><![CDATA[Phocidae]]></NAME>
+                <DESCRIPTION><![CDATA[(true seals, earless seals)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <NODES>
+                  <NODE EXTINCT="0" ID="123791" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Cystophora cristata]]></NAME>
+                    <DESCRIPTION><![CDATA[(Hooded Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Hooded Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123792" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Erignathus barbatus]]></NAME>
+                    <DESCRIPTION><![CDATA[(Bearded Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Bearded Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123793" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Halichoerus grypus]]></NAME>
+                    <DESCRIPTION><![CDATA[(Gray Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Gray Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123794" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Histriophoca fasciata]]></NAME>
+                    <DESCRIPTION><![CDATA[(Ribbon Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Ribbon Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123795" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Hydrurga leptonyx]]></NAME>
+                    <DESCRIPTION><![CDATA[(Leopard Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Leopard Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123796" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Leptonychotes weddellii]]></NAME>
+                    <DESCRIPTION><![CDATA[(Weddell Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Weddell Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123797" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Lobodon carcinophaga]]></NAME>
+                    <DESCRIPTION><![CDATA[(Crabeater Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Crabeater Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123798" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+                    <NAME><![CDATA[Mirounga]]></NAME>
+                    <DESCRIPTION><![CDATA[(Elephant Seals)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Elephant Seals]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123799" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123798" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Mirounga angustirostris]]></NAME>
+                        <DESCRIPTION><![CDATA[(Northern Elephant Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Northern Elephant Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123800" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123798" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Mirounga leonina]]></NAME>
+                        <DESCRIPTION><![CDATA[(Southern Elephant Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Southern Elephant Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123801" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="3">
+                    <NAME><![CDATA[Monachus]]></NAME>
+                    <DESCRIPTION><![CDATA[(Monk Seals)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Monk Seals]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123802" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123801" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Monachus monachus]]></NAME>
+                        <DESCRIPTION><![CDATA[(Mediterranean Monk Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Mediterranean Monk Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123803" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123801" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Monachus schauinslandi]]></NAME>
+                        <DESCRIPTION><![CDATA[(Hawaiian Monk Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Hawaiian Monk Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="2" ID="123804" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123801" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Monachus tropicalis]]></NAME>
+                        <DESCRIPTION><![CDATA[(Caribbean Monk Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Caribbean Monk Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[West Indian Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123805" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Ommatophoca rossii]]></NAME>
+                    <DESCRIPTION><![CDATA[(Ross Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Ross Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123806" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                    <NAME><![CDATA[Pagophilus groenlandicus]]></NAME>
+                    <DESCRIPTION><![CDATA[(Harp Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <OTHERNAMES>
+                      <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                        <NAME><![CDATA[Harp Seal]]></NAME>
+                        <AUTHORITY></AUTHORITY>
+                        <COMMENTS></COMMENTS>
+                      </OTHERNAME>
+                    </OTHERNAMES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123807" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="2">
+                    <NAME><![CDATA[Phoca]]></NAME>
+                    <DESCRIPTION><![CDATA[(Spotted Seal &amp; Common Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123809" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123807" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Phoca vitulina]]></NAME>
+                        <DESCRIPTION><![CDATA[(Harbor Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Harbor Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Common Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123808" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123807" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Phoca largha]]></NAME>
+                        <DESCRIPTION><![CDATA[(Spotted Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Spotted Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                  <NODE EXTINCT="0" ID="123810" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="1" ANCESTORWITHPAGE="16020" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="3">
+                    <NAME><![CDATA[Pusa]]></NAME>
+                    <DESCRIPTION><![CDATA[(Caspian, Ringed, and Baikal Seal)]]></DESCRIPTION>
+                    <AUTHORITY></AUTHORITY>
+                    <NAMECOMMENT></NAMECOMMENT>
+                    <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                    <AUTHDATE>null</AUTHDATE>
+                    <NODES>
+                      <NODE EXTINCT="0" ID="123811" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123810" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Pusa caspica]]></NAME>
+                        <DESCRIPTION><![CDATA[(Caspian Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Caspian Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123812" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123810" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Pusa hispida]]></NAME>
+                        <DESCRIPTION><![CDATA[(Ringed Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Ringed Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                      <NODE EXTINCT="0" ID="123813" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="123810" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                        <NAME><![CDATA[Pusa sibirica]]></NAME>
+                        <DESCRIPTION><![CDATA[(Baikal Seal)]]></DESCRIPTION>
+                        <AUTHORITY></AUTHORITY>
+                        <NAMECOMMENT></NAMECOMMENT>
+                        <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                        <AUTHDATE>null</AUTHDATE>
+                        <OTHERNAMES>
+                          <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                            <NAME><![CDATA[Baikal Seal]]></NAME>
+                            <AUTHORITY></AUTHORITY>
+                            <COMMENTS></COMMENTS>
+                          </OTHERNAME>
+                        </OTHERNAMES>
+                      </NODE>
+                    </NODES>
+                  </NODE>
+                </NODES>
+              </NODE>
+              <NODE EXTINCT="0" ID="123814" CONFIDENCE="0" PHYLESIS="0" LEAF="1" HASPAGE="1" ANCESTORWITHPAGE="15971" ITALICIZENAME="1" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Odobenus rosmarus]]></NAME>
+                <DESCRIPTION><![CDATA[(walrus)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+                <OTHERNAMES>
+                  <OTHERNAME ISIMPORTANT="1" ISPREFERRED="0" SEQUENCE="0" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Walrus]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="1" DATE="null" ITALICIZENAME="0">
+                    <NAME><![CDATA[Odobenidae]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                  <OTHERNAME ISIMPORTANT="0" ISPREFERRED="0" SEQUENCE="2" DATE="null" ITALICIZENAME="1">
+                    <NAME><![CDATA[Odobenus]]></NAME>
+                    <AUTHORITY></AUTHORITY>
+                    <COMMENTS></COMMENTS>
+                  </OTHERNAME>
+                </OTHERNAMES>
+              </NODE>
+              <NODE EXTINCT="0" ID="16021" CONFIDENCE="0" PHYLESIS="0" LEAF="0" HASPAGE="0" ANCESTORWITHPAGE="15971" ITALICIZENAME="0" INCOMPLETESUBGROUPS="0" SHOWAUTHORITY="0" SHOWAUTHORITYCONTAINING="0" IS_NEW_COMBINATION="0" COMBINATION_DATE="null" CHILDCOUNT="0">
+                <NAME><![CDATA[Otariidae]]></NAME>
+                <DESCRIPTION><![CDATA[(sea lions, eared seals, fur seals)]]></DESCRIPTION>
+                <AUTHORITY></AUTHORITY>
+                <NAMECOMMENT></NAMECOMMENT>
+                <COMBINATION_AUTHOR></COMBINATION_AUTHOR>
+                <AUTHDATE>null</AUTHDATE>
+              </NODE>
+            </NODES>
+          </NODE>
+        </NODES>
+      </NODE>
+    </NODES>
+  </NODE>
+</TREE>
+

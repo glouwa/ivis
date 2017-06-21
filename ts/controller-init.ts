@@ -33,6 +33,7 @@ namespace ivis.controller
         var loaderOptions = [
             { text:"flare.csv (d3)", value:"d3csvFlare",         },
             { text:"data from file", value:"file",               },
+            { text:"Tol",            value:"tol",                },
             { text:"Code",           value:"code",               },
             { text:"⋆ Star 1+4",     value:"star_(5)",           },            
             { text:"⋆ Star 1+50",    value:"star_(50)",          },
@@ -101,18 +102,19 @@ namespace ivis.controller
                 .attr('value', d=> d.value)
                 .text(d=> d.text)
 
-        var name = (<HTMLInputElement>document.getElementById("rendererSelect")).value
-        slide.initUi = eval('ivis.ui.'+name+'.init' + name)
-        slide.unitDisk = eval('ivis.ui.'+name+'.UnitDisk' + name)
+        var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect")
+        var arcSelect        = <HTMLInputElement>document.getElementById("arcSelect")
+        var captionSelect    = <HTMLInputElement>document.getElementById("captionSelect")
 
-        var arcName = (<HTMLInputElement>document.getElementById("arcSelect")).value
-        slide.arc = eval('ivis.ui.' + arcName)
-
-        var captionName = (<HTMLInputElement>document.getElementById("captionSelect")).value
-        slide.captions = eval(captionName)
+        slide.initUi = eval('ivis.ui.'+rendererSelect.value+'.init' + rendererSelect.value)
+        slide.unitDisk = eval('ivis.ui.'+rendererSelect.value+'.UnitDisk' + rendererSelect.value)
+        slide.arc = eval('ivis.ui.' + arcSelect.value)
+        slide.captions = eval(captionSelect.value)
 
         next(1)
     }
+
+
 
     export function next(d)
     {
@@ -122,8 +124,11 @@ namespace ivis.controller
         var newLs = slides[slideNr%slides.length].ls
         var newName = slides[slideNr%slides.length].name
 
-        document.getElementById("dataSourceSelect").value = newDs
-        document.getElementById("layoutSelect").value = newLs
+        var dataSourceSelect = <HTMLInputElement>document.getElementById("dataSourceSelect")
+        var layoutSelect     = <HTMLInputElement>document.getElementById("layoutSelect")
+
+        dataSourceSelect.value = newDs
+        layoutSelect.value = newLs
         document.getElementById('slideName').innerHTML = newName
         setDataSource(newDs, false)
         setLayout(newLs)

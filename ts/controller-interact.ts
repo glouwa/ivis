@@ -1,16 +1,17 @@
 namespace ivis.controller
 {    
     interface TreeWithNavigationConfig
-    {
-        parent:      any,
+    {        
         dataloader:  LoaderFunction,
         navData:     N,
         layout:      LayoutFunction,
-        viewTT:      TypedependentTransformation,
-        navTT:       TypedependentTransformation,
+        viewTT:      Transformation,
+        navTT:       Transformation,
+        arc:         (n:N) => string,
 
+        parent:      any,
         pos:         [number, number],
-        clip?:       boolean
+        clip?:       boolean,
     }
 
     /**
@@ -46,14 +47,14 @@ namespace ivis.controller
                 onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.viewTT),
                 onDragEnd:   () => this.onDragEnd(),
                 onClick:     (m:C) => this.onClick(m, this.args.viewTT),
+                arc:         this.args.arc,
+                caption:     this.caption(.8),
 
                 parent:      null,
-                pos:         ArrAddR(this.args.pos, 240),
-                arc:         this.args.arc,
+                pos:         ArrAddR(this.args.pos, 240),                
                 radius:      200,
                 nodeRadius:  .04,
-                clip:        this.args.clip,
-                caption:     true,
+                clip:        this.args.clip,                
             })
 
             var navR = 55
@@ -66,10 +67,11 @@ namespace ivis.controller
                 onDrag:      (s:C, e:C) => {},
                 onDragEnd:   () => {},
                 onClick:     (m:C) => {},
+                arc:         this.args.arc,
+                caption:     (n:N) => "",
 
                 parent:      null,
-                pos:         ArrAddR(this.args.pos, navR),
-                arc:         this.args.arc,
+                pos:         ArrAddR(this.args.pos, navR),                
                 radius:      navR,
                 nodeRadius:  .03,
                 clip:        true
@@ -84,15 +86,15 @@ namespace ivis.controller
                 onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
                 onDragEnd:   () => this.onDragEnd(),
                 onClick:     (m:C) => this.onClick(m, this.args.navTT),
+                arc:         this.args.arc,
+                caption:     this.caption(Number.POSITIVE_INFINITY),
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, navR),
-                arc:         this.args.arc,
                 opacity:     .8,
                 radius:      navR,
                 nodeRadius:  .13,
                 clip:        false,
-                caption:     true
             })
         }
 
@@ -102,14 +104,14 @@ namespace ivis.controller
             this.view.updatePositions()
         }
 
-        private onDragStart(m:C, n:N, tt:TypedependentTransformation) : void
+        private onDragStart(m:C, n:N, tt:Transformation) : void
         {
             if (ivis.controller.slide.captions)
                 this.view.updateCaptions(false)
             tt.onDragStart(m)
         }
 
-        private onDrag(s:C, e:C, n:N, tt:TypedependentTransformation) : void
+        private onDrag(s:C, e:C, n:N, tt:Transformation) : void
         {
             var postfix = n?(n.name?n.name:'P'):'P' // n.name bei parameter, n.data.name bei normalen nodes :(
             tt['onDrag'+postfix](s, e)
@@ -122,7 +124,7 @@ namespace ivis.controller
                 this.view.updateCaptions(true)
         }
 
-        private onClick(m:C, tt:TypedependentTransformation) : void
+        private onClick(m:C, tt:Transformation) : void
         {
             this.onDragStart(m, null, tt)
             var md = CktoCp(m)
@@ -140,6 +142,17 @@ namespace ivis.controller
             },15)
         }
 
+        private caption(maxR:number) : (n:N) => string
+        {
+            return function(n:N) : string
+            {
+                if (CktoCp(n.cache).r > maxR) return ""
+                if (n.name) return n.name
+                if (n.data && n.data.name) return n.data.name
+                return ""
+            }
+        }
+
         private nodeR(np:C) : number
         {
             var r = Math.sqrt(np.re*np.re + np.im*np.im)
@@ -151,7 +164,7 @@ namespace ivis.controller
 
     //----------------------------------------------------------------------------------------
 
-    interface TypedependentTransformation
+    interface Transformation
     {
         transformPoint: (n:N) => C,
         onDragStart:    (m:C) => void,
@@ -159,7 +172,7 @@ namespace ivis.controller
         onDragθ:        (s:C, e:C) => void
     }
 
-    class HyperbolicTransformation implements TypedependentTransformation
+    class HyperbolicTransformation implements Transformation
     {
         tp : any
         dST : any
@@ -170,7 +183,7 @@ namespace ivis.controller
         onDragθ:         (s:C, e:C) => {}
     }
 
-    class StandardPanAndZoomTransformation implements TypedependentTransformation
+    class StandardPanAndZoomTransformation implements Transformation
     {
         tp : any
         dST : any

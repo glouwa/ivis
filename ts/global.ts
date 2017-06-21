@@ -2,13 +2,15 @@
  * Node
  */
 interface N {
-    id:       string,
-    parent:   N,
-    children: Array<N>,
-    data:     any,
-    depth:    number,
-    z:        C, // not used jet
-    zprime:   C // not used jet. will be just cache
+    id:        string,
+    parent:    N,
+    name?:     string,
+    children:  Array<N>,
+    data:      any,
+    depth:     number,
+    z?:         C,
+    cache?:    C,
+    strCache?: string,
 }
 
 /**

@@ -51,6 +51,42 @@ namespace ivis.model.layouts {
         return root
     }
 
+    export function layoutLamping(n, wedge = { p:{ re:0, im:0 }, m:{ re:0, im:1 }, α:Math.PI }) {
+
+        console.log('--------------------------------------------------------', n.depth)
+        console.log(wedge.p, wedge.m, wedge.α)
+
+        n.z = wedge.p
+
+        if (n.children) {
+            for (var i=0; i < n.children.length; i++) {
+
+                var cα = wedge.α / n.children.length * (i+1)
+                console.assert(isFinite(cα))
+                console.log('cα', cα)
+
+                var s = .1
+                var it = ((1-s*s) * Math.sin(cα)) / (2*s);              console.log('it',it)
+                var d = Math.sqrt(Math.pow(it,2)+1) - it
+                d = d * .5
+
+                console.assert(isFinite(d))
+                console.log('d',d)
+
+                var p1 = makeT(wedge.p, one)
+                var np = h2e(p1, CmulR(wedge.m, d));                    console.log('np',np)
+
+                var npp1 = makeT(Cneg(np), one)
+                var nd1 = makeT({ re:-d, im:0 }, one)
+                var nm = h2e(npp1, h2e(p1, wedge.m));                   console.log('nm',nm)
+                var nα = Clog(h2e(nd1, Cpow(cα))).im;                   console.assert(isFinite(nα))
+
+                layoutHyperbolic(n.children[i], { p:np, m:nm, α:nα })
+            }
+        }
+        return n
+    }
+
     export function layoutHyperbolic(n, wedge = { p:{ re:0, im:0 }, m:{ re:0, im:1 }, α:Math.PI }) {
 
         console.log('--------------------------------------------------------', n.depth)

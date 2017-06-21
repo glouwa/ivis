@@ -38,14 +38,15 @@ var ivis;
                     ok(d3.stratify().parentId((d) => d.id.substring(0, d.id.lastIndexOf(".")))(data));
                 });
             }
-            function loadJsonFile(ok, path) {
-                console.log('loadJsonFile');
+            function loadDataFromFile(ok, path) {
+                console.log('loadDataFromFile');
                 new model.Tree(ok, path);
             }
             loaders.path_ = n => ok => path(ok, n);
             loaders.star_ = n => ok => star(ok, n);
             loaders.d3csvFlare = ok => d3csv(ok, "data/flare.csv");
-            loaders.jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");
+            loaders.file = ok => loadDataFromFile(ok, "data/treeml-sample.xml");
+            loaders.tol = ok => loadDataFromFile(ok, "data/carnivora.xml");
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;
