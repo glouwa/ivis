@@ -1,0 +1,4 @@
+node_bundles contains a list of node modules made ready for client-side use using browserify
+
+browserify command list:
+- browserify xml2js --s xml2jsBundle > ../../../node_bundles/xml2jsBundle.js

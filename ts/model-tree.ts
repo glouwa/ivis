@@ -64,7 +64,7 @@ namespace ivis.model {
       return this.parent;
     }
 
-    public getChildren = () => {
+    getChildren = () => {
       return this.children;
     };
 
@@ -90,20 +90,92 @@ namespace ivis.model {
 
     constructor(ok, filepath: string) {
       let xhr: XMLHttpRequest = new XMLHttpRequest();
+      let fileType: string = filepath.split('.').pop().toUpperCase();
       xhr.open('GET', filepath, true);
       xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          let json = JSON.parse(xhr.responseText);
-          try {
-            this.setupTreeHierarchy(json);
-            ok(this.tree_[0]);
-          } catch (e) {
-            console.log("Invalid JSON data file.");
-            console.log(e);
+          let content = xhr.responseText;
+          if (fileType === 'JSON') {
+            console.log('filetype: JSON');
+            this.processJSON(content, ok);
+          } else if (fileType === 'XML') {
+            console.log('filetype: XML');
+            xml2jsBundle.parseString(content, (err, result) => {
+              if (err === null)
+                this.processXML(result, ok);
+              else
+                console.log("Invalid XML data file.");
+            });
           }
         }
       };
       xhr.send();
+    }
+
+    private xmlToJson(currentNode : Object, space : string) {
+      let node = {
+        id: "",
+        name: "",
+        children: []
+      };
+
+      let attributeList: [Object] = currentNode['attribute'];
+      if (attributeList !== undefined) {
+        for (let i = 0; i < attributeList.length; i++) {
+          let attribute = attributeList[i]['$'];
+          let attributeName = attribute['name'];
+          let attributeValue = attribute['value'];
+          //id
+          if (attributeName === 'id')
+            node.id = attributeValue;
+          //name
+          else if (attributeName === 'name')
+            node.name = attributeValue;
+        }
+      }
+      if (node.id === "")
+        node.id = node.name;
+
+
+      //children
+      let branches: [Object] = currentNode['branch'];
+      if (branches !== undefined) {
+        for (let i = 0; i < branches.length; i++) {
+          node.children.push(this.xmlToJson(branches[i],  space + " "));
+        }
+      }
+      let leaves : [Object] = currentNode['leaf'];
+      if (leaves !== undefined) {
+        for (let i = 0; i < leaves.length; i++) {
+          node.children.push(this.xmlToJson(leaves[i], space + " "));
+        }
+      }
+
+      return node;
+    }
+
+    processXML(data : string, ok) {
+      let json = [];
+      json.push(this.xmlToJson(data['tree']['branch']['0'], ""));
+      try {
+        this.setupTreeHierarchy(json);
+        ok(this.tree_[0]);
+      } catch (e) {
+        console.log("Invalid JSON data file.");
+        console.log(e);
+      }
+    }
+
+    private processJSON(data : string, ok) {
+      let json = JSON.parse(data);
+      console.log(json);
+      try {
+        this.setupTreeHierarchy(json);
+        ok(this.tree_[0]);
+      } catch (e) {
+        console.log("Invalid JSON data file.");
+        console.log(e);
+      }
     }
 
     private setupTreeHierarchy(json: Object[]) {
@@ -155,9 +227,95 @@ namespace ivis.model {
 
 }
 
-//TODO: get it working with JSON
+//TODO:
 //test all functions with JSON
 //implement SKOS, TREEML
 //implement treeoflife
 //implement file system
 
+
+
+/*
+JSON:
+0
+  children
+    0
+      children
+      id
+      name
+    1
+      children
+      id
+      name
+  id
+  name
+
+
+
+XML:
+tree => REMOVE
+  branch => 0
+    0 => REMOVE
+      attribute
+        0
+          $
+            name: name
+            value: sample things
+      branch => 0
+        0
+          attribute
+            0
+              $
+                name: name
+                value: plants
+          leaf
+            0
+              attribute
+                0
+                  $
+                    name: name
+                    value: oak
+                1
+                  $
+                    name: number
+                    value: 10
+                2
+                  $
+                    name: type
+                    value: wild
+            1
+              attribute
+                0
+                  $
+                    name: name
+                    value: afican violet
+                1
+                  $
+                    name: number
+                    value: 3
+                2
+                  $
+                    name: type
+                    value: domestic
+        1
+          attribute
+            0
+              $
+                name: name
+                value: animals
+          branch
+            0
+              attribute
+              branch
+                0
+                  attribute
+                  leaf
+                1
+                  attribute
+                  leaf
+
+
+
+
+
+ */

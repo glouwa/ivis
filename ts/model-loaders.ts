@@ -39,15 +39,15 @@ namespace ivis.model.loaders {
         });
     }
 
-    function loadJsonFile(ok, path : string){
-        console.log('loadJsonFile');
+    function loadDataFromFile(ok, path : string){
+        console.log('loadDataFromFile');
         new model.Tree(ok, path);
     }
 
     export var path_ = n=> ok=> path(ok, n)
     export var star_ = n=> ok=> star(ok, n)
     export var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
-    export var jsonFile = ok => loadJsonFile(ok, "data/basicTree.json");
+    export var file = ok => loadDataFromFile(ok, "data/treeml-sample.xml");
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {

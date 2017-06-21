@@ -3,7 +3,7 @@ namespace ivis.controller
     var slideNr = -1
     var slides = [
         { ds:'code',         ls:'layoutRadial',      name:"Code (modules)" },
-        { ds:'jsonFile',     ls:'layoutRadial',      name:"data from json" },
+        { ds:'file',     ls:'layoutRadial',      name:"data from file" },
         { ds:'code',         ls:'layoutRadial',      name:"viewmodel " },
         { ds:'nTree',        ls:'layoutHyperbolic',  name:"Wedge layout" },
         { ds:'d3csvFlare',   ls:'layoutRadial',      name:"Point transformation seems to work" },
@@ -32,7 +32,7 @@ namespace ivis.controller
         var rendererOptions = ['D3', 'Plexx', 'PlexxDbg']
         var loaderOptions = [
             { text:"flare.csv (d3)", value:"d3csvFlare",         },
-            { text:"basicTree.json", value:"jsonFile",           },
+            { text:"data from file", value:"file",               },
             { text:"Code",           value:"code",               },
             { text:"⋆ Star 1+4",     value:"star_(5)",           },
             { text:"⋆ Star 4✕50",    value:"deepStar",           },
