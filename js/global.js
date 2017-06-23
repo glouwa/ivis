@@ -59,7 +59,7 @@ function arcCenter(a, b) {
     var d = a.re * b.im - b.re * a.im;
     var br = CktoCp(b).r;
     var ar = CktoCp(a).r;
-    var numerator = CsubC(CmulR(a, (1 + br * br)), CmulR(b, (1 + ar * ar)));
+    var numerator = CsubC(CmulR(a, 1 + br * br), CmulR(b, 1 + ar * ar));
     return { c: CmulC({ re: 0, im: 1 }, CdivR(numerator, 2 * d)), d: d };
 }
 var R2toArr = (p) => ([p.x, p.y]);
@@ -144,4 +144,11 @@ function onUnitCircle(c) {
     var mp = CktoCp(c);
     mp.r = 1;
     return CptoCk(mp);
+}
+function piize(α) {
+    if (α < 0)
+        return α + 2 * Math.PI;
+    if (α > 2 * Math.PI)
+        return α - 2 * Math.PI;
+    return α;
 }

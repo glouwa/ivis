@@ -99,7 +99,7 @@ function arcCenter(a:C, b:C)
     var d = a.re * b.im - b.re * a.im
     var br = CktoCp(b).r
     var ar = CktoCp(a).r
-    var numerator = CsubC(CmulR(a, (1 + br*br)), CmulR(b, (1 + ar*ar)))
+    var numerator = CsubC(CmulR(a, 1 + br*br), CmulR(b, 1 + ar*ar))
     return { c:CmulC({ re:0, im:1 }, CdivR(numerator, 2*d)), d:d }
 }
 
@@ -201,4 +201,11 @@ function onUnitCircle(c:C)
     var mp = CktoCp(c);
     mp.r = 1
     return CptoCk(mp)
+}
+
+function piize(α:number) : number
+{
+    if (α < 0)           return α + 2 * Math.PI
+    if (α > 2 * Math.PI) return α - 2 * Math.PI
+    return α
 }

@@ -2,9 +2,8 @@ namespace ivis.controller
 {
     var slideNr = -1
     var slides = [
-        { ds:'code',         ls:'layoutRadial',      name:"Code (modules)" },
-        { ds:'file',     ls:'layoutRadial',      name:"data from file" },
-        //{ ds:'code',         ls:'layoutRadial',      name:"viewmodel " },
+        { ds:'code',         ls:'layoutHyperbolic',  name:"Code (modules)" },
+        { ds:'file',         ls:'layoutRadial',      name:"data from file" },
         { ds:'nTree',        ls:'layoutHyperbolic',  name:"Wedge layout" },
         { ds:'d3csvFlare',   ls:'layoutRadial',      name:"Point transformation seems to work" },
         { ds:'nTree',        ls:'layoutRadial',      name:"Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
