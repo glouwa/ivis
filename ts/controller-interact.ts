@@ -31,7 +31,7 @@ namespace ivis.controller
             this.args  = args
             this.navData = args.navData,
             args.dataloader(d3h => {
-                this.data = args.layout(<N>d3.hierarchy(d3h)) // data ok. calc init layout
+                this.data = args.layout(<N>d3.hierarchy(d3h).sum(slide.weight)) // data ok. calc init layout
                 this.create()
             })
         }
@@ -48,7 +48,7 @@ namespace ivis.controller
                 onDragEnd:   () => this.onDragEnd(),
                 onClick:     (m:C) => this.onClick(m, this.args.viewTT),
                 arc:         this.args.arc,
-                caption:     this.caption(.8),
+                caption:     this.caption(.7),
 
                 parent:      null,
                 pos:         ArrAddR(this.args.pos, 240),                

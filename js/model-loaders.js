@@ -45,8 +45,9 @@ var ivis;
             loaders.path_ = n => ok => path(ok, n);
             loaders.star_ = n => ok => star(ok, n);
             loaders.d3csvFlare = ok => d3csv(ok, "data/flare.csv");
-            loaders.file = ok => loadDataFromFile(ok, "data/treeml-sample.xml");
-            loaders.tol = ok => loadDataFromFile(ok, "data/carnivora.xml");
+            loaders.fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
+            loaders.fileJson = ok => loadDataFromFile(ok, "data/sample.json");
+            loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora.xml");
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;

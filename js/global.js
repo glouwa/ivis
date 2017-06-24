@@ -145,7 +145,7 @@ function onUnitCircle(c) {
     mp.r = 1;
     return CptoCk(mp);
 }
-function piize(α) {
+function πify(α) {
     if (α < 0)
         return α + 2 * Math.PI;
     if (α > 2 * Math.PI)

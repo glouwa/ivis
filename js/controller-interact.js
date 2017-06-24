@@ -12,7 +12,7 @@ var ivis;
                 this.args = args;
                 this.navData = args.navData,
                     args.dataloader(d3h => {
-                        this.data = args.layout(d3.hierarchy(d3h)); // data ok. calc init layout
+                        this.data = args.layout(d3.hierarchy(d3h).sum(controller.slide.weight)); // data ok. calc init layout
                         this.create();
                     });
             }
@@ -27,7 +27,7 @@ var ivis;
                     onDragEnd: () => this.onDragEnd(),
                     onClick: (m) => this.onClick(m, this.args.viewTT),
                     arc: this.args.arc,
-                    caption: this.caption(.8),
+                    caption: this.caption(.7),
                     parent: null,
                     pos: ArrAddR(this.args.pos, 240),
                     radius: 200,

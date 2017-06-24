@@ -4,8 +4,9 @@ var ivis;
     (function (controller) {
         var slideNr = -1;
         var slides = [
+            { ds: 'ToL', ls: 'layoutHyperbolic', name: "Tree of Life Carnivores" },
             { ds: 'code', ls: 'layoutHyperbolic', name: "Code (modules)" },
-            { ds: 'file', ls: 'layoutRadial', name: "data from file" },
+            { ds: 'fileXml', ls: 'layoutRadial', name: "data from file" },
             { ds: 'nTree', ls: 'layoutHyperbolic', name: "Wedge layout" },
             { ds: 'd3csvFlare', ls: 'layoutRadial', name: "Point transformation seems to work" },
             { ds: 'nTree', ls: 'layoutRadial', name: "Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
@@ -25,14 +26,16 @@ var ivis;
             layout: null,
             arc: null,
             captions: null,
+            weight: null,
         };
         function init() {
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
             var loaderOptions = [
                 { text: "flare.csv (d3)", value: "d3csvFlare", },
-                { text: "data from file", value: "file", },
-                { text: "Tol", value: "tol", },
-                { text: "Code", value: "code", },
+                { text: "sample.xml", value: "fileXml", },
+                { text: "sample.json", value: "fileJson", },
+                { text: "Tree of life", value: "ToL", },
+                { text: "Modules", value: "code", },
                 { text: "⋆ Star 1+4", value: "star_(5)", },
                 { text: "⋆ Star 1+50", value: "star_(50)", },
                 { text: "⋆ Star 1+500", value: "star_(500)", },
@@ -44,7 +47,8 @@ var ivis;
                 { text: "𝕋 1+10✕10", value: "nTreeAtFirst", },
             ];
             var layoutOptions = [
-                { text: "Lamping at al.", value: "layoutHyperbolic", },
+                { text: "Bergé at al.", value: "layoutHyperbolic", },
+                { text: "Lamping at al.", value: "layoutLamping", },
                 { text: "Buchheim et al.", value: "layoutRadial", },
                 { text: "DFS spiral", value: "layoutSpiral", },
                 { text: "Unit vectors", value: "layoutUnitVectors", },
@@ -58,6 +62,11 @@ var ivis;
             var captionOptions = [
                 { text: "hide on drag", value: "true", },
                 { text: "show always", value: "false", },
+            ];
+            var weightOptions = [
+                { text: "Non", value: "d=>0", },
+                { text: "Leaf count", value: "d=>d.children?0:1" },
+                { text: "Child count", value: "d=>1", },
             ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))
@@ -94,13 +103,22 @@ var ivis;
                 .enter().append('option')
                 .attr('value', d => d.value)
                 .text(d => d.text);
+            d3.select('#weightSelect')
+                .on('change', () => setWeight(d3.event.target.value))
+                .selectAll('option')
+                .data(weightOptions)
+                .enter().append('option')
+                .attr('value', d => d.value)
+                .text(d => d.text);
             var rendererSelect = document.getElementById("rendererSelect");
             var arcSelect = document.getElementById("arcSelect");
             var captionSelect = document.getElementById("captionSelect");
+            var weightSelect = document.getElementById("weightSelect");
             controller.slide.initUi = eval('ivis.ui.' + rendererSelect.value + '.init' + rendererSelect.value);
             controller.slide.unitDisk = eval('ivis.ui.' + rendererSelect.value + '.UnitDisk' + rendererSelect.value);
             controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
             controller.slide.captions = eval(captionSelect.value);
+            controller.slide.weight = eval(weightSelect.value);
             next(1);
         }
         controller.init = init;
@@ -148,6 +166,11 @@ var ivis;
         }
         function setCaption(name) {
             controller.slide.captions = eval(name);
+        }
+        function setWeight(name) {
+            controller.slide.weight = eval(name);
+            resetDom();
+            ivis.controller.loadHyperTree();
         }
         function resetDom() {
             document.getElementById("ivis-canvas-div").innerText = '';

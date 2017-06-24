@@ -8,6 +8,7 @@ interface N {
     children:  Array<N>,
     data:      any,
     depth:     number,
+    value?:    number,
     z?:         C,
     cache?:    C,
     strCache?: string,
@@ -203,7 +204,7 @@ function onUnitCircle(c:C)
     return CptoCk(mp)
 }
 
-function piize(α:number) : number
+function πify(α:number) : number
 {
     if (α < 0)           return α + 2 * Math.PI
     if (α > 2 * Math.PI) return α - 2 * Math.PI

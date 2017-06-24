@@ -84,47 +84,47 @@ var ivis;
                 return n;
             }
             layouts.layoutLamping = layoutLamping;
-            function wedgeTranslate(w, P) {
-                var t = makeT(P, one);
-                var pα = { re: Math.cos(w.α), im: Math.sin(w.α) };
-                w.α = CktoCp(h2e(t, pα)).θ;
-                var pΩ = { re: Math.cos(w.Ω), im: Math.sin(w.Ω) };
-                w.Ω = CktoCp(h2e(t, pΩ)).θ;
-            }
             function layoutHyperbolic(n) {
-                var pi = Math.PI;
-                var startAngle = 0.5 * pi;
-                var defAngleWidth = 1.98 * pi;
+                var π = Math.PI;
+                var startAngle = 0.5 * π;
+                var defAngleWidth = 1.98 * π;
+                function wedgeTranslate(w, P) {
+                    var t = makeT(P, one);
+                    var pα = { re: Math.cos(w.α), im: Math.sin(w.α) };
+                    w.α = CktoCp(h2e(t, pα)).θ;
+                    var pΩ = { re: Math.cos(w.Ω), im: Math.sin(w.Ω) };
+                    w.Ω = CktoCp(h2e(t, pΩ)).θ;
+                }
                 function layoutNode(n, wedge, length) {
                     if (n.parent) {
-                        var angleWidth = piize(wedge.Ω - wedge.α);
+                        var angleWidth = πify(wedge.Ω - wedge.α);
                         var bisectionAngle = wedge.α + (angleWidth / 2.0);
                         n.z = CptoCk({ θ: bisectionAngle, r: length });
                         n.z = h2e(makeT(n.parent.z, one), n.z);
                         wedgeTranslate(wedge, n.parent.z);
                         wedgeTranslate(wedge, Cneg(n.z));
                     }
-                    var angleWidth = piize(wedge.Ω - wedge.α);
+                    var angleWidth = πify(wedge.Ω - wedge.α);
                     if (angleWidth > defAngleWidth) {
                         var anglediff = angleWidth - defAngleWidth;
                         wedge.α += anglediff / 2.0;
-                        wedge.α = piize(wedge.α);
+                        wedge.α = πify(wedge.α);
                         wedge.Ω -= anglediff / 2.0;
-                        wedge.Ω = piize(wedge.Ω);
+                        wedge.Ω = πify(wedge.Ω);
                         angleWidth = defAngleWidth;
                     }
                     var currentAngle = wedge.α;
                     for (var c of n.children || []) {
                         var α = currentAngle;
-                        currentAngle += angleWidth * (n.weigth || 1 / n.children.length);
-                        var Ω = piize(currentAngle);
+                        currentAngle += angleWidth * ((c.value || 1) / (n.value || n.children.length));
+                        var Ω = πify(currentAngle);
                         layoutNode(c, { α: α, Ω: Ω }, length);
                     }
                     return n;
                 }
                 var wedge = {
-                    α: piize(startAngle - defAngleWidth / 2.0),
-                    Ω: piize(startAngle + defAngleWidth / 2.0)
+                    α: πify(startAngle - defAngleWidth / 2.0),
+                    Ω: πify(startAngle + defAngleWidth / 2.0)
                 };
                 n.z = { re: 0, im: 0 };
                 return layoutNode(n, wedge, .42);
