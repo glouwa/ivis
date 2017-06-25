@@ -1,0 +1,3107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="extinct" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Raubtiere"/>
+    <attribute name="extinct" value="-"/>
+    <branch>
+      <attribute name="name" value="Katzenartige"/>
+      <attribute name="extinct" value="-"/>
+      <branch>
+        <attribute name="name" value="Pardelroller"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Pardelroller"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Nandinia binotata"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value=""/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Palmenroller"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Streifenroller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Arctogalidea trivirgata"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Arctogalidia trivirgata"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Binturong"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Arctictis binturong"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Musangs"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Paradoxurus hermaphrodites"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Paradoxurus hermaphroditus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Paradoxurus zeylonensis"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Paradoxurus jerdoni"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Larvenroller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Paguma larvata"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Sulawesi-Roller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Macrogalidia musschenbroekii"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Bänder- und Otterzivetten"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Fleckenroller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Chrotogale owstoni"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Schlichtroller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Diplogale hosei"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Bänderroller"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Hemigalus derbyanus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Otterzivette"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Cynogale bennettii"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Linsangs"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Linsangs"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Prionodon pardicolor"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Prionodon linsang"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Felidae"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Asiatische Goldkatzen"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Catopuma badia"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Catopuma temminckii"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Marmorkatze"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Pardofelis marmorata"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Caracal"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Caracal caracal"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Afrikanische Goldkatze"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Profelis aurata"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Serval"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Leptailurus serval"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Leopardus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Leopardus guttulus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Leopardus braccatus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Leopardus pajeros"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Leopardus pardalis"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Leopardus pardalis albescens"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Leopardus wiedii"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Leopardus tigrinus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Leopardus geoffroyi"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Leopardus guigna"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Leopardus jacobita"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Leopardus colocolo"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Lynx"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Lynx vulgaris"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Lynx environmental sample"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Lynx rufus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Lynx canadensis"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Lynx lynx"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Lynx pardinus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Gepard"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Gepard"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Acinonyx jubatus"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Puma"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Puma concolor"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Puma concolor couguar"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Puma concolor coryi"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Puma yagouaroundi"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Manul"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Otocolobus manul"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Altkatzen"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Prionailurus rubiginosus"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Prionailurus iriomotensis"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Prionailurus viverrinus"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Prionailurus bengalensis"/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Prionailurus bengalensis bengalensis"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Prionailurus bengalensis euptilurus"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Prionailurus bengalensis chinensis"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Prionailurus planiceps"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Echte Katzen"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Felis venatica"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Felis chaus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Felis sp. NG192"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Felis nigripes"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Felis margarita"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Felis catus"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Felis silvestris"/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Felis silvestris lybica"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Felis silvestris silvestris"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Felis silvestris bieti"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Felis silvestris ornata"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Felis silvestris cafra"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Neofelis"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Neofelis diardi"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Neofelis nebulosa"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Neofelis nebulosa nebulosa"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Eigentliche Großkatzen"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Panthera onca"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Panthera onca mesembrina"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera leo"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Panthera leo leo"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Panthera leo atrox"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Panthera leo bleyenberghi"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Panthera leo spelaea"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Panthera leo persica"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Panthera leo krugeri"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Panthera pardus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Panthera pardus fusca"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera pardus japonensis"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera pardus saxicolor"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera pardus orientalis"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Panthera uncia"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Panthera tigris"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris jacksoni"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris amoyensis"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris sondaica"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris sumatrae"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris altaica"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris tigris"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Panthera tigris corbetti"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Zibetkatzen"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Afrikanische Zibetkatze"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Civettictis civetta"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Poiana"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Poiana leightoni"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Poiana richardsonii"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Asiatische Zibetkatzen"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Viverra suricata"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra nasua"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra lutreola"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra cristata"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra capensis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra binotata"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra civettina"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra ichneumon"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra tangalunga"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra zibetha"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Viverra megaspila"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Kleine Indische Zibetkatze"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Viverricula indica"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Wasserzivette"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Osbornictis piscivora"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Ginsterkatzen"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Genetta abyssinica"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta tigrina"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta felina"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta genetta"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta servalina"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta thierryi"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta johnstoni"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta maculata"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta pardina"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta poensis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta angolensis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta cristata"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta victoriae"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta sp. schoutedeni"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Genetta bourloni"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Hyänen"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Erdwolf"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Proteles cristata"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Proteles cristatus"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Tüpfelhyäne"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Crocuta crocuta"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Schabrackenhyäne"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Parahyaena brunnea"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Streifenhyäne"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Hyaena crocuta"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Hyaena spelaea"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Hyaena hyaena"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Madagassische Raubtiere"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Madagassische Raubtiere"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Cryptoprocta"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Cryptoprocta ferox"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Falanuk"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Eupleres goudotii"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Fossa"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Fossa fossana"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Madagaskar-Mangusten"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Schmalstreifenmungo"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Mungotictis decemlineata"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Breitstreifenmungos"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Galidictis grandidieri"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Galidictis fasciata"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Salanoia"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Salanoia sp. SMF-2010"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Salanoia concolor"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ringelschwanzmungo"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Galidea elegans"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Galidia elegans"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Galidia elegans dambrensis"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Galidia elegans occidentalis"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Galidia elegans elegans"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mangusten"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Langnasenmanguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Xenogale microdon"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Herpestinae sp. PAML-2006"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Listige Manguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Dologale dybowskii"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Liberia-Manguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Liberiictis kuhni"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Meller-Manguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Rhynchogale melleri"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Erdmännchen"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Suricata suricatta"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Sumpfmanguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Atilax paludinosus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Kusimansen"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Crossarchus ansorgei"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Crossarchus ansorgei nigricolor"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Crossarchus obscurus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Crossarchus alexandri"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Crossarchus platycephalus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Schwarzfußmangusten"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Bdeogale jacksoni"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Bdeogale crassicauda"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Bdeogale nigripes"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Trugmanguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Paracynictis selousi"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Fuchsmanguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Cynictis penicillata"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Mungos"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Mungos gambianus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Mungos mungo"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Schlankmangusten"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Galerella ochracea"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Galerella flavescens"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Galerella sanguinea"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Galerella pulverulenta"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Galerella nigrata"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Weißschwanzmanguste"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Ichneumia albicauda"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Herpestes"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Herpestes edwardsi"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes semitorquatus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes javanicus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes edwardsii"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes auropunctatus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes ichneumon"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes vitticollis"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes smithii"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes brachyurus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes fuscus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Herpestes urva"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Zwergmangusten"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Herpestes naso"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Helogale hirtula"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Helogale parvula"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Hundeartige"/>
+      <attribute name="extinct" value="-"/>
+      <branch>
+        <attribute name="name" value="Hunde"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Mähnenwolf"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Chrysocyon brachyurus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Waldhund"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Speothos pacivorus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Speothos venaticus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Kurzohrfuchs"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Atelocynus microtis"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Falklandfuchs"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Dusicyon avus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Dusicyon australis"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Lycalopex"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Lycalopex sp. Fuegian dog"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex fulvipes"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex gymnocercus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex culpaeus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex griseus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex vetulus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lycalopex sechurae"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Löffelhund"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Otocyon megalotis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Graufüchse"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Urocyon littoralis"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis dickeyi"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis littoralis"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis santarosae"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis santacruzae"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis clementae"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Urocyon littoralis catalinae"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Urocyon cinereoargenteus"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Vulpes"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Vulpes minimus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes environmental sample"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes pallida"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes bengalensis"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes cana"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes chama"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes vulpes"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Vulpes vulpes schrenckii"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Vulpes vulpes montana"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Vulpes vulpes japonica"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes macrotis"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Vulpes macrotis zinseri"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes lagopus"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Vulpes lagopus beringensis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes corsac"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes rueppellii"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes zerda"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes velox"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Vulpes ferrilata"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Marderhund"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Nyctereutes procyonoides"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Nyctereutes procyonoides albus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Nyctereutes procyonoides koreensis"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Nyctereutes procyonoides viverrinus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Nyctereutes procyonoides procyonoides"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Maikong"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Cerdocyon thous"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Canis lupaster"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis dingo"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis antarticus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis sp. KEB-2016"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis anthus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis sp. Belgium/36,000"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis sp. Russia/33,500"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis environmental sample"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis hyaena"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis spelaeus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis lycaon"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis simensis"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis adustus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis mesomelas"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Canis mesomelas elongae"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis sp. CANInt1"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis indica"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis himalayensis"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Canis aureus"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Canis latrans"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Canis rufus"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Cuon"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Cuon primaevus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Cuon alpinus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Cuon alpinus lepturus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Lykaon"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Lycaon pictus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Canis lupus"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Canis lupus variabilis"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus arctos"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus campestris"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus lupaster"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus lupus"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus signatus"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus labradorius"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus dingo"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus hodophilax"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus mogollonensis"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus familiaris"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus desertorum"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus hattai"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus laniger"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus baileyi"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus chanco"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Canis lupus pallipes"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value=""/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Walross"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Walross"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Odobenus rosmarus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Odobenus rosmarus laptevi"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Odobenus rosmarus divergens"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Odobenus rosmarus rosmarus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Ohrenrobben"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Nördlicher Seebär"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Callorhinus ursinus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Australischer Seelöwe"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Neophoca cinerea"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Mähnenrobbe"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Otaria byronia"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Gypsophoca tasmanica"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Arctocephalus pusillus"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Arctocephalus pusillus pusillus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Arctocephalus pusillus doriferus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Neuseeländischer Seelöwe"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Phocarctos hookeri"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Arctocephalus townsendi"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Arctocephalus philippii"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Arctocephalus gazella"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Arctocephalus tropicalis"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Arctocephalus australis"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Arctocephalus galapagoensis"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Arctocephalus forsteri"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Stellerscher Seelöwe"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Eumetopius jubatus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Eumetopias jubatus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Zalophus"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Zalophus japonicus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Zalophus wollebaeki"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Zalophus californianus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Hundsrobben"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Monachus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Monachus monachus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Neomonachus"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Neomonachus tropicalis"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Neomonachus schauinslandi"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="See-Elefanten"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Macrorhinus leoninus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Mirounga leonina"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Mirounga angustirostris"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Rossrobbe"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Ommatophoca rossii"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Krabbenfresser"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Lobodon carcinophaga"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Seeleopard"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Hydrurga leptonyx"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Weddellrobbe"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Leptonychotes weddellii"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Bartrobbe"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Erignathus barbatus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Klappmütze"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Cystophora cristata"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Phoca ursina"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Phoca rosmarus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Phoca pusilla"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Phoca byronia"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Phoca fasciata"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Phoca groenlandica"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Kegelrobbe"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Halichoerus grypus"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Halichoerus grypus grypus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Phoca largha"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Phoca vitulina"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Phoca vitulina mellonae"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Phoca vitulina vitulina"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Phoca vitulina stejnegeri"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Phoca vitulina richardii"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Phoca vitulina concolor"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Pusa"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Pusa sibirica"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Pusa hispida"/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida ochotensis"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida lagodensis"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida hispida"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida botnica"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida ladogensis"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Pusa hispida saimensis"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Pusa caspica"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Bären"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Ailuropoda"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Ailuropoda melanoleuca"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Ailuropoda melanoleuca qinlingensis"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Tremarctos"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Tremarctos ornatus"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Lippenbär"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Melursus ursinus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Ursus taxus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus meles"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus lotor"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus rossicus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus environmental sample"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus ingressus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Malaienbär"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Helarctos malayanus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Ursus americanus"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus vancouveri"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus kermodei"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus carlottae"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus altifrontalis"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus cinnamomum"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus americanus americanus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Ursus thibetanus"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Ursus thibetanus ussuricus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus thibetanus mupinensis"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus thibetanus formosanus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus thibetanus thibetanus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus thibetanus japonicus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus sp. Shennongjia white bear"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Ursus deningeri"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Ursus deningeri kudarensis"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Ursus spelaeus"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Ursus arctos"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Ursus arctos syriacus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus arctos middendorffi"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus arctos isabellinus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus arctos arctos"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Ursus arctos horribilis"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Ursus maritimus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Skunks"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Fleckenskunks"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Spilogale pygmaea"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Spilogale angustifrons"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Spilogale putorius"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Spilogale gracilis"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Spilogale gracilis latifrons"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Stinkdachse"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Mydaus meliceps"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mydaus javanensis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mydaus marchei"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Weißrüsselskunks"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Conepatus humboldtii"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Conepatus semistriatus"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Conepatus leuconotus"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Conepatus leuconotus figginsi"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Conepatus leuconotus leuconotus"/>
+                  <attribute name="extinct" value="-"/>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Conepatus chinga"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Conepatus mesoleucus"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value="Mephitis"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Mephitis leuconota"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mephitis interrupta"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mephitis macroura"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Mephitis mephitis"/>
+                <attribute name="extinct" value="-"/>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Katzenbären"/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Kleiner Panda"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Ailurus fulgens"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Ailurus fulgens styani"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="extinct" value="-"/>
+              <branch>
+                <attribute name="name" value="Kleinbären"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Bergnasenbär"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Nasuella meridensis"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Nasuella olivacea"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Wickelbär"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Potos flavus"/>
+                    <attribute name="extinct" value="-"/>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Makibären"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon medius"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Bassaricyon medius orinomus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Bassaricyon medius medius"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon neblina"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Bassaricyon neblina neblina"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon sp. H021"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon beddardi"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon alleni"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon sp. H018"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassaricyon gabbii"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Bassaricyon gabbii gabbii"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Nasenbären"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Nasua sp. LD-2015"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Nasua narica"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Nasua nasua"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Nasua nasua rufa"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Katzenfrette"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Bassariscus sumichrasti"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Bassariscus astutus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Procyon"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Procyon obscurus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon brachyurus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon environmental sample"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon pygmaeus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon cancrivorus"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon minor"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Procyon lotor"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Procyon lotor lotor"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Procyon lotor hirtus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Procyon lotor pallidus"/>
+                          <attribute name="extinct" value="-"/>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Marder"/>
+                <attribute name="extinct" value="-"/>
+                <branch>
+                  <attribute name="name" value="Silberdachs"/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Silberdachs"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Taxidea berlandieri"/>
+                      <attribute name="extinct" value="-"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Taxidea taxus"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Taxidea taxus jacksoni"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="extinct" value="-"/>
+                  <branch>
+                    <attribute name="name" value="Mellivoriane"/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value="Honigdachs"/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Mellivora capensis"/>
+                        <attribute name="extinct" value="-"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="extinct" value="-"/>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Sonnendachse"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Sonnendachse"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Melogale moschata"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Melogale moschata subaurantiaca"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Melogale orientalis"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Melogale everetti"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Melogale personata"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Melogale cucphuongensis"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Galictinae"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Grisons"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Galictis cuja"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Galictis vittata"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Tigeriltis"/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Vormela peregusna"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Ictonyx libycus"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Ictonyx libyca"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Weißnackenwiesel"/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Poecilogale albinucha"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Ictonyx striatus"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Mustelinae"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Mustela quoll"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela lutreolina"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela bison"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela subpalmata"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela kathiah"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela itatsi"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela sp. BOLD:AAC0892"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Patagonisches Wiesel"/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Lyncodon patagonicus"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Mustela frenata"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Amerikanischer Nerz"/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Neovison environmental sample"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Neovison macrodon"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Neovison vison"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela africana"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Mustela felipei"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Mustela nudipes"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Mustela strigidorsa"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Mustela erminea"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value=""/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Mustela sibirica"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value=""/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Mustela lutreola"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value=""/>
+                                        <attribute name="extinct" value="-"/>
+                                        <branch>
+                                          <attribute name="name" value=""/>
+                                          <attribute name="extinct" value="-"/>
+                                          <branch>
+                                            <attribute name="name" value="Mustela putorius"/>
+                                            <attribute name="extinct" value="-"/>
+                                          </branch>
+                                          <branch>
+                                            <attribute name="name" value="Mustela eversmannii"/>
+                                            <attribute name="extinct" value="-"/>
+                                          </branch>
+                                        </branch>
+                                        <branch>
+                                          <attribute name="name" value="Mustela nigripes"/>
+                                          <attribute name="extinct" value="-"/>
+                                        </branch>
+                                      </branch>
+                                    </branch>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value=""/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Mustela altaica"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Mustela nivalis"/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Mustela nivalis heptneri"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                    </branch>
+                                  </branch>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Otter"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Riesenotter"/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Pteronura brasiliensis"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Neuweltotter"/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Lontra longicaudis"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Lontra felina"/>
+                                    <attribute name="extinct" value="-"/>
+                                  </branch>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Lontra canadensis"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value="Lontra provocax"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Fleckenhalsotter"/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Hydrictis maculicollis"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value="Seeotter"/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Enhydra lutris"/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Enhydra lutris lutris"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Enhydra lutris nereis"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Enhydra lutris kenyoni"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                    </branch>
+                                  </branch>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value="Altweltotter"/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Lutra brasiliensis"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Lutra environmental sample"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Lutra nippon"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Lutra lutra"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Lutra sumatrana"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value=""/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Amblonyx concolor"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value=""/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Aonyx cinerea"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Indischer Fischotter"/>
+                                        <attribute name="extinct" value="-"/>
+                                        <branch>
+                                          <attribute name="name" value="Lutrogale perspicillata"/>
+                                          <attribute name="extinct" value="-"/>
+                                        </branch>
+                                      </branch>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Aonyx capensis"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                  </branch>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="extinct" value="-"/>
+                      <branch>
+                        <attribute name="name" value="Dachse"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Schweinsdachs"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Arctonyx collaris"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Meles"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Meles montanus"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Meles leucurus"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Meles leucurus amurensis"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Meles canescens"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Meles meles"/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Meles meles arcalus"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value="Meles meles meles"/>
+                              <attribute name="extinct" value="-"/>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Meles anakuma"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Martinae"/>
+                        <attribute name="extinct" value="-"/>
+                        <branch>
+                          <attribute name="name" value="Eira"/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Eira barbara"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="extinct" value="-"/>
+                          <branch>
+                            <attribute name="name" value="Martes gwatkinsii"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="extinct" value="-"/>
+                            <branch>
+                              <attribute name="name" value="Vielfraß"/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Gulo nagelii anon"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Gulo luscus"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value="Gulo gulo"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                            </branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="extinct" value="-"/>
+                              <branch>
+                                <attribute name="name" value="Martes flavigula"/>
+                                <attribute name="extinct" value="-"/>
+                              </branch>
+                              <branch>
+                                <attribute name="name" value=""/>
+                                <attribute name="extinct" value="-"/>
+                                <branch>
+                                  <attribute name="name" value="Martes foina"/>
+                                  <attribute name="extinct" value="-"/>
+                                </branch>
+                                <branch>
+                                  <attribute name="name" value=""/>
+                                  <attribute name="extinct" value="-"/>
+                                  <branch>
+                                    <attribute name="name" value=""/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Martes zibellina"/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Martes zibellina linkouensis"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Martes martes"/>
+                                      <attribute name="extinct" value="-"/>
+                                    </branch>
+                                  </branch>
+                                  <branch>
+                                    <attribute name="name" value=""/>
+                                    <attribute name="extinct" value="-"/>
+                                    <branch>
+                                      <attribute name="name" value="Martes melampus"/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Martes melampus tsuensis"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Martes melampus melampus"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                    </branch>
+                                    <branch>
+                                      <attribute name="name" value="Martes americana"/>
+                                      <attribute name="extinct" value="-"/>
+                                      <branch>
+                                        <attribute name="name" value="Martes americana atrata"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Martes americana sierrae"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Martes americana nesophila"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Martes americana humboldtensis"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                      <branch>
+                                        <attribute name="name" value="Martes americana caurina"/>
+                                        <attribute name="extinct" value="-"/>
+                                      </branch>
+                                    </branch>
+                                  </branch>
+                                </branch>
+                              </branch>
+                            </branch>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Martes pennanti"/>
+                            <attribute name="extinct" value="-"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+  </branch>
+</tree>

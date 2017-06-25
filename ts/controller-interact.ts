@@ -130,16 +130,17 @@ namespace ivis.controller
             var md = CktoCp(m)
             var step = 0
             var initR = md.r
-            var intervall = setInterval(() => {
-                md.r = initR * (1 - sigmoid(step++/50))
-                if (step > 50) {
+            var steps = 33
+            var intervall = setInterval(() => {            
+                md.r = initR * (1 - sigmoid(step++/steps))
+                if (step > steps) {
                    this.onDragEnd()
                    clearInterval(intervall)
                 }
                 else {
                    this.onDrag(m, CptoCk(md), null, tt)
                 }
-            },15)
+            },1)
         }
 
         private caption(maxR:number) : (n:N) => string

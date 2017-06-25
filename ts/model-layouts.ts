@@ -42,7 +42,7 @@ namespace ivis.model.layouts {
         return root
     }
 
-    export function layoutRadial(root) {
+    export function layoutBuchheim(root) {
         root = d3.tree().size([2 * Math.PI, 0.9])(root)
         dfs(root, n=> {
             var a = n.x - Math.PI/2
@@ -87,7 +87,36 @@ namespace ivis.model.layouts {
         return n
     }
 
-    export function layoutHyperbolic(n)
+    /*
+    function layoutLamping_old(root) {
+        dfs(root, (n, idx)=> {
+
+            var wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, a:2*Math.PI }
+            if (n.parent)
+                wedge = n.parent.wedge
+
+            n.x = wedge.p.re
+            n.y = wedge.p.im
+
+            if (n.children) {
+                var ca = (wedge.a / n.children.length) * idx
+
+                var s = .12
+                var it = ((1-s*s) * Math.sin(ca))/(2*s)
+                var d = Math.sqrt(Math.pow(it,2)+1) - it
+
+                var np = h2e(wedge.p, one, CmulR(wedge.m, d))
+                n.wedge = {
+                    p:np,
+                    m:h2e(Cneg(np), one, h2e(wedge.p, one, wedge.m)),
+                    a:Cklog(h2e({ re:-d, im:0 }, one, Cpow(ca))).im
+                }
+            }
+        })
+        return root
+    }*/
+
+    export function layoutBergé(n)
     {
         var π = Math.PI
         var startAngle = 0.5 * π
@@ -150,34 +179,5 @@ namespace ivis.model.layouts {
         }
         n.z = { re:0, im:0 }
         return layoutNode(n, wedge, .42)
-    }
-
-    /*
-    function layoutHyperbolic(root) {
-        dfs(root, (n, idx)=> {
-
-            var wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, a:2*Math.PI }
-            if (n.parent)
-                wedge = n.parent.wedge
-
-            n.x = wedge.p.re
-            n.y = wedge.p.im
-
-            if (n.children) {
-                var ca = (wedge.a / n.children.length) * idx
-
-                var s = .12
-                var it = ((1-s*s) * Math.sin(ca))/(2*s)
-                var d = Math.sqrt(Math.pow(it,2)+1) - it
-
-                var np = h2e(wedge.p, one, CmulR(wedge.m, d))
-                n.wedge = {
-                    p:np,
-                    m:h2e(Cneg(np), one, h2e(wedge.p, one, wedge.m)),
-                    a:Cklog(h2e({ re:-d, im:0 }, one, Cpow(ca))).im
-                }
-            }
-        })
-        return root
-    }*/
+    }    
 }

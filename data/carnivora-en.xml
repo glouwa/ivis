@@ -1,0 +1,1463 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="extinct" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Carnivora"/>
+    <attribute name="extinct" value="-"/>
+    <branch>
+      <attribute name="name" value="Feliformia"/>
+      <attribute name="extinct" value="-"/>
+      <branch>
+        <attribute name="name" value="Viverravidae"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Nimravidae"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Felidae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Felinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Cheetah"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Caracal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Catopuma"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Bay cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Asian golden cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Felis"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Chinese mountain cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Jungle cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Pallas's cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Sand cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Black-footed cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Wildcat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Leopardus"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Pantanal cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Colocolo"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Geoffroy's cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Kodkod"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Andean mountain cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Pampas cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Ocelot"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Oncilla"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Margay"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Serval"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lynx"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Canada lynx"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Eurasian lynx"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Iberian lynx"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Bobcat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Marbled cat"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Prionailurus"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Leopard cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Iriomote cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Flat-headed cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Rusty-spotted cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Fishing cat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="African golden cat"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Puma"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Jaguarundi"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Cougar"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Pantherinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Panthera"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Lion"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Jaguar"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Leopard"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Tiger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Clouded leopard"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Snow leopard"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Viverridae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Asiatic linsang"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Banded linsang"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Spotted linsang"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Viverrinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="African civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Genet (animal)"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Abyssinian genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Angolan genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Bourlon's genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Crested servaline genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Common genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Johnston's genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Rusty-spotted genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Pardine genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Aquatic genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="King genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Servaline genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Haussa genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Cape genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Giant forest genet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Poiana"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Leighton's linsang"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="African linsang"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Viverra"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Malabar large-spotted civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Large-spotted civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Malayan civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Large Indian civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Small Indian civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Paradoxurinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Binturong"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Small-toothed palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Sulawesi palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Masked palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Paradoxurus"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Asian palm civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Brown palm civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Golden palm civet"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Hemigalinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Owston's palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Otter civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Hose's palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Banded palm civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Mongoose"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Marsh mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Bdeogale"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Bushy-tailed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Jackson's mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Black-footed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Crossarchus"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Alexander's kusimanse"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Angolan kusimanse"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Common kusimanse"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Flat-headed kusimanse"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Yellow mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Pousargues's mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Galerella"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Angolan slender mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Somalian slender mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Cape gray mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Slender mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Helogale"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Ethiopian dwarf mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Common dwarf mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Herpestes"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Short-tailed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Indian grey mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Indian brown mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Egyptian mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Small Asian mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Long-nosed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Collared mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ruddy mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Crab-eating mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Stripe-necked mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="White-tailed mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Liberian mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Mungos"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Gambian mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Banded mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Selous' mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Meller's mongoose"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Meerkat"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Hyena"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Hyaena"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Brown hyena"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Striped hyena"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Spotted hyena"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Aardwolf"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="African palm civet"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Eupleridae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Euplerinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Fossa (animal)"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Eastern falanouc"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Malagasy civet"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Galidiinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Ring-tailed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Galidictis"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Broad-striped Malagasy mongoose"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Grandidier's mongoose"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Narrow-striped mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Brown-tailed mongoose"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Caniformia"/>
+      <attribute name="extinct" value="-"/>
+      <branch>
+        <attribute name="name" value="Miacidae"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Canidae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Vulpes"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Arctic fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Kit fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Pale fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Bengal fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Blanford's fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Cape fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Corsac fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Tibetan sand fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Rüppell's fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Swift fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Red fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Fennec fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Short-eared dog"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Canis"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Side-striped jackal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Golden jackal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Coyote"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Gray wolf"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Black-backed jackal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ethiopian wolf"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Crab-eating fox"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Maned wolf"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Dhole"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Falkland Islands wolf"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="South American fox"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Culpeo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Darwin's fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="South American gray fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Pampas fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Sechuran fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Hoary fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="African wild dog"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Raccoon dog"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Bat-eared fox"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Bush dog"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Urocyon"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Gray fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Island fox"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Red panda"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Bear dog"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Bear"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="American black bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Brown bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Polar bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Asian black bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Giant panda"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Sun bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Sloth bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Spectacled bear"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Hemicyoninae"/>
+        <attribute name="extinct" value="-"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Skunk"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Hog-nosed skunk"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Molina's hog-nosed skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Humboldt's hog-nosed skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="American hog-nosed skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Striped hog-nosed skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Mephitis"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Hooded skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Striped skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Stink badger"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Sunda stink badger"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Palawan stink badger"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Spotted skunk"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Spilogale aquaticus"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Southern spotted skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Western spotted skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Eastern spotted skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Pygmy spotted skunk"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Mustelidae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Mustelinae"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Weasel"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Stoat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Steppe polecat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Amazon weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Mountain weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Colombian weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Long-tailed weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Japanese weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Yellow-bellied weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="European mink"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Indonesian mountain weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Black-footed ferret"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Least weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Malayan weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="European polecat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Siberian weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Back-striped weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Egyptian weasel"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Hog badger"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Galictis"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Lesser grison"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Greater grison"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Wolverine"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ictonyx"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Saharan striped polecat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Striped polecat"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Patagonian weasel"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Marten"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="American marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Yellow-throated marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Beech marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Nilgiri marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="European pine marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Japanese marten"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Fisher (animal)"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Sable"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Meles"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Japanese badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Asian badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="European badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Honey badger"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ferret-badger"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Bornean ferret-badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Chinese ferret-badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Javan ferret-badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Burmese ferret-badger"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Neovison"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Sea mink"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="American mink"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="African striped weasel"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="American badger"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Marbled polecat"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Otter"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Aonyx"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="African clawless otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Oriental small-clawed otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Sea otter"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Spotted-necked otter"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lontra"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="North American river otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Marine otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Neotropical otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Southern river otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Lutra"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Eurasian otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Japanese river otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Hairy-nosed otter"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Smooth-coated otter"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Giant otter"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Procyonidae"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Bassaricyon"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Eastern lowland olingo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Eastern lowland olingo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Northern olingo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Northern olingo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Northern olingo"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Bassariscus"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Ring-tailed cat"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Cacomistle"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Nasua"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="White-nosed coati"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="South American coati"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Nasuella olivacea"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Kinkajou"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Procyon"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Crab-eating raccoon"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Raccoon"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Cozumel raccoon"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Pinniped"/>
+        <attribute name="extinct" value="-"/>
+        <branch>
+          <attribute name="name" value="Earless seal"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Hooded seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Bearded seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Grey seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ribbon seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Leopard seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Weddell seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Crabeater seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Elephant seal"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Northern elephant seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Southern elephant seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Monk seal"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Mediterranean monk seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Hawaiian monk seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Caribbean monk seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ross seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Harp seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Phoca"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Harbor seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Spotted seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Pusa"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="Caspian seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Ringed seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Baikal seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Walrus"/>
+          <attribute name="extinct" value="-"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Eared seal"/>
+          <attribute name="extinct" value="-"/>
+          <branch>
+            <attribute name="name" value="Arctocephalus"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="South American fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Arctocephalus forsteri"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Galápagos fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Antarctic fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Juan Fernández fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Brown fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Guadalupe fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Subantarctic fur seal"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Northern fur seal"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Steller sea lion"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Australian sea lion"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="South American sea lion"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="New Zealand sea lion"/>
+            <attribute name="extinct" value="-"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Zalophus"/>
+            <attribute name="extinct" value="-"/>
+            <branch>
+              <attribute name="name" value="California sea lion"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Japanese sea lion"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Galápagos sea lion"/>
+              <attribute name="extinct" value="-"/>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+  </branch>
+</tree>

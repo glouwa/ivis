@@ -47,7 +47,7 @@ var ivis;
             loaders.d3csvFlare = ok => d3csv(ok, "data/flare.csv");
             loaders.fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
             loaders.fileJson = ok => loadDataFromFile(ok, "data/sample.json");
-            loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora.xml");
+            loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora-de.xml");
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;
@@ -62,7 +62,7 @@ var ivis;
                 });
             }
             loaders.nTreeAtFirst = nTreeAtFirst;
-            function nTree(ok, depth = 8, childs = 2) {
+            function nTree(ok, depth = 3, childs = 8) {
                 oneNode(d => {
                     function processNode(parent, l) {
                         if (l >= depth)

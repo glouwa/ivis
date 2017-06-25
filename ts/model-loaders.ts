@@ -44,12 +44,12 @@ namespace ivis.model.loaders {
         new model.Tree(ok, path);
     }
 
-    export var path_ = n=> ok=> path(ok, n)
-    export var star_ = n=> ok=> star(ok, n)
-    export var d3csvFlare = ok=> d3csv(ok, "data/flare.csv")
-    export var fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
-    export var fileJson = ok => loadDataFromFile(ok, "data/sample.json");
-    export var ToL = ok => loadDataFromFile(ok, "data/carnivora.xml");
+    export var path_ =       n=> ok=> path(ok, n)
+    export var star_ =       n=> ok=> star(ok, n)
+    export var d3csvFlare =  ok=> d3csv(ok, "data/flare.csv")
+    export var fileXml =     ok => loadDataFromFile(ok, "data/sample.xml");
+    export var fileJson =    ok => loadDataFromFile(ok, "data/sample.json");
+    export var ToL =         ok => loadDataFromFile(ok, "data/carnivora-de.xml");
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {
@@ -65,7 +65,7 @@ namespace ivis.model.loaders {
         })
     }
 
-    export function nTree(ok, depth=8, childs=2) {
+    export function nTree(ok, depth=3, childs=8) {
         oneNode(d=> {
             function processNode(parent, l)
             {

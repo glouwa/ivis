@@ -1487,7 +1487,7 @@
         </branch>
       </branch>
       <branch>
-        <attribute name="name" value="Pinnipedia (Phocoidea)"/>
+        <attribute name="name" value="Pinnipedia"/>
         <attribute name="id" value="16019"/>
         <branch>
           <attribute name="name" value="Phocidae"/>
