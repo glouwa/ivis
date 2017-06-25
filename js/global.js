@@ -22,6 +22,9 @@ function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };
 //----------------------------------------------------------------------------------------
 function h2e(t, z) {
+    möbiusConstraint = CsubC(t.θ, CmulC(t.P, Ccon(t.P)));
+    console.assert(möbiusConstraint.re !== 0 || möbiusConstraint.im);
+    console.assert(CktoCp(t.θ).r === 1);
     var oben = CaddC(CmulC(t.θ, z), t.P);
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one);
     return CdivC(oben, unten);
@@ -33,7 +36,7 @@ function e2h(t, z) {
 }
 function compose(t1, t2) {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one);
-    var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor), S;
+    var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor);
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
         θ: setR(θ, 1)

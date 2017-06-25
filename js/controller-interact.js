@@ -129,7 +129,19 @@ var ivis;
             constructor(tp) {
                 this.transformPoint = (n) => h2e(h, n.z);
                 this.onDragStart = (m) => this.dST = clone(this.tp);
-                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P);
+                this.onDragP = (s, e) => {
+                    var oldt = clone(this.tp);
+                    CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P);
+                    console.log('P', oldt.P);
+                    console.log('s e', s, e);
+                    console.log('dsP', this.dST.P);
+                    console.log('new P', this.tp.P);
+                    var diff = CktoCp(CsubC(oldt.P, this.tp.P)).r;
+                    if (diff > 0.4) {
+                        var again = compose(this.dST, shift(oldt, s, maxR(e, .95))).P;
+                        console.log('detected', diff, again, this.tp.P);
+                    }
+                };
                 this.tp = tp;
             }
         }
@@ -160,6 +172,12 @@ var ivis;
          * different states and transformations
          */
         function loadSlide() {
+            // geht
+            var a = compose({ P: { re: 0.4960541644705069, im: -0.7416309570144335 }, θ: { re: 1, im: 0 } }, shift({ P: { re: 0.24869964486594093, im: 0.27044815565352776 }, θ: { re: 1, im: 0 } }, { re: 0.3284810185432434, im: -0.8088113069534302 }, maxR({ re: -0.3914557099342346, im: 0.5282139778137207 }, .95)));
+            console.log(a.P);
+            // geht ned (r = 0.5240153744466896)
+            var b = compose({ P: { re: 0.4960541644705069, im: -0.7416309570144335 }, θ: { re: 1, im: 0 } }, shift({ P: { re: 0.05729413166688675, im: 0.11095930940078638 }, θ: { re: 1, im: 0 } }, { re: 0.3284810185432434, im: -0.8088113069534302 }, maxR({ re: -0.399367094039917, im: 0.5361254215240479 }, .95)));
+            console.log(b.P);
             var uiRoot = ivis.controller.slide.initUi();
             new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
