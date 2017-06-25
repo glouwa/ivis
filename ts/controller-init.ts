@@ -163,7 +163,7 @@ namespace ivis.controller
         slide.unitDisk = eval(unitDiskName)
 
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setDataSource(name, reset=true)
@@ -171,7 +171,7 @@ namespace ivis.controller
         slide.loader = eval('ivis.model.loaders.'+name)
         if (reset) {
             resetDom()
-            ivis.controller.loadHyperTree()
+            ivis.controller.loadSlide()
         }
     }
 
@@ -179,14 +179,14 @@ namespace ivis.controller
     {
         slide.layout = eval('ivis.model.layouts.'+name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setArc(name)
     {
         slide.arc = eval('ivis.ui.'+name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setCaption(name)
@@ -198,7 +198,7 @@ namespace ivis.controller
     {
         slide.weight = eval(name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function resetDom()

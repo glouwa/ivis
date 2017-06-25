@@ -145,24 +145,24 @@ var ivis;
             controller.slide.initUi = eval(initUiName);
             controller.slide.unitDisk = eval(unitDiskName);
             resetDom();
-            ivis.controller.loadHyperTree();
+            ivis.controller.loadSlide();
         }
         function setDataSource(name, reset = true) {
             controller.slide.loader = eval('ivis.model.loaders.' + name);
             if (reset) {
                 resetDom();
-                ivis.controller.loadHyperTree();
+                ivis.controller.loadSlide();
             }
         }
         function setLayout(name) {
             controller.slide.layout = eval('ivis.model.layouts.' + name);
             resetDom();
-            ivis.controller.loadHyperTree();
+            ivis.controller.loadSlide();
         }
         function setArc(name) {
             controller.slide.arc = eval('ivis.ui.' + name);
             resetDom();
-            ivis.controller.loadHyperTree();
+            ivis.controller.loadSlide();
         }
         function setCaption(name) {
             controller.slide.captions = eval(name);
@@ -170,7 +170,7 @@ var ivis;
         function setWeight(name) {
             controller.slide.weight = eval(name);
             resetDom();
-            ivis.controller.loadHyperTree();
+            ivis.controller.loadSlide();
         }
         function resetDom() {
             document.getElementById("ivis-canvas-div").innerText = '';
