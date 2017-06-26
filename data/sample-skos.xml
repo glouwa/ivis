@@ -1,0 +1,49 @@
+\begin{CCSXML}
+<ccs2012>
+  <concept> => node
+    <concept_id>10002951.10002952.10003190</concept_id> =>id
+    <concept_desc>Information systems~Database management system engines</concept_desc> =>name
+    <concept_significance>500</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10010147.10010341.10010349.10010362</concept_id>
+    <concept_desc>Computing methodologies~Massively parallel and high-performance
+      simulations</concept_desc>
+    <concept_significance>500</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10003033.10003079</concept_id>
+    <concept_desc>Networks~Network performance evaluation</concept_desc>
+    <concept_significance>300</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10010520.10010575</concept_id>
+    <concept_desc>Computer systems organization~Dependable and fault
+      -tolerant systems and
+      networks</concept_desc>
+    <concept_significance>300</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10011007.10010940.10010971.10010980</concept_id>
+    <concept_desc>Software and its engineering~Software system models</concept_desc>
+    <concept_significance>300</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10011007.10011006.10011008.10011024.10011026</concept_id>
+    <concept_desc>Software and its engineering~Inheritance</concept_desc>
+    <concept_significance>300</concept_significance>
+  </concept>
+  <concept>
+    <concept_id>10002944.10011123.10011674</concept_id>
+    <concept_desc>General and reference~Performance</concept_desc>
+    <concept_significance>100</concept_significance>
+  </concept>
+</ccs2012>
+\end{CCSXML}
+\ccsdesc[500]{Information systems~Database management system engines}
+\ccsdesc[500]{Computing methodologies~Massively parallel and high-performance simulations}
+\ccsdesc[300]{Networks~Network performance evaluation}
+\ccsdesc[300]{Computer systems organization~Dependable and fault-tolerant systems and networks}
+\ccsdesc[300]{Software and its engineering~Software system models}
+\ccsdesc[300]{Software and its engineering~Inheritance}
+\ccsdesc[100]{General and reference~Performance}

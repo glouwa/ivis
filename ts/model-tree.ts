@@ -95,6 +95,10 @@ namespace ivis.model {
       xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
           let content = xhr.responseText;
+
+          if (content.indexOf("CCSXML") !== -1)
+            fileType = 'SKOS';
+
           if (fileType === 'JSON') {
             console.log('filetype: JSON');
             this.processJSON(content, ok);
@@ -106,6 +110,11 @@ namespace ivis.model {
               else
                 console.log("Invalid XML data file.");
             });
+          } else if (fileType === 'SKOS') {
+            console.log('filetype: SKOS');
+            content = content.split("\\begin{CCSXML}")[1];
+            //content = content.split("\\end{")[0];
+            //console.log(content);
           }
         }
       };
@@ -197,23 +206,6 @@ namespace ivis.model {
       return this.tree_.find((node: TreeNode) => (node.parent == null));
     }
 
-    /*getNodeCount() {
-      let counter = function(node : TreeNode) {
-        let count = 0;
-        node.getChildren().forEach((child : TreeNode) => {
-          count += counter(child);
-        });
-        return count + 1;
-      };
-
-      let nodeCount = 0;
-      this.tree_.forEach((node : TreeNode) => {
-        nodeCount += counter(node);
-      });
-
-      return nodeCount + 1;
-    }*/
-
     countNodes(node : TreeNode) : number {
       let sum: number = 0;
       let children : TreeNode[] = node.children;
@@ -224,98 +216,14 @@ namespace ivis.model {
       return sum;
     }
   }
-
 }
-
-//TODO:
-//test all functions with JSON
-//implement SKOS, TREEML
-//implement treeoflife
-//implement file system
 
 
 
 /*
-JSON:
-0
-  children
-    0
-      children
-      id
-      name
-    1
-      children
-      id
-      name
-  id
-  name
 
-
-
-XML:
-tree => REMOVE
-  branch => 0
-    0 => REMOVE
-      attribute
-        0
-          $
-            name: name
-            value: sample things
-      branch => 0
-        0
-          attribute
-            0
-              $
-                name: name
-                value: plants
-          leaf
-            0
-              attribute
-                0
-                  $
-                    name: name
-                    value: oak
-                1
-                  $
-                    name: number
-                    value: 10
-                2
-                  $
-                    name: type
-                    value: wild
-            1
-              attribute
-                0
-                  $
-                    name: name
-                    value: afican violet
-                1
-                  $
-                    name: number
-                    value: 3
-                2
-                  $
-                    name: type
-                    value: domestic
-        1
-          attribute
-            0
-              $
-                name: name
-                value: animals
-          branch
-            0
-              attribute
-              branch
-                0
-                  attribute
-                  leaf
-                1
-                  attribute
-                  leaf
-
-
-
-
-
+ <concept> => node
+ <concept_id>10002951.10002952.10003190</concept_id> =>id
+ <concept_desc>Information systems~Database management system engines</concept_desc> =>name
  */
+

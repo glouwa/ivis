@@ -35,6 +35,7 @@ namespace ivis.controller
             { text:"flare.csv (d3)", value:"d3csvFlare",         },
             { text:"sample.xml",     value:"fileXml",            },
             { text:"sample.json",    value:"fileJson",           },
+            { text:"sample-skos.xml",value:"fileSkos",           },
             { text:"Tree of life",   value:"ToL",                },
             { text:"Modules",        value:"code",               },
             { text:"⋆ Star 1+4",     value:"star_(5)",           },            
