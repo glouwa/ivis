@@ -48,7 +48,6 @@ var ivis;
             loaders.fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
             loaders.fileJson = ok => loadDataFromFile(ok, "data/sample.json");
             loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora-de.xml");
-            loaders.ToL = ok => loadDataFromFile(ok, "data/primates.xml");
             loaders.userUploaded = ok => loadDataFromFile(ok, "data/user-uploaded.xml");
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {

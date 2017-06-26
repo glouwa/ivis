@@ -10,12 +10,10 @@ var ivis;
             { ds: 'nTree', ls: 'layoutBergé', name: "Wedge layout" },
             { ds: 'd3csvFlare', ls: 'layoutBuchheim', name: "Point transformation seems to work" },
             { ds: 'nTree', ls: 'layoutBuchheim', name: "Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
-            { ds: 'star_(5)', ls: 'layoutBuchheim', name: "Unit vectors, almost" },
             { ds: 'star_(5)', ls: 'layoutUnitVectors', name: "Unit vectors " },
             { ds: 'deepStar', ls: 'layoutUnitLines', name: "Unit lines" },
             { ds: 'star_(50)', ls: 'layoutSpiral', name: "Star spiral" },
             { ds: 'path_(50)', ls: 'layoutSpiral', name: "Path spiral" },
-            { ds: 'path_(50)', ls: 'layoutBuchheim', name: "Line from [0,0] to [1,1]" },
             { ds: 'path_(500)', ls: 'layoutSpiral', name: "Hypnotoad. 1000 nodes" },
             { ds: 'nTreeAtFirst', ls: 'layoutBuchheim', name: "Center is never magnified" },
         ];
@@ -45,6 +43,7 @@ var ivis;
                 { text: "⊶ Path 5000", value: "path_(5000)", },
                 { text: "𝕋 5³ -1", value: "nTree", },
                 { text: "𝕋 1+10✕10", value: "nTreeAtFirst", },
+                { text: "User Uploaded", value: "userUploaded", },
             ];
             var layoutOptions = [
                 { text: "Bergé at al.", value: "layoutBergé", },
@@ -114,6 +113,28 @@ var ivis;
             var arcSelect = document.getElementById("arcSelect");
             var captionSelect = document.getElementById("captionSelect");
             var weightSelect = document.getElementById("weightSelect");
+            document.querySelector('#userfile').addEventListener('change', function (e) {
+                console.log(this);
+                var file = this.files[0];
+                var fd = new FormData();
+                fd.append("userfile", file);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/fileupload', true);
+                xhr.upload.onprogress = function (e) {
+                    if (e.lengthComputable) {
+                        let percentComplete = (e.loaded / e.total) * 100;
+                        console.log(percentComplete + '% uploaded');
+                    }
+                };
+                xhr.onload = function () {
+                    if (this.status == 200) {
+                        let resp = JSON.parse(this.response);
+                        console.log('Server got:', resp);
+                    }
+                    ;
+                };
+                xhr.send(fd);
+            }, false);
             controller.slide.initUi = eval('ivis.ui.' + rendererSelect.value + '.init' + rendererSelect.value);
             controller.slide.unitDisk = eval('ivis.ui.' + rendererSelect.value + '.UnitDisk' + rendererSelect.value);
             controller.slide.arc = eval('ivis.ui.' + arcSelect.value);

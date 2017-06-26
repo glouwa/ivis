@@ -129,27 +129,7 @@ var ivis;
             constructor(tp) {
                 this.transformPoint = (n) => h2e(h, n.z);
                 this.onDragStart = (m) => this.dST = clone(this.tp);
-                this.onDragP = (s, e) => {
-                    var oldt = clone(this.tp);
-                    var log = "compose(\n" +
-                        "    { P:{ re:" + this.dST.P.re + ", im:" + this.dST.P.im + " }, θ:{ re:" + this.dST.θ.re + ", im:" + this.dST.θ.im + " } },\n" +
-                        "    shift(\n" +
-                        "        { P:{ re:" + this.tp.P.re + ", im:" + this.tp.P.im + " }, θ:{ re:" + this.tp.θ.re + ", im:" + this.tp.θ.im + " } },\n" +
-                        "            { re:" + s.re + ", im:" + s.im + "},\n" +
-                        "        maxR({re:" + maxR(e, .95).re + ", im:" + maxR(e, .95).im + " }, .95)\n" +
-                        "    )\n" +
-                        ") ⟼ { re:" + compose(this.dST, shift(this.tp, s, maxR(e, .95))).P.re +
-                        ", im:" + compose(this.dST, shift(this.tp, s, maxR(e, .95))).P.im + " }";
-                    console.log(log);
-                    CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P);
-                    var diff = CktoCp(CsubC(oldt.P, this.tp.P)).r;
-                    if (diff > .4) {
-                        var again = compose(this.dST, shift(oldt, s, maxR(e, .95))).P;
-                        console.warn('detected r = ', diff);
-                    }
-                    else
-                        console.log('detected r = ', diff);
-                };
+                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P);
                 this.tp = tp;
             }
         }
@@ -180,12 +160,6 @@ var ivis;
          * different states and transformations
          */
         function loadSlide() {
-            // geht
-            var a = compose({ P: { re: 0.4960541644705069, im: -0.7416309570144335 }, θ: { re: 1, im: 0 } }, shift({ P: { re: 0.24869964486594093, im: 0.27044815565352776 }, θ: { re: 1, im: 0 } }, { re: 0.3284810185432434, im: -0.8088113069534302 }, maxR({ re: -0.3914557099342346, im: 0.5282139778137207 }, .95)));
-            console.log(a.P);
-            // geht ned (r = 0.5240153744466896)
-            var b = compose({ P: { re: 0.4960541644705069, im: -0.7416309570144335 }, θ: { re: 1, im: 0 } }, shift({ P: { re: 0.05729413166688675, im: 0.11095930940078638 }, θ: { re: 1, im: 0 } }, { re: 0.3284810185432434, im: -0.8088113069534302 }, maxR({ re: -0.399367094039917, im: 0.5361254215240479 }, .95)));
-            console.log(b.P);
             var uiRoot = ivis.controller.slide.initUi();
             new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,

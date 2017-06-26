@@ -32,6 +32,15 @@ button {
     vertical-align: -webkit-baseline-middle;
 }
 
+#slide {
+    float: left;
+    margin-right: 4em;
+}
+
+#upload {
+    float: left;
+}
+
 #config {
     float:right;
 }
