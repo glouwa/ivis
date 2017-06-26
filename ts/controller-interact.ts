@@ -181,20 +181,28 @@ namespace ivis.controller
         transformPoint = (n:N) => h2e(h, n.z)
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => {
-            var oldt = clone(this.tp)
-            CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P)
 
-            console.log('P', oldt.P, )
-            console.log('s e', s, e)
-            console.log('dsP', this.dST.P)
-            console.log('new P', this.tp.P)
+            var oldt = clone(this.tp)
+            var log = "compose(\n"+
+            "    { P:{ re:"+this.dST.P.re+", im:"+this.dST.P.im+" }, θ:{ re:"+this.dST.θ.re+", im:"+this.dST.θ.im+" } },\n"+
+            "    shift(\n"+
+            "        { P:{ re:"+this.tp.P.re+", im:"+this.tp.P.im+" }, θ:{ re:"+this.tp.θ.re+", im:"+this.tp.θ.im+" } },\n"+
+            "            { re:"+s.re+", im:"+s.im+"},\n"+
+            "        maxR({re:"+maxR(e, .95).re+", im:"+maxR(e, .95).im+" }, .95)\n"+
+            "    )\n"+
+            ") ⟼ { re:" + compose(this.dST, shift(this.tp, s, maxR(e, .95))).P.re +
+                 ", im:" + compose(this.dST, shift(this.tp, s, maxR(e, .95))).P.im + " }"
+            console.log(log)
+
+            CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P)
 
             var diff = CktoCp(CsubC(oldt.P, this.tp.P)).r
-            if (diff > 0.4)
+            if (diff > .4)
             {
                 var again = compose(this.dST, shift(oldt, s, maxR(e, .95))).P
-                console.log('detected', diff, again, this.tp.P)
+                console.warn('detected r = ', diff)
             }
+            else console.log('detected r = ', diff)
         }
         onDragθ:         (s:C, e:C) => {}
     }
