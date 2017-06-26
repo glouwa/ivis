@@ -31,27 +31,21 @@ namespace ivis.model.loaders {
         })
     }
 
-    function d3csv(ok, file) {
-        d3.csv(file, function(error, data) {
-            if (error)
-                throw error;
-            ok(d3.stratify().parentId((d:N)=> d.id.substring(0, d.id.lastIndexOf(".")))(data))
-        });
-    }
-
-    function loadDataFromFile(ok, path : string){
-        console.log('loadDataFromFile');
-        new model.Tree(ok, path);
+    function loadFromFile(ok, file) {
+        if (file.endsWith('.xml') ||
+            file.endsWith('.json'))
+            new model.Tree(ok, file)
+        else
+            d3.csv(file, function(error, data) {
+                if (error)
+                    throw error;
+                ok(d3.stratify().parentId((d:N)=> d.id.substring(0, d.id.lastIndexOf(".")))(data))
+            })
     }
 
     export var path_ =        n=> ok=> path(ok, n)
     export var star_ =        n=> ok=> star(ok, n)
-    export var d3csvFlare =   ok=> d3csv(ok, "data/flare.csv")
-    export var fileXml =      ok => loadDataFromFile(ok, "data/sample.xml")
-    export var fileJson =     ok => loadDataFromFile(ok, "data/sample.json");
-    export var ToL =          ok => loadDataFromFile(ok, "data/carnivora-de.xml")
-    export var ToL =          ok => loadDataFromFile(ok, "data/primates.xml")
-    export var userUploaded = ok => loadDataFromFile(ok, "data/user-uploaded.xml")
+    export var fromFile =     f=> ok=> loadFromFile(ok, "data/"+f)
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {

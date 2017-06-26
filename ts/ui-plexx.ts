@@ -74,8 +74,6 @@ namespace ivis.ui.plexx
         {
             for(var i=0; i < this.positionUpdateable.length; i++)
                 this.positionUpdateable[i].update()
-
-            //myCanvas.renderFrame(renderContext);
         }
 
         updateCaptions(visible:boolean) : void

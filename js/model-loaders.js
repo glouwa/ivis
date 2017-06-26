@@ -31,25 +31,20 @@ var ivis;
                     ok(d);
                 });
             }
-            function d3csv(ok, file) {
-                d3.csv(file, function (error, data) {
-                    if (error)
-                        throw error;
-                    ok(d3.stratify().parentId((d) => d.id.substring(0, d.id.lastIndexOf(".")))(data));
-                });
-            }
-            function loadDataFromFile(ok, path) {
-                console.log('loadDataFromFile');
-                new model.Tree(ok, path);
+            function loadFromFile(ok, file) {
+                if (file.endsWith('.xml') ||
+                    file.endsWith('.json'))
+                    new model.Tree(ok, file);
+                else
+                    d3.csv(file, function (error, data) {
+                        if (error)
+                            throw error;
+                        ok(d3.stratify().parentId((d) => d.id.substring(0, d.id.lastIndexOf(".")))(data));
+                    });
             }
             loaders.path_ = n => ok => path(ok, n);
             loaders.star_ = n => ok => star(ok, n);
-            loaders.d3csvFlare = ok => d3csv(ok, "data/flare.csv");
-            loaders.fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
-            loaders.fileJson = ok => loadDataFromFile(ok, "data/sample.json");
-            loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora-de.xml");
-            loaders.ToL = ok => loadDataFromFile(ok, "data/primates.xml");
-            loaders.userUploaded = ok => loadDataFromFile(ok, "data/user-uploaded.xml");
+            loaders.fromFile = f => ok => loadFromFile(ok, "data/" + f);
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;

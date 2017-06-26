@@ -63,7 +63,6 @@ var ivis;
                 updatePositions() {
                     for (var i = 0; i < this.positionUpdateable.length; i++)
                         this.positionUpdateable[i].update();
-                    //myCanvas.renderFrame(renderContext);
                 }
                 updateCaptions(visible) {
                 }
