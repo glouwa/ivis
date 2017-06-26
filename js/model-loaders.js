@@ -48,6 +48,7 @@ var ivis;
             loaders.fileXml = ok => loadDataFromFile(ok, "data/sample.xml");
             loaders.fileJson = ok => loadDataFromFile(ok, "data/sample.json");
             loaders.ToL = ok => loadDataFromFile(ok, "data/carnivora-de.xml");
+            loaders.userUpload = ok => loadDataFromFile(ok, "data/user-upload");
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;

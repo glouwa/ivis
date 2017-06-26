@@ -50,6 +50,7 @@ namespace ivis.model.loaders {
     export var fileXml =     ok => loadDataFromFile(ok, "data/sample.xml");
     export var fileJson =    ok => loadDataFromFile(ok, "data/sample.json");
     export var ToL =         ok => loadDataFromFile(ok, "data/carnivora-de.xml");
+    export var userUpload =  ok => loadDataFromFile(ok, "data/user-upload");
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {
