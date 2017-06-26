@@ -45,7 +45,7 @@ button {
     float:right;
 }
 
-#selectCaption {
+.selectCaption {
     font-size: .7em;
     word-spacing:4.4em;
 }
