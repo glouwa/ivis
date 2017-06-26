@@ -47,7 +47,7 @@ namespace ivis.controller
             { text:"⊶ Path 5000",   value:"path_(5000)",        },
             { text:"𝕋 5³ -1",        value:"nTree",              },
             { text:"𝕋 1+10✕10",      value:"nTreeAtFirst",       },
-            { text:"User",           value:"userUpload",         },
+            { text:"User Uploaded",  value:"userUploaded",        },
         ]
         var layoutOptions = [
             { text:"Bergé at al.",    value:"layoutBergé",       },
