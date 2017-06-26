@@ -47,6 +47,7 @@ namespace ivis.controller
             { text:"⊶ Path 5000",   value:"path_(5000)",        },
             { text:"𝕋 5³ -1",        value:"nTree",              },
             { text:"𝕋 1+10✕10",      value:"nTreeAtFirst",       },
+            { text:"User",           value:"userUpload",         },
         ]
         var layoutOptions = [
             { text:"Bergé at al.",    value:"layoutBergé",       },
@@ -125,6 +126,31 @@ namespace ivis.controller
         var captionSelect    = <HTMLInputElement>document.getElementById("captionSelect")
         var weightSelect     = <HTMLInputElement>document.getElementById("weightSelect")
 
+        document.querySelector('#userfile').addEventListener('change', function(e) {
+            console.log(this);
+            var file = this.files[0];
+            var fd = new FormData();
+            fd.append("userfile", file);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/fileupload', true);
+            
+            xhr.upload.onprogress = function(e) {
+                if (e.lengthComputable) {
+                    let percentComplete = (e.loaded / e.total) * 100;
+                    console.log(percentComplete + '% uploaded');
+                }
+            };
+
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    let resp = JSON.parse(this.response);
+                    console.log('Server got:', resp);
+                };
+            };
+
+            xhr.send(fd);
+        }, false);
+        
         slide.initUi = eval('ivis.ui.'+rendererSelect.value+'.init' + rendererSelect.value)
         slide.unitDisk = eval('ivis.ui.'+rendererSelect.value+'.UnitDisk' + rendererSelect.value)
         slide.arc = eval('ivis.ui.' + arcSelect.value)
