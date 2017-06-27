@@ -2,20 +2,18 @@ namespace ivis.controller
 {
     var slideNr = -1
     var slides = [
-        { ds:'ToL',          ls:'layoutBergé',       name:"Tree of Life Carnivores" },
-        { ds:'code',         ls:'layoutBergé',       name:"Code (modules)" },
-        { ds:'fileXml',      ls:'layoutBuchheim',    name:"data from file" },
-        { ds:'nTree',        ls:'layoutBergé',       name:"Wedge layout" },
-        { ds:'d3csvFlare',   ls:'layoutBuchheim',    name:"Point transformation seems to work" },
-        { ds:'nTree',        ls:'layoutBuchheim',    name:"Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
-        { ds:'star_(5)',     ls:'layoutBuchheim',    name:"Unit vectors, almost" },
-        { ds:'star_(5)',     ls:'layoutUnitVectors', name:"Unit vectors " },
-        { ds:'deepStar',     ls:'layoutUnitLines',   name:"Unit lines" },
-        { ds:'star_(50)',    ls:'layoutSpiral',      name:"Star spiral" },
-        { ds:'path_(50)',    ls:'layoutSpiral',      name:"Path spiral" },
-        { ds:'path_(50)',    ls:'layoutBuchheim',    name:"Line from [0,0] to [1,1]" },
-        { ds:'path_(500)',   ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
-        { ds:'nTreeAtFirst', ls:'layoutBuchheim',    name:"Center is never magnified" },
+        { ds:"fromFile('carnivora-de.xml')", ls:'layoutBergé',       name:"Tree of Life Carnivores" },
+        { ds:"code",                         ls:'layoutBergé',       name:"Code (modules)" },
+        { ds:"fromFile('sample.xml')",       ls:'layoutBuchheim',    name:"data from file" },
+        { ds:"nTree",                        ls:'layoutBergé',       name:"Wedge layout" },
+        { ds:"fromFile('flare.csv')",        ls:'layoutBuchheim',    name:"Point transformation seems to work" },
+        { ds:"nTree",                        ls:'layoutBuchheim',    name:"Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
+        { ds:"star_(5)",                     ls:'layoutUnitVectors', name:"Unit vectors " },
+        { ds:"deepStar",                     ls:'layoutUnitLines',   name:"Unit lines" },
+        { ds:"star_(50)",                    ls:'layoutSpiral',      name:"Star spiral" },
+        { ds:"path_(50)",                    ls:'layoutSpiral',      name:"Path spiral" },
+        { ds:"path_(500)",                   ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
+        { ds:"nTreeAtFirst",                 ls:'layoutBuchheim',    name:"Center is never magnified" },
     ]
 
     export var slide = {
@@ -32,22 +30,24 @@ namespace ivis.controller
     {
         var rendererOptions = ['D3', 'Plexx', 'PlexxDbg']
         var loaderOptions = [
-            { text:"flare.csv (d3)", value:"d3csvFlare",         },
-            { text:"sample.xml",     value:"fileXml",            },
-            { text:"sample.json",    value:"fileJson",           },
-            { text:"sample-skos.xml",value:"fileSkos",           },
-            { text:"Tree of life",   value:"ToL",                },
-            { text:"Modules",        value:"code",               },
-            { text:"⋆ Star 1+4",     value:"star_(5)",           },            
-            { text:"⋆ Star 1+50",    value:"star_(50)",          },
-            { text:"⋆ Star 1+500",   value:"star_(500)",         },
-            { text:"⋆ Star 4✕50",    value:"deepStar",           },
-            { text:"⊶ Path 50",     value:"path_(50)",          },
-            { text:"⊶ Path 500",    value:"path_(500)",         },
-            { text:"⊶ Path 5000",   value:"path_(5000)",        },
-            { text:"𝕋 5³ -1",        value:"nTree",              },
-            { text:"𝕋 1+10✕10",      value:"nTreeAtFirst",       },
-            { text:"User Uploaded",  value:"userUploaded",        },
+            { text:"flare.csv (d3)", value:"fromFile('flare.csv')"         },
+            { text:"sample.xml",     value:"fromFile('sample.xml')"        },
+            { text:"sample.json",    value:"fromFile('sample.json')"       },
+            { text:"sample-skos.xml",value:"fromFile('sample-skos.xml')",                     },
+            { text:"Tree of life 1", value:"fromFile('carnivora-de.xml')"  },
+            { text:"Tree of life 2", value:"fromFile('primates.xml')"      },
+            { text:"Tree of life 3", value:"fromFile('placentalia.xml')"   },
+            { text:"Modules",        value:"code",                         },
+            { text:"⋆ Star 1+4",     value:"star_(5)",                     },
+            { text:"⋆ Star 1+50",    value:"star_(50)",                    },
+            { text:"⋆ Star 1+500",   value:"star_(500)",                   },
+            { text:"⋆ Star 4✕50",    value:"deepStar",                     },
+            { text:"⊶ Path 50",     value:"path_(50)",                    },
+            { text:"⊶ Path 500",    value:"path_(500)",                   },
+            { text:"⊶ Path 5000",   value:"path_(5000)",                  },
+            { text:"𝕋 5³ -1",        value:"nTree",                        },
+            { text:"𝕋 1+10✕10",      value:"nTreeAtFirst",                 },
+            { text:"User Uploaded",  value:"fromFile('user-uploaded.xml')" },
         ]
         var layoutOptions = [
             { text:"Bergé at al.",    value:"layoutBergé",       },
@@ -58,13 +58,13 @@ namespace ivis.controller
             { text:"Unit lines",      value:"layoutUnitLines",   },
         ]
         var arcOptions = [
-            { text:"+Arc",            value:"arc('0', '1')",     },
-            { text:"-Arc",            value:"arc('1', '0')",     },
-            { text:"Line",            value:"arcLine",           },
+            { text:"Positive",        value:"arc('0', '1')",     },
+            { text:"Negative",        value:"arc('1', '0')",     },
+            { text:"Strait line",     value:"arcLine",           },
         ]
         var captionOptions = [
-            { text:"hide on drag",    value:"true",              },
-            { text:"show always",     value:"false",             },
+            { text:"Hide on drag",    value:"true",              },
+            { text:"Show always",     value:"false",             },
         ]
 
         var weightOptions = [
@@ -145,6 +145,9 @@ namespace ivis.controller
                 if (this.status == 200) {
                     let resp = JSON.parse(this.response);
                     console.log('Server got:', resp);
+                    var dataSourceSelect = <HTMLInputElement>document.getElementById("dataSourceSelect")
+                    dataSourceSelect.value = "fromFile('user-uploaded.xml')"
+                    setDataSource(dataSourceSelect.value)
                 };
             };
 
@@ -190,7 +193,7 @@ namespace ivis.controller
         slide.unitDisk = eval(unitDiskName)
 
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setDataSource(name, reset=true)
@@ -198,7 +201,7 @@ namespace ivis.controller
         slide.loader = eval('ivis.model.loaders.'+name)
         if (reset) {
             resetDom()
-            ivis.controller.loadHyperTree()
+            ivis.controller.loadSlide()
         }
     }
 
@@ -206,14 +209,14 @@ namespace ivis.controller
     {
         slide.layout = eval('ivis.model.layouts.'+name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setArc(name)
     {
         slide.arc = eval('ivis.ui.'+name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function setCaption(name)
@@ -225,7 +228,7 @@ namespace ivis.controller
     {
         slide.weight = eval(name)
         resetDom()
-        ivis.controller.loadHyperTree()
+        ivis.controller.loadSlide()
     }
 
     function resetDom()

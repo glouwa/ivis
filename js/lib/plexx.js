@@ -62,7 +62,13 @@ var Plexx;
             if (groupNode.isHidden) {
                 if (groupNode.mouseOver && groupNode.eventMap["mouseout"]) {
                     this.event.type = "mouseout";
-                    groupNode.eventMap["mouseout"](groupNode);
+                    groupNode.eventMap["mouseout"]({
+                        sender: groupNode,
+                        mousePos: {
+                            x: mousePositionRelative.x,
+                            y: mousePositionRelative.y
+                        }
+                    });
                     groupNode.mouseOver = false;
                 }
             }
@@ -76,13 +82,25 @@ var Plexx;
                     groupNode.draggingPoint.x = mousePositionRelative.x;
                     groupNode.draggingPoint.y = mousePositionRelative.y;
                     if (groupNode.eventMap["dragmove"]) {
-                        groupNode.eventMap["dragmove"](groupNode);
+                        groupNode.eventMap["dragmove"]({
+                            sender: groupNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                     this.isAlreadyHoveringAPrimitiveNode = true;
                     this.event.type = "dragging";
                     groupNode.isDragging = true;
                     if (groupNode.eventMap["dragmove"]) {
-                        groupNode.eventMap["dragmove"](groupNode);
+                        groupNode.eventMap["dragmove"]({
+                            sender: groupNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                     this.transformationMatrixStack.pop();
                     this.transformationMatrixStack.pop();
@@ -99,7 +117,13 @@ var Plexx;
                     groupNode.isDragging = false;
                     groupNode.draggingPoint = null;
                     if (groupNode.eventMap["dragend"]) {
-                        groupNode.eventMap["dragend"](groupNode);
+                        groupNode.eventMap["dragend"]({
+                            sender: groupNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                     this.transformationMatrixStack.pop();
                     this.transformationMatrixStack.pop();
@@ -116,7 +140,13 @@ var Plexx;
                         if (groupNode.eventMap["click"]) {
                             clickEvent = "click";
                             _this.event.type = clickEvent;
-                            groupNode.eventMap["click"](groupNode);
+                            groupNode.eventMap["click"]({
+                                sender: groupNode,
+                                mousePos: {
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
+                                }
+                            });
                         }
                     }
                     else if (_this.mouseEvent.type === "mousedown") {
@@ -129,10 +159,10 @@ var Plexx;
                             clickEvent = "mousedown";
                             _this.event.type = clickEvent;
                             groupNode.eventMap["mousedown"]({
-                                sender:groupNode,
+                                sender: groupNode,
                                 mousePos: {
-                                    x:mousePositionRelative.x,
-                                    y:mousePositionRelative.y,
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
                                 }
                             });
                         }
@@ -141,21 +171,39 @@ var Plexx;
                         if (groupNode.eventMap["mouseup"]) {
                             clickEvent = "mouseup";
                             _this.event.type = clickEvent;
-                            groupNode.eventMap["mouseup"](groupNode);
+                            groupNode.eventMap["mouseup"]({
+                                sender: groupNode,
+                                mousePos: {
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
+                                }
+                            });
                         }
                     }
                     else if (_this.mouseEvent.type === "mousemove") {
                         if (groupNode.eventMap["mousemove"]) {
                             clickEvent = "mousemove";
                             _this.event.type = clickEvent;
-                            groupNode.eventMap["mousemove"](groupNode);
+                            groupNode.eventMap["mousemove"]({
+                                sender: groupNode,
+                                mousePos: {
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
+                                }
+                            });
                         }
                     }
                     if (!groupNode.mouseOver) {
                         groupNode.mouseOver = true;
                         if (groupNode.eventMap["mousein"]) {
                             _this.event.type = "mousein";
-                            groupNode.eventMap["mousein"](groupNode);
+                            groupNode.eventMap["mousein"]({
+                                sender: groupNode,
+                                mousePos: {
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
+                                }
+                            });
                         }
                     }
                 }
@@ -163,7 +211,13 @@ var Plexx;
                     if (groupNode.mouseOver) {
                         groupNode.mouseOver = false;
                         if (groupNode.eventMap["mouseout"]) {
-                            groupNode.eventMap["mouseout"](_this.mouseEvent);
+                            groupNode.eventMap["mouseout"]({
+                                sender: groupNode,
+                                mousePos: {
+                                    x: mousePositionRelative.x,
+                                    y: mousePositionRelative.y
+                                }
+                            });
                         }
                     }
                 }
@@ -172,7 +226,13 @@ var Plexx;
                 if (groupNode.mouseOver) {
                     groupNode.mouseOver = false;
                     if (groupNode.eventMap["mouseout"]) {
-                        groupNode.eventMap["mouseout"](this.mouseEvent);
+                        groupNode.eventMap["mouseout"]({
+                            sender: groupNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                 }
             }
@@ -204,7 +264,13 @@ var Plexx;
             if (primitiveNode.isHidden || this.isAlreadyHoveringAPrimitiveNode) {
                 if (primitiveNode.mouseOver && primitiveNode.eventMap["mouseout"]) {
                     clickEvent = "mouseout";
-                    primitiveNode.eventMap["mouseout"](primitiveNode);
+                    primitiveNode.eventMap["mouseout"]({
+                        sender: primitiveNode,
+                        mousePos: {
+                            x: mousePositionRelative.x,
+                            y: mousePositionRelative.y
+                        }
+                    });
                     primitiveNode.mouseOver = false;
                 }
             }
@@ -236,7 +302,13 @@ var Plexx;
                 primitiveNode.draggingPoint.x = mousePositionRelative.x;
                 primitiveNode.draggingPoint.y = mousePositionRelative.y;
                 if (primitiveNode.eventMap["dragmove"]) {
-                    primitiveNode.eventMap["dragmove"](primitiveNode);
+                    primitiveNode.eventMap["dragmove"]({
+                        sender: primitiveNode,
+                        mousePos: {
+                            x: mousePositionRelative.x,
+                            y: mousePositionRelative.y
+                        }
+                    });
                 }
                 this.isAlreadyHoveringAPrimitiveNode = true;
             }
@@ -267,7 +339,13 @@ var Plexx;
                 primitiveNode.draggingPoint.x = mousePositionRelative.x;
                 primitiveNode.draggingPoint.y = mousePositionRelative.y;
                 if (primitiveNode.eventMap["dragend"]) {
-                    primitiveNode.eventMap["dragend"](primitiveNode);
+                    primitiveNode.eventMap["dragend"]({
+                        sender: primitiveNode,
+                        mousePos: {
+                            x: mousePositionRelative.x,
+                            y: mousePositionRelative.y
+                        }
+                    });
                 }
                 primitiveNode.draggingPoint = null;
                 primitiveNode.isDragging = false;
@@ -280,7 +358,13 @@ var Plexx;
                     if (primitiveNode.eventMap["click"]) {
                         clickEvent = "click";
                         this.event.type = clickEvent;
-                        primitiveNode.eventMap["click"](primitiveNode);
+                        primitiveNode.eventMap["click"]({
+                            sender: primitiveNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                 }
                 else if (this.mouseEvent.type === "mousedown") {
@@ -293,12 +377,11 @@ var Plexx;
                     if (primitiveNode.eventMap["mousedown"]) {
                         clickEvent = "mousedown";
                         this.event.type = clickEvent;
-                        //primitiveNode.eventMap["mousedown"](primitiveNode);
                         primitiveNode.eventMap["mousedown"]({
-                            sender:primitiveNode,
+                            sender: primitiveNode,
                             mousePos: {
-                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
-                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
                             }
                         });
                     }
@@ -307,12 +390,11 @@ var Plexx;
                     if (primitiveNode.eventMap["mouseup"]) {
                         clickEvent = "mouseup";
                         this.event.type = clickEvent;
-                        //primitiveNode.eventMap["mouseup"](primitiveNode);
                         primitiveNode.eventMap["mouseup"]({
-                            sender:primitiveNode,
+                            sender: primitiveNode,
                             mousePos: {
-                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
-                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
                             }
                         });
                     }
@@ -321,12 +403,11 @@ var Plexx;
                     if (primitiveNode.eventMap["mousemove"]) {
                         clickEvent = "mousemove";
                         this.event.type = clickEvent;
-                        //primitiveNode.eventMap["mousemove"](primitiveNode);
                         primitiveNode.eventMap["mousemove"]({
-                            sender:primitiveNode,
+                            sender: primitiveNode,
                             mousePos: {
-                                x:mousePositionRelative.x - primitiveNode.parentNode.translation[0],
-                                y:mousePositionRelative.y - primitiveNode.parentNode.translation[1],
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
                             }
                         });
                     }
@@ -335,13 +416,25 @@ var Plexx;
                     primitiveNode.mouseOver = true;
                     if (primitiveNode.eventMap["mousein"]) {
                         clickEvent = "mousein";
-                        primitiveNode.eventMap["mousein"](primitiveNode);
+                        primitiveNode.eventMap["mousein"]({
+                            sender: primitiveNode,
+                            mousePos: {
+                                x: mousePositionRelative.x,
+                                y: mousePositionRelative.y
+                            }
+                        });
                     }
                 }
             }
             else if (primitiveNode.mouseOver && primitiveNode.eventMap["mouseout"]) {
                 this.event.type = "mouseout";
-                primitiveNode.eventMap["mouseout"](primitiveNode);
+                primitiveNode.eventMap["mouseout"]({
+                    sender: primitiveNode,
+                    mousePos: {
+                        x: mousePositionRelative.x,
+                        y: mousePositionRelative.y
+                    }
+                });
                 primitiveNode.mouseOver = false;
             }
             this.transformationMatrixStack.pop();
@@ -601,6 +694,9 @@ var Plexx;
             if (parentNode.getRootNode() !== null) {
                 this.rootNode = parentNode.getRootNode();
             }
+        };
+        SceneGraphNode.prototype.getParent = function () {
+            return this.parentNode;
         };
         SceneGraphNode.prototype.setRootNode = function (rootNode) {
             this.rootNode = rootNode;
@@ -895,15 +991,18 @@ var Plexx;
         Group.prototype.setRotation = function (rotation, rotationPoint) {
             this.rotation = rotation;
             this.rotationNode.rotation = rotation;
-            this.rotationNode.rotationPoint = rotationPoint;
+            if (rotationPoint)
+                this.rotationNode.rotationPoint = rotationPoint;
         };
         Group.prototype.addRotation = function (rotation) {
             this.rotation += rotation;
             this.rotationNode.rotation += rotation;
         };
-        Group.prototype.setScale = function (scale) {
+        Group.prototype.setScale = function (scale, scalePoint) {
             this.scale = scale;
             this.scaleNode.scale = scale;
+            if (scalePoint)
+                this.scaleNode.scalePoint = scalePoint;
         };
         Group.prototype.addScale = function (scale) {
             this.scale[0] += scale[0];
@@ -1494,6 +1593,7 @@ var Plexx;
         RotationNode.prototype.getTransformationMatrix = function () {
             var sinR = Math.sin(-this.rotation * Math.PI / 180);
             var cosR = Math.cos(-this.rotation * Math.PI / 180);
+            console.log("rotation Point", this.rotationPoint);
             var mTranslate1 = new Plexx.Mathlib.Mat3([1, 0, 0, 0, 1, 0, -this.rotationPoint[0], -this.rotationPoint[1], 1]);
             var mRotate = new Plexx.Mathlib.Mat3([cosR, -sinR, 0, sinR, cosR, 0, 0, 0, 1]);
             var mTranslate2 = new Plexx.Mathlib.Mat3([1, 0, 0, 0, 1, 0, this.rotationPoint[0], this.rotationPoint[1], 1]);
@@ -2349,7 +2449,7 @@ var Plexx;
             var y2 = points[3];
             var length = Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1));
             var lineLength = length;
-            this.setRotation(Math.atan2(y2 - y1, x2 - x1) / Math.PI * 180, [x1, y1]);
+            this.setRotation(Math.atan2(y2 - y1, x2 - x1) / Math.PI * 180, [0, 0]);
             this.setTranslation([x1, y1]);
             if (this.startArrow) {
                 this.startArrowNode.positionA = [0, 0];
@@ -3698,3 +3798,4 @@ var Plexx;
     Points.defaultBorderSize = 5;
     Plexx.Points = Points;
 })(Plexx || (Plexx = {}));
+//# sourceMappingURL=plexx.js.map

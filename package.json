@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js & tsc -w  ",
-    "prestart": "npm install && open http://localhost:8080 || chrome http://localhost:8080 || firefox http://localhost:8080 &"
+    "prestart": "npm install & open http://localhost:8080 || chrome http://localhost:8080 || firefox http://localhost:8080 &"
   },
   "repository": {
     "type": "git",

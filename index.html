@@ -28,21 +28,36 @@
     <div id="header">
         <span id="slide">
             <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
-            <span id="slideName"></span>
-        </span>
-        <span id="upload">
-                <input id="userfile" type="file" name="userfile">
-        </span>
+            <span id="slideName"></span></span>
+
         <span id="config">
-            <div id="selectCaption">Tree-structure Node-layout Weights Renderer Arcs Captions</div>
-            
-            <select id="dataSourceSelect"></select>            
-            <select id="layoutSelect"></select>
-            <select id="weightSelect"></select>
-            <select id="rendererSelect"></select>
-            <select id="arcSelect"></select>
-            <select id="captionSelect"></select>            
-        </span>
+            <div class="selectCaption">Captions</div>
+            <select id="captionSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">Link curvature</div>
+            <select id="arcSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">Renderer</div>
+            <select id="rendererSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">Layout weights</div>
+            <select id="weightSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">Tree layout</div>
+            <select id="layoutSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">Tree structure</div>
+            <select id="dataSourceSelect"></select></span>
+
+        <span id="config">
+            <div class="selectCaption">File upload</div>
+            <input id="userfile" type="file" name="userfile" accept=".xml"></span>
+
     </div>
     <div id="ivis-canvas-div" class="plexx"></div>
     <nav id="ivis-canvas-debug-panel"></nav>

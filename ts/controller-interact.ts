@@ -18,7 +18,7 @@ namespace ivis.controller
      * a viewdisk and a navigation disk together.
      * navdisk gets pan state as model
      */
-    class TreeWithNavigation // Interaction
+    export class TreeWithNavigation // Interaction
     {
         args : TreeWithNavigationConfig
         data : N
@@ -165,7 +165,7 @@ namespace ivis.controller
 
     //----------------------------------------------------------------------------------------
 
-    interface Transformation
+    export interface Transformation
     {
         transformPoint: (n:N) => C,
         onDragStart:    (m:C) => void,
@@ -173,18 +173,18 @@ namespace ivis.controller
         onDragθ:        (s:C, e:C) => void
     }
 
-    class HyperbolicTransformation implements Transformation
+    export class HyperbolicTransformation implements Transformation
     {
         tp : any
         dST : any
         constructor(tp)  { this.tp = tp }
         transformPoint = (n:N) => h2e(h, n.z)
         onDragStart =    (m:C) => this.dST = clone(this.tp)
-        onDragP =        (s:C, e:C) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P)
+        onDragP =        (s:C, e:C) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P)
         onDragθ:         (s:C, e:C) => {}
     }
 
-    class StandardPanAndZoomTransformation implements Transformation
+    export class PanTransformation implements Transformation
     {
         tp : any
         dST : any
@@ -198,8 +198,8 @@ namespace ivis.controller
                          }
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)))
-        onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, onUnitCircle(e))
-        onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, onUnitCircle(e))
+        onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
+        onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, setR(e, 1))
     }
 
     var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
@@ -211,7 +211,7 @@ namespace ivis.controller
      * same initial layout
      * different states and transformations
      */
-    export function loadHyperTree()
+    export function loadSlide()
     {
         var uiRoot = ivis.controller.slide.initUi()
 
@@ -219,8 +219,8 @@ namespace ivis.controller
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(o),
             layout:      ivis.controller.slide.layout,
-            viewTT:      new StandardPanAndZoomTransformation(o),
-            navTT:       new StandardPanAndZoomTransformation(o),
+            viewTT:      new PanTransformation(o),
+            navTT:       new PanTransformation(o),
             arc:         ivis.ui.arcLine,
             parent:      uiRoot,
             pos:         [25,30],
@@ -232,7 +232,7 @@ namespace ivis.controller
             navData:     ivis.model.loaders.obj2data(h),
             layout:      ivis.controller.slide.layout,
             viewTT:      new HyperbolicTransformation(h),
-            navTT:       new StandardPanAndZoomTransformation(h),
+            navTT:       new PanTransformation(h),
             arc:         ivis.controller.slide.arc,
             parent:      uiRoot,
             pos:         [525,30],

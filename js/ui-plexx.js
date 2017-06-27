@@ -36,16 +36,25 @@ var ivis;
                     var dragStartElement = null;
                     unitDiscBg.on("mousedown", e => {
                         dragFlag = true;
-                        dragStartPoint = this.ti(e.mousePos);
+                        dragStartPoint = this.ti({
+                            x: e.mousePos.x - e.sender.getParent().translation[0],
+                            y: e.mousePos.y - e.sender.getParent().translation[1],
+                        });
                         args.onDragStart(dragStartPoint, null);
                     });
                     unitDiscBg.on("mousemove", e => {
                         if (dragFlag)
-                            args.onDrag(dragStartPoint, this.ti(e.mousePos), null);
+                            args.onDrag(dragStartPoint, this.ti({
+                                x: e.mousePos.x - e.sender.getParent().translation[0],
+                                y: e.mousePos.y - e.sender.getParent().translation[1],
+                            }), null);
                     });
                     unitDiscBg.on("mouseup", e => {
                         dragFlag = false;
-                        args.onDrag(dragStartPoint, this.ti(e.mousePos), null);
+                        args.onDrag(dragStartPoint, this.ti({
+                            x: e.mousePos.x - e.sender.getParent().translation[0],
+                            y: e.mousePos.y - e.sender.getParent().translation[1],
+                        }), null);
                     });
                     myCanvas.add(this.plexxObj);
                     this.plexxObj.add(unitDiscBg);
@@ -54,7 +63,6 @@ var ivis;
                 updatePositions() {
                     for (var i = 0; i < this.positionUpdateable.length; i++)
                         this.positionUpdateable[i].update();
-                    //myCanvas.renderFrame(renderContext);
                 }
                 updateCaptions(visible) {
                 }

@@ -124,15 +124,17 @@ var ivis;
                 return Math.sin(Math.acos(r));
             }
         }
+        controller.TreeWithNavigation = TreeWithNavigation;
         class HyperbolicTransformation {
             constructor(tp) {
                 this.transformPoint = (n) => h2e(h, n.z);
                 this.onDragStart = (m) => this.dST = clone(this.tp);
-                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.tp, s, maxR(e, .95))).P);
+                this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P);
                 this.tp = tp;
             }
         }
-        class StandardPanAndZoomTransformation {
+        controller.HyperbolicTransformation = HyperbolicTransformation;
+        class PanTransformation {
             constructor(tp) {
                 this.transformPoint = (n) => {
                     var s = CktoCp(this.tp.λ).θ;
@@ -143,11 +145,12 @@ var ivis;
                 };
                 this.onDragStart = (m) => this.dST = clone(this.tp);
                 this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)));
-                this.onDragθ = (s, e) => CassignC(this.tp.θ, onUnitCircle(e));
-                this.onDragλ = (s, e) => CassignC(this.tp.λ, onUnitCircle(e));
+                this.onDragθ = (s, e) => CassignC(this.tp.θ, setR(e, 1));
+                this.onDragλ = (s, e) => CassignC(this.tp.λ, setR(e, 1));
                 this.tp = tp;
             }
         }
+        controller.PanTransformation = PanTransformation;
         var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
         var o = { P: { re: 0, im: 0 }, θ: { re: -1, im: 0 }, λ: { re: 0.5403023058681398, im: -0.8414709848078965 } };
         /**
@@ -156,14 +159,14 @@ var ivis;
          * same initial layout
          * different states and transformations
          */
-        function loadHyperTree() {
+        function loadSlide() {
             var uiRoot = ivis.controller.slide.initUi();
             new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(o),
                 layout: ivis.controller.slide.layout,
-                viewTT: new StandardPanAndZoomTransformation(o),
-                navTT: new StandardPanAndZoomTransformation(o),
+                viewTT: new PanTransformation(o),
+                navTT: new PanTransformation(o),
                 arc: ivis.ui.arcLine,
                 parent: uiRoot,
                 pos: [25, 30],
@@ -174,12 +177,12 @@ var ivis;
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
                 viewTT: new HyperbolicTransformation(h),
-                navTT: new StandardPanAndZoomTransformation(h),
+                navTT: new PanTransformation(h),
                 arc: ivis.controller.slide.arc,
                 parent: uiRoot,
                 pos: [525, 30],
             });
         }
-        controller.loadHyperTree = loadHyperTree;
+        controller.loadSlide = loadSlide;
     })(controller = ivis.controller || (ivis.controller = {}));
 })(ivis || (ivis = {}));

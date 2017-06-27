@@ -13,9 +13,7 @@ function dfsFlat(n, f) {
     return r;
 }
 function clone(o) {
-    var str = JSON.stringify(o);
-    console.log(str);
-    return JSON.parse(str);
+    return JSON.parse(JSON.stringify(o));
 }
 function sigmoid(x) {
     return .5 + .5 * Math.tanh(x * 6 - 3);
@@ -24,6 +22,9 @@ function makeT(a, b) { return { P: a, θ: b }; }
 var one = { re: 1, im: 0 };
 //----------------------------------------------------------------------------------------
 function h2e(t, z) {
+    möbiusConstraint = CsubC(t.θ, CmulC(t.P, Ccon(t.P)));
+    console.assert(möbiusConstraint.re !== 0 || möbiusConstraint.im);
+    console.assert(CktoCp(t.θ).r === 1);
     var oben = CaddC(CmulC(t.θ, z), t.P);
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one);
     return CdivC(oben, unten);
@@ -36,11 +37,9 @@ function e2h(t, z) {
 function compose(t1, t2) {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one);
     var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor);
-    var θp = CktoCp(θ);
-    θp.r = 1;
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
-        θ: CptoCk(θp)
+        θ: setR(θ, 1)
     });
 }
 function shift(h, s, e) {
@@ -106,7 +105,7 @@ var ArrtoR2 = (p) => ({ x: p[0], y: p[1] });
 function ArrAddR(p, s) { return [p[0] + s, p[1] + s]; }
 function ArrDivR(p, s) { return [p[0] / s, p[1] / s]; }
 function CkdivCkImpl(a, b) {
-    var dn = (b.re * b.re + b.im * b.im);
+    var dn = b.re * b.re + b.im * b.im;
     var r = {
         re: (a.re * b.re + a.im * b.im) / dn,
         im: (a.im * b.re - a.re * b.im) / dn
@@ -140,9 +139,9 @@ function maxR(c, v) {
     mp.r = mp.r > v ? v : mp.r;
     return CptoCk(mp);
 }
-function onUnitCircle(c) {
+function setR(c, r) {
     var mp = CktoCp(c);
-    mp.r = 1;
+    mp.r = r;
     return CptoCk(mp);
 }
 function πify(α) {

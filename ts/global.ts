@@ -38,9 +38,7 @@ function dfsFlat(n, f?) {
 
 function clone(o)
 {
-    var str = JSON.stringify(o)
-    console.log(str)
-    return JSON.parse(str)
+    return JSON.parse(JSON.stringify(o))
 }
 
 function sigmoid(x)
@@ -58,6 +56,10 @@ var one = { re:1, im:0 }
 
 function h2e(t:T, z:C) : C
 {
+    möbiusConstraint = CsubC(t.θ, CmulC(t.P, Ccon(t.P)))
+    console.assert(möbiusConstraint.re !== 0 || möbiusConstraint.im)
+    console.assert(CktoCp(t.θ).r === 1)
+
     var oben = CaddC(CmulC(t.θ, z), t.P)
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one)
     return CdivC(oben, unten)
@@ -74,10 +76,9 @@ function compose(t1:T, t2:T) : T
 {
     var divisor = CaddC(CmulC(t2.θ, CmulC(t1.P, Ccon(t2.P))), one)
     var θ = CdivC(CaddC(CmulC(t1.θ, t2.θ), CmulC(t1.θ, CmulC(Ccon(t1.P), t2.P))), divisor)
-    var θp = CktoCp(θ); θp.r = 1
     return ({
         P: CdivC(CaddC(CmulC(t2.θ, t1.P), t2.P), divisor),
-        θ: CptoCk(θp)
+        θ: setR(θ, 1)
     })
 }
 
@@ -87,7 +88,7 @@ function shift(h:T, s:C, e:C) : T
     var a = h2e(makeT(Cneg(p), one), s)
     var esuba = CsubC(e, a)
     var aec = Ccon(CmulC(a, e))
-    var divisor = 1 - Math.pow(CktoCp(CmulC(a, e)).r, 2)
+    var divisor = 1 - Math.pow(CktoCp(CmulC(a, e)).r, 2)    
     var b = {
         re: CmulC(esuba, CaddC(one, aec)).re / divisor,
         im: CmulC(esuba, CsubC(one, aec)).im / divisor
@@ -162,13 +163,13 @@ function ArrDivR(p:[number, number], s:number) : [number,number] { return [ p[0]
 
 function CkdivCkImpl(a:Ck, b:Ck)
 {
-    var dn = (b.re * b.re + b.im * b.im)
+    var dn = b.re * b.re + b.im * b.im
     var r = {
         re:(a.re * b.re + a.im * b.im) / dn,
         im:(a.im * b.re - a.re * b.im) / dn
     }
-    if (isNaN(r.re)) {r.re = 0; console.log('r.re=NaN') }
-    if (isNaN(r.im)) {r.im = 0; console.log('r.im=NaN') }
+    if (isNaN(r.re)) { r.re = 0; console.log('r.re=NaN') }
+    if (isNaN(r.im)) { r.im = 0; console.log('r.im=NaN') }
     return r
 }
 
@@ -197,10 +198,10 @@ function maxR(c:C, v:number)
     return CptoCk(mp)
 }
 
-function onUnitCircle(c:C)
-{
-    var mp = CktoCp(c);
-    mp.r = 1
+function setR(c:C, r)
+{    
+    var mp = CktoCp(c)
+    mp.r = r
     return CptoCk(mp)
 }
 
