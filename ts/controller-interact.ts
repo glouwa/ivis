@@ -38,6 +38,7 @@ namespace ivis.controller
 
         private create() : void
         {
+            var radius = hidePan?450:200
             this.view = new ivis.controller.slide.unitDisk({ // view disk
                 class:       'unitDisc',
                 data:        this.data,
@@ -51,13 +52,13 @@ namespace ivis.controller
                 caption:     this.caption(.7),
 
                 parent:      null,
-                pos:         ArrAddR(this.args.pos, 240),                
-                radius:      200,
+                pos:         ArrAddR(this.args.pos, radius + 40),
+                radius:      radius,
                 nodeRadius:  .04,
                 clip:        this.args.clip,                
             })
 
-            var navR = 55
+            var navR = hidePan?90:55
             new ivis.controller.slide.unitDisk({ // navigation disk background
                 class:       'unitDiscParamBg',
                 data:        this.data,
@@ -215,6 +216,7 @@ namespace ivis.controller
     {
         var uiRoot = ivis.controller.slide.initUi()
 
+        if (!hidePan)
         new TreeWithNavigation({
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(o),
@@ -223,7 +225,7 @@ namespace ivis.controller
             navTT:       new PanTransformation(o),
             arc:         ivis.ui.arcLine,
             parent:      uiRoot,
-            pos:         [25,30],
+            pos:         [525,30],
             clip:        true
         })
 
@@ -235,7 +237,7 @@ namespace ivis.controller
             navTT:       new PanTransformation(h),
             arc:         ivis.controller.slide.arc,
             parent:      uiRoot,
-            pos:         [525,30],
+            pos:         [25,30],
         })
     }
 }

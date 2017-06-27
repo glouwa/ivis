@@ -17,6 +17,7 @@ var ivis;
                     });
             }
             create() {
+                var radius = hidePan ? 450 : 200;
                 this.view = new ivis.controller.slide.unitDisk({
                     class: 'unitDisc',
                     data: this.data,
@@ -29,12 +30,12 @@ var ivis;
                     arc: this.args.arc,
                     caption: this.caption(.7),
                     parent: null,
-                    pos: ArrAddR(this.args.pos, 240),
-                    radius: 200,
+                    pos: ArrAddR(this.args.pos, radius + 40),
+                    radius: radius,
                     nodeRadius: .04,
                     clip: this.args.clip,
                 });
-                var navR = 55;
+                var navR = hidePan ? 90 : 55;
                 new ivis.controller.slide.unitDisk({
                     class: 'unitDiscParamBg',
                     data: this.data,
@@ -161,17 +162,18 @@ var ivis;
          */
         function loadSlide() {
             var uiRoot = ivis.controller.slide.initUi();
-            new TreeWithNavigation({
-                dataloader: ivis.controller.slide.loader,
-                navData: ivis.model.loaders.obj2data(o),
-                layout: ivis.controller.slide.layout,
-                viewTT: new PanTransformation(o),
-                navTT: new PanTransformation(o),
-                arc: ivis.ui.arcLine,
-                parent: uiRoot,
-                pos: [25, 30],
-                clip: true
-            });
+            if (!hidePan)
+                new TreeWithNavigation({
+                    dataloader: ivis.controller.slide.loader,
+                    navData: ivis.model.loaders.obj2data(o),
+                    layout: ivis.controller.slide.layout,
+                    viewTT: new PanTransformation(o),
+                    navTT: new PanTransformation(o),
+                    arc: ivis.ui.arcLine,
+                    parent: uiRoot,
+                    pos: [525, 30],
+                    clip: true
+                });
             new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(h),
@@ -180,7 +182,7 @@ var ivis;
                 navTT: new PanTransformation(h),
                 arc: ivis.controller.slide.arc,
                 parent: uiRoot,
-                pos: [525, 30],
+                pos: [25, 30],
             });
         }
         controller.loadSlide = loadSlide;

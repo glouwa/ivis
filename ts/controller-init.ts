@@ -1,3 +1,4 @@
+var hidePan
 namespace ivis.controller
 {
     var slideNr = -1
@@ -24,10 +25,10 @@ namespace ivis.controller
         arc:null,
         captions:null,
         weight:null,
-    }
-
-    export function init()
+    }    
+    export function init(hp)
     {
+        hidePan = hp
         var rendererOptions = ['D3', 'Plexx', 'PlexxDbg']
         var loaderOptions = [
             { text:"flare.csv (d3)", value:"fromFile('flare.csv')"         },

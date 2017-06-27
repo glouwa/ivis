@@ -7,7 +7,7 @@ namespace ivis.ui.D3
         svg = d3.select("#ivis-canvas-div")
             .append('svg')
             .attr("width", "100%")
-            .attr("viewBox", "0 0 1000 500")
+            .attr("viewBox", hidePan?"0 0 1000 1000":"0 0 1000 500")
     }
 
     export class UnitDiskD3 implements TreeOnUnitDisk
@@ -103,9 +103,10 @@ namespace ivis.ui.D3
                 .enter().append("circle")
                     .attr("class", "node")
                     .attr("r", this.args.nodeRadius)
-                    .on("click", () => this.args.onClick(this.ti(d3.mouse(this.layersSvg))))
+                    .on("click", this.openWiki)
+                    .on("contextmenu", () => this.args.onClick(this.ti(d3.mouse(this.layersSvg))))
                     .call(this.drag)
-                    .call(this.updateNode)
+                    .call(this.updateNode)                    
 
             this.captions = this.textLayer.selectAll(".caption")
                 .data(dfsFlat(this.args.data, n=>true))
@@ -119,6 +120,15 @@ namespace ivis.ui.D3
                 .enter().append("path")
                     .attr("class", "arc")
                     .call(this.updateArc)
+        }
+
+        private openWiki = d => {
+            if (hidePan) {
+                d3.event.preventDefault()
+                document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/"+this.args.caption(d)
+            }
+            else
+                this.args.onClick(this.ti(d3.mouse(this.layersSvg)))
         }
 
         private transformStr = d=> " translate(" + this.t(d) + ")"

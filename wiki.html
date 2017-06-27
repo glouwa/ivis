@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Hyperbolic tree</title>
+
+    <link rel="stylesheet" href="wiki.css">
+
+    <script type="text/javascript" src="js/lib/plexx.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3-ease.v1.min.js"></script>
+    <script type="text/javascript" src="js/global.js"></script>
+    <script type="text/javascript" src="js/controller-init.js"></script>
+    <script type="text/javascript" src="js/controller-interact.js"></script>
+    <script type="text/javascript" src="js/model-layouts.js"></script>
+    <script type="text/javascript" src="js/model-loaders.js"></script>
+    <script type="text/javascript" src="node_bundles/xml2jsBundle.js"></script>
+    <script type="text/javascript" src="js/model-tree.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
+    <script type="text/javascript" src="js/ui-d3.js"></script>
+    <script type="text/javascript" src="js/ui-plexx.js"></script>
+</head>
+
+<body onload="ivis.controller.init(true)">
+    <div class="split">
+        <div id="header">
+            <span id="slide">
+                <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
+                <span id="slideName"></span></span>
+            <span>
+            <span id="config">
+                <div class="selectCaption">Captions</div>
+                <select id="captionSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">Link curvature</div>
+                <select id="arcSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">Renderer</div>
+                <select id="rendererSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">Layout weights</div>
+                <select id="weightSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">Tree layout</div>
+                <select id="layoutSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">Tree structure</div>
+                <select id="dataSourceSelect"></select></span>
+
+            <span id="config">
+                <div class="selectCaption">File upload</div>
+                <input id="userfile" type="file" name="userfile" accept=".xml"></span>
+            <span>
+
+        </div>
+        <div id="ivis-canvas-div" class="plexx"></div>
+        <nav id="ivis-canvas-debug-panel"></nav>
+    </div>
+    <div class="split">
+        <iframe id="wiki" class="wiki" src="https://en.m.wikipedia.org/wiki/Mammal"></iframe>
+    </div>
+</body>
+</html>

@@ -19,7 +19,7 @@
         <attribute name="extinct" value="-"/>
       </branch>
       <branch>
-        <attribute name="name" value="Felidae"/>
+        <attribute name="name" value="Katzen"/>
         <attribute name="extinct" value="-"/>
         <branch>
           <attribute name="name" value="Kleinkatzen"/>
@@ -77,7 +77,7 @@
             </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Leopardus"/>
+            <attribute name="name" value="Pardelkatzen"/>
             <attribute name="extinct" value="-"/>
             <branch>
               <attribute name="name" value="Leopardus braccatus"/>
@@ -121,7 +121,7 @@
             <attribute name="extinct" value="-"/>
           </branch>
           <branch>
-            <attribute name="name" value="Lynx"/>
+            <attribute name="name" value="Luchse"/>
             <attribute name="extinct" value="-"/>
             <branch>
               <attribute name="name" value="Kanadischer Luchs"/>
@@ -301,7 +301,7 @@
             </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Poiana"/>
+            <attribute name="name" value="Pojanas"/>
             <attribute name="extinct" value="-"/>
             <branch>
               <attribute name="name" value="Westafrikanischer Linsang"/>
@@ -698,7 +698,7 @@
           <attribute name="extinct" value="-"/>
         </branch>
         <branch>
-          <attribute name="name" value="Canis"/>
+          <attribute name="name" value="Wolfs- und Schakalartige"/>
           <attribute name="extinct" value="-"/>
           <branch>
             <attribute name="name" value="Streifenschakal"/>
@@ -1262,7 +1262,7 @@
           <attribute name="extinct" value="-"/>
         </branch>
         <branch>
-          <attribute name="name" value="Procyon"/>
+          <attribute name="name" value="Waschbären"/>
           <attribute name="extinct" value="-"/>
           <branch>
             <attribute name="name" value="Krabbenwaschbär"/>

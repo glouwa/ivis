@@ -1,3 +1,4 @@
+var hidePan;
 var ivis;
 (function (ivis) {
     var controller;
@@ -26,7 +27,8 @@ var ivis;
             captions: null,
             weight: null,
         };
-        function init() {
+        function init(hp) {
+            hidePan = hp;
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
             var loaderOptions = [
                 { text: "flare.csv (d3)", value: "fromFile('flare.csv')" },
