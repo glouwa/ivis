@@ -186,7 +186,7 @@ namespace ivis.controller
     function setRenderer(name)
     {
         var withoutDbg = name.endsWith("Dbg")?name.slice(0, -3):name
-        var ns = 'ivis.ui.'+withoutDbg.toLowerCase()+'.'
+        var ns = 'ivis.ui.'+(withoutDbg=='D3'?withoutDbg:withoutDbg.toLowerCase())+'.'
         var initUiName = ns+'init'+name
         var unitDiskName = ns+'UnitDisk'+withoutDbg
 

@@ -1,32 +1,177 @@
 /*
- * this class
- - gets an intput path
- - reads the file containing a json tree representation
- - creates a tree hierarchy based on the data
- */
-/*
- * node:
- must be in json file
- - id (unique)
- - parent
- - children
-
- are optional or not contained in json file
- - name
- - get a weight function and apply it to all elements -> if weight is undefined in child - call weight funciton on child, then finish parentRef weight computation
-
+ * model-tree gets a path to an input file and computes the tree from this data
  *
  */
 var ivis;
 (function (ivis) {
     var model;
     (function (model) {
+        //============================================================================
         class MissingFieldError extends Error {
             constructor(field) {
                 super(field);
                 this.fieldname = field;
             }
         }
+        //============================================================================
+        class InputFile {
+            static determineFileType(data) {
+                try {
+                    JSON.parse(data);
+                    return this.json;
+                }
+                catch (e) {
+                    if (data.indexOf("CCSXML") !== -1) {
+                        return this.skos;
+                    }
+                    return this.treeML;
+                }
+            }
+        }
+        InputFile.json = 'JSON';
+        InputFile.treeML = 'TREEML';
+        InputFile.skos = 'SKOS';
+        //============================================================================
+        class InputJSON {
+            static jsonToTree(data) {
+                let parsedJson = JSON.parse(data);
+                try {
+                    return this.createNodes(parsedJson);
+                }
+                catch (e) {
+                    console.log("Invalid data file.");
+                    console.log(e);
+                }
+            }
+            static createNodes(json) {
+                let tree = [];
+                json.forEach((obj) => {
+                    let node = new TreeNode().deserialize(obj);
+                    tree.push(node);
+                });
+                return tree;
+            }
+        }
+        //============================================================================
+        class InputTreeML {
+            static treemlToTree(data, callback) {
+                xml2jsBundle.parseString(data, (err, result) => {
+                    if (err !== null) {
+                        console.log("Invalid data file");
+                        return null;
+                    }
+                    let rootNode = result['tree']['branch']['0'];
+                    let json = [];
+                    json.push(this.toJSON(rootNode));
+                    let tree = InputJSON.createNodes(json);
+                    Tree.setTree(tree);
+                    callback(tree[0]);
+                });
+            }
+            static toJSON(inputNode) {
+                let resultNode = {
+                    id: '',
+                    name: '',
+                    children: []
+                };
+                //id, name
+                let attributes = inputNode['attribute'];
+                for (let i = 0; i < attributes.length; i++) {
+                    let attribute = attributes[i];
+                    let attributeName = attribute['$']['name'];
+                    let attributeValue = attribute['$']['value'];
+                    if (attributeName === 'id') {
+                        resultNode.id = attributeValue;
+                    }
+                    else if (attributeName === 'name') {
+                        resultNode.name = attributeValue;
+                    }
+                }
+                if (resultNode.id === '')
+                    resultNode.id = resultNode.name;
+                //children
+                if (inputNode.hasOwnProperty('branch')) {
+                    let branches = inputNode['branch'];
+                    for (let i = 0; i < branches.length; i++) {
+                        resultNode.children.push(this.toJSON(branches[i]));
+                    }
+                }
+                if (inputNode.hasOwnProperty('leaf')) {
+                    let leaves = inputNode['leaf'];
+                    for (let i = 0; i < leaves.length; i++) {
+                        resultNode.children.push(this.toJSON(leaves[i]));
+                    }
+                }
+                return resultNode;
+            }
+        }
+        //============================================================================
+        class InputSkos {
+            static skosToTree(data, callback) {
+                let xml = this.extractXML(data);
+                xml2jsBundle.parseString(xml, (err, result) => {
+                    if (err !== null) {
+                        console.log("Invalid data file", err);
+                        return null;
+                    }
+                    let rootNode = this.getFirstValidNode(result);
+                    let json = [];
+                    json.push(this.toJSON(rootNode));
+                    let tree = InputJSON.createNodes(json);
+                    Tree.setTree(tree);
+                    callback(tree[0]);
+                });
+            }
+            static extractXML(input) {
+                let withoutBegin = input.split("\\begin{CCSXML}")[1];
+                let withoutEnd = withoutBegin.split("\\end{CCSXML}")[0];
+                return withoutEnd;
+            }
+            //returns the first node with children
+            static getFirstValidNode(input) {
+                let keys = Object.keys(input);
+                for (let i = 0; i < keys.length; i++) {
+                    if (keys[i] === 'concept') {
+                        return input;
+                    }
+                    let deepConceptNode = this.getFirstValidNode(input[keys[i]]);
+                    if (deepConceptNode != null) {
+                        if (!deepConceptNode.hasOwnProperty('concept_id')) {
+                            deepConceptNode['id'] = keys[i];
+                        }
+                        return deepConceptNode;
+                    }
+                }
+                return null;
+            }
+            static toJSON(inputNode) {
+                let resultNode = {
+                    id: '',
+                    name: '',
+                    children: []
+                };
+                //id
+                if (inputNode.hasOwnProperty('concept_id')) {
+                    resultNode.id = inputNode['concept_id'][0];
+                }
+                else {
+                    resultNode.id = inputNode['id'];
+                }
+                //name
+                if (inputNode.hasOwnProperty('concept_desc')) {
+                    resultNode.name = inputNode['concept_desc'][0];
+                }
+                //children
+                if (inputNode.hasOwnProperty('concept')) {
+                    let children = inputNode['concept'];
+                    for (let i = 0; i < children.length; i++) {
+                        resultNode.children.push(this.toJSON(children[i]));
+                    }
+                }
+                return resultNode;
+            }
+        }
+        //============================================================================
         class TreeNode {
             constructor() {
                 this.children = null;
@@ -55,7 +200,6 @@ var ivis;
                 return this.parent;
             }
             setParent(parent) {
-                //console.log('setParent ' + parent.getId() + ' of node ' + this.getId());
                 this.parent = parent;
             }
             addChild(child) {
@@ -67,97 +211,32 @@ var ivis;
             }
         }
         model.TreeNode = TreeNode;
+        //============================================================================
         class Tree {
             constructor(ok, filepath) {
                 this.tree_ = [];
                 let xhr = new XMLHttpRequest();
-                let fileType = filepath.split('.').pop().toUpperCase();
                 xhr.open('GET', filepath, true);
                 xhr.onreadystatechange = () => {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         let content = xhr.responseText;
-                        if (fileType === 'JSON') {
-                            console.log('filetype: JSON');
-                            this.processJSON(content, ok);
+                        let fileType = InputFile.determineFileType(content);
+                        if (fileType === InputFile.json) {
+                            this.tree_ = InputJSON.jsonToTree(content);
+                            ok(this.tree_[0]);
                         }
-                        else if (fileType === 'XML') {
-                            console.log('filetype: XML');
-                            xml2jsBundle.parseString(content, (err, result) => {
-                                if (err === null)
-                                    this.processXML(result, ok);
-                                else
-                                    console.log("Invalid XML data file.");
-                            });
+                        else if (fileType === InputFile.skos) {
+                            InputSkos.skosToTree(content, ok);
+                        }
+                        else if (fileType === InputFile.treeML) {
+                            InputTreeML.treemlToTree(content, ok);
                         }
                     }
                 };
                 xhr.send();
             }
-            xmlToJson(currentNode, space) {
-                let node = {
-                    id: "",
-                    name: "",
-                    children: []
-                };
-                let attributeList = currentNode['attribute'];
-                if (attributeList !== undefined) {
-                    for (let i = 0; i < attributeList.length; i++) {
-                        let attribute = attributeList[i]['$'];
-                        let attributeName = attribute['name'];
-                        let attributeValue = attribute['value'];
-                        //id
-                        if (attributeName === 'id')
-                            node.id = attributeValue;
-                        else if (attributeName === 'name')
-                            node.name = attributeValue;
-                    }
-                }
-                if (node.id === "")
-                    node.id = node.name;
-                //children
-                let branches = currentNode['branch'];
-                if (branches !== undefined) {
-                    for (let i = 0; i < branches.length; i++) {
-                        node.children.push(this.xmlToJson(branches[i], space + " "));
-                    }
-                }
-                let leaves = currentNode['leaf'];
-                if (leaves !== undefined) {
-                    for (let i = 0; i < leaves.length; i++) {
-                        node.children.push(this.xmlToJson(leaves[i], space + " "));
-                    }
-                }
-                return node;
-            }
-            processXML(data, ok) {
-                let json = [];
-                json.push(this.xmlToJson(data['tree']['branch']['0'], ""));
-                try {
-                    this.setupTreeHierarchy(json);
-                    ok(this.tree_[0]);
-                }
-                catch (e) {
-                    console.log("Invalid JSON data file.");
-                    console.log(e);
-                }
-            }
-            processJSON(data, ok) {
-                let json = JSON.parse(data);
-                console.log(json);
-                try {
-                    this.setupTreeHierarchy(json);
-                    ok(this.tree_[0]);
-                }
-                catch (e) {
-                    console.log("Invalid JSON data file.");
-                    console.log(e);
-                }
-            }
-            setupTreeHierarchy(json) {
-                json.forEach((obj) => {
-                    let node = new TreeNode().deserialize(obj);
-                    this.tree_.push(node);
-                });
+            static setTree(tree) {
+                //this.tree_ = tree;
             }
             getNodeById(id) {
                 return this.tree_.find((node) => (node.id == id));
@@ -168,22 +247,6 @@ var ivis;
             getRootNode() {
                 return this.tree_.find((node) => (node.parent == null));
             }
-            /*getNodeCount() {
-              let counter = function(node : TreeNode) {
-                let count = 0;
-                node.getChildren().forEach((child : TreeNode) => {
-                  count += counter(child);
-                });
-                return count + 1;
-              };
-        
-              let nodeCount = 0;
-              this.tree_.forEach((node : TreeNode) => {
-                nodeCount += counter(node);
-              });
-        
-              return nodeCount + 1;
-            }*/
             countNodes(node) {
                 let sum = 0;
                 let children = node.children;
@@ -196,92 +259,3 @@ var ivis;
         model.Tree = Tree;
     })(model = ivis.model || (ivis.model = {}));
 })(ivis || (ivis = {}));
-//TODO:
-//test all functions with JSON
-//implement SKOS, TREEML
-//implement treeoflife
-//implement file system
-/*
-JSON:
-0
-  children
-    0
-      children
-      id
-      name
-    1
-      children
-      id
-      name
-  id
-  name
-
-
-
-XML:
-tree => REMOVE
-  branch => 0
-    0 => REMOVE
-      attribute
-        0
-          $
-            name: name
-            value: sample things
-      branch => 0
-        0
-          attribute
-            0
-              $
-                name: name
-                value: plants
-          leaf
-            0
-              attribute
-                0
-                  $
-                    name: name
-                    value: oak
-                1
-                  $
-                    name: number
-                    value: 10
-                2
-                  $
-                    name: type
-                    value: wild
-            1
-              attribute
-                0
-                  $
-                    name: name
-                    value: afican violet
-                1
-                  $
-                    name: number
-                    value: 3
-                2
-                  $
-                    name: type
-                    value: domestic
-        1
-          attribute
-            0
-              $
-                name: name
-                value: animals
-          branch
-            0
-              attribute
-              branch
-                0
-                  attribute
-                  leaf
-                1
-                  attribute
-                  leaf
-
-
-
-
-
- */
