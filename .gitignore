@@ -75,3 +75,4 @@ typings/
 *.includes
 /js/*.map
 .idea/
+data/user-uploaded

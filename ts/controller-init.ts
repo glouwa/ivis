@@ -34,6 +34,7 @@ namespace ivis.controller
             { text:"flare.csv (d3)", value:"fromFile('flare.csv')"         },
             { text:"sample.xml",     value:"fromFile('sample.xml')"        },
             { text:"sample.json",    value:"fromFile('sample.json')"       },
+            { text:"sample-skos.xml",value:"fromFile('sample-skos.xml')",                     },
             { text:"Tree of life 1", value:"fromFile('carnivora-de.xml')"  },
             { text:"Tree of life 2", value:"fromFile('primates.xml')"      },
             { text:"Tree of life 3", value:"fromFile('placentalia.xml')"   },
