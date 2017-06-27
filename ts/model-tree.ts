@@ -274,7 +274,7 @@ namespace ivis.model {
     }
 
     public static setTree(tree : TreeNode[]) {
-      this.tree_ = tree;
+      //this.tree_ = tree;
     }
 
     private getNodeById(id: string): TreeNode {
