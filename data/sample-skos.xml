@@ -1,8 +1,8 @@
 \begin{CCSXML}
 <ccs2012>
-  <concept> => node
-    <concept_id>10002951.10002952.10003190</concept_id> =>id
-    <concept_desc>Information systems~Database management system engines</concept_desc> =>name
+  <concept>
+    <concept_id>10002951.10002952.10003190</concept_id>
+    <concept_desc>Information systems~Database management system engines</concept_desc>
     <concept_significance>500</concept_significance>
   </concept>
   <concept>
