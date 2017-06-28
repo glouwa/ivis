@@ -76,6 +76,9 @@ var ivis;
                 this.nav.updatePositions();
                 this.view.updatePositions();
             }
+            updateLayout() {
+                this.data = this.args.layout(this.data);
+            }
             onDragStart(m, n, tt) {
                 if (ivis.controller.slide.captions)
                     this.view.updateCaptions(false);
@@ -154,16 +157,20 @@ var ivis;
         controller.PanTransformation = PanTransformation;
         var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
         var o = { P: { re: 0, im: 0 }, θ: { re: -1, im: 0 }, λ: { re: 0.5403023058681398, im: -0.8414709848078965 } };
+        var left = null;
+        var right = null;
         /**
          * create a euclidien and a hyperbolic tree view
          * same data
          * same initial layout
          * different states and transformations
          */
-        function loadSlide() {
+        function reCreate() {
+            document.getElementById("ivis-canvas-div").innerText = '';
+            document.getElementById("ivis-canvas-debug-panel").innerText = '';
             var uiRoot = ivis.controller.slide.initUi();
             if (!hidePan)
-                new TreeWithNavigation({
+                right = new TreeWithNavigation({
                     dataloader: ivis.controller.slide.loader,
                     navData: ivis.model.loaders.obj2data(o),
                     layout: ivis.controller.slide.layout,
@@ -174,7 +181,7 @@ var ivis;
                     pos: [525, 30],
                     clip: true
                 });
-            new TreeWithNavigation({
+            left = new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
@@ -185,6 +192,16 @@ var ivis;
                 pos: [25, 30],
             });
         }
-        controller.loadSlide = loadSlide;
+        controller.reCreate = reCreate;
+        function reLayout() {
+            left.updateLayout();
+            right.updateLayout();
+        }
+        controller.reLayout = reLayout;
+        function reDraw() {
+            left.updatePositions();
+            right.updatePositions();
+        }
+        controller.reDraw = reDraw;
     })(controller = ivis.controller || (ivis.controller = {}));
 })(ivis || (ivis = {}));

@@ -25,6 +25,7 @@ namespace ivis.controller
         arc:null,
         captions:null,
         weight:null,
+        magic:null,
     }    
     export function init(hp)
     {
@@ -34,7 +35,7 @@ namespace ivis.controller
             { text:"flare.csv (d3)", value:"fromFile('flare.csv')"         },
             { text:"sample.xml",     value:"fromFile('sample.xml')"        },
             { text:"sample.json",    value:"fromFile('sample.json')"       },
-            { text:"sample-skos.xml",value:"fromFile('sample-skos.xml')",                     },
+            { text:"sample-skos.xml",value:"fromFile('sample-skos.xml')",  },
             { text:"Tree of life 1", value:"fromFile('carnivora-de.xml')"  },
             { text:"Tree of life 2", value:"fromFile('primates.xml')"      },
             { text:"Tree of life 3", value:"fromFile('placentalia.xml')"   },
@@ -58,6 +59,23 @@ namespace ivis.controller
             { text:"Unit vectors",    value:"layoutUnitVectors", },
             { text:"Unit lines",      value:"layoutUnitLines",   },
         ]
+        var weightOptions = [
+            { text:"Child count",     value:"d=>1",              },
+            { text:"Leaf count",      value:"d=>d.children?0:1"  },
+            { text:"Non",             value:"d=>0",              },
+        ]
+        var magicOptions = [
+            { text:"0.42",             value:".42"               },
+            { text:"0.1",              value:".1",               },
+            { text:"0.2",              value:".2",               },
+            { text:"0.3",              value:".3",               },
+            { text:"0.4",              value:".4",               },
+            { text:"0.5",              value:".5",               },
+            { text:"0.6",              value:".6",               },
+            { text:"0.7",              value:".7",               },
+            { text:"0.8",              value:".8",               },
+            { text:"0.9",              value:".9",               },
+        ]
         var arcOptions = [
             { text:"Positive",        value:"arc('0', '1')",     },
             { text:"Negative",        value:"arc('1', '0')",     },
@@ -68,12 +86,6 @@ namespace ivis.controller
             { text:"Show always",     value:"false",             },
         ]
 
-        var weightOptions = [
-            { text:"Child count",     value:"d=>1",              },
-            { text:"Leaf count",      value:"d=>d.children?0:1"  },
-            { text:"Non",             value:"d=>0",              },
-        ]
-
         d3.select('#rendererSelect')
             .on('change', ()=> setRenderer(d3.event.target.value))
             .selectAll('option')
@@ -82,50 +94,29 @@ namespace ivis.controller
                 .attr('value', d=> d)
                 .text(d=> d)
 
-        d3.select('#dataSourceSelect')
-            .on('change', ()=> setDataSource(d3.event.target.value))
-            .selectAll('option')
-            .data(loaderOptions)
-            .enter().append('option')
-                .attr('value', d=> d.value)
-                .text(d=> d.text)
+        function buildCombo(selector, data, onChange)
+        {
+            d3.select(selector)
+                .on('change', onChange)
+                .selectAll('option')
+                .data(data)
+                .enter().append('option')
+                    .attr('value', d=> d.value)
+                    .text(d=> d.text)
+        }
 
-        d3.select('#layoutSelect')
-            .on('change', ()=> setLayout(d3.event.target.value))
-            .selectAll('option')
-            .data(layoutOptions)
-            .enter().append('option')
-                .attr('value', d=> d.value)
-                .text(d=> d.text)
-
-        d3.select('#arcSelect')
-            .on('change', ()=> setArc(d3.event.target.value))
-            .selectAll('option')
-            .data(arcOptions)
-            .enter().append('option')
-                .attr('value', d=> d.value)
-                .text(d=> d.text)
-
-        d3.select('#captionSelect')
-            .on('change', ()=> setCaption(d3.event.target.value))
-            .selectAll('option')
-            .data(captionOptions)
-            .enter().append('option')
-                .attr('value', d=> d.value)
-                .text(d=> d.text)
-
-        d3.select('#weightSelect')
-            .on('change', ()=> setWeight(d3.event.target.value))
-            .selectAll('option')
-            .data(weightOptions)
-            .enter().append('option')
-                .attr('value', d=> d.value)
-                .text(d=> d.text)
+        buildCombo('#dataSourceSelect', loaderOptions,  ()=> setDataSource(d3.event.target.value))
+        buildCombo('#layoutSelect',     layoutOptions,  ()=> setLayout(d3.event.target.value))
+        buildCombo('#weightSelect',     weightOptions,  ()=> setWeight(d3.event.target.value))
+        buildCombo('#magicSelect',      magicOptions,   ()=> setMagic(d3.event.target.value))
+        buildCombo('#arcSelect',        arcOptions,     ()=> setArc(d3.event.target.value))
+        buildCombo('#captionSelect',    captionOptions, ()=> setCaption(d3.event.target.value))
 
         var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect")
         var arcSelect        = <HTMLInputElement>document.getElementById("arcSelect")
         var captionSelect    = <HTMLInputElement>document.getElementById("captionSelect")
         var weightSelect     = <HTMLInputElement>document.getElementById("weightSelect")
+        var magicSelect      = <HTMLInputElement>document.getElementById("magicSelect")
 
         document.querySelector('#userfile').addEventListener('change', function(e) {
             console.log(this);
@@ -160,6 +151,7 @@ namespace ivis.controller
         slide.arc = eval('ivis.ui.' + arcSelect.value)
         slide.captions = eval(captionSelect.value)
         slide.weight = eval(weightSelect.value)
+        slide.magic = eval(magicSelect.value)
         next(1)
     }
 
@@ -193,31 +185,26 @@ namespace ivis.controller
         slide.initUi = eval(initUiName)
         slide.unitDisk = eval(unitDiskName)
 
-        resetDom()
-        ivis.controller.loadSlide()
+        ivis.controller.reCreate()
     }
 
     function setDataSource(name, reset=true)
     {
         slide.loader = eval('ivis.model.loaders.'+name)
-        if (reset) {
-            resetDom()
-            ivis.controller.loadSlide()
-        }
+        if (reset)
+            ivis.controller.reCreate()
     }
 
     function setLayout(name)
     {
-        slide.layout = eval('ivis.model.layouts.'+name)
-        resetDom()
-        ivis.controller.loadSlide()
+        slide.layout = eval('ivis.model.layouts.'+name)        
+        ivis.controller.reCreate()
     }
 
     function setArc(name)
     {
-        slide.arc = eval('ivis.ui.'+name)
-        resetDom()
-        ivis.controller.loadSlide()
+        slide.arc = eval('ivis.ui.'+name)        
+        ivis.controller.reCreate()
     }
 
     function setCaption(name)
@@ -227,14 +214,13 @@ namespace ivis.controller
 
     function setWeight(name)
     {
-        slide.weight = eval(name)
-        resetDom()
-        ivis.controller.loadSlide()
+        slide.weight = eval(name)        
+        ivis.controller.reCreate()
     }
 
-    function resetDom()
+    function setMagic(name)
     {
-        document.getElementById("ivis-canvas-div").innerText = ''
-        document.getElementById("ivis-canvas-debug-panel").innerText = ''
+        slide.magic = eval(name)
+        ivis.controller.reCreate()
     }
 }

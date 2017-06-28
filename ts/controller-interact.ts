@@ -105,6 +105,11 @@ namespace ivis.controller
             this.view.updatePositions()
         }
 
+        private updateLayout() : void
+        {
+            this.data = this.args.layout(this.data)
+        }
+
         private onDragStart(m:C, n:N, tt:Transformation) : void
         {
             if (ivis.controller.slide.captions)
@@ -206,18 +211,23 @@ namespace ivis.controller
     var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 } }
     var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
+    var left = null
+    var right = null
+
     /**
      * create a euclidien and a hyperbolic tree view
      * same data
      * same initial layout
      * different states and transformations
      */
-    export function loadSlide()
+    export function reCreate()
     {
+        document.getElementById("ivis-canvas-div").innerText = ''
+        document.getElementById("ivis-canvas-debug-panel").innerText = ''
         var uiRoot = ivis.controller.slide.initUi()
 
         if (!hidePan)
-        new TreeWithNavigation({
+        right = new TreeWithNavigation({
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(o),
             layout:      ivis.controller.slide.layout,
@@ -229,7 +239,7 @@ namespace ivis.controller
             clip:        true
         })
 
-        new TreeWithNavigation({
+        left = new TreeWithNavigation({
             dataloader:  ivis.controller.slide.loader,
             navData:     ivis.model.loaders.obj2data(h),
             layout:      ivis.controller.slide.layout,
@@ -239,6 +249,18 @@ namespace ivis.controller
             parent:      uiRoot,
             pos:         [25,30],
         })
+    }
+
+    export function reLayout()
+    {
+        left.updateLayout()
+        right.updateLayout()
+    }
+
+    export function reDraw()
+    {
+        left.updatePositions()
+        right.updatePositions()
     }
 }
 

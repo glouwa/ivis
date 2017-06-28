@@ -155,7 +155,7 @@ var ivis;
                     Ω: πify(startAngle + defAngleWidth / 2.0)
                 };
                 n.z = { re: 0, im: 0 };
-                return layoutNode(n, wedge, .42);
+                return layoutNode(n, wedge, ivis.controller.slide.magic);
             }
             layouts.layoutBergé = layoutBergé;
         })(layouts = model.layouts || (model.layouts = {}));

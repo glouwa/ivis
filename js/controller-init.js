@@ -26,6 +26,7 @@ var ivis;
             arc: null,
             captions: null,
             weight: null,
+            magic: null,
         };
         function init(hp) {
             hidePan = hp;
@@ -58,6 +59,23 @@ var ivis;
                 { text: "Unit vectors", value: "layoutUnitVectors", },
                 { text: "Unit lines", value: "layoutUnitLines", },
             ];
+            var weightOptions = [
+                { text: "Child count", value: "d=>1", },
+                { text: "Leaf count", value: "d=>d.children?0:1" },
+                { text: "Non", value: "d=>0", },
+            ];
+            var magicOptions = [
+                { text: "0.42", value: ".42" },
+                { text: "0.1", value: ".1", },
+                { text: "0.2", value: ".2", },
+                { text: "0.3", value: ".3", },
+                { text: "0.4", value: ".4", },
+                { text: "0.5", value: ".5", },
+                { text: "0.6", value: ".6", },
+                { text: "0.7", value: ".7", },
+                { text: "0.8", value: ".8", },
+                { text: "0.9", value: ".9", },
+            ];
             var arcOptions = [
                 { text: "Positive", value: "arc('0', '1')", },
                 { text: "Negative", value: "arc('1', '0')", },
@@ -67,11 +85,6 @@ var ivis;
                 { text: "Hide on drag", value: "true", },
                 { text: "Show always", value: "false", },
             ];
-            var weightOptions = [
-                { text: "Child count", value: "d=>1", },
-                { text: "Leaf count", value: "d=>d.children?0:1" },
-                { text: "Non", value: "d=>0", },
-            ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))
                 .selectAll('option')
@@ -79,45 +92,26 @@ var ivis;
                 .enter().append('option')
                 .attr('value', d => d)
                 .text(d => d);
-            d3.select('#dataSourceSelect')
-                .on('change', () => setDataSource(d3.event.target.value))
-                .selectAll('option')
-                .data(loaderOptions)
-                .enter().append('option')
-                .attr('value', d => d.value)
-                .text(d => d.text);
-            d3.select('#layoutSelect')
-                .on('change', () => setLayout(d3.event.target.value))
-                .selectAll('option')
-                .data(layoutOptions)
-                .enter().append('option')
-                .attr('value', d => d.value)
-                .text(d => d.text);
-            d3.select('#arcSelect')
-                .on('change', () => setArc(d3.event.target.value))
-                .selectAll('option')
-                .data(arcOptions)
-                .enter().append('option')
-                .attr('value', d => d.value)
-                .text(d => d.text);
-            d3.select('#captionSelect')
-                .on('change', () => setCaption(d3.event.target.value))
-                .selectAll('option')
-                .data(captionOptions)
-                .enter().append('option')
-                .attr('value', d => d.value)
-                .text(d => d.text);
-            d3.select('#weightSelect')
-                .on('change', () => setWeight(d3.event.target.value))
-                .selectAll('option')
-                .data(weightOptions)
-                .enter().append('option')
-                .attr('value', d => d.value)
-                .text(d => d.text);
+            function buildCombo(selector, data, onChange) {
+                d3.select(selector)
+                    .on('change', onChange)
+                    .selectAll('option')
+                    .data(data)
+                    .enter().append('option')
+                    .attr('value', d => d.value)
+                    .text(d => d.text);
+            }
+            buildCombo('#dataSourceSelect', loaderOptions, () => setDataSource(d3.event.target.value));
+            buildCombo('#layoutSelect', layoutOptions, () => setLayout(d3.event.target.value));
+            buildCombo('#weightSelect', weightOptions, () => setWeight(d3.event.target.value));
+            buildCombo('#magicSelect', magicOptions, () => setMagic(d3.event.target.value));
+            buildCombo('#arcSelect', arcOptions, () => setArc(d3.event.target.value));
+            buildCombo('#captionSelect', captionOptions, () => setCaption(d3.event.target.value));
             var rendererSelect = document.getElementById("rendererSelect");
             var arcSelect = document.getElementById("arcSelect");
             var captionSelect = document.getElementById("captionSelect");
             var weightSelect = document.getElementById("weightSelect");
+            var magicSelect = document.getElementById("magicSelect");
             document.querySelector('#userfile').addEventListener('change', function (e) {
                 console.log(this);
                 var file = this.files[0];
@@ -148,6 +142,7 @@ var ivis;
             controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
             controller.slide.captions = eval(captionSelect.value);
             controller.slide.weight = eval(weightSelect.value);
+            controller.slide.magic = eval(magicSelect.value);
             next(1);
         }
         controller.init = init;
@@ -173,37 +168,31 @@ var ivis;
             var unitDiskName = ns + 'UnitDisk' + withoutDbg;
             controller.slide.initUi = eval(initUiName);
             controller.slide.unitDisk = eval(unitDiskName);
-            resetDom();
-            ivis.controller.loadSlide();
+            ivis.controller.reCreate();
         }
         function setDataSource(name, reset = true) {
             controller.slide.loader = eval('ivis.model.loaders.' + name);
-            if (reset) {
-                resetDom();
-                ivis.controller.loadSlide();
-            }
+            if (reset)
+                ivis.controller.reCreate();
         }
         function setLayout(name) {
             controller.slide.layout = eval('ivis.model.layouts.' + name);
-            resetDom();
-            ivis.controller.loadSlide();
+            ivis.controller.reCreate();
         }
         function setArc(name) {
             controller.slide.arc = eval('ivis.ui.' + name);
-            resetDom();
-            ivis.controller.loadSlide();
+            ivis.controller.reCreate();
         }
         function setCaption(name) {
             controller.slide.captions = eval(name);
         }
         function setWeight(name) {
             controller.slide.weight = eval(name);
-            resetDom();
-            ivis.controller.loadSlide();
+            ivis.controller.reCreate();
         }
-        function resetDom() {
-            document.getElementById("ivis-canvas-div").innerText = '';
-            document.getElementById("ivis-canvas-debug-panel").innerText = '';
+        function setMagic(name) {
+            controller.slide.magic = eval(name);
+            ivis.controller.reCreate();
         }
     })(controller = ivis.controller || (ivis.controller = {}));
 })(ivis || (ivis = {}));

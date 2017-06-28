@@ -58,6 +58,23 @@ parser.parseString(file, function (err, parsed)
     fs.writeFileSync('data/carnivora-de.xml', builder.buildObject(converted).toString())
 })
 
+/*
+- load                  async
+- collect names
+- translate names
+    * translate name    async
+- convert
+    ... convert
+- write                 async/egal
+*/
+
+
+var translateAll = new Promise(function(ok, err) {
+    this.all()
+})
+
+var translateOne = new Promise((ok, err) => {})
+
 function query(searched, ok)
 {
     if (!loadedMap[searched])

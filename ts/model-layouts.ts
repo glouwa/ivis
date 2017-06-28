@@ -178,6 +178,6 @@ namespace ivis.model.layouts {
             Ω: πify(startAngle + defAngleWidth/2.0)
         }
         n.z = { re:0, im:0 }
-        return layoutNode(n, wedge, .42)
+        return layoutNode(n, wedge, ivis.controller.slide.magic)
     }    
 }
