@@ -125,7 +125,7 @@ namespace ivis.ui.D3
         private openWiki = d => {
             if (hidePan) {
                 d3.event.preventDefault()
-                document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/"+this.args.caption(d)
+                document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/"+d.data.name
             }
             else
                 this.args.onClick(this.ti(d3.mouse(this.layersSvg)))
