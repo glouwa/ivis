@@ -28,8 +28,7 @@ var ivis;
             weight: null,
             magic: null,
         };
-        function init(hp) {
-            hidePan = hp;
+        function init() {
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
             var loaderOptions = [
                 { text: "flare.csv (d3)", value: "fromFile('flare.csv')" },
@@ -52,8 +51,8 @@ var ivis;
                 { text: "User Uploaded", value: "fromFile('user-uploaded.xml')" },
             ];
             var layoutOptions = [
-                { text: "Bergé at al.", value: "layoutBergé", },
-                { text: "Lamping at al.", value: "layoutLamping", },
+                { text: "Bergé et al.", value: "layoutBergé", },
+                { text: "Lamping et al.", value: "layoutLamping", },
                 { text: "Buchheim et al.", value: "layoutBuchheim", },
                 { text: "DFS spiral", value: "layoutSpiral", },
                 { text: "Unit vectors", value: "layoutUnitVectors", },
@@ -65,7 +64,7 @@ var ivis;
                 { text: "Non", value: "d=>0", },
             ];
             var magicOptions = [
-                { text: "0.42", value: ".42" },
+                { text: "0.5", value: ".5", },
                 { text: "0.1", value: ".1", },
                 { text: "0.2", value: ".2", },
                 { text: "0.3", value: ".3", },
@@ -77,13 +76,13 @@ var ivis;
                 { text: "0.9", value: ".9", },
             ];
             var arcOptions = [
-                { text: "Positive", value: "arc('0', '1')", },
                 { text: "Negative", value: "arc('1', '0')", },
+                { text: "Positive", value: "arc('0', '1')", },
                 { text: "Strait line", value: "arcLine", },
             ];
             var captionOptions = [
-                { text: "Hide on drag", value: "true", },
                 { text: "Show always", value: "false", },
+                { text: "Hide on drag", value: "true", },
             ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))

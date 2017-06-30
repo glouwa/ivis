@@ -1,0 +1,78 @@
+.unitDiscBg {
+    fill: #fdfdf3; //#f9fbe7;
+    stroke: #cbde3b; //#eef4be;
+    stroke-width: .001;
+}
+
+.node {
+}
+
+.node {
+    fill: #a5d6a7;
+    stroke: #5eb561; /* #a1887f; */
+    stroke-width: .003;
+}
+
+.node:hover {
+    //fill: #81c784;
+    //stroke: #002bb8; //#1565C0; /* #a1887f; */
+    stroke-width: .006;
+}
+
+.caption {
+    font-size: 0.03pt;
+    dominant-baseline: middle;
+    pointer-events: none;
+    user-select: none;
+    cursor: default;
+
+    paint-order:stroke;
+    stroke: #fff;
+    stroke-width: .006;
+    /*stroke-opacity: 0.7;*/
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+}
+
+.link {
+    stroke: #ccc;
+    stroke-width: .005;
+    pointer-events: none;
+}
+
+.arc {
+    stroke: #ddd; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    fill: none;
+    pointer-events: none;
+}
+
+.cell {
+    stroke: #e5e5e5; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke-width: 0.00051;
+    fill: none;
+    pointer-events:visible;
+}
+
+.unitDiscParam .node {
+    fill: #BBDEFB;
+}
+
+.unitDiscParam .caption {
+    text-anchor: middle;
+    font-size: .2pt;
+}
+
+.unitDiscParamBg .link {
+    stroke-width: .02;
+}
+
+.unitDiscParamBg .arc {
+    stroke-width: .02;
+}
+
+.unitDiscParam .cell {
+    stroke: #444; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke-width: 0.002;
+    fill: none;
+    pointer-events:visible;
+}

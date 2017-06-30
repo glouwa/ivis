@@ -9,15 +9,17 @@ var ivis;
         class TreeWithNavigation // Interaction
          {
             constructor(args) {
+                this.intervallEvent = null;
                 this.args = args;
                 this.navData = args.navData,
                     args.dataloader(d3h => {
-                        this.data = args.layout(d3.hierarchy(d3h).sum(controller.slide.weight)); // data ok. calc init layout
+                        this.data = args.layout(d3.hierarchy(d3h).sum(controller.slide.weight)); // data ok. calc init layout                
                         this.create();
                     });
             }
             create() {
-                var radius = hidePan ? 450 : 200;
+                var radius = 470;
+                var dblClickTimerEvent = null;
                 this.view = new ivis.controller.slide.unitDisk({
                     class: 'unitDisc',
                     data: this.data,
@@ -26,21 +28,35 @@ var ivis;
                     onDragStart: (m, n) => this.onDragStart(m, n, this.args.viewTT),
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onClick: (m) => this.onClick(m, this.args.viewTT),
+                    onClick: (m, n) => {
+                        if (!dblClickTimerEvent)
+                            dblClickTimerEvent = setTimeout(() => {
+                                dblClickTimerEvent = null;
+                                this.animateTo(m, this.args.viewTT);
+                            }, 300);
+                    },
+                    onDblClick: (m, n) => {
+                        clearTimeout(dblClickTimerEvent);
+                        dblClickTimerEvent = null;
+                        this.view.updateSelection(n);
+                        this.args.onNodeSelect(n);
+                    },
                     arc: this.args.arc,
                     caption: this.caption(.7),
                     parent: null,
-                    pos: ArrAddR(this.args.pos, radius + 40),
+                    pos: ArrAddR([50, 0], radius),
+                    voroBox: [[-1.01, -1.01], [1.01, 1.01]],
                     radius: radius,
                     nodeRadius: .04,
-                    clip: this.args.clip,
+                    rootColor: "#fff59d",
+                    clip: true,
                 });
-                var navR = hidePan ? 90 : 55;
+                var navR = 60;
                 new ivis.controller.slide.unitDisk({
                     class: 'unitDiscParamBg',
                     data: this.data,
                     transform: (n) => n.z,
-                    transformR: (n) => 1,
+                    transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
                     onDragStart: (m, n) => { },
                     onDrag: (s, e) => { },
                     onDragEnd: () => { },
@@ -48,9 +64,9 @@ var ivis;
                     arc: this.args.arc,
                     caption: (n) => "",
                     parent: null,
-                    pos: ArrAddR(this.args.pos, navR),
+                    pos: ArrAddR([40, 0], navR),
                     radius: navR,
-                    nodeRadius: .03,
+                    nodeRadius: .05,
                     clip: true
                 });
                 this.nav = new ivis.controller.slide.unitDisk({
@@ -65,10 +81,11 @@ var ivis;
                     arc: this.args.arc,
                     caption: this.caption(Number.POSITIVE_INFINITY),
                     parent: null,
-                    pos: ArrAddR(this.args.pos, navR),
+                    pos: ArrAddR([40, 0], navR),
                     opacity: .8,
                     radius: navR,
-                    nodeRadius: .13,
+                    nodeRadius: .18,
+                    //rootColor:   "#ffee58",
                     clip: false,
                 });
             }
@@ -80,6 +97,8 @@ var ivis;
                 this.data = this.args.layout(this.data);
             }
             onDragStart(m, n, tt) {
+                if (this.intervallEvent)
+                    return;
                 if (ivis.controller.slide.captions)
                     this.view.updateCaptions(false);
                 tt.onDragStart(m);
@@ -90,20 +109,24 @@ var ivis;
                 this.updatePositions();
             }
             onDragEnd() {
+                this.view.updateCells();
                 if (ivis.controller.slide.captions)
                     this.view.updateCaptions(true);
             }
-            onClick(m, tt) {
+            animateTo(m, tt) {
+                if (this.intervallEvent)
+                    return;
                 this.onDragStart(m, null, tt);
                 var md = CktoCp(m);
                 var step = 0;
                 var initR = md.r;
                 var steps = 33;
-                var intervall = setInterval(() => {
+                this.intervallEvent = setInterval(() => {
                     md.r = initR * (1 - sigmoid(step++ / steps));
                     if (step > steps) {
                         this.onDragEnd();
-                        clearInterval(intervall);
+                        clearInterval(this.intervallEvent);
+                        this.intervallEvent = null;
                     }
                     else {
                         this.onDrag(m, CptoCk(md), null, tt);
@@ -155,8 +178,8 @@ var ivis;
             }
         }
         controller.PanTransformation = PanTransformation;
-        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 } };
-        var o = { P: { re: 0, im: 0 }, θ: { re: -1, im: 0 }, λ: { re: 0.5403023058681398, im: -0.8414709848078965 } };
+        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: 2 / Math.PI, r: 1 }) };
+        //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
         var left = null;
         var right = null;
         /**
@@ -169,18 +192,6 @@ var ivis;
             document.getElementById("ivis-canvas-div").innerText = '';
             document.getElementById("ivis-canvas-debug-panel").innerText = '';
             var uiRoot = ivis.controller.slide.initUi();
-            if (!hidePan)
-                right = new TreeWithNavigation({
-                    dataloader: ivis.controller.slide.loader,
-                    navData: ivis.model.loaders.obj2data(o),
-                    layout: ivis.controller.slide.layout,
-                    viewTT: new PanTransformation(o),
-                    navTT: new PanTransformation(o),
-                    arc: ivis.ui.arcLine,
-                    parent: uiRoot,
-                    pos: [525, 30],
-                    clip: true
-                });
             left = new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(h),
@@ -189,7 +200,10 @@ var ivis;
                 navTT: new PanTransformation(h),
                 arc: ivis.controller.slide.arc,
                 parent: uiRoot,
-                pos: [25, 30],
+                onNodeSelect: (n) => {
+                    if (document.getElementById('wiki'))
+                        document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/" + n.data.name;
+                }
             });
         }
         controller.reCreate = reCreate;
