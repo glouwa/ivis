@@ -28,14 +28,14 @@ var ivis;
                     onDragStart: (m, n) => this.onDragStart(m, n, this.args.viewTT),
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onClick: (m, n) => {
+                    onDblClick: (m, n) => {
                         if (!dblClickTimerEvent)
                             dblClickTimerEvent = setTimeout(() => {
                                 dblClickTimerEvent = null;
                                 this.animateTo(m, this.args.viewTT);
                             }, 300);
                     },
-                    onDblClick: (m, n) => {
+                    onClick: (m, n) => {
                         clearTimeout(dblClickTimerEvent);
                         dblClickTimerEvent = null;
                         this.view.updateSelection(n);

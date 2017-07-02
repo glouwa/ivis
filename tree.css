@@ -20,11 +20,13 @@
 }
 
 .caption {
+    text-transform: uppercase;
     font-size: 0.03pt;
     dominant-baseline: middle;
     pointer-events: none;
     user-select: none;
     cursor: default;
+    letter-spacing: 0.17em;
 
     paint-order:stroke;
     stroke: #fff;
@@ -41,14 +43,14 @@
 }
 
 .arc {
-    stroke: #ddd; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke: #a1887f; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
     fill: none;
     pointer-events: none;
 }
 
 .cell {
     stroke: #e5e5e5; /*#b8b8b8;///#daeccf; #d7ccc8; */
-    stroke-width: 0.00051;
+    stroke-width: 0.001;
     fill: none;
     pointer-events:visible;
 }
