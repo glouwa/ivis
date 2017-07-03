@@ -47,14 +47,14 @@ namespace ivis.controller
                 onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.viewTT),
                 onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.viewTT),
                 onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C, n:N) => {
+                onDblClick:     (m:C, n:N) => {
                     if (!dblClickTimerEvent)
                         dblClickTimerEvent = setTimeout(() => {
                             dblClickTimerEvent = null
                             this.animateTo(m, this.args.viewTT)
                         }, 300)
                 },
-                onDblClick:  (m:C, n:N) => {
+                onClick:  (m:C, n:N) => {
                     clearTimeout(dblClickTimerEvent)
                     dblClickTimerEvent = null
                     this.view.updateSelection(n)

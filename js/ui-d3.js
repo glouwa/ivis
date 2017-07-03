@@ -95,7 +95,7 @@ var ivis;
                         .data(allNodes)
                         .enter().append("circle")
                         .attr("class", "node")
-                        .attr("r", this.args.nodeRadius)
+                        .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius))
                         .call(this.updateNode)
                         .call(this.updateNodeColor);
                     this.captions = this.textLayer.selectAll(".caption")
@@ -103,6 +103,7 @@ var ivis;
                         .enter().append('text')
                         .attr("class", "caption")
                         .attr("dy", this.args.nodeRadius / 10)
+                        .attr("dx", .01)
                         .call(this.updateText);
                     this.arcs = this.arcLayer.selectAll(".arc")
                         .data(allLinks)
