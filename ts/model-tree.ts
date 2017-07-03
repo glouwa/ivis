@@ -72,7 +72,6 @@ namespace ivis.model {
         let json: Object[] = [];
         json.push(this.toJSON(rootNode));
         let tree: TreeNode[] = InputJSON.createNodes(json);
-        Tree.setTree(tree);
         callback(tree[0]);
       })
     }
@@ -135,15 +134,6 @@ namespace ivis.model {
         this.addOtherNodes(rootNode, rootNode, result['rdf:RDF']['skos:Concept']);
         console.log('tree:', rootNode);
         callback(rootNode);
-
-
-        /*
-        let rootNode = this.getFirstValidNode(result);
-        let json : Object[] = [];
-        json.push(this.toJSON(rootNode));
-        let tree = InputJSON.createNodes(json);
-        Tree.setTree(tree);
-        callback(tree[0]);*/
       })
     }
 
@@ -175,56 +165,6 @@ namespace ivis.model {
           definedButNotUsedNodes.push(node);
 
       }
-    }
-
-    //returns the first node with children
-    private static getFirstValidNode(input: Object) : Object {
-      let keys = Object.keys(input);
-      for (let i = 0; i < keys.length; i++) {
-        if (keys[i] === 'concept') {
-          return input;
-        }
-
-        let deepConceptNode = this.getFirstValidNode(input[keys[i]]);
-        if (deepConceptNode != null) {
-          if (!deepConceptNode.hasOwnProperty('skos:ConceptScheme')) {
-            deepConceptNode['id'] = keys[i];
-          }
-          return deepConceptNode;
-        }
-      }
-
-      return null;
-    }
-
-    private static toJSON(inputNode: Object) : Object {
-      let resultNode = {
-        id: '',
-        name: '',
-        children: []
-      };
-
-      //id
-      if (inputNode.hasOwnProperty('concept_id')) {
-        resultNode.id = inputNode['concept_id'][0];
-      } else {
-        resultNode.id = inputNode['id'];
-      }
-
-      //name
-      if (inputNode.hasOwnProperty('concept_desc')) {
-        resultNode.name = inputNode['concept_desc'][0];
-      }
-
-      //children
-      if (inputNode.hasOwnProperty('concept')) {
-        let children = inputNode['concept'];
-        for (let i = 0; i < children.length; i++) {
-          resultNode.children.push(this.toJSON(children[i]));
-        }
-      }
-
-      return resultNode;
     }
   }
 
@@ -323,10 +263,6 @@ namespace ivis.model {
         }
       };
       xhr.send();
-    }
-
-    public static setTree(tree : TreeNode[]) {
-      //this.tree_ = tree;
     }
 
     private getNodeById(id: string): TreeNode {
