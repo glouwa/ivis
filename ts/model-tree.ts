@@ -28,7 +28,7 @@ namespace ivis.model {
         JSON.parse(data);
         return this.json;
       } catch (e) {
-        if (data.indexOf("CCSXML") !== -1) {
+        if (data.indexOf("skos") !== -1) {
           return this.skos;
         }
         return this.treeML;
@@ -120,25 +120,61 @@ namespace ivis.model {
   //============================================================================
   class InputSkos {
     static skosToTree(data: string, callback) {
-      let xml = this.extractXML(data);
-      xml2jsBundle.parseString(xml, (err, result) => {
+      xml2jsBundle.parseString(data, (err, result) => {
         if (err !== null) {
           console.log("Invalid data file", err);
           return null;
         }
+        console.log('skos', result);
+        let conceptScheme = result['rdf:RDF']['skos:ConceptScheme'][0];
+        let rootNode = new TreeNode();
+        rootNode.id = conceptScheme['dc:title'][0];
+        rootNode.name = rootNode.id;
+
+        rootNode.children = this.addChildIds(conceptScheme['skos:hasTopConcept']);
+        this.addOtherNodes(rootNode, rootNode, result['rdf:RDF']['skos:Concept']);
+        console.log('tree:', rootNode);
+        callback(rootNode);
+
+
+        /*
         let rootNode = this.getFirstValidNode(result);
         let json : Object[] = [];
         json.push(this.toJSON(rootNode));
         let tree = InputJSON.createNodes(json);
         Tree.setTree(tree);
-        callback(tree[0]);
+        callback(tree[0]);*/
       })
     }
 
-    private static extractXML(input: string) : Object {
-      let withoutBegin: string = input.split("\\begin{CCSXML}")[1];
-      let withoutEnd: string = withoutBegin.split("\\end{CCSXML}")[0];
-      return withoutEnd;
+    private static addChildIds(conceptList : Object[]) : TreeNode[] {
+      let resultArray : TreeNode[] = [];
+      for (let i = 0; i < conceptList.length; i++) {
+        let node = new TreeNode();
+        node.id = conceptList[i]['$']['rdf:resource'];
+        resultArray.push(node);
+      }
+      return resultArray;
+    }
+
+    private static addOtherNodes(root: TreeNode, parent : TreeNode, conceptList : Object[]) {
+      let definedButNotUsedNodes : TreeNode[] = [];
+      for (let i = 0; i < conceptList.length; i++) {
+        let node = new TreeNode();
+        node.id = conceptList[i]['$']['rdf:about'];
+        node.name = conceptList[i]['skos:prefLabel'][0]['_'];
+
+        if (conceptList[i]['skos:narrower'] !== undefined)
+          node.children = this.addChildIds(conceptList[i]['skos:narrower']);
+
+        for (let j = 0; j < definedButNotUsedNodes.length; j++) {
+          node.setChild(definedButNotUsedNodes[j]);
+        }
+
+        if (root.setChild(node) === false)
+          definedButNotUsedNodes.push(node);
+
+      }
     }
 
     //returns the first node with children
@@ -151,7 +187,7 @@ namespace ivis.model {
 
         let deepConceptNode = this.getFirstValidNode(input[keys[i]]);
         if (deepConceptNode != null) {
-          if (!deepConceptNode.hasOwnProperty('concept_id')) {
+          if (!deepConceptNode.hasOwnProperty('skos:ConceptScheme')) {
             deepConceptNode['id'] = keys[i];
           }
           return deepConceptNode;
@@ -245,6 +281,21 @@ namespace ivis.model {
       return this.id;
     }
 
+    setChild(node : TreeNode) {
+      if (this.children === null)
+        return false;
+      for (let i = 0; i < this.children.length; i++) {
+        if (node.id === this.children[i].id) {
+          this.children[i] = node;
+          return true;
+        }
+      }
+      for (let i = 0; i < this.children.length; i++) {
+        if (this.children[i].setChild(node) === true)
+          return true;
+      }
+      return false;
+    }
   }
 
 
@@ -264,6 +315,7 @@ namespace ivis.model {
             this.tree_ = InputJSON.jsonToTree(content);
             ok(this.tree_[0]);
           } else if (fileType === InputFile.skos) {
+            console.log('SKOS');
             InputSkos.skosToTree(content, ok);
           } else if (fileType === InputFile.treeML) {
             InputTreeML.treemlToTree(content, ok);
