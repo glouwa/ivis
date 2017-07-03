@@ -7,7 +7,7 @@ var ivis;
             var myCanvas = null;
             var renderContext = null;
             function initPlexx() {
-                myCanvas = new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", });
+                myCanvas = new Plexx.DrawingArea({ width: 1000, height: 1000, align: "xMidYMid", });
                 renderContext = new Plexx.RenderContext({ id: "ivis-canvas-div" });
                 myCanvas.run(renderContext);
             }

@@ -6,9 +6,9 @@ namespace ivis.ui.D3
     {
         svg = d3.select("#ivis-canvas-div")
             .append('svg')
-            .attr("width", "100%")
-            .attr("height", "calc(100vh - 6em)")
-            //.attr("preserveAspectRatio", "none")
+            .attr("width", "99%")
+            .attr("height", "99%")
+            .attr("preserveAspectRatio", "xMidYMid")
             .attr("viewBox", "0 0 1000 1000")
 
     }
@@ -51,7 +51,7 @@ namespace ivis.ui.D3
             this.voronoi = d3.voronoi()
                 .x(d=> d.cache.re)
                 .y(d=> d.cache.im)
-                .extent([[-1.1,-1.07], [1.1,1.1]])
+                .extent([[-1.6,-1.6], [1.6,1.6]])
 
             var mainGroup = svg.append('g')
                 .attr("class", args.class)
@@ -81,7 +81,7 @@ namespace ivis.ui.D3
                     .attr("id", "circle-clip")
                     .append("circle")
                         .attr("r", 1)
-                this.layers.attr("clip-path", "url(#circle-clip)")
+                this.cellLayer.attr("clip-path", "url(#circle-clip)")
             }
             this.create()
         }
@@ -95,7 +95,7 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append("circle")
                     .attr("class", "node")
-                .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius*.3):this.args.nodeRadius))                    
+                    .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius*.3):this.args.nodeRadius))
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
 
@@ -103,8 +103,9 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append('text')
                     .attr("class", "caption")
-                .attr("dy", this.args.nodeRadius / 10)
-                .attr("dx", .01)
+                    .attr("dy", this.args.nodeRadius / 10)
+                    .attr("dx", .01)
+                    .text(this.args.caption)
                     .call(this.updateText)
 
             this.arcs = this.arcLayer.selectAll(".arc")
@@ -146,9 +147,9 @@ namespace ivis.ui.D3
         {
             this.showCaptions = visible
             this.captions.call(this.updateText)
-            this.captions.transition()
+            /*this.captions.transition()
                 .duration(this.showCaptions?750:0)
-                .attr("opacity", d=> this.showCaptions?1:0)
+                .attr("opacity", d=> this.showCaptions?1:0)*/
         }
 
         private updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor)
@@ -181,7 +182,7 @@ namespace ivis.ui.D3
         {
             var oldHover = this.hover
             this.hover = n
-            this.updatePath(oldHover, this.hover, "green", undefined, "#81c583")
+            this.updatePath(oldHover, this.hover, "#42a5f5", undefined, /*"#bbdefb"*/ "#e3f2fd")
             this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082")
         }
 
@@ -215,21 +216,21 @@ namespace ivis.ui.D3
         // kleine convertierer
         private transformStr = d=> " translate(" + this.t(d) + ")"
         private scaleStr     = d=> " scale(" + this.tr(d) +  ")"
-        private calcText     = d=> (this.showCaptions?this.args.caption(d):"")
 
         // element updates
         private updateNode       = v=> v.attr("transform", d=> this.transformStr(d) + this.scaleStr(d))
-                                       // .style("fill", d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
-                                       //.attr("opacity", d=> this.tr(d))
+                                       //.style("fill",    d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
+                                       //.attr("opacity",  d=> this.tr(d))
 
-        private updateArcColor   = v=> v.style("stroke", d=> (d.linkColor?d.linkColor:undefined))
-        private updateNodeColor  = v=> v.style("fill", d=> (d.parent?(d.nodeColor?d.nodeColor:undefined):this.args.rootColor))
-        private updateNodeStroke = v=> v.style("stroke", d=> (d.linkColor?d.linkColor:undefined))
-        private updateCell       = v=> v.attr("d", d=> (d ? "M" + d.join("L") + "Z" : null))
+        private updateArcColor   = v=> v.style("stroke",   d=> (d.linkColor?d.linkColor:undefined))
+        private updateNodeColor  = v=> v.style("fill",     d=> (d.parent?(d.nodeColor?d.nodeColor:undefined):this.args.rootColor))
+        private updateNodeStroke = v=> v.style("stroke",   d=> (d.linkColor?d.linkColor:undefined))
+        private updateCell       = v=> v.attr("d",         d=> (d ? "M" + d.join("L") + "Z" : null))
 
-        private updateArc        = v=> v.attr("d", d=> this.args.arc(d))
+        private updateArc        = v=> v.attr("d",         d=> this.args.arc(d))
                                         .attr("stroke-width", d=> this.tr(d)/130)
-        private updateText       = v=> v.attr("transform", this.transformStr).text(this.calcText)
+        private updateText       = v=> v.attr("transform", this.transformStr)
+                                        .attr("visibility", d=> (this.args.labelFilter(d)||!this.showCaptions)?'hidden':'visible')
     }
 }
 

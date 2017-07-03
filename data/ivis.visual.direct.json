@@ -1,45 +1,131 @@
 {
-  "name": "",
+  "name": "visualisations",
   "children": [
     {
-      "name": "PreAttentive",
+      "name": "Linear",
       "children": [
-        { "name": "Colour hue" },
-        { "name": "Colour intensity (luminance)" },
-        { "name": "Line length" },
-        { "name": "Line width" },
-        { "name": "2d spatial position" },
-        { "name": "Orientation" },
-        { "name": "Size" },
-        { "name": "Shape" },
-        { "name": "Added mark" },
-        { "name": "Enclosure" },
-        { "name": "Lack of enclosure" },
-        { "name": "Curvature" },
-        { "name": "Focus and blur" },
-        { "name": "3d depth" },
-        { "name": "Flicker (blinking)" },
-        { "name": "Velocity of motion" },
-        { "name": "Direction of motion" }
+        { "name": "Bifocal Display" },
+        { "name": "Perspective Wall" },
+        { "name": "Seesoft" },
+        { "name": "Lifestreams" },
+        { "name": "Spiral of Ranked Items" }
       ]
     },
     {
-      "name": "PreAttentive+Quantity",
+      "name": "Hierarchies",
+      "children": [
+        {
+          "name": "Outliners",
+          "children": [
+            { "name": "Tree Views" },
+            { "name": "MagTree" },
+            { "name": "WebTOC" }
+          ]
+        },
+        {
+            "name": "Layered Node-Link",
+            "children": [
+              { "name": "Walker Layout" },
+              { "name": "File System Navigator" },
+              { "name": "Harmony Information Landscape" }
+            ]
+        },
+        {
+            "name": "Radial Node-Link",
+            "children": [
+              { "name": "Radial Tree" },
+              { "name": "The Brain" },
+              { "name": "Hyperbolic Browser" },
+              { "name": "3D Hyperbolic Browser" },
+              { "name": "Walrus" },
+              { "name": "SInVis Magic Eye View" },
+              { "name": "Cone Tree" },
+              { "name": "Cone Tree" },
+              { "name": "Botanical Visualisation" }
+            ]
+        },
+        {
+            "name": "Layered Space-Filling",
+            "children": [
+              { "name": "Xdu" }
+            ]
+        },
+        {
+            "name": "Radial Space-Filling",
+            "children": [
+              { "name": "Information Slices" },
+              { "name": "SunBurst" }
+            ]
+        },
+        {
+            "name": "Inclusive Space-Filling",
+            "children": [
+              { "name": "Tree Maps" },
+              { "name": "Market Map" },
+              { "name": "Cushion Treemaps" },
+              { "name": "Information Pyramids" },
+              { "name": "InfoSky Cobweb Browser" },
+              { "name": "Voronoi Treemap" }
+            ]
+        },
+        {
+            "name": "Overlapping Space-Filling",
+            "children": [
+              { "name": "Cheops" },
+              { "name": "BeamTree" }
+            ]
+        },
+        {
+            "name": "Single-Level",
+            "children": [
+              { "name": "GopherVR" }
+            ]
+        }
+      ]
+    },
+    {
+      "name": "Networks",
+      "children": [
+        { "name": "location on a line graph" },
+        { "name": "location on a scatter plot" },
+        { "name": "length of a bar in a bar graph" }
+      ]
+    },
+    {
+      "name": "Multidimensional",
       "children": [
         { "name": "Line length" },
         { "name": "2d spatial position" }
       ]
     },
     {
-      "name": "PreAttentive+continuous quantitative",
+      "name": "Feature Spaces",
       "children": [
-        { "name": "location on a line graph" },
-        { "name": "location on a scatter plot" },
-        { "name": "length of a bar in a bar graph" }
+        { "name": "Line length" },
+        { "name": "2d spatial position" }
+      ]
+    },
+    {
+      "name": "Query Spaces",
+      "children": [
+        { "name": "Line length" },
+        { "name": "2d spatial position" }
+      ]
+    },
+    {
+      "name": "Spatial",
+      "children": [
+        { "name": "Line length" },
+        { "name": "2d spatial position" }
       ]
     }
   ]
 }
+
+
+
+
+
 
 
 

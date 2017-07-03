@@ -37,6 +37,51 @@ namespace ivis.controller
 
         private create() : void
         {
+
+
+            var navR = 60
+            new ivis.controller.slide.unitDisk({ // navigation disk background
+                class:       'unitDiscParamBg',
+                data:        this.data,
+                transform:   (n:N) => n.z,
+                transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                onDragStart: (m:C, n:N) => {},
+                onDrag:      (s:C, e:C) => {},
+                onDragEnd:   () => {},
+                onClick:     (m:C) => {},
+                arc:         this.args.arc,
+                caption:     (n:N) => "",
+                labelFilter: (n:N) => true,
+
+                parent:      null,
+                pos:         ArrAddR([40,30], navR),
+                radius:      navR,
+                nodeRadius:  .05,
+                clip:        true
+            })
+
+            this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
+                class:       'unitDiscParam',
+                data:        this.navData,
+                transform:   (n:N) => n,
+                transformR:  (n:N) => 1,
+                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
+                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
+                onDragEnd:   () => this.onDragEnd(),
+                onClick:     (m:C) => this.onClick(m, this.args.navTT),
+                arc:         this.args.arc,
+                caption:     this.caption,
+                labelFilter: (n:N) => false,
+
+                parent:      null,
+                pos:         ArrAddR([40,30], navR),
+                opacity:     .8,
+                radius:      navR,
+                nodeRadius:  .18,
+                //rootColor:   "#ffee58",
+                clip:        false,
+            })
+
             var radius = 470
             var dblClickTimerEvent = null
             this.view = new ivis.controller.slide.unitDisk({ // view disk
@@ -61,56 +106,16 @@ namespace ivis.controller
                     this.args.onNodeSelect(n)
                 }
                 arc:         this.args.arc,
-                caption:     this.caption(.7),
+                caption:     this.caption,
+                labelFilter: (n:N) => CktoCp(n.cache).r > .7,
 
                 parent:      null,
-                pos:         ArrAddR([50,0], radius),
+                pos:         ArrAddR([50,30], radius),
                 voroBox:     [[-1.01,-1.01], [1.01,1.01]],
                 radius:      radius,
                 nodeRadius:  .04,
                 rootColor:   "#fff59d",
                 clip:        true,
-            })
-
-            var navR = 60
-            new ivis.controller.slide.unitDisk({ // navigation disk background
-                class:       'unitDiscParamBg',
-                data:        this.data,
-                transform:   (n:N) => n.z,
-                transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
-                onDragStart: (m:C, n:N) => {},
-                onDrag:      (s:C, e:C) => {},
-                onDragEnd:   () => {},
-                onClick:     (m:C) => {},
-                arc:         this.args.arc,
-                caption:     (n:N) => "",
-
-                parent:      null,
-                pos:         ArrAddR([40,0], navR),
-                radius:      navR,
-                nodeRadius:  .05,
-                clip:        true
-            })
-
-            this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
-                class:       'unitDiscParam',
-                data:        this.navData,
-                transform:   (n:N) => n,
-                transformR:  (n:N) => 1,
-                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
-                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
-                onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C) => this.onClick(m, this.args.navTT),
-                arc:         this.args.arc,
-                caption:     this.caption(Number.POSITIVE_INFINITY),
-
-                parent:      null,
-                pos:         ArrAddR([40,0], navR),
-                opacity:     .8,
-                radius:      navR,
-                nodeRadius:  .18,
-                //rootColor:   "#ffee58",
-                clip:        false,
             })
         }
 
@@ -171,15 +176,11 @@ namespace ivis.controller
             },1)
         }
 
-        private caption(maxR:number) : (n:N) => string
+        private caption(n:N) : string
         {
-            return function(n:N) : string
-            {
-                if (CktoCp(n.cache).r > maxR) return ""
-                if (n.name) return n.name
-                if (n.data && n.data.name) return n.data.name
-                return ""
-            }
+            if (n.name) return n.name
+            if (n.data && n.data.name) return n.data.name
+            return ""
         }
 
         private nodeR(np:C) : number

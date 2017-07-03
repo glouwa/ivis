@@ -18,6 +18,45 @@ var ivis;
                     });
             }
             create() {
+                var navR = 60;
+                new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParamBg',
+                    data: this.data,
+                    transform: (n) => n.z,
+                    transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                    onDragStart: (m, n) => { },
+                    onDrag: (s, e) => { },
+                    onDragEnd: () => { },
+                    onClick: (m) => { },
+                    arc: this.args.arc,
+                    caption: (n) => "",
+                    labelFilter: (n) => true,
+                    parent: null,
+                    pos: ArrAddR([40, 30], navR),
+                    radius: navR,
+                    nodeRadius: .05,
+                    clip: true
+                });
+                this.nav = new ivis.controller.slide.unitDisk({
+                    class: 'unitDiscParam',
+                    data: this.navData,
+                    transform: (n) => n,
+                    transformR: (n) => 1,
+                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.navTT),
+                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
+                    onDragEnd: () => this.onDragEnd(),
+                    onClick: (m) => this.onClick(m, this.args.navTT),
+                    arc: this.args.arc,
+                    caption: this.caption,
+                    labelFilter: (n) => false,
+                    parent: null,
+                    pos: ArrAddR([40, 30], navR),
+                    opacity: .8,
+                    radius: navR,
+                    nodeRadius: .18,
+                    //rootColor:   "#ffee58",
+                    clip: false,
+                });
                 var radius = 470;
                 var dblClickTimerEvent = null;
                 this.view = new ivis.controller.slide.unitDisk({
@@ -42,51 +81,15 @@ var ivis;
                         this.args.onNodeSelect(n);
                     },
                     arc: this.args.arc,
-                    caption: this.caption(.7),
+                    caption: this.caption,
+                    labelFilter: (n) => CktoCp(n.cache).r > .7,
                     parent: null,
-                    pos: ArrAddR([50, 0], radius),
+                    pos: ArrAddR([50, 30], radius),
                     voroBox: [[-1.01, -1.01], [1.01, 1.01]],
                     radius: radius,
                     nodeRadius: .04,
                     rootColor: "#fff59d",
                     clip: true,
-                });
-                var navR = 60;
-                new ivis.controller.slide.unitDisk({
-                    class: 'unitDiscParamBg',
-                    data: this.data,
-                    transform: (n) => n.z,
-                    transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
-                    onDragStart: (m, n) => { },
-                    onDrag: (s, e) => { },
-                    onDragEnd: () => { },
-                    onClick: (m) => { },
-                    arc: this.args.arc,
-                    caption: (n) => "",
-                    parent: null,
-                    pos: ArrAddR([40, 0], navR),
-                    radius: navR,
-                    nodeRadius: .05,
-                    clip: true
-                });
-                this.nav = new ivis.controller.slide.unitDisk({
-                    class: 'unitDiscParam',
-                    data: this.navData,
-                    transform: (n) => n,
-                    transformR: (n) => 1,
-                    onDragStart: (m, n) => this.onDragStart(m, n, this.args.navTT),
-                    onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
-                    onDragEnd: () => this.onDragEnd(),
-                    onClick: (m) => this.onClick(m, this.args.navTT),
-                    arc: this.args.arc,
-                    caption: this.caption(Number.POSITIVE_INFINITY),
-                    parent: null,
-                    pos: ArrAddR([40, 0], navR),
-                    opacity: .8,
-                    radius: navR,
-                    nodeRadius: .18,
-                    //rootColor:   "#ffee58",
-                    clip: false,
                 });
             }
             updatePositions() {
@@ -133,16 +136,12 @@ var ivis;
                     }
                 }, 1);
             }
-            caption(maxR) {
-                return function (n) {
-                    if (CktoCp(n.cache).r > maxR)
-                        return "";
-                    if (n.name)
-                        return n.name;
-                    if (n.data && n.data.name)
-                        return n.data.name;
-                    return "";
-                };
+            caption(n) {
+                if (n.name)
+                    return n.name;
+                if (n.data && n.data.name)
+                    return n.data.name;
+                return "";
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);

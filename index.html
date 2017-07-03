@@ -26,42 +26,48 @@
 
 <body onload="ivis.controller.init()">
 
-    <div id="header">
-        <span id="slide">
-            <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
-            <span id="slideName"></span></span>
+    <div id="config">
+        <div id="header">
+            <span id="slide">
+                <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
+                <span id="slideName"></span></span>
+        </div>
 
-        <span id="config">
-            <div class="selectCaption">Captions</div>
-            <select id="captionSelect"></select></span>
+        <div id="configLine">
+            <span id="configItem">
+                <div class="selectCaption">Renderer</div>
+                <select id="rendererSelect"></select></span>
+        </div>
 
-        <span id="config">
-            <div class="selectCaption">Link curvature</div>
-            <select id="arcSelect"></select></span>
+        <div id="configLine">
+            <span id="configItem">
+                <div class="selectCaption">Tree structure</div>
+                <select id="dataSourceSelect"></select></span>
+            <span id="configItem">
+                <div class="selectCaption">Upload xml, skos</div>
+                <input id="userfile" type="file" name="userfile" accept=".xml"></span>
+        </div>
 
-        <span id="config">
-            <div class="selectCaption">Renderer</div>
-            <select id="rendererSelect"></select></span>
+        <div id="configLine">
+            <span id="configItem">
+                <div class="selectCaption">Tree layout</div>
+                <select id="layoutSelect"></select></span>
+            <span id="configItem">
+                <div class="selectCaption">Distance</div>
+                <select id="magicSelect"></select></span>
+            <span id="configItem">
+                <div class="selectCaption">Weights</div>
+                <select id="weightSelect"></select></span>
+        </div>
 
-        <span id="config">
-            <div class="selectCaption">Weights</div>
-            <select id="weightSelect"></select></span>
-
-        <span id="config">
-            <div class="selectCaption">Magic</div>
-            <select id="magicSelect"></select></span>
-
-        <span id="config">
-            <div class="selectCaption">Tree layout</div>
-            <select id="layoutSelect"></select></span>
-
-        <span id="config">
-            <div class="selectCaption">Tree structure</div>
-            <select id="dataSourceSelect"></select></span>
-
-        <span id="config">
-            <div class="selectCaption">File upload</div>
-            <input id="userfile" type="file" name="userfile" accept=".xml"></span>
+        <div id="configLine">
+            <span id="configItem">
+                <div class="selectCaption">Link curvature</div>
+                <select id="arcSelect"></select></span>
+            <span id="configItem">
+                <div class="selectCaption">Captions</div>
+                <select id="captionSelect"></select></span>
+        </div>
 
     </div>
     <div id="ivis-canvas-div" class="plexx"></div>

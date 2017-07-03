@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {    
     font-family: Helvetica;
     margin: 0;
@@ -8,6 +12,20 @@ h1 {
     letter-spacing: 0.1em;
     font-size: 1.3em;
     font-weight: normal;
+}
+
+#config {
+    width: calc(25% - 4em);
+    height: calc(100vh - 4em);
+    float: left;
+    margin: 2em;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+#ivis-canvas-div {
+    width: 75%;
+    height: calc(100vh - 1px);
+    float: left;
 }
 
 #header {
@@ -38,9 +56,14 @@ button {
     margin-right: 4em;
 }
 
-#config {
-    float:right;
-    margin-left: .3em;
+#configLine {
+    clear: both;
+}
+
+#configItem {
+    margin: 1em 0em .1em .7em;
+    display: block;
+    float: left;
 }
 
 .selectCaption {
@@ -57,6 +80,4 @@ select {
     height: 1.6em;
 }
 
-#ivis-canvas-div {
-    margin-top: 2em;
-}
+

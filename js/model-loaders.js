@@ -34,7 +34,10 @@ var ivis;
             function loadFromFile(ok, file) {
                 if (file.endsWith('.xml') ||
                     file.endsWith('.json'))
-                    new model.Tree(ok, file);
+                    if (file.endsWith('direct.json'))
+                        d3.json(file, (error, treeData) => ok(treeData));
+                    else
+                        new model.Tree(ok, file);
                 else
                     d3.csv(file, function (error, data) {
                         if (error)

@@ -2,19 +2,19 @@ var hidePan
 namespace ivis.controller
 {
     var slideNr = -1
-    var slides = [
-        { ds:"fromFile('carnivora-de.xml')", ls:'layoutBergé',       name:"Tree of Life Carnivores" },
+    var slides = [     
+        { ds:"fromFile('carnivora-de.xml')", ls:'layoutBergé',       name:"Carnivores" },
         { ds:"code",                         ls:'layoutBergé',       name:"Code (modules)" },
         { ds:"fromFile('sample.xml')",       ls:'layoutBuchheim',    name:"data from file" },
         { ds:"nTree",                        ls:'layoutBergé',       name:"Wedge layout" },
         { ds:"fromFile('flare.csv')",        ls:'layoutBuchheim',    name:"Point transformation seems to work" },
         { ds:"nTree",                        ls:'layoutBuchheim',    name:"Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
+        { ds:"nTreeAtFirst",                 ls:'layoutBuchheim',    name:"Center is never magnified" },
         { ds:"star_(5)",                     ls:'layoutUnitVectors', name:"Unit vectors " },
         { ds:"deepStar",                     ls:'layoutUnitLines',   name:"Unit lines" },
         { ds:"star_(50)",                    ls:'layoutSpiral',      name:"Star spiral" },
         { ds:"path_(50)",                    ls:'layoutSpiral',      name:"Path spiral" },
         { ds:"path_(500)",                   ls:'layoutSpiral',      name:"Hypnotoad. 1000 nodes" },
-        { ds:"nTreeAtFirst",                 ls:'layoutBuchheim',    name:"Center is never magnified" },
     ]
 
     export var slide = {
@@ -64,7 +64,7 @@ namespace ivis.controller
             { text:"Non",             value:"d=>0",              },
         ]
         var magicOptions = [
-            { text:"0.5",              value:".5",               },
+            { text:"0.42",             value:".42",              },
             { text:"0.1",              value:".1",               },
             { text:"0.2",              value:".2",               },
             { text:"0.3",              value:".3",               },

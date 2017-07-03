@@ -8,8 +8,9 @@ var ivis;
             function initD3(args) {
                 svg = d3.select("#ivis-canvas-div")
                     .append('svg')
-                    .attr("width", "100%")
-                    .attr("height", "calc(100vh - 6em)")
+                    .attr("width", "99%")
+                    .attr("height", "99%")
+                    .attr("preserveAspectRatio", "xMidYMid")
                     .attr("viewBox", "0 0 1000 1000");
             }
             D3.initD3 = initD3;
@@ -35,18 +36,18 @@ var ivis;
                     // kleine convertierer
                     this.transformStr = d => " translate(" + this.t(d) + ")";
                     this.scaleStr = d => " scale(" + this.tr(d) + ")";
-                    this.calcText = d => (this.showCaptions ? this.args.caption(d) : "");
                     // element updates
                     this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
-                    // .style("fill", d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
-                    //.attr("opacity", d=> this.tr(d))
+                    //.style("fill",    d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
+                    //.attr("opacity",  d=> this.tr(d))
                     this.updateArcColor = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
                     this.updateNodeColor = v => v.style("fill", d => (d.parent ? (d.nodeColor ? d.nodeColor : undefined) : this.args.rootColor));
                     this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
                     this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
                     this.updateArc = v => v.attr("d", d => this.args.arc(d))
                         .attr("stroke-width", d => this.tr(d) / 130);
-                    this.updateText = v => v.attr("transform", this.transformStr).text(this.calcText);
+                    this.updateText = v => v.attr("transform", this.transformStr)
+                        .attr("visibility", d => (this.args.labelFilter(d) || !this.showCaptions) ? 'hidden' : 'visible');
                     this.args = args;
                     this.selection = this.args.data;
                     var dragStartPoint = null;
@@ -59,7 +60,7 @@ var ivis;
                     this.voronoi = d3.voronoi()
                         .x(d => d.cache.re)
                         .y(d => d.cache.im)
-                        .extent([[-1.1, -1.07], [1.1, 1.1]]);
+                        .extent([[-1.6, -1.6], [1.6, 1.6]]);
                     var mainGroup = svg.append('g')
                         .attr("class", args.class)
                         .attr("transform", "translate(" + args.pos + ")");
@@ -84,7 +85,7 @@ var ivis;
                             .attr("id", "circle-clip")
                             .append("circle")
                             .attr("r", 1);
-                        this.layers.attr("clip-path", "url(#circle-clip)");
+                        this.cellLayer.attr("clip-path", "url(#circle-clip)");
                     }
                     this.create();
                 }
@@ -104,6 +105,7 @@ var ivis;
                         .attr("class", "caption")
                         .attr("dy", this.args.nodeRadius / 10)
                         .attr("dx", .01)
+                        .text(this.args.caption)
                         .call(this.updateText);
                     this.arcs = this.arcLayer.selectAll(".arc")
                         .data(allLinks)
@@ -136,9 +138,9 @@ var ivis;
                 updateCaptions(visible) {
                     this.showCaptions = visible;
                     this.captions.call(this.updateText);
-                    this.captions.transition()
-                        .duration(this.showCaptions ? 750 : 0)
-                        .attr("opacity", d => this.showCaptions ? 1 : 0);
+                    /*this.captions.transition()
+                        .duration(this.showCaptions?750:0)
+                        .attr("opacity", d=> this.showCaptions?1:0)*/
                 }
                 updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor) {
                     if (oldN && oldN.ancestors) {
@@ -165,7 +167,7 @@ var ivis;
                 updateHover(n) {
                     var oldHover = this.hover;
                     this.hover = n;
-                    this.updatePath(oldHover, this.hover, "green", undefined, "#81c583");
+                    this.updatePath(oldHover, this.hover, "#42a5f5", undefined, /*"#bbdefb"*/ "#e3f2fd");
                     this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082");
                 }
                 updateColors() {
