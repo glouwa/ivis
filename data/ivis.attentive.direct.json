@@ -1,0 +1,45 @@
+{
+  "name": "",
+  "children": [
+    {
+      "name": "PreAttentive",
+      "children": [
+        { "name": "Colour hue" },
+        { "name": "Colour intensity (luminance)" },
+        { "name": "Line length" },
+        { "name": "Line width" },
+        { "name": "2d spatial position" },
+        { "name": "Orientation" },
+        { "name": "Size" },
+        { "name": "Shape" },
+        { "name": "Added mark" },
+        { "name": "Enclosure" },
+        { "name": "Lack of enclosure" },
+        { "name": "Curvature" },
+        { "name": "Focus and blur" },
+        { "name": "3d depth" },
+        { "name": "Flicker (blinking)" },
+        { "name": "Velocity of motion" },
+        { "name": "Direction of motion" }
+      ]
+    },
+    {
+      "name": "PreAttentive+Quantity",
+      "children": [
+        { "name": "Line length" },
+        { "name": "2d spatial position" }
+      ]
+    },
+    {
+      "name": "PreAttentive+continuous quantitative",
+      "children": [
+        { "name": "location on a line graph" },
+        { "name": "location on a scatter plot" },
+        { "name": "length of a bar in a bar graph" }
+      ]
+    }
+  ]
+}
+
+
+
