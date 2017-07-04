@@ -34,19 +34,32 @@ var ivis;
                         CassignC(d.cache, this.args.transform(d));
                         return d.strCache = d.cache.re + ' ' + d.cache.im; //CtoArr(newPosC).toString()
                     };
-                    this.nodeRi = d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius);
+                    this.nodeRi = d => ((d.children && d.parent)
+                        ? (this.args.nodeRadius * .3)
+                        : this.args.nodeRadius);
                     this.transformStr = d => " translate(" + this.t(d) + ")";
                     this.scaleStr = d => " scale(" + this.tr(d) + ")";
                     // element updates ------------------------------------------------------------------------
                     this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
-                    this.updateNodeColor = v => v.style("fill", d => (d.parent ? (d.nodeColor ? d.nodeColor : undefined) : this.args.rootColor));
-                    this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
-                    this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
-                    this.updateArcColor = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
+                    this.updateNodeColor = v => v.style("fill", d => (d.parent
+                        ? (d.nodeColor
+                            ? d.nodeColor
+                            : undefined)
+                        : this.args.rootColor));
+                    this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor
+                        ? d.linkColor
+                        : undefined));
+                    this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z"
+                        : null));
+                    this.updateArcColor = v => v.style("stroke", d => (d.linkColor
+                        ? d.linkColor
+                        : undefined));
                     this.updateArc = v => v.attr("d", d => this.args.arc(d))
                         .attr("stroke-width", d => this.tr(d) / 130);
                     this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d))
-                        .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent) ? 'hidden' : 'visible');
+                        .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent && !d.isSelected)
+                        ? 'hidden'
+                        : 'visible');
                     this.args = args;
                     this.selection = this.args.data;
                     var dragStartPoint = null;
@@ -149,12 +162,14 @@ var ivis;
                     if (oldN && oldN.ancestors) {
                         delete oldN.nodeColor;
                         for (var a of oldN.ancestors()) {
+                            delete a.isSelected;
                             delete a.linkColor;
                             delete a.nodeColor;
                         }
                     }
                     if (newN && newN.ancestors) {
                         for (var a of newN.ancestors()) {
+                            a.isSelected = true;
                             a.linkColor = arcColor;
                             a.nodeColor = nodesColor;
                         }

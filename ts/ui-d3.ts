@@ -163,12 +163,14 @@ namespace ivis.ui.D3
             if (oldN && oldN.ancestors) {
                 delete oldN.nodeColor
                 for (var a of oldN.ancestors()) {
+                    delete a.isSelected
                     delete a.linkColor
                     delete a.nodeColor
                 }
             }
             if (newN && newN.ancestors) {                
                 for (var a of newN.ancestors()) {
+                    a.isSelected = true
                     a.linkColor = arcColor
                     a.nodeColor = nodesColor
                 }
@@ -223,23 +225,39 @@ namespace ivis.ui.D3
             return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
         }
 
-        private nodeRi = d=> ((d.children && d.parent) ? (this.args.nodeRadius*.3):this.args.nodeRadius)
+        private nodeRi =                                      d=> ((d.children && d.parent)
+                                                                       ? (this.args.nodeRadius*.3)
+                                                                       : this.args.nodeRadius)
 
-        private transformStr = d=> " translate(" + this.t(d) + ")"
-        private scaleStr     = d=> " scale(" + this.tr(d) +  ")"
+        private transformStr =                                d=> " translate(" + this.t(d) + ")"
+        private scaleStr     =                                d=> " scale(" + this.tr(d) +  ")"
 
         // element updates ------------------------------------------------------------------------
 
         private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
-        private updateNodeColor  = v=> v.style("fill",        d=> (d.parent?(d.nodeColor?d.nodeColor:undefined):this.args.rootColor))
-        private updateNodeStroke = v=> v.style("stroke",      d=> (d.linkColor?d.linkColor:undefined))
-        private updateCell       = v=> v.attr("d",            d=> (d ? "M" + d.join("L") + "Z" : null))
-        private updateArcColor   = v=> v.style("stroke",      d=> (d.linkColor?d.linkColor:undefined))
+        private updateNodeColor  = v=> v.style("fill",        d=> (d.parent
+                                                                       ? (d.nodeColor
+                                                                            ? d.nodeColor
+                                                                            : undefined)
+                                                                       : this.args.rootColor))
+
+        private updateNodeStroke = v=> v.style("stroke",      d=> (d.linkColor
+                                                                       ? d.linkColor
+                                                                       : undefined))
+
+        private updateCell       = v=> v.attr("d",            d=> (d   ? "M"+d.join("L")+"Z"
+                                                                       : null))
+
+        private updateArcColor   = v=> v.style("stroke",      d=> (d.linkColor
+                                                                       ? d.linkColor
+                                                                       : undefined))
 
         private updateArc        = v=> v.attr("d",            d=> this.args.arc(d))
                                         .attr("stroke-width", d=> this.tr(d)/130)
         private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
-                                        .attr("visibility",   d=> ((this.args.labelFilter(d)||!this.showCaptions)&&d.parent)?'hidden':'visible')
+                                        .attr("visibility",   d=> ((this.args.labelFilter(d)||!this.showCaptions)&&d.parent&&!d.isSelected)
+                                                                       ? 'hidden'
+                                                                       : 'visible')
     }
 }
 

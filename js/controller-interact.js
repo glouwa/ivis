@@ -53,7 +53,6 @@ var ivis;
                     pos: ArrAddR([navR / 2, navR / 2], navR),
                     radius: navR,
                     nodeRadius: .18,
-                    //rootColor:   "#ffee58",
                     clip: false,
                 });
                 var radius = 470;
