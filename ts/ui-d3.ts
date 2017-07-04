@@ -70,11 +70,12 @@ namespace ivis.ui.D3
                 .attr("transform", "scale(" + args.radius + ")")
 
             this.layersSvg = this.layers._groups[0][0]
+            this.cellLayer = this.layers.append('g')
             this.linkLayer = this.layers.append('g')
             this.arcLayer = this.layers.append('g')
             this.nodeLayer = this.layers.append('g')
             this.textLayer = this.layers.append('g')
-            this.cellLayer = this.layers.append('g')
+
 
             if (args.clip){
                 mainGroup.append("clipPath")
@@ -209,7 +210,7 @@ namespace ivis.ui.D3
 
         // snippets ------------------------------------------------------------------------------
 
-        tr = (d:N) => this.args.transformR(d)
+        tr = (d:N) => (d.parent?this.args.transformR(d):.5+.5*this.args.transformR(d))
         ti = (e:number[]) => ArrtoC(e)
         t  = (d:N) => {
             d.cache = d.cache || { re:0, im:0 }

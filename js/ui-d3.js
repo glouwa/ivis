@@ -27,7 +27,7 @@ var ivis;
                         this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d);
                     };
                     // snippets ------------------------------------------------------------------------------
-                    this.tr = (d) => this.args.transformR(d);
+                    this.tr = (d) => (d.parent ? this.args.transformR(d) : .5 + .5 * this.args.transformR(d));
                     this.ti = (e) => ArrtoC(e);
                     this.t = (d) => {
                         d.cache = d.cache || { re: 0, im: 0 };
@@ -75,11 +75,11 @@ var ivis;
                         .attr("class", "layers")
                         .attr("transform", "scale(" + args.radius + ")");
                     this.layersSvg = this.layers._groups[0][0];
+                    this.cellLayer = this.layers.append('g');
                     this.linkLayer = this.layers.append('g');
                     this.arcLayer = this.layers.append('g');
                     this.nodeLayer = this.layers.append('g');
                     this.textLayer = this.layers.append('g');
-                    this.cellLayer = this.layers.append('g');
                     if (args.clip) {
                         mainGroup.append("clipPath")
                             .attr("id", "circle-clip")

@@ -102,7 +102,7 @@ namespace ivis.controller
                     dblClickTimerEvent = null
                     this.view.updateSelection(n)
                     this.args.onNodeSelect(n)
-                }
+                },
                 arc:         this.args.arc,
                 caption:     this.caption,
                 labelFilter: (n:N) => CktoCp(n.cache).r > .7,
@@ -224,7 +224,7 @@ namespace ivis.controller
                              return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s)
                          }
         onDragStart =    (m:C) => this.dST = clone(this.tp)
-        onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)))
+        onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, setR(e, 1))
     }

@@ -33,7 +33,7 @@
 }
 
 .background-circle {
-    fill: #fefefb; //#f9fbe7;
+    fill: #fff; //#f9fbe7;
     stroke: #cbde3b; //#eef4be;
     stroke-width: .001;
 }

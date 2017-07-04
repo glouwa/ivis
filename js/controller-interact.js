@@ -170,7 +170,7 @@ var ivis;
                     return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s);
                 };
                 this.onDragStart = (m) => this.dST = clone(this.tp);
-                this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)));
+                this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)));
                 this.onDragθ = (s, e) => CassignC(this.tp.θ, setR(e, 1));
                 this.onDragλ = (s, e) => CassignC(this.tp.λ, setR(e, 1));
                 this.tp = tp;
