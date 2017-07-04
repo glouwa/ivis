@@ -6,7 +6,7 @@ namespace ivis.ui.plexx
     export function initPlexx()
     {
         myCanvas =       new Plexx.DrawingArea({ width: 1000, height: 1000, align: "xMidYMid", })
-        renderContext =  new Plexx.RenderContext({ id: "ivis-canvas-div"})
+        renderContext =  new Plexx.RenderContext({ id: "hypertree"})
         myCanvas.run(renderContext);
     }
 

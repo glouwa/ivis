@@ -6,12 +6,12 @@ var ivis;
         (function (D3) {
             var svg = null;
             function initD3(args) {
-                svg = d3.select("#ivis-canvas-div")
+                svg = d3.select("#hypertree")
                     .append('svg')
-                    .attr("width", "99%")
-                    .attr("height", "99%")
+                    .attr("width", "100%")
+                    .attr("height", "100%")
                     .attr("preserveAspectRatio", "xMidYMid")
-                    .attr("viewBox", "0 0 1000 1000");
+                    .attr("viewBox", "-0 0 1050 1000");
             }
             D3.initD3 = initD3;
             class UnitDiskD3 {
@@ -26,6 +26,7 @@ var ivis;
                         d3.event.preventDefault();
                         this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d);
                     };
+                    // snippets ------------------------------------------------------------------------------
                     this.tr = (d) => this.args.transformR(d);
                     this.ti = (e) => ArrtoC(e);
                     this.t = (d) => {
@@ -33,10 +34,9 @@ var ivis;
                         CassignC(d.cache, this.args.transform(d));
                         return d.strCache = d.cache.re + ' ' + d.cache.im; //CtoArr(newPosC).toString()
                     };
-                    // kleine convertierer
                     this.transformStr = d => " translate(" + this.t(d) + ")";
                     this.scaleStr = d => " scale(" + this.tr(d) + ")";
-                    // element updates
+                    // element updates ------------------------------------------------------------------------
                     this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
                     //.style("fill",    d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
                     //.attr("opacity",  d=> this.tr(d))
@@ -46,8 +46,8 @@ var ivis;
                     this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
                     this.updateArc = v => v.attr("d", d => this.args.arc(d))
                         .attr("stroke-width", d => this.tr(d) / 130);
-                    this.updateText = v => v.attr("transform", this.transformStr)
-                        .attr("visibility", d => (this.args.labelFilter(d) || !this.showCaptions) ? 'hidden' : 'visible');
+                    this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d))
+                        .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent) ? 'hidden' : 'visible');
                     this.args = args;
                     this.selection = this.args.data;
                     var dragStartPoint = null;
@@ -65,12 +65,12 @@ var ivis;
                         .attr("class", args.class)
                         .attr("transform", "translate(" + args.pos + ")");
                     var unitDiscBg = mainGroup.append('circle')
-                        .attr("class", "unitDiscBg")
+                        .attr("class", "background-circle")
                         .attr("r", 1)
                         .attr("transform", "scale(" + args.radius + ")")
-                        .attr("fill-opacity", args.opacity);
-                    //.on("click", () => args.onClick(this.ti(d3.mouse(d3.event.srcElement))))
-                    //.call(this.drag)
+                        .attr("fill-opacity", args.opacity)
+                        .on("click", () => args.onDblClick(this.ti(d3.mouse(d3.event.srcElement))))
+                        .call(this.drag);
                     this.layers = mainGroup.append('g')
                         .attr("class", "layers")
                         .attr("transform", "scale(" + args.radius + ")");
@@ -98,7 +98,8 @@ var ivis;
                         .attr("class", "node")
                         .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius))
                         .call(this.updateNode)
-                        .call(this.updateNodeColor);
+                        .call(this.updateNodeColor)
+                        .call(this.drag);
                     this.captions = this.textLayer.selectAll(".caption")
                         .data(allNodes)
                         .enter().append('text')
@@ -117,6 +118,7 @@ var ivis;
                         .data(this.voroLayout.polygons())
                         .enter().append('path')
                         .attr("class", "cell")
+                        .attr("fill", d => (d.data.children ? 'transparent' : 'rgba(150, 202, 152, .05)'))
                         .on("dblclick", d => this.onDblClick(d.data))
                         .on("click", d => this.onClick(d.data))
                         .on("mouseover", d => this.updateHover(d.data))
@@ -128,7 +130,7 @@ var ivis;
                     this.nodes.call(this.updateNode);
                     this.arcs.call(this.updateArc);
                     this.captions.call(this.updateText);
-                    //this.updateCells()
+                    this.updateCells();
                 }
                 updateCells() {
                     this.voroLayout = this.voronoi(dfsFlat(this.args.data, n => true));

@@ -8,10 +8,10 @@ body {
     //background: #fdfbfe;
 }
 
-h1 {    
-    letter-spacing: 0.1em;
-    font-size: 1.3em;
-    font-weight: normal;
+#hypertree {
+    width: 75%;
+    height: calc(100vh - 1px);
+    float: left;
 }
 
 #config {
@@ -22,61 +22,57 @@ h1 {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
-#ivis-canvas-div {
-    width: 75%;
-    height: calc(100vh - 1px);
-    float: left;
+#config .seperator {
+    border-bottom: 1px dashed #e4e4e4;
+    height: 1em;
+    clear: both;
 }
 
-#header {
+#config #header {
     background-color:#96ca98;
     padding: 0.3em;
     display: flow-root;
     box-shadow: inset 0 -1px 3px rgba(0,0,0,0.18);
 }
 
-#slide {
-    letter-spacing: 0.07em;    
-    vertical-align: -webkit-baseline-middle;
-}
 
-button {
+#config #header button {
     vertical-align: -webkit-baseline-middle;
     font-size:1em;
     width: 3em;
     height: 2em;
 }
 
-#slideName {
+#config #header #slideName {
     vertical-align: -webkit-baseline-middle;
 }
 
-#slide {
+#config #header #slide {
     float: left;
     margin-right: 4em;
 }
 
-#configLine {
+#config .configLine {
     clear: both;
 }
 
-#configItem {
+#config .configLine .configItem {
     margin: 1em 0em .1em .7em;
     display: block;
     float: left;
 }
 
-.selectCaption {
-    font-size: .7em;
-    margin-left: .1em;
-}
-
-#userfile {
+#config .configLine .configItem #userfile {
     width:14em;
     width: 6.5em;
 }
 
-select {
+#config .configLine .configItem .selectCaption {
+    font-size: .7em;
+    margin-left: .1em;
+}
+
+#config .configLine .configItem select {
     height: 1.6em;
 }
 

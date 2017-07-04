@@ -37,11 +37,9 @@ namespace ivis.controller
 
         private create() : void
         {
-
-
-            var navR = 60
+            var navR = 70
             new ivis.controller.slide.unitDisk({ // navigation disk background
-                class:       'unitDiscParamBg',
+                class:       'nav-background-disc',
                 data:        this.data,
                 transform:   (n:N) => n.z,
                 transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
@@ -54,14 +52,14 @@ namespace ivis.controller
                 labelFilter: (n:N) => true,
 
                 parent:      null,
-                pos:         ArrAddR([40,30], navR),
+                pos:         ArrAddR([navR/2,navR/2], navR),
                 radius:      navR,
                 nodeRadius:  .05,
                 clip:        true
             })
 
             this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
-                class:       'unitDiscParam',
+                class:       'nav-parameter-disc',
                 data:        this.navData,
                 transform:   (n:N) => n,
                 transformR:  (n:N) => 1,
@@ -74,7 +72,7 @@ namespace ivis.controller
                 labelFilter: (n:N) => false,
 
                 parent:      null,
-                pos:         ArrAddR([40,30], navR),
+                pos:         ArrAddR([navR/2,navR/2], navR),
                 opacity:     .8,
                 radius:      navR,
                 nodeRadius:  .18,
@@ -231,7 +229,7 @@ namespace ivis.controller
         onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, setR(e, 1))
     }
 
-    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:2/Math.PI, r:1}) }
+    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:-3/Math.PI, r:1}) }
     //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
     var left = null
@@ -245,7 +243,7 @@ namespace ivis.controller
      */
     export function reCreate()
     {
-        document.getElementById("ivis-canvas-div").innerText = ''
+        document.getElementById("hypertree").innerText = ''
         document.getElementById("ivis-canvas-debug-panel").innerText = ''
         var uiRoot = ivis.controller.slide.initUi()
 
@@ -253,13 +251,13 @@ namespace ivis.controller
             dataloader:   ivis.controller.slide.loader,
             navData:      ivis.model.loaders.obj2data(h),
             layout:       ivis.controller.slide.layout,
-            viewTT:       new HyperbolicTransformation(h),
+            viewTT:       new ivis.controller.slide.space(h),
             navTT:        new PanTransformation(h),
             arc:          ivis.controller.slide.arc,
             parent:       uiRoot,
             onNodeSelect: (n:N) => {
                 if (document.getElementById('wiki'))
-                    document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/"+n.data.name
+                    document.getElementById('wiki').src = "https://en.m.wikipedia.org/wiki/"+n.data.name
             }
         })
     }

@@ -18,9 +18,9 @@ var ivis;
                     });
             }
             create() {
-                var navR = 60;
+                var navR = 70;
                 new ivis.controller.slide.unitDisk({
-                    class: 'unitDiscParamBg',
+                    class: 'nav-background-disc',
                     data: this.data,
                     transform: (n) => n.z,
                     transformR: (n) => this.nodeR(this.args.viewTT.transformPoint(n)),
@@ -32,13 +32,13 @@ var ivis;
                     caption: (n) => "",
                     labelFilter: (n) => true,
                     parent: null,
-                    pos: ArrAddR([40, 30], navR),
+                    pos: ArrAddR([navR / 2, navR / 2], navR),
                     radius: navR,
                     nodeRadius: .05,
                     clip: true
                 });
                 this.nav = new ivis.controller.slide.unitDisk({
-                    class: 'unitDiscParam',
+                    class: 'nav-parameter-disc',
                     data: this.navData,
                     transform: (n) => n,
                     transformR: (n) => 1,
@@ -50,7 +50,7 @@ var ivis;
                     caption: this.caption,
                     labelFilter: (n) => false,
                     parent: null,
-                    pos: ArrAddR([40, 30], navR),
+                    pos: ArrAddR([navR / 2, navR / 2], navR),
                     opacity: .8,
                     radius: navR,
                     nodeRadius: .18,
@@ -177,7 +177,7 @@ var ivis;
             }
         }
         controller.PanTransformation = PanTransformation;
-        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: 2 / Math.PI, r: 1 }) };
+        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: -3 / Math.PI, r: 1 }) };
         //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
         var left = null;
         var right = null;
@@ -188,20 +188,20 @@ var ivis;
          * different states and transformations
          */
         function reCreate() {
-            document.getElementById("ivis-canvas-div").innerText = '';
+            document.getElementById("hypertree").innerText = '';
             document.getElementById("ivis-canvas-debug-panel").innerText = '';
             var uiRoot = ivis.controller.slide.initUi();
             left = new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,
                 navData: ivis.model.loaders.obj2data(h),
                 layout: ivis.controller.slide.layout,
-                viewTT: new HyperbolicTransformation(h),
+                viewTT: new ivis.controller.slide.space(h),
                 navTT: new PanTransformation(h),
                 arc: ivis.controller.slide.arc,
                 parent: uiRoot,
                 onNodeSelect: (n) => {
                     if (document.getElementById('wiki'))
-                        document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/" + n.data.name;
+                        document.getElementById('wiki').src = "https://en.m.wikipedia.org/wiki/" + n.data.name;
                 }
             });
         }
