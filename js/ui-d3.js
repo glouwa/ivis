@@ -97,6 +97,10 @@ var ivis;
                         .enter().append("circle")
                         .attr("class", "node")
                         .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius))
+                        .on("dblclick", d => this.onDblClick(d))
+                        .on("click", d => this.onClick(d))
+                        .on("mouseover", d => this.updateHover(d))
+                        .on("mouseout", d => this.updateHover(d))
                         .call(this.updateNode)
                         .call(this.updateNodeColor)
                         .call(this.drag);
