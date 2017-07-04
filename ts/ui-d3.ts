@@ -19,6 +19,7 @@ namespace ivis.ui.D3
 
         layers : any
         layersSvg : HTMLElement
+        cellLayer : any
         nodeLayer : any
         linkLayer : any
         arcLayer : any
@@ -60,10 +61,8 @@ namespace ivis.ui.D3
             var unitDiscBg = mainGroup.append('circle')
                 .attr("class", "background-circle")
                 .attr("r", 1)
-                .attr("transform", "scale(" + args.radius + ")")
-                .attr("fill-opacity", args.opacity)
-                .on("click", () => args.onDblClick(this.ti(d3.mouse(d3.event.srcElement))))
-                .call(this.drag)
+                .attr("transform", "scale(" + args.radius + ")")                
+                .on("click", () => this.onClick(null))
 
             this.layers = mainGroup.append('g')
                 .attr("class", "layers")
@@ -75,7 +74,6 @@ namespace ivis.ui.D3
             this.arcLayer = this.layers.append('g')
             this.nodeLayer = this.layers.append('g')
             this.textLayer = this.layers.append('g')
-
 
             if (args.clip){
                 mainGroup.append("clipPath")
@@ -96,14 +94,15 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append("circle")
                     .attr("class", "node")
-                    .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius*.3):this.args.nodeRadius))                    
+                    .attr("r", d => this.nodeRi(d))
                     .on("dblclick", d=> this.onDblClick(d))
                     .on("click", d=> this.onClick(d))
-                    .on("mouseover", d=> this.updateHover(d))
+                    .on("mouseover", d=> this.updateHover(d))                    
                     .on("mouseout", d=> this.updateHover(d))
+                    .call(this.drag)
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
-                    .call(this.drag)
+
 
             this.captions = this.textLayer.selectAll(".caption")
                 .data(allNodes)
@@ -125,13 +124,13 @@ namespace ivis.ui.D3
                 .data(this.voroLayout.polygons())
                 .enter().append('path')
                     .attr("class", "cell")
-                    .attr("fill", d => (d.data.children?'transparent':'rgba(150, 202, 152, .05)'))
+                    .attr("fill", d => (d.data.children?'transparent':'#f5fef0')) //'rgba(150, 202, 152, .05)'
                     .on("dblclick", d=> this.onDblClick(d.data))
                     .on("click", d=> this.onClick(d.data))
                     .on("mouseover", d=> this.updateHover(d.data))
-                    .on("mouseout", d=> this.updateHover(d.data))
-                    .call(this.drag)
+                    .on("mouseout", d=> this.updateHover(d.data))                    
                     .call(this.updateCell)
+                    .call(this.drag)
         }
 
         updatePositions() : void
@@ -176,6 +175,7 @@ namespace ivis.ui.D3
                 newN.nodeColor =  lastNodeColor
             }
             this.updateColors()
+            this.updateCaptions(true)
         }
 
         updateSelection(n:N)
@@ -214,6 +214,7 @@ namespace ivis.ui.D3
 
         // snippets ------------------------------------------------------------------------------
 
+
         tr = (d:N) => (d.parent?this.args.transformR(d):.5+.5*this.args.transformR(d))
         ti = (e:number[]) => ArrtoC(e)
         t  = (d:N) => {
@@ -222,24 +223,23 @@ namespace ivis.ui.D3
             return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
         }
 
+        private nodeRi = d=> ((d.children && d.parent) ? (this.args.nodeRadius*.3):this.args.nodeRadius)
+
         private transformStr = d=> " translate(" + this.t(d) + ")"
         private scaleStr     = d=> " scale(" + this.tr(d) +  ")"
 
         // element updates ------------------------------------------------------------------------
 
-        private updateNode       = v=> v.attr("transform", d=> this.transformStr(d) + this.scaleStr(d))
-                                       //.style("fill",    d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
-                                       //.attr("opacity",  d=> this.tr(d))
+        private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
+        private updateNodeColor  = v=> v.style("fill",        d=> (d.parent?(d.nodeColor?d.nodeColor:undefined):this.args.rootColor))
+        private updateNodeStroke = v=> v.style("stroke",      d=> (d.linkColor?d.linkColor:undefined))
+        private updateCell       = v=> v.attr("d",            d=> (d ? "M" + d.join("L") + "Z" : null))
+        private updateArcColor   = v=> v.style("stroke",      d=> (d.linkColor?d.linkColor:undefined))
 
-        private updateArcColor   = v=> v.style("stroke",   d=> (d.linkColor?d.linkColor:undefined))
-        private updateNodeColor  = v=> v.style("fill",     d=> (d.parent?(d.nodeColor?d.nodeColor:undefined):this.args.rootColor))
-        private updateNodeStroke = v=> v.style("stroke",   d=> (d.linkColor?d.linkColor:undefined))
-        private updateCell       = v=> v.attr("d",         d=> (d ? "M" + d.join("L") + "Z" : null))
-
-        private updateArc        = v=> v.attr("d",         d=> this.args.arc(d))
+        private updateArc        = v=> v.attr("d",            d=> this.args.arc(d))
                                         .attr("stroke-width", d=> this.tr(d)/130)
-        private updateText       = v=> v.attr("transform", d=> this.transformStr(d) + this.scaleStr(d))
-                                        .attr("visibility", d=> ((this.args.labelFilter(d)||!this.showCaptions)&&d.parent)?'hidden':'visible')
+        private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
+                                        .attr("visibility",   d=> ((this.args.labelFilter(d)||!this.showCaptions)&&d.parent)?'hidden':'visible')
     }
 }
 

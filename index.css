@@ -6,6 +6,7 @@ body {
     font-family: Helvetica;
     margin: 0;
     //background: #fdfbfe;
+    overflow:hidden;
 }
 
 #hypertree {

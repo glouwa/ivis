@@ -46,7 +46,7 @@ namespace ivis.controller
                 onDragStart: (m:C, n:N) => {},
                 onDrag:      (s:C, e:C) => {},
                 onDragEnd:   () => {},
-                onClick:     (m:C) => {},
+                onClick:     (m:C) => this.animateTo(m, this.args.viewTT),
                 arc:         this.args.arc,
                 caption:     (n:N) => "",
                 labelFilter: (n:N) => true,
@@ -66,14 +66,13 @@ namespace ivis.controller
                 onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
                 onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
                 onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C) => this.onClick(m, this.args.navTT),
+                onClick:     (m:C) => this.animateTo(m, this.args.navTT),
                 arc:         this.args.arc,
                 caption:     this.caption,
                 labelFilter: (n:N) => false,
 
                 parent:      null,
-                pos:         ArrAddR([navR/2,navR/2], navR),
-                opacity:     .8,
+                pos:         ArrAddR([navR/2,navR/2], navR),                
                 radius:      navR,
                 nodeRadius:  .18,
                 //rootColor:   "#ffee58",
@@ -244,7 +243,7 @@ namespace ivis.controller
     export function reCreate()
     {
         document.getElementById("hypertree").innerText = ''
-        document.getElementById("ivis-canvas-debug-panel").innerText = ''
+        document.getElementById("plexxDbg").innerText = ''
         var uiRoot = ivis.controller.slide.initUi()
 
         left = new TreeWithNavigation({

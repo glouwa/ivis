@@ -27,7 +27,7 @@ var ivis;
                     onDragStart: (m, n) => { },
                     onDrag: (s, e) => { },
                     onDragEnd: () => { },
-                    onClick: (m) => { },
+                    onClick: (m) => this.animateTo(m, this.args.viewTT),
                     arc: this.args.arc,
                     caption: (n) => "",
                     labelFilter: (n) => true,
@@ -45,13 +45,12 @@ var ivis;
                     onDragStart: (m, n) => this.onDragStart(m, n, this.args.navTT),
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.navTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onClick: (m) => this.onClick(m, this.args.navTT),
+                    onClick: (m) => this.animateTo(m, this.args.navTT),
                     arc: this.args.arc,
                     caption: this.caption,
                     labelFilter: (n) => false,
                     parent: null,
                     pos: ArrAddR([navR / 2, navR / 2], navR),
-                    opacity: .8,
                     radius: navR,
                     nodeRadius: .18,
                     //rootColor:   "#ffee58",
@@ -189,7 +188,7 @@ var ivis;
          */
         function reCreate() {
             document.getElementById("hypertree").innerText = '';
-            document.getElementById("ivis-canvas-debug-panel").innerText = '';
+            document.getElementById("plexxDbg").innerText = '';
             var uiRoot = ivis.controller.slide.initUi();
             left = new TreeWithNavigation({
                 dataloader: ivis.controller.slide.loader,

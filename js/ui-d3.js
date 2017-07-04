@@ -34,16 +34,15 @@ var ivis;
                         CassignC(d.cache, this.args.transform(d));
                         return d.strCache = d.cache.re + ' ' + d.cache.im; //CtoArr(newPosC).toString()
                     };
+                    this.nodeRi = d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius);
                     this.transformStr = d => " translate(" + this.t(d) + ")";
                     this.scaleStr = d => " scale(" + this.tr(d) + ")";
                     // element updates ------------------------------------------------------------------------
                     this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
-                    //.style("fill",    d=> (d.parent?(d.color?d.color:undefined):this.args.rootColor))
-                    //.attr("opacity",  d=> this.tr(d))
-                    this.updateArcColor = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
                     this.updateNodeColor = v => v.style("fill", d => (d.parent ? (d.nodeColor ? d.nodeColor : undefined) : this.args.rootColor));
                     this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
                     this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
+                    this.updateArcColor = v => v.style("stroke", d => (d.linkColor ? d.linkColor : undefined));
                     this.updateArc = v => v.attr("d", d => this.args.arc(d))
                         .attr("stroke-width", d => this.tr(d) / 130);
                     this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d))
@@ -68,9 +67,7 @@ var ivis;
                         .attr("class", "background-circle")
                         .attr("r", 1)
                         .attr("transform", "scale(" + args.radius + ")")
-                        .attr("fill-opacity", args.opacity)
-                        .on("click", () => args.onDblClick(this.ti(d3.mouse(d3.event.srcElement))))
-                        .call(this.drag);
+                        .on("click", () => this.onClick(null));
                     this.layers = mainGroup.append('g')
                         .attr("class", "layers")
                         .attr("transform", "scale(" + args.radius + ")");
@@ -96,14 +93,14 @@ var ivis;
                         .data(allNodes)
                         .enter().append("circle")
                         .attr("class", "node")
-                        .attr("r", d => ((d.children && d.parent) ? (this.args.nodeRadius * .3) : this.args.nodeRadius))
+                        .attr("r", d => this.nodeRi(d))
                         .on("dblclick", d => this.onDblClick(d))
                         .on("click", d => this.onClick(d))
                         .on("mouseover", d => this.updateHover(d))
                         .on("mouseout", d => this.updateHover(d))
+                        .call(this.drag)
                         .call(this.updateNode)
-                        .call(this.updateNodeColor)
-                        .call(this.drag);
+                        .call(this.updateNodeColor);
                     this.captions = this.textLayer.selectAll(".caption")
                         .data(allNodes)
                         .enter().append('text')
@@ -122,13 +119,13 @@ var ivis;
                         .data(this.voroLayout.polygons())
                         .enter().append('path')
                         .attr("class", "cell")
-                        .attr("fill", d => (d.data.children ? 'transparent' : 'rgba(150, 202, 152, .05)'))
+                        .attr("fill", d => (d.data.children ? 'transparent' : '#f5fef0')) //'rgba(150, 202, 152, .05)'
                         .on("dblclick", d => this.onDblClick(d.data))
                         .on("click", d => this.onClick(d.data))
                         .on("mouseover", d => this.updateHover(d.data))
                         .on("mouseout", d => this.updateHover(d.data))
-                        .call(this.drag)
-                        .call(this.updateCell);
+                        .call(this.updateCell)
+                        .call(this.drag);
                 }
                 updatePositions() {
                     this.nodes.call(this.updateNode);
@@ -164,6 +161,7 @@ var ivis;
                         newN.nodeColor = lastNodeColor;
                     }
                     this.updateColors();
+                    this.updateCaptions(true);
                 }
                 updateSelection(n) {
                     var oldSelection = this.selection;

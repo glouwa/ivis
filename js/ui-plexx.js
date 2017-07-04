@@ -14,7 +14,7 @@ var ivis;
             plexx.initPlexx = initPlexx;
             function initPlexxDbg() {
                 initPlexx();
-                new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
+                new Plexx.DebugHelper("plexxDbg", renderContext, myCanvas);
             }
             plexx.initPlexxDbg = initPlexxDbg;
             class UnitDiskPlexx {

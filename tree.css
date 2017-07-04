@@ -5,7 +5,7 @@
 }
 
 .cell {
-    stroke: #e5e5e5; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke:#eee; /*#b8b8b8;///#daeccf; #d7ccc8; */
     stroke-width: 0.001;
     pointer-events:visible;
 }
@@ -33,15 +33,13 @@
 }
 
 .background-circle {
-    fill: #fff; //#f9fbe7;
-    stroke: #cbde3b; //#eef4be;
-    stroke-width: .001;
+    fill: transparent; //#f9fbe7;    
 }
 
 .nav-parameter-disc .node {
     fill: #BBDEFB;
     stroke-width: .017;
-    stroke: #90caf9;
+    stroke: #90caf9;    
 }
 
 .nav-parameter-disc .node:hover {
@@ -66,9 +64,14 @@
 }
 
 .nav-background-disc .arc {
-    stroke-width: .02;
+    stroke-width: .003;
 }
 
+#plexxDbg {
+    position: absolute;
+    bottom:0;
+    right: 0;
+}
 
 
 

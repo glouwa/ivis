@@ -26,6 +26,7 @@ namespace ivis.controller
         captions:null,
         weight:null,
         magic:null,
+        space:null,
     }    
     export function init()
     {        
@@ -80,9 +81,9 @@ namespace ivis.controller
             { text:"0.9",              value:".9",               },
         ]
         var arcOptions = [            
-            { text:"Negative",        value:"arc('1', '0')",     },
-            { text:"Positive",        value:"arc('0', '1')",     },
-            { text:"Strait line",     value:"arcLine",           },
+            { text:"Negative curvature", value:"arc('1', '0')",     },
+            { text:"Positive curvature", value:"arc('0', '1')",     },
+            { text:"Strait line",        value:"arcLine",           },
         ]
         var captionOptions = [            
             { text:"Show always",     value:"false",             },
@@ -104,8 +105,8 @@ namespace ivis.controller
                 .selectAll('option')
                 .data(data)
                 .enter().append('option')
-                    .attr('value', d=> d.value)
-                    .text(d=> d.text)
+                    .attr('value', (d:{value:string}) => d.value)
+                    .text((d:{text:string}) => d.text)
         }
 
         buildCombo('#dataSourceSelect', loaderOptions,  ()=> setDataSource(d3.event.target.value))

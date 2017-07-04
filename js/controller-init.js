@@ -27,6 +27,7 @@ var ivis;
             captions: null,
             weight: null,
             magic: null,
+            space: null,
         };
         function init() {
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
@@ -80,8 +81,8 @@ var ivis;
                 { text: "0.9", value: ".9", },
             ];
             var arcOptions = [
-                { text: "Negative", value: "arc('1', '0')", },
-                { text: "Positive", value: "arc('0', '1')", },
+                { text: "Negative curvature", value: "arc('1', '0')", },
+                { text: "Positive curvature", value: "arc('0', '1')", },
                 { text: "Strait line", value: "arcLine", },
             ];
             var captionOptions = [
@@ -101,8 +102,8 @@ var ivis;
                     .selectAll('option')
                     .data(data)
                     .enter().append('option')
-                    .attr('value', d => d.value)
-                    .text(d => d.text);
+                    .attr('value', (d) => d.value)
+                    .text((d) => d.text);
             }
             buildCombo('#dataSourceSelect', loaderOptions, () => setDataSource(d3.event.target.value));
             buildCombo('#spaceSelect', spaceOptions, () => setSpace(d3.event.target.value));
