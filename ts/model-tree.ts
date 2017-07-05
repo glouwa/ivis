@@ -23,6 +23,76 @@ namespace ivis.model {
     }
   }
 
+  class RDFHelper {
+    static getIdFromScheme(scheme: Object): string {
+      let schemeProperties: string[] = Object.keys(scheme);
+      for (let i = 0; i < schemeProperties.length; i++) {
+        if (schemeProperties[i].indexOf(':identifier') !== -1) {
+          let identifier = scheme[schemeProperties[i]];
+          if (identifier.hasOwnProperty('0'))
+            identifier = identifier[0];
+          return identifier;
+        }
+      }
+
+      return null;
+    }
+
+    static getNameFromScheme(scheme: Object): string {
+      let schemeProperties: string[] = Object.keys(scheme);
+      for (let i = 0; i < schemeProperties.length; i++) {
+        if (schemeProperties[i].indexOf(':title') !== -1) {
+          let identifier = scheme[schemeProperties[i]];
+          if (identifier.hasOwnProperty('0'))
+            identifier = identifier[0];
+          if (identifier.hasOwnProperty('_'))
+            identifier = identifier['_'];
+          return identifier;
+        }
+      }
+
+      return null;
+    }
+
+    static getIdFromConcept(concept: Object): string {
+      let id = null;
+      if (concept.hasOwnProperty('$'))
+        concept = concept['$'];
+      if (concept.hasOwnProperty('rdf:about'))
+        id = concept['rdf:about'];
+
+      return id;
+    }
+
+    static getNameFromConcept(concept: Object): string {
+      //check for prefLabel
+      if (concept.hasOwnProperty('skos:prefLabel')) {
+        concept = concept['skos:prefLabel'];
+        if (concept.hasOwnProperty('0'))
+          concept = concept['0'];
+        if (concept.hasOwnProperty('_'))
+          concept = concept['_'];
+        return String(concept);
+      }
+
+      let conceptProperties: string[] = Object.keys(concept);
+      for (let i = 0; i < conceptProperties.length; i++) {
+        let currProperty = conceptProperties[i];
+        if (currProperty.indexOf(':title') !== -1 ||
+            currProperty.indexOf('Label') ||
+            currProperty.indexOf('Name') !== -1) {
+          let name = concept[currProperty];
+          if (name.hasOwnProperty('0'))
+            name = name[0];
+          if (name.hasOwnProperty('_'))
+            name = name['_'];
+          return name;
+        }
+      }
+
+      return null;
+    }
+  }
   //===================================================
   class InputFile {
     static json : string = 'JSON';
@@ -47,7 +117,7 @@ namespace ivis.model {
     static jsonToTree(data : string) : TreeNode[] {
       let parsedJson = JSON.parse(data);
       try {
-        return this.createNodes(parsedJson);
+        return this.createNodes(parsedJson);;
       } catch (e) {
         console.log("Invalid data file.");
         console.log(e);
@@ -68,7 +138,7 @@ namespace ivis.model {
 
   //===================================================
   class InputTreeML{
-    static treemlToTree(data: string, callback) {
+    static treemlToTree(data: string, callback, originalTreeObject: Tree) {
       xml2jsBundle.parseString(data, (err, result) => {
         if (err != null) {
           console.log("Invalid data file");
@@ -87,10 +157,11 @@ namespace ivis.model {
           let json: Object[] = [];
           console.log('treemlToTree', rootNode);
           json.push(this.toJSON(rootNode));
-          let tree: TreeNode[] = InputJSON.createNodes(json);
+          let tree: TreeNode = InputJSON.createNodes(json)[0];
           console.log('DONE');
-          console.log(tree[0]);
-          callback(tree[0]);
+          console.log(tree);
+          originalTreeObject.setTree(tree);
+          callback(tree);
         } catch (e) {
           console.log(e);
           console.log(e.stack);
@@ -102,7 +173,7 @@ namespace ivis.model {
       let resultNode = {
         id: '',
         name: '',
-        children: []
+        children: null
       };
 
       //id, name
@@ -128,12 +199,16 @@ namespace ivis.model {
 
       //children
       if (inputNode.hasOwnProperty('branch')) {
+        if (resultNode.children == null)
+          resultNode.children = [];
         let branches = inputNode['branch'];
         for (let i = 0; i < branches.length; i++) {
           resultNode.children.push(this.toJSON(branches[i]));
         }
       }
       if (inputNode.hasOwnProperty('leaf')) {
+        if (resultNode.children == null)
+          resultNode.children = [];
         let leaves = inputNode['leaf'];
         for (let i = 0; i < leaves.length; i++) {
           resultNode.children.push(this.toJSON(leaves[i]));
@@ -146,7 +221,7 @@ namespace ivis.model {
 
   //===================================================
   class InputSkos {
-    static skosToTree(data: string, callback) {
+    static skosToTree(data: string, callback, originalTreeObject: Tree) {
       xml2jsBundle.parseString(data, (err, result) => {
         if (err != null) {
           console.log("Invalid data file", err);
@@ -154,29 +229,21 @@ namespace ivis.model {
         }
         try {
           console.log('skos', result);
-          let rdf = result['rdf:RDF'];
+          let rdf = result;
+          if (rdf.hasOwnProperty('rdf:RDF'))
+            rdf = rdf['rdf:RDF'];
           let rootNode = new TreeNode();
           if (rdf.hasOwnProperty('skos:ConceptScheme')) {
             let conceptScheme = rdf['skos:ConceptScheme'][0];
+            rootNode.id = RDFHelper.getIdFromScheme(conceptScheme);
+            rootNode.name = RDFHelper.getNameFromScheme(conceptScheme);
+            if (rootNode.id == null)
+              rootNode.id = rootNode.name;
 
-            if (conceptScheme.hasOwnProperty('dc:title'))
-              rootNode.id = conceptScheme['dc:title'][0];
-            if (conceptScheme.hasOwnProperty('dcterms:title'))
-              rootNode.id = conceptScheme['dcterms:title'][0]['_'];
-            if (conceptScheme.hasOwnProperty('dct:title'))
-              rootNode.id = conceptScheme['dct:title'][0]['_'];
-
-            if (conceptScheme.hasOwnProperty('dcterms:identifier')) {
-              rootNode.name = rootNode.id;
-              rootNode.id = conceptScheme['dcterms:identifier'][0];
-            } else if (conceptScheme.hasOwnProperty('dct:identifier')) {
-              rootNode.name = rootNode.id;
-              rootNode.id = conceptScheme['dct:identifier'][0];
-            }
             if (conceptScheme.hasOwnProperty('skos:hasTopConcept'))
               rootNode.children = this.addChildIds(conceptScheme['skos:hasTopConcept']);
-
-            rdf = rdf['skos:Concept'];
+            if (rdf.hasOwnProperty('skos:Concept'))
+              rdf = rdf['skos:Concept'];
             rootNode = this.addOtherNodes(rootNode, rdf);
           } else if (rdf.hasOwnProperty('rdf:Description')) {
             rootNode.id = null;
@@ -188,8 +255,8 @@ namespace ivis.model {
           }
 
           console.log('tree:', rootNode);
+          originalTreeObject.setTree(rootNode);
           callback(rootNode);
-
         } catch (e) {
           console.log(e);
           console.log(e.stack);
@@ -213,27 +280,15 @@ namespace ivis.model {
       let inTreeNotUsedNodes: TreeNode[] = [];
       let nodesWithUndefinedParents:  TreeNode[] = [];
       for (let i = 0; i < conceptList.length; i++) {
-        let node = new TreeNode();
         let currentConcept = conceptList[i];
-        node.id = currentConcept['$']['rdf:about'];
-        if (currentConcept.hasOwnProperty('skos:prefLabel'))
-          node.name = currentConcept['skos:prefLabel'][0]['_'];
-        else if (currentConcept.hasOwnProperty('cc:attributionName')) {
-          node.name = currentConcept['cc:attributionName'][0]['_'];
-        }
-
-        //has children
-        if (currentConcept.hasOwnProperty('skos:narrower'))
-          node.children = this.addChildIds(conceptList[i]['skos:narrower']);
-
+        let node: TreeNode = this.conceptToNode(currentConcept);
 
         if (root.id == null) {
           root = node;
         }
-
         //is child of some other node
         if (currentConcept.hasOwnProperty('skos:inScheme')) {
-          node.parent = currentConcept['skos:inScheme'][0]['$']['rdf:resource'];
+          node.parent = this.addParentId(currentConcept['skos:inScheme'][0]['$']['rdf:resource']);
           if (root.addChildToScheme(node, node.parent.id) == false)
             nodesWithUndefinedParents.push(node);
         }
@@ -252,7 +307,6 @@ namespace ivis.model {
             nodesWithUndefinedParents.splice(k, 1);
         }
       }
-      //TODO: handle narrower children!
 
       return root;
     }
@@ -260,20 +314,8 @@ namespace ivis.model {
     private static createAllNodes(conceptList: Object[]) {
       let resultMap: {[id: string]: TreeNode} = {};
       for (let i = 0; i < conceptList.length; i++) {
-        let node = new TreeNode();
         let currentConcept = conceptList[i];
-        node.id = currentConcept['$']['rdf:about'];
-
-        if (currentConcept.hasOwnProperty('skos:prefLabel')) {
-          node.name = currentConcept['skos:prefLabel'][0]['_'];
-        } else if (currentConcept.hasOwnProperty('cc:attributionName')) {
-          node.name = currentConcept['cc:attributionName'][0]['_'];
-        }
-
-        //has children
-        if (currentConcept.hasOwnProperty('skos:narrower'))
-          node.children = this.addChildIds(conceptList[i]['skos:narrower']);
-
+        let node: TreeNode = this.conceptToNode(currentConcept)
         //is child of some other node
         if (currentConcept.hasOwnProperty('skos:inScheme'))
           node.parent = this.addParentId(currentConcept['skos:inScheme'][0]['$']['rdf:resource']);
@@ -285,10 +327,22 @@ namespace ivis.model {
       return resultMap;
     }
 
+    private static conceptToNode(concept: Object): TreeNode {
+      let node = new TreeNode();
+      node.id = RDFHelper.getIdFromConcept(concept);
+      node.name = RDFHelper.getNameFromConcept(concept);
+
+      //has children
+      if (concept.hasOwnProperty('skos:narrower'))
+        node.children = this.addChildIds(concept['skos:narrower']);
+
+      return node;
+    }
+
     private static connectNodesFromMap(map: {[key: string]: TreeNode}): TreeNode {
       console.log('connectNodesFromMap');
       for (let nodeId in map) {
-        //1. set parent
+        //set parent
         let currNode = map[nodeId];
         if (currNode.parent != null) {
           let parentNode = map[currNode.parent.id];
@@ -301,7 +355,7 @@ namespace ivis.model {
           map[currNode.parent.id] = parentNode;
         }
 
-        //2. set children
+        //set children
         if (currNode.children) {
           for (let i = 0; i < currNode.children.length; i++) {
             let childNode = map[currNode.children[i].id];
@@ -332,8 +386,6 @@ namespace ivis.model {
     }
 
   }
-
-
 
   //===================================================
   export class TreeNode {
@@ -429,11 +481,10 @@ namespace ivis.model {
       return false;
     }
   }
-
-
+  
   //===================================================
   export class Tree {
-    private tree_: TreeNode[] = [];
+    private tree_: TreeNode = null;
 
     constructor(ok, filepath: string) {
       let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -444,34 +495,26 @@ namespace ivis.model {
           let fileType : string = InputFile.determineFileType(content);
 
           if (fileType == InputFile.json) {
-            this.tree_ = InputJSON.jsonToTree(content);
-            ok(this.tree_[0]);
+            this.tree_ = InputJSON.jsonToTree(content)[0];
+            ok(this.tree_);
           } else if (fileType == InputFile.skos) {
             console.log('SKOS');
             try {
-              InputSkos.skosToTree(content, ok);
+              InputSkos.skosToTree(content, ok, this);
                       } catch(e) {
               console.log(e);
               console.log(e.stack);
             }
           } else if (fileType == InputFile.treeML) {
-            InputTreeML.treemlToTree(content, ok);
+            InputTreeML.treemlToTree(content, ok, this);
           }
         }
       };
       xhr.send();
     }
 
-    private getNodeById(id: string): TreeNode {
-      return this.tree_.find((node: TreeNode) => (node.id == id));
-    }
-
-    computeWeight(callback: WeightFunction) {
-      this.tree_.forEach((node: TreeNode) => callback(node));
-    }
-
     getRootNode() {
-      return this.tree_.find((node: TreeNode) => (node.parent == null));
+      return this.tree_;
     }
 
     countNodes(node : TreeNode) : number {
@@ -482,6 +525,10 @@ namespace ivis.model {
       });
 
       return sum;
+    }
+
+    setTree(tree: TreeNode) {
+      this.tree_ = tree;
     }
   }
 
