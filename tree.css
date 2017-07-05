@@ -1,7 +1,11 @@
+svg {
+    filter:drop-shadow(3px 3px 4px rgba(0,0,0,0.15));
+}
+
 .node {
     fill: #a5d6a7;
     stroke: #5eb561; /* #a1887f; */
-    stroke-width: .003;
+    stroke-width: .003;    
 }
 
 .cell {
@@ -33,7 +37,7 @@
 }
 
 .background-circle {
-    fill: transparent; //#f9fbe7;    
+    fill: none; //transparent; //#f9fbe7;
 }
 
 .nav-parameter-disc .node {
@@ -72,7 +76,6 @@
     bottom:0;
     right: 0;
 }
-
 
 
 

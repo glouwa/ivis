@@ -58,10 +58,15 @@ namespace ivis.ui.D3
                 .attr("class", args.class)
                 .attr("transform", "translate(" + args.pos + ")")
 
+            mainGroup.append("clipPath")
+                .attr("id", "circle-clip")
+                .append("circle")
+                    .attr("r", 1)
+
             var unitDiscBg = mainGroup.append('circle')
                 .attr("class", "background-circle")
-                .attr("r", 1)
-                .attr("transform", "scale(" + args.radius + ")")                
+                .attr("r", 1)            
+                .attr("transform", "scale(" + args.radius + ")")
                 .on("click", () => this.onClick(null))
 
             this.layers = mainGroup.append('g')
@@ -75,13 +80,9 @@ namespace ivis.ui.D3
             this.nodeLayer = this.layers.append('g')
             this.textLayer = this.layers.append('g')
 
-            if (args.clip){
-                mainGroup.append("clipPath")
-                    .attr("id", "circle-clip")
-                    .append("circle")
-                        .attr("r", 1)
+            if (args.clip)
                 this.cellLayer.attr("clip-path", "url(#circle-clip)")
-            }
+
             this.create()
         }
 
@@ -94,11 +95,11 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append("circle")
                     .attr("class", "node")
-                    .attr("r", d => this.nodeRi(d))
+                    .attr("r", d => this.nodeRi(d))                    
                     .on("dblclick", d=> this.onDblClick(d))
                     .on("click", d=> this.onClick(d))
                     .on("mouseover", d=> this.updateHover(d))                    
-                    .on("mouseout", d=> this.updateHover(d))
+                    .on("mouseout", d=> this.updateHover(d))                    
                     .call(this.drag)
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
@@ -216,14 +217,15 @@ namespace ivis.ui.D3
 
         // snippets ------------------------------------------------------------------------------
 
-
-        tr = (d:N) => (d.parent?this.args.transformR(d):.5+.5*this.args.transformR(d))
-        ti = (e:number[]) => ArrtoC(e)
         t  = (d:N) => {
             d.cache = d.cache || { re:0, im:0 }
             CassignC(d.cache, this.args.transform(d))
             return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
         }
+        ti = (e:number[]) => ArrtoC(e)
+        tr =                                                 (d:N) => ((d.parent && !d.isSelected)
+                                                                       ? this.args.transformR(d)
+                                                                       : .5+.5*this.args.transformR(d))
 
         private nodeRi =                                      d=> ((d.children && d.parent)
                                                                        ? (this.args.nodeRadius*.3)
@@ -253,9 +255,9 @@ namespace ivis.ui.D3
                                                                        : undefined))
 
         private updateArc        = v=> v.attr("d",            d=> this.args.arc(d))
-                                        .attr("stroke-width", d=> this.tr(d)/130)
+                                        .attr("stroke-width", d=> this.tr(d) / 130)
         private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
-                                        .attr("visibility",   d=> ((this.args.labelFilter(d)||!this.showCaptions)&&d.parent&&!d.isSelected)
+                                        .attr("visibility",   d=> ((this.args.labelFilter(d) || !this.showCaptions)&&d.parent&&!d.isSelected)
                                                                        ? 'hidden'
                                                                        : 'visible')
     }

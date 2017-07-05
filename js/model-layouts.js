@@ -9,7 +9,8 @@ var ivis;
                 var some = [{ re: 0, im: 0 }].concat(unitVectors);
                 var i = 0;
                 dfs(root, n => {
-                    n.z = { re: some[i % some.length].re, im: some[i % some.length].im };
+                    var a = i % some.length;
+                    n.z = { re: some[a].re * .99, im: some[a].im * .99 };
                     i++;
                 });
                 return root;
