@@ -125,13 +125,11 @@ namespace ivis.model {
     }
 
     static createNodes(json: Object[]) : TreeNode[] {
-      console.log('InputJSON createNodes', json);
       let tree : TreeNode[] = [];
       json.forEach((obj: TreeNode) => {
         let node : TreeNode = new TreeNode().deserialize(obj);
         tree.push(node);
       });
-      console.log('createNodes', tree);
       return tree;
     }
   }
@@ -147,7 +145,6 @@ namespace ivis.model {
 
         try {
           let rootNode = result;
-          console.log('rootNode', rootNode);
           if (rootNode.hasOwnProperty('tree'))
             rootNode = rootNode['tree'];
           if (rootNode.hasOwnProperty('branch'))
@@ -155,11 +152,8 @@ namespace ivis.model {
           if (rootNode.hasOwnProperty('0'))
             rootNode = rootNode['0'];
           let json: Object[] = [];
-          console.log('treemlToTree', rootNode);
           json.push(this.toJSON(rootNode));
           let tree: TreeNode = InputJSON.createNodes(json)[0];
-          console.log('DONE');
-          console.log(tree);
           originalTreeObject.setTree(tree);
           callback(tree);
         } catch (e) {
@@ -228,7 +222,6 @@ namespace ivis.model {
           return null;
         }
         try {
-          console.log('skos', result);
           let rdf = result;
           if (rdf.hasOwnProperty('rdf:RDF'))
             rdf = rdf['rdf:RDF'];
@@ -254,7 +247,6 @@ namespace ivis.model {
               throw new InvalidFileError();
           }
 
-          console.log('tree:', rootNode);
           originalTreeObject.setTree(rootNode);
           callback(rootNode);
         } catch (e) {
@@ -323,7 +315,6 @@ namespace ivis.model {
         resultMap[node.id] = node;
       }
 
-      console.log('resultMap', resultMap);
       return resultMap;
     }
 
@@ -340,7 +331,6 @@ namespace ivis.model {
     }
 
     private static connectNodesFromMap(map: {[key: string]: TreeNode}): TreeNode {
-      console.log('connectNodesFromMap');
       for (let nodeId in map) {
         //set parent
         let currNode = map[nodeId];
@@ -481,7 +471,7 @@ namespace ivis.model {
       return false;
     }
   }
-  
+
   //===================================================
   export class Tree {
     private tree_: TreeNode = null;
@@ -498,7 +488,6 @@ namespace ivis.model {
             this.tree_ = InputJSON.jsonToTree(content)[0];
             ok(this.tree_);
           } else if (fileType == InputFile.skos) {
-            console.log('SKOS');
             try {
               InputSkos.skosToTree(content, ok, this);
                       } catch(e) {
