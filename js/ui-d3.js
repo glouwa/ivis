@@ -43,6 +43,7 @@ var ivis;
                     this.scaleStr = d => " scale(" + this.tr(d) + ")";
                     // element updates ------------------------------------------------------------------------
                     this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
+                    this.updateCellColor = v => v.attr("fill", d => (d.data.children ? '#fff' : '#f5fef0')); //'rgba(150, 202, 152, .05)'
                     this.updateNodeColor = v => v.style("fill", d => (d.parent
                         ? (d.nodeColor
                             ? d.nodeColor
@@ -51,8 +52,7 @@ var ivis;
                     this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
-                    this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z"
-                        : null));
+                    this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
                     this.updateArcColor = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
@@ -133,12 +133,12 @@ var ivis;
                         .data(this.voroLayout.polygons())
                         .enter().append('path')
                         .attr("class", "cell")
-                        .attr("fill", d => (d.data.children ? 'transparent' : '#f5fef0')) //'rgba(150, 202, 152, .05)'
                         .on("dblclick", d => this.onDblClick(d.data))
                         .on("click", d => this.onClick(d.data))
                         .on("mouseover", d => this.updateHover(d.data))
                         .on("mouseout", d => this.updateHover(d.data))
                         .call(this.updateCell)
+                        .call(this.updateCellColor)
                         .call(this.drag);
                 }
                 updatePositions() {

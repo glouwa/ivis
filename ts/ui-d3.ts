@@ -125,12 +125,13 @@ namespace ivis.ui.D3
                 .data(this.voroLayout.polygons())
                 .enter().append('path')
                     .attr("class", "cell")
-                    .attr("fill", d => (d.data.children?'transparent':'#f5fef0')) //'rgba(150, 202, 152, .05)'
+                    //.attr("fill", d => (d.data.children?'#fff':'#f5fef0')) //'rgba(150, 202, 152, .05)'
                     .on("dblclick", d=> this.onDblClick(d.data))
                     .on("click", d=> this.onClick(d.data))
                     .on("mouseover", d=> this.updateHover(d.data))
                     .on("mouseout", d=> this.updateHover(d.data))                    
                     .call(this.updateCell)
+                    .call(this.updateCellColor)
                     .call(this.drag)
         }
 
@@ -236,7 +237,8 @@ namespace ivis.ui.D3
 
         // element updates ------------------------------------------------------------------------
 
-        private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
+        private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))        
+        private updateCellColor  = v=> v.attr("fill",         d=> (d.data.children?'#fff':'#f5fef0')) //'rgba(150, 202, 152, .05)'
         private updateNodeColor  = v=> v.style("fill",        d=> (d.parent
                                                                        ? (d.nodeColor
                                                                             ? d.nodeColor
@@ -247,9 +249,7 @@ namespace ivis.ui.D3
                                                                        ? d.linkColor
                                                                        : undefined))
 
-        private updateCell       = v=> v.attr("d",            d=> (d   ? "M"+d.join("L")+"Z"
-                                                                       : null))
-
+        private updateCell       = v=> v.attr("d",            d=> (d   ? "M"+d.join("L")+"Z" : null))
         private updateArcColor   = v=> v.style("stroke",      d=> (d.linkColor
                                                                        ? d.linkColor
                                                                        : undefined))
