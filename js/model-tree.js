@@ -21,7 +21,7 @@ var ivis;
                     return this.json;
                 }
                 catch (e) {
-                    if (data.indexOf("CCSXML") !== -1) {
+                    if (data.indexOf("skos") !== -1) {
                         return this.skos;
                     }
                     return this.treeML;
@@ -64,7 +64,6 @@ var ivis;
                     let json = [];
                     json.push(this.toJSON(rootNode));
                     let tree = InputJSON.createNodes(json);
-                    Tree.setTree(tree);
                     callback(tree[0]);
                 });
             }
@@ -108,67 +107,45 @@ var ivis;
         //============================================================================
         class InputSkos {
             static skosToTree(data, callback) {
-                let xml = this.extractXML(data);
-                xml2jsBundle.parseString(xml, (err, result) => {
+                xml2jsBundle.parseString(data, (err, result) => {
                     if (err !== null) {
                         console.log("Invalid data file", err);
                         return null;
                     }
-                    let rootNode = this.getFirstValidNode(result);
-                    let json = [];
-                    json.push(this.toJSON(rootNode));
-                    let tree = InputJSON.createNodes(json);
-                    Tree.setTree(tree);
-                    callback(tree[0]);
+                    console.log('skos', result);
+                    let conceptScheme = result['rdf:RDF']['skos:ConceptScheme'][0];
+                    let rootNode = new TreeNode();
+                    rootNode.id = conceptScheme['dc:title'][0];
+                    rootNode.name = rootNode.id;
+                    rootNode.children = this.addChildIds(conceptScheme['skos:hasTopConcept']);
+                    this.addOtherNodes(rootNode, rootNode, result['rdf:RDF']['skos:Concept']);
+                    console.log('tree:', rootNode);
+                    callback(rootNode);
                 });
             }
-            static extractXML(input) {
-                let withoutBegin = input.split("\\begin{CCSXML}")[1];
-                let withoutEnd = withoutBegin.split("\\end{CCSXML}")[0];
-                return withoutEnd;
+            static addChildIds(conceptList) {
+                let resultArray = [];
+                for (let i = 0; i < conceptList.length; i++) {
+                    let node = new TreeNode();
+                    node.id = conceptList[i]['$']['rdf:resource'];
+                    resultArray.push(node);
+                }
+                return resultArray;
             }
-            //returns the first node with children
-            static getFirstValidNode(input) {
-                let keys = Object.keys(input);
-                for (let i = 0; i < keys.length; i++) {
-                    if (keys[i] === 'concept') {
-                        return input;
+            static addOtherNodes(root, parent, conceptList) {
+                let definedButNotUsedNodes = [];
+                for (let i = 0; i < conceptList.length; i++) {
+                    let node = new TreeNode();
+                    node.id = conceptList[i]['$']['rdf:about'];
+                    node.name = conceptList[i]['skos:prefLabel'][0]['_'];
+                    if (conceptList[i]['skos:narrower'] !== undefined)
+                        node.children = this.addChildIds(conceptList[i]['skos:narrower']);
+                    for (let j = 0; j < definedButNotUsedNodes.length; j++) {
+                        node.setChild(definedButNotUsedNodes[j]);
                     }
-                    let deepConceptNode = this.getFirstValidNode(input[keys[i]]);
-                    if (deepConceptNode != null) {
-                        if (!deepConceptNode.hasOwnProperty('concept_id')) {
-                            deepConceptNode['id'] = keys[i];
-                        }
-                        return deepConceptNode;
-                    }
+                    if (root.setChild(node) === false)
+                        definedButNotUsedNodes.push(node);
                 }
-                return null;
-            }
-            static toJSON(inputNode) {
-                let resultNode = {
-                    id: '',
-                    name: '',
-                    children: []
-                };
-                //id
-                if (inputNode.hasOwnProperty('concept_id')) {
-                    resultNode.id = inputNode['concept_id'][0];
-                }
-                else {
-                    resultNode.id = inputNode['id'];
-                }
-                //name
-                if (inputNode.hasOwnProperty('concept_desc')) {
-                    resultNode.name = inputNode['concept_desc'][0];
-                }
-                //children
-                if (inputNode.hasOwnProperty('concept')) {
-                    let children = inputNode['concept'];
-                    for (let i = 0; i < children.length; i++) {
-                        resultNode.children.push(this.toJSON(children[i]));
-                    }
-                }
-                return resultNode;
             }
         }
         //============================================================================
@@ -209,6 +186,21 @@ var ivis;
             getId() {
                 return this.id;
             }
+            setChild(node) {
+                if (this.children === null)
+                    return false;
+                for (let i = 0; i < this.children.length; i++) {
+                    if (node.id === this.children[i].id) {
+                        this.children[i] = node;
+                        return true;
+                    }
+                }
+                for (let i = 0; i < this.children.length; i++) {
+                    if (this.children[i].setChild(node) === true)
+                        return true;
+                }
+                return false;
+            }
         }
         model.TreeNode = TreeNode;
         //============================================================================
@@ -226,6 +218,7 @@ var ivis;
                             ok(this.tree_[0]);
                         }
                         else if (fileType === InputFile.skos) {
+                            console.log('SKOS');
                             InputSkos.skosToTree(content, ok);
                         }
                         else if (fileType === InputFile.treeML) {
@@ -234,9 +227,6 @@ var ivis;
                     }
                 };
                 xhr.send();
-            }
-            static setTree(tree) {
-                //this.tree_ = tree;
             }
             getNodeById(id) {
                 return this.tree_.find((node) => (node.id == id));

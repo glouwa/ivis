@@ -48,7 +48,7 @@ function sigmoid(x)
 
 //----------------------------------------------------------------------------------------
 
-interface T { P:C, θ:C }
+interface T { P:C, θ:C, λ:C}
 function makeT(a, b) { return { P:a, θ:b }}
 var one = { re:1, im:0 }
 
@@ -56,9 +56,9 @@ var one = { re:1, im:0 }
 
 function h2e(t:T, z:C) : C
 {
-    möbiusConstraint = CsubC(t.θ, CmulC(t.P, Ccon(t.P)))
-    console.assert(möbiusConstraint.re !== 0 || möbiusConstraint.im)
-    console.assert(CktoCp(t.θ).r === 1)
+    //var möbiusConstraint = CsubC(t.θ, CmulC(t.P, Ccon(t.P)))
+    //console.assert(möbiusConstraint.re !== 0 || möbiusConstraint.im)
+    //console.assert(CktoCp(t.θ).r === 1)
 
     var oben = CaddC(CmulC(t.θ, z), t.P)
     var unten = CaddC(CmulC(CmulC(Ccon(t.P), t.θ), z), one)

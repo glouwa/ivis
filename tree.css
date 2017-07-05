@@ -1,80 +1,82 @@
-.unitDiscBg {
-    fill: #fdfdf3; //#f9fbe7;
-    stroke: #cbde3b; //#eef4be;
-    stroke-width: .001;
-}
-
-.node {
+svg {
+    filter:drop-shadow(3px 3px 4px rgba(0,0,0,0.15));
 }
 
 .node {
     fill: #a5d6a7;
     stroke: #5eb561; /* #a1887f; */
-    stroke-width: .003;
+    stroke-width: .003;    
 }
 
-.node:hover {
-    //fill: #81c784;
-    //stroke: #002bb8; //#1565C0; /* #a1887f; */
-    stroke-width: .006;
+.cell {
+    stroke:#eee; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke-width: 0.001;
+    pointer-events:visible;
 }
 
 .caption {
     text-transform: uppercase;
-    font-size: 0.03pt;
+    font-size: 0.025pt;
     dominant-baseline: middle;
     pointer-events: none;
     user-select: none;
     cursor: default;
-    letter-spacing: 0.17em;
+    letter-spacing: 0.11em;
 
     paint-order:stroke;
     stroke: #fff;
-    stroke-width: .006;
-    /*stroke-opacity: 0.7;*/
+    stroke-width: .006;    
     stroke-linecap: butt;
     stroke-linejoin: miter;
 }
 
-.link {
-    stroke: #ccc;
-    stroke-width: .005;
-    pointer-events: none;
-}
-
 .arc {
-    stroke: #a1887f; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
+    stroke: #bcaaa4; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
     fill: none;
     pointer-events: none;
 }
 
-.cell {
-    stroke: #e5e5e5; /*#b8b8b8;///#daeccf; #d7ccc8; */
-    stroke-width: 0.001;
-    fill: none;
-    pointer-events:visible;
+.background-circle {
+    fill: none; //transparent; //#f9fbe7;
 }
 
-.unitDiscParam .node {
+.nav-parameter-disc .node {
     fill: #BBDEFB;
+    stroke-width: .017;
+    stroke: #90caf9;    
 }
 
-.unitDiscParam .caption {
+.nav-parameter-disc .node:hover {
+    fill: #90caf9;
+    stroke: #64b5f6; //#1565C0; /* #a1887f; */
+}
+
+.nav-parameter-disc .cell {
+    stroke: #ccc; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke-width: .002;
+    fill: none;
+    pointer-events:none;
+    stroke-width: .0;
+}
+
+.nav-parameter-disc .caption {
+    text-transform: none;
     text-anchor: middle;
     font-size: .2pt;
+    stroke-width: .04;
+    stroke-opacity: .6;
 }
 
-.unitDiscParamBg .link {
-    stroke-width: .02;
+.nav-background-disc .arc {
+    stroke-width: .003;
 }
 
-.unitDiscParamBg .arc {
-    stroke-width: .02;
+#plexxDbg {
+    position: absolute;
+    bottom:0;
+    right: 0;
 }
 
-.unitDiscParam .cell {
-    stroke: #444; /*#b8b8b8;///#daeccf; #d7ccc8; */
-    stroke-width: 0.002;
-    fill: none;
-    pointer-events:visible;
-}
+
+
+

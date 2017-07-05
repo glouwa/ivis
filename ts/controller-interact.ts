@@ -37,6 +37,47 @@ namespace ivis.controller
 
         private create() : void
         {
+            var navR = 70
+            new ivis.controller.slide.unitDisk({ // navigation disk background
+                class:       'nav-background-disc',
+                data:        this.data,
+                transform:   (n:N) => n.z,
+                transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
+                onDragStart: (m:C, n:N) => {},
+                onDrag:      (s:C, e:C) => {},
+                onDragEnd:   () => {},
+                onClick:     (m:C) => this.animateTo(m, this.args.viewTT),
+                arc:         this.args.arc,
+                caption:     (n:N) => "",
+                labelFilter: (n:N) => true,
+
+                parent:      null,
+                pos:         ArrAddR([navR/2,navR/2], navR),
+                radius:      navR,
+                nodeRadius:  .05,
+                clip:        true
+            })
+
+            this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
+                class:       'nav-parameter-disc',
+                data:        this.navData,
+                transform:   (n:N) => n,
+                transformR:  (n:N) => 1,
+                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
+                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
+                onDragEnd:   () => this.onDragEnd(),
+                onClick:     (m:C) => this.animateTo(m, this.args.navTT),
+                arc:         this.args.arc,
+                caption:     this.caption,
+                labelFilter: (n:N) => false,
+
+                parent:      null,
+                pos:         ArrAddR([navR/2,navR/2], navR),                
+                radius:      navR,
+                nodeRadius:  .18,
+                clip:        false,
+            })
+
             var radius = 470
             var dblClickTimerEvent = null
             this.view = new ivis.controller.slide.unitDisk({ // view disk
@@ -59,58 +100,18 @@ namespace ivis.controller
                     dblClickTimerEvent = null
                     this.view.updateSelection(n)
                     this.args.onNodeSelect(n)
-                }
+                },
                 arc:         this.args.arc,
-                caption:     this.caption(.7),
+                caption:     this.caption,
+                labelFilter: (n:N) => CktoCp(n.cache).r > .7,
 
                 parent:      null,
-                pos:         ArrAddR([50,0], radius),
+                pos:         ArrAddR([50,30], radius),
                 voroBox:     [[-1.01,-1.01], [1.01,1.01]],
                 radius:      radius,
                 nodeRadius:  .04,
                 rootColor:   "#fff59d",
                 clip:        true,
-            })
-
-            var navR = 60
-            new ivis.controller.slide.unitDisk({ // navigation disk background
-                class:       'unitDiscParamBg',
-                data:        this.data,
-                transform:   (n:N) => n.z,
-                transformR:  (n:N) => this.nodeR(this.args.viewTT.transformPoint(n)),
-                onDragStart: (m:C, n:N) => {},
-                onDrag:      (s:C, e:C) => {},
-                onDragEnd:   () => {},
-                onClick:     (m:C) => {},
-                arc:         this.args.arc,
-                caption:     (n:N) => "",
-
-                parent:      null,
-                pos:         ArrAddR([40,0], navR),
-                radius:      navR,
-                nodeRadius:  .05,
-                clip:        true
-            })
-
-            this.nav = new ivis.controller.slide.unitDisk({ // navigation disk with transformation parameters as nodes
-                class:       'unitDiscParam',
-                data:        this.navData,
-                transform:   (n:N) => n,
-                transformR:  (n:N) => 1,
-                onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.navTT),
-                onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.navTT),
-                onDragEnd:   () => this.onDragEnd(),
-                onClick:     (m:C) => this.onClick(m, this.args.navTT),
-                arc:         this.args.arc,
-                caption:     this.caption(Number.POSITIVE_INFINITY),
-
-                parent:      null,
-                pos:         ArrAddR([40,0], navR),
-                opacity:     .8,
-                radius:      navR,
-                nodeRadius:  .18,
-                //rootColor:   "#ffee58",
-                clip:        false,
             })
         }
 
@@ -171,15 +172,11 @@ namespace ivis.controller
             },1)
         }
 
-        private caption(maxR:number) : (n:N) => string
+        private caption(n:N) : string
         {
-            return function(n:N) : string
-            {
-                if (CktoCp(n.cache).r > maxR) return ""
-                if (n.name) return n.name
-                if (n.data && n.data.name) return n.data.name
-                return ""
-            }
+            if (n.name) return n.name
+            if (n.data && n.data.name) return n.data.name
+            return ""
         }
 
         private nodeR(np:C) : number
@@ -225,12 +222,12 @@ namespace ivis.controller
                              return CmulR(CaddC(rz, CdivR(this.tp.P, s)), s)
                          }
         onDragStart =    (m:C) => this.dST = clone(this.tp)
-        onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(e, s)))
+        onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, setR(e, 1))
     }
 
-    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:2/Math.PI, r:1}) }
+    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:-3/Math.PI, r:1}) }
     //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
     var left = null
@@ -244,21 +241,21 @@ namespace ivis.controller
      */
     export function reCreate()
     {
-        document.getElementById("ivis-canvas-div").innerText = ''
-        document.getElementById("ivis-canvas-debug-panel").innerText = ''
+        document.getElementById("hypertree").innerText = ''
+        document.getElementById("plexxDbg").innerText = ''
         var uiRoot = ivis.controller.slide.initUi()
 
         left = new TreeWithNavigation({
             dataloader:   ivis.controller.slide.loader,
             navData:      ivis.model.loaders.obj2data(h),
             layout:       ivis.controller.slide.layout,
-            viewTT:       new HyperbolicTransformation(h),
+            viewTT:       new ivis.controller.slide.space(h),
             navTT:        new PanTransformation(h),
             arc:          ivis.controller.slide.arc,
             parent:       uiRoot,
             onNodeSelect: (n:N) => {
                 if (document.getElementById('wiki'))
-                    document.getElementById('wiki').src = "https://de.m.wikipedia.org/wiki/"+n.data.name
+                    document.getElementById('wiki').src = "https://en.m.wikipedia.org/wiki/"+n.data.name
             }
         })
     }

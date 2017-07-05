@@ -1,13 +1,7 @@
 body {    
     font-family: Helvetica;
     margin: 0;
-    //background: #fdfbfe;
-}
-
-h1 {    
-    letter-spacing: 0.1em;
-    font-size: 1.3em;
-    font-weight: normal;
+    overflow:hidden;
 }
 
 #header {
@@ -19,11 +13,6 @@ h1 {
     height:2.3em;
 }
 
-#slide {
-    letter-spacing: 0.07em;    
-    vertical-align: -webkit-baseline-middle;
-}
-
 button {
     vertical-align: -webkit-baseline-middle;
     font-size:1em;
@@ -32,8 +21,7 @@ button {
 }
 
 #slideName {
-    vertical-align: -webkit-baseline-middle;
-    display:none;
+    vertical-align: -webkit-baseline-middle;    
 }
 
 #slide {
@@ -46,22 +34,23 @@ button {
     margin-left: .3em;
 }
 
-.selectCaption {
-    font-size: .7em;
-    margin-left: .1em;
-}
-
 #userfile {
     width:14em;
     width: 6.5em;
+}
+
+.selectCaption {
+    font-size: .7em;
+    margin-left: .1em;
 }
 
 select {
     height: 1.6em;
 }
 
-#ivis-canvas-div {
-    margin-top: 2em;
+#hypertree {
+    height: calc(100vh - 2.5em);
+    display: inline;
 }
 
 .split {
@@ -72,9 +61,6 @@ select {
 .wiki {
     width:100%;
     height:calc(100vh - 10px);
-    //margin-top: 10px;
-    //margin-left: 80px;
-    //margin-right: 80px;
     border:none;
     //overflow-y: hidden;
 }

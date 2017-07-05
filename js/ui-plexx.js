@@ -7,14 +7,14 @@ var ivis;
             var myCanvas = null;
             var renderContext = null;
             function initPlexx() {
-                myCanvas = new Plexx.DrawingArea({ width: 1000, height: 500, align: "xMidYMid", });
-                renderContext = new Plexx.RenderContext({ id: "ivis-canvas-div" });
+                myCanvas = new Plexx.DrawingArea({ width: 1000, height: 1000, align: "xMidYMid", });
+                renderContext = new Plexx.RenderContext({ id: "hypertree" });
                 myCanvas.run(renderContext);
             }
             plexx.initPlexx = initPlexx;
             function initPlexxDbg() {
                 initPlexx();
-                new Plexx.DebugHelper("ivis-canvas-debug-panel", renderContext, myCanvas);
+                new Plexx.DebugHelper("plexxDbg", renderContext, myCanvas);
             }
             plexx.initPlexxDbg = initPlexxDbg;
             class UnitDiskPlexx {

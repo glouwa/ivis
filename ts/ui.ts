@@ -27,6 +27,7 @@ namespace ivis.ui
     export interface TreeOnUnitDisk
     {
         args: TreeOnUnitDiskConfig,
+
         updatePositions:() => void,
         updateCaptions:(visible:boolean) => void,
     }

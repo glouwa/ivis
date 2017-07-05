@@ -5,18 +5,18 @@ var ivis;
     (function (controller) {
         var slideNr = -1;
         var slides = [
-            { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Tree of Life Carnivores" },
+            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Carnivores" },
             { ds: "code", ls: 'layoutBergé', name: "Code (modules)" },
             { ds: "fromFile('sample.xml')", ls: 'layoutBuchheim', name: "data from file" },
             { ds: "nTree", ls: 'layoutBergé', name: "Wedge layout" },
             { ds: "fromFile('flare.csv')", ls: 'layoutBuchheim', name: "Point transformation seems to work" },
             { ds: "nTree", ls: 'layoutBuchheim', name: "Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
+            { ds: "nTreeAtFirst", ls: 'layoutBuchheim', name: "Center is never magnified" },
             { ds: "star_(5)", ls: 'layoutUnitVectors', name: "Unit vectors " },
             { ds: "deepStar", ls: 'layoutUnitLines', name: "Unit lines" },
             { ds: "star_(50)", ls: 'layoutSpiral', name: "Star spiral" },
             { ds: "path_(50)", ls: 'layoutSpiral', name: "Path spiral" },
             { ds: "path_(500)", ls: 'layoutSpiral', name: "Hypnotoad. 1000 nodes" },
-            { ds: "nTreeAtFirst", ls: 'layoutBuchheim', name: "Center is never magnified" },
         ];
         controller.slide = {
             initUi: null,
@@ -27,6 +27,7 @@ var ivis;
             captions: null,
             weight: null,
             magic: null,
+            space: null,
         };
         function init() {
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
@@ -35,7 +36,7 @@ var ivis;
                 { text: "sample.xml", value: "fromFile('sample.xml')" },
                 { text: "sample.json", value: "fromFile('sample.json')" },
                 { text: "sample-skos.xml", value: "fromFile('sample-skos.xml')", },
-                { text: "Tree of life 1", value: "fromFile('carnivora-de.xml')" },
+                { text: "Tree of life 1", value: "fromFile('carnivora-en.xml')" },
                 { text: "Tree of life 2", value: "fromFile('primates.xml')" },
                 { text: "Tree of life 3", value: "fromFile('placentalia.xml')" },
                 { text: "Modules", value: "code", },
@@ -49,6 +50,10 @@ var ivis;
                 { text: "𝕋 5³ -1", value: "nTree", },
                 { text: "𝕋 1+10✕10", value: "nTreeAtFirst", },
                 { text: "User Uploaded", value: "fromFile('user-uploaded.xml')" },
+            ];
+            var spaceOptions = [
+                { text: "Hyperbolic", value: "HyperbolicTransformation", },
+                { text: "Euclidean", value: "PanTransformation", },
             ];
             var layoutOptions = [
                 { text: "Bergé et al.", value: "layoutBergé", },
@@ -64,7 +69,7 @@ var ivis;
                 { text: "Non", value: "d=>0", },
             ];
             var magicOptions = [
-                { text: "0.5", value: ".5", },
+                { text: "0.42", value: ".42", },
                 { text: "0.1", value: ".1", },
                 { text: "0.2", value: ".2", },
                 { text: "0.3", value: ".3", },
@@ -76,8 +81,8 @@ var ivis;
                 { text: "0.9", value: ".9", },
             ];
             var arcOptions = [
-                { text: "Negative", value: "arc('1', '0')", },
-                { text: "Positive", value: "arc('0', '1')", },
+                { text: "Negative curvature", value: "arc('1', '0')", },
+                { text: "Positive curvature", value: "arc('0', '1')", },
                 { text: "Strait line", value: "arcLine", },
             ];
             var captionOptions = [
@@ -97,16 +102,18 @@ var ivis;
                     .selectAll('option')
                     .data(data)
                     .enter().append('option')
-                    .attr('value', d => d.value)
-                    .text(d => d.text);
+                    .attr('value', (d) => d.value)
+                    .text((d) => d.text);
             }
             buildCombo('#dataSourceSelect', loaderOptions, () => setDataSource(d3.event.target.value));
+            buildCombo('#spaceSelect', spaceOptions, () => setSpace(d3.event.target.value));
             buildCombo('#layoutSelect', layoutOptions, () => setLayout(d3.event.target.value));
             buildCombo('#weightSelect', weightOptions, () => setWeight(d3.event.target.value));
             buildCombo('#magicSelect', magicOptions, () => setMagic(d3.event.target.value));
             buildCombo('#arcSelect', arcOptions, () => setArc(d3.event.target.value));
             buildCombo('#captionSelect', captionOptions, () => setCaption(d3.event.target.value));
             var rendererSelect = document.getElementById("rendererSelect");
+            var spaceSelect = document.getElementById("spaceSelect");
             var arcSelect = document.getElementById("arcSelect");
             var captionSelect = document.getElementById("captionSelect");
             var weightSelect = document.getElementById("weightSelect");
@@ -142,6 +149,7 @@ var ivis;
             controller.slide.captions = eval(captionSelect.value);
             controller.slide.weight = eval(weightSelect.value);
             controller.slide.magic = eval(magicSelect.value);
+            controller.slide.space = eval('ivis.controller.' + spaceSelect.value);
             next(1);
         }
         controller.init = init;
@@ -173,6 +181,10 @@ var ivis;
             controller.slide.loader = eval('ivis.model.loaders.' + name);
             if (reset)
                 ivis.controller.reCreate();
+        }
+        function setSpace(name) {
+            controller.slide.space = eval('ivis.controller.' + name);
+            ivis.controller.reCreate();
         }
         function setLayout(name) {
             controller.slide.layout = eval('ivis.model.layouts.' + name);
