@@ -18,12 +18,20 @@ var ivis;
                 constructor(args) {
                     this.showCaptions = true;
                     //-----------------------------------------------------------------------------------------
+                    this.dblClickTimerEvent = null;
                     this.onClick = d => {
                         d3.event.preventDefault();
-                        this.args.onClick(this.ti(d3.mouse(this.layersSvg)), d);
+                        var m = this.ti(d3.mouse(this.layersSvg));
+                        if (!this.dblClickTimerEvent)
+                            this.dblClickTimerEvent = setTimeout(() => {
+                                this.dblClickTimerEvent = null;
+                                this.args.onClick(m, d);
+                            }, 200);
                     };
                     this.onDblClick = d => {
                         d3.event.preventDefault();
+                        clearTimeout(this.dblClickTimerEvent);
+                        this.dblClickTimerEvent = null;
                         this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d);
                     };
                     // snippets ------------------------------------------------------------------------------
@@ -56,7 +64,7 @@ var ivis;
                     this.updateArcColor = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
-                    this.updateArc = v => v.attr("d", d => this.args.arc(d))
+                    this.updateArc = v => v.attr("d", d => ivis.controller.slide.arc(d))
                         .attr("stroke-width", d => {
                         var hyperAndSelectionScale = this.tr(d);
                         var weightScale = ((d.value || 1) / (this.args.data.value || this.args.data.children.length || 1));
@@ -77,7 +85,11 @@ var ivis;
                         .on("end", () => args.onDragEnd());
                     this.zoom = d3.zoom()
                         .scaleExtent([.1, .9])
-                        .on("zoom", () => console.log(d3.event.transform.k));
+                        .on("zoom", () => {
+                        console.log(d3.event.transform.k);
+                        ivis.controller.slide.magic = eval(name);
+                        ivis.controller.reLayout();
+                    });
                     this.voronoi = d3.voronoi()
                         .x(d => d.cache.re)
                         .y(d => d.cache.im)
@@ -126,7 +138,7 @@ var ivis;
                         .data(allNodes)
                         .enter().append('text')
                         .attr("class", "caption")
-                        .attr("dy", this.args.nodeRadius / 4.5)
+                        .attr("dy", this.args.nodeRadius / 10)
                         .attr("dx", .02)
                         .text(this.args.caption)
                         .call(this.updateText);

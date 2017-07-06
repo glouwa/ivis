@@ -15,8 +15,7 @@ var ivis;
                     args.dataloader(d3h => {
                         var model = d3.hierarchy(d3h).sum(controller.slide.weight);
                         //console.log("loaded ", model.links().length+1, "nodes, and ", model.leaves().length, "links")
-                        this.data = args.layout(model); // data ok. calc init layout
-                        //this.data.data.name = (this.data.data.name?this.data.data.name+" ":" ")+ "(" +(model.links().length+1)+" Nodes)"
+                        this.data = ivis.controller.slide.layout(model);
                         this.create();
                     });
             }
@@ -59,7 +58,6 @@ var ivis;
                     clip: false,
                 });
                 var radius = 470;
-                var dblClickTimerEvent = null;
                 this.view = new ivis.controller.slide.unitDisk({
                     class: 'unitDisc',
                     data: this.data,
@@ -68,16 +66,8 @@ var ivis;
                     onDragStart: (m, n) => this.onDragStart(m, n, this.args.viewTT),
                     onDrag: (s, e, n) => this.onDrag(s, e, n, this.args.viewTT),
                     onDragEnd: () => this.onDragEnd(),
-                    onDblClick: (m, n) => {
-                        if (!dblClickTimerEvent)
-                            dblClickTimerEvent = setTimeout(() => {
-                                dblClickTimerEvent = null;
-                                this.animateTo(m, this.args.viewTT);
-                            }, 300);
-                    },
+                    onDblClick: (m, n) => this.animateTo(m, this.args.viewTT),
                     onClick: (m, n) => {
-                        clearTimeout(dblClickTimerEvent);
-                        dblClickTimerEvent = null;
                         this.view.updateSelection(n);
                         this.args.onNodeSelect(n);
                     },
@@ -98,7 +88,9 @@ var ivis;
                 this.view.updatePositions();
             }
             updateLayout() {
-                this.data = this.args.layout(this.data);
+                this.data.sum(controller.slide.weight);
+                ivis.controller.slide.layout(this.data);
+                this.updatePositions();
             }
             //----------------------------------------------------------------------------------------
             onDragStart(m, n, tt) {
@@ -182,7 +174,11 @@ var ivis;
                 this.onDragStart = (m) => this.dST = clone(this.tp);
                 this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)));
                 this.onDragθ = (s, e) => CassignC(this.tp.θ, setR(e, 1));
-                this.onDragλ = (s, e) => CassignC(this.tp.λ, setR(e, 1));
+                this.onDragλ = (s, e) => {
+                    CassignC(this.tp.λ, setR(e, 1));
+                    this.tp.λ.θ = πify(this.tp.λ.θ);
+                    console.log("λ.θ", CktoCp(this.tp.λ).θ);
+                };
                 this.tp = tp;
             }
         }
@@ -219,7 +215,6 @@ var ivis;
         controller.reCreate = reCreate;
         function reLayout() {
             left.updateLayout();
-            right.updateLayout();
         }
         controller.reLayout = reLayout;
         function reDraw() {

@@ -180,8 +180,9 @@ var ivis;
             arcSelect.value = newArc;
             document.getElementById('slideName').innerHTML = newName;
             controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
-            setDataSource(newDs, false);
-            setLayout(newLs);
+            controller.slide.loader = eval('ivis.model.loaders.' + dataSourceSelect.value);
+            controller.slide.layout = eval('ivis.model.layouts.' + layoutSelect.value);
+            ivis.controller.reCreate();
         }
         controller.next = next;
         //----------------------------------------------------------------------------------------
@@ -194,10 +195,9 @@ var ivis;
             controller.slide.unitDisk = eval(unitDiskName);
             ivis.controller.reCreate();
         }
-        function setDataSource(name, reset = true) {
+        function setDataSource(name) {
             controller.slide.loader = eval('ivis.model.loaders.' + name);
-            if (reset)
-                ivis.controller.reCreate();
+            ivis.controller.reCreate();
         }
         function setSpace(name) {
             controller.slide.space = eval('ivis.controller.' + name);
@@ -205,22 +205,22 @@ var ivis;
         }
         function setLayout(name) {
             controller.slide.layout = eval('ivis.model.layouts.' + name);
-            ivis.controller.reCreate();
-        }
-        function setArc(name) {
-            controller.slide.arc = eval('ivis.ui.' + name);
-            ivis.controller.reCreate();
-        }
-        function setCaption(name) {
-            controller.slide.captions = eval(name);
+            ivis.controller.reLayout();
         }
         function setWeight(name) {
             controller.slide.weight = eval(name);
-            ivis.controller.reCreate();
+            ivis.controller.reLayout();
         }
         function setMagic(name) {
             controller.slide.magic = eval(name);
-            ivis.controller.reCreate();
+            ivis.controller.reLayout();
+        }
+        function setArc(name) {
+            controller.slide.arc = eval('ivis.ui.' + name);
+            ivis.controller.reDraw();
+        }
+        function setCaption(name) {
+            controller.slide.captions = eval(name);
         }
     })(controller = ivis.controller || (ivis.controller = {}));
 })(ivis || (ivis = {}));

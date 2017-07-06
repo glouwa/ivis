@@ -94,9 +94,9 @@ namespace ivis.controller
             { text:"0.9",              value:".9",               },
         ]
         var arcOptions = [            
-            { text:"Negative curvature", value:"arc('1', '0')",     },
-            { text:"Positive curvature", value:"arc('0', '1')",     },
-            { text:"Strait line",        value:"arcLine",           },
+            { text:"Negative curvature", value:"arc('1', '0')",  },
+            { text:"Positive curvature", value:"arc('0', '1')",  },
+            { text:"Strait line",        value:"arcLine",        },
         ]
         var captionOptions = [            
             { text:"Show always",     value:"false",             },
@@ -188,7 +188,7 @@ namespace ivis.controller
 
         var dataSourceSelect = <HTMLInputElement>document.getElementById("dataSourceSelect")
         var layoutSelect     = <HTMLInputElement>document.getElementById("layoutSelect")
-        var arcSelect     = <HTMLInputElement>document.getElementById("arcSelect")
+        var arcSelect        = <HTMLInputElement>document.getElementById("arcSelect")
 
         dataSourceSelect.value = newDs
         layoutSelect.value = newLs
@@ -196,8 +196,9 @@ namespace ivis.controller
         document.getElementById('slideName').innerHTML = newName
 
         slide.arc = eval('ivis.ui.'+arcSelect.value)
-        setDataSource(newDs, false)
-        setLayout(newLs)
+        slide.loader = eval('ivis.model.loaders.'+dataSourceSelect.value)
+        slide.layout = eval('ivis.model.layouts.'+layoutSelect.value)
+        ivis.controller.reCreate()
     }
 
     //----------------------------------------------------------------------------------------
@@ -215,11 +216,10 @@ namespace ivis.controller
         ivis.controller.reCreate()
     }
 
-    function setDataSource(name, reset=true)
+    function setDataSource(name)
     {
-        slide.loader = eval('ivis.model.loaders.'+name)
-        if (reset)
-            ivis.controller.reCreate()
+        slide.loader = eval('ivis.model.loaders.'+name)        
+        ivis.controller.reCreate()
     }
 
     function setSpace(name)
@@ -231,29 +231,29 @@ namespace ivis.controller
     function setLayout(name)
     {
         slide.layout = eval('ivis.model.layouts.'+name)        
-        ivis.controller.reCreate()
-    }
-
-    function setArc(name)
-    {
-        slide.arc = eval('ivis.ui.'+name)        
-        ivis.controller.reCreate()
-    }
-
-    function setCaption(name)
-    {
-        slide.captions = eval(name)
+        ivis.controller.reLayout()
     }
 
     function setWeight(name)
     {
-        slide.weight = eval(name)        
-        ivis.controller.reCreate()
+        slide.weight = eval(name)
+        ivis.controller.reLayout()
     }
 
     function setMagic(name)
     {
         slide.magic = eval(name)
-        ivis.controller.reCreate()
+        ivis.controller.reLayout()
     }
+
+    function setArc(name)
+    {
+        slide.arc = eval('ivis.ui.'+name)        
+        ivis.controller.reDraw()
+    }
+
+    function setCaption(name)
+    {
+        slide.captions = eval(name)
+    }    
 }

@@ -30,11 +30,11 @@ namespace ivis.controller
             this.args  = args
             this.navData = args.navData,
             args.dataloader(d3h => {
+
                 var model = <N>d3.hierarchy(d3h).sum(slide.weight)
                 //console.log("loaded ", model.links().length+1, "nodes, and ", model.leaves().length, "links")
 
-                this.data = args.layout(model) // data ok. calc init layout
-                //this.data.data.name = (this.data.data.name?this.data.data.name+" ":" ")+ "(" +(model.links().length+1)+" Nodes)"
+                this.data = ivis.controller.slide.layout(model)
                 this.create()
             })
         }
@@ -82,8 +82,7 @@ namespace ivis.controller
                 clip:        false,
             })
 
-            var radius = 470
-            var dblClickTimerEvent = null
+            var radius = 470            
             this.view = new ivis.controller.slide.unitDisk({ // view disk
                 class:       'unitDisc',
                 data:        this.data,
@@ -92,19 +91,11 @@ namespace ivis.controller
                 onDragStart: (m:C, n:N) => this.onDragStart(m, n, this.args.viewTT),
                 onDrag:      (s:C, e:C, n:N) => this.onDrag(s, e, n, this.args.viewTT),
                 onDragEnd:   () => this.onDragEnd(),
-                onDblClick:     (m:C, n:N) => {
-                    if (!dblClickTimerEvent)
-                        dblClickTimerEvent = setTimeout(() => {
-                            dblClickTimerEvent = null
-                            this.animateTo(m, this.args.viewTT)
-                        }, 300)
-                },
-                onClick:  (m:C, n:N) => {
-                    clearTimeout(dblClickTimerEvent)
-                    dblClickTimerEvent = null
-                    this.view.updateSelection(n)
-                    this.args.onNodeSelect(n)
-                },
+                onDblClick:  (m:C, n:N) => this.animateTo(m, this.args.viewTT),
+                onClick:     (m:C, n:N) => {
+                                 this.view.updateSelection(n)
+                                 this.args.onNodeSelect(n)
+                             },
                 arc:         this.args.arc,
                 caption:     this.caption,
                 labelFilter: (n:N) => CktoCp(n.cache).r > .7,
@@ -127,7 +118,9 @@ namespace ivis.controller
 
         private updateLayout() : void
         {
-            this.data = this.args.layout(this.data)
+            this.data.sum(slide.weight)
+            ivis.controller.slide.layout(this.data)
+            this.updatePositions()
         }
 
         //----------------------------------------------------------------------------------------
@@ -239,7 +232,11 @@ namespace ivis.controller
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
-        onDragλ =        (s:C, e:C) => CassignC(this.tp.λ, setR(e, 1))
+        onDragλ =        (s:C, e:C) => {
+                              CassignC(this.tp.λ, setR(e, 1))
+                              this.tp.λ.θ = πify(this.tp.λ.θ)
+                              console.log("λ.θ"CktoCp(this.tp.λ).θ)
+                         }
     }
 
     var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:-3/Math.PI, r:1}) }
@@ -279,7 +276,6 @@ namespace ivis.controller
     export function reLayout()
     {
         left.updateLayout()
-        right.updateLayout()
     }
 
     export function reDraw()

@@ -33,7 +33,8 @@ var ivis;
             }
             function loadFromFile(ok, file) {
                 if (file.endsWith('.xml') ||
-                    file.endsWith('.json'))
+                    file.endsWith('.json') ||
+                    file.endsWith('.rdf'))
                     if (file.endsWith('direct.json'))
                         d3.json(file, (error, treeData) => ok(treeData));
                     else

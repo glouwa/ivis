@@ -53,7 +53,11 @@ namespace ivis.ui.D3
             this.zoom = d3.zoom()
                 .scaleExtent([.1, .9])
               //.wheelDelta(() => -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 500)
-                .on("zoom", ()=> console.log(d3.event.transform.k))
+                .on("zoom", ()=> {
+                    console.log(d3.event.transform.k)
+                    ivis.controller.slide.magic = eval(name)
+                    ivis.controller.reLayout()
+                })
 
             this.voronoi = d3.voronoi()
                 .x(d=> d.cache.re)
@@ -115,7 +119,7 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append('text')
                     .attr("class", "caption")
-                    .attr("dy", this.args.nodeRadius / 4.5)
+                    .attr("dy", this.args.nodeRadius / 10)
                     .attr("dx", .02)
                     .text(this.args.caption)
                     .call(this.updateText)
@@ -212,13 +216,24 @@ namespace ivis.ui.D3
 
         //-----------------------------------------------------------------------------------------
 
+        private dblClickTimerEvent = null
         private onClick = d => {            
-            d3.event.preventDefault()            
-            this.args.onClick(this.ti(d3.mouse(this.layersSvg)), d)
+            d3.event.preventDefault()
+            var m = this.ti(d3.mouse(this.layersSvg))
+            if (!this.dblClickTimerEvent)
+                this.dblClickTimerEvent = setTimeout(() => {
+                    this.dblClickTimerEvent = null
+
+                    this.args.onClick(m, d)
+                }, 200)
         }
 
         private onDblClick = d => {            
             d3.event.preventDefault()            
+
+            clearTimeout(this.dblClickTimerEvent)
+            this.dblClickTimerEvent = null
+
             this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d)
         }
 
@@ -260,7 +275,7 @@ namespace ivis.ui.D3
                                                                        ? d.linkColor
                                                                        : undefined))
 
-        private updateArc        = v=> v.attr("d",            d=> this.args.arc(d))
+        private updateArc        = v=> v.attr("d",            d=> ivis.controller.slide.arc(d))
                                                                        .attr("stroke-width", d=> {
                                                                             var hyperAndSelectionScale = this.tr(d)
                                                                             var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
