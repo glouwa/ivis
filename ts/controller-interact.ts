@@ -215,6 +215,13 @@ namespace ivis.controller
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P)
         onDragθ:         (s:C, e:C) => {}
+        onDragλ =        (s:C, e:C) => {
+                             CassignC(this.tp.λ, setR(e, 1))
+                             var newλ = { θ:πify(CktoCp(this.tp.λ).θ), r:1 }
+                             var normScale = newλ.θ / (2*Math.PI)
+                             ivis.controller.slide.magic = normScale
+                             ivis.controller.reLayout()
+                         }
     }
 
     export class PanTransformation implements Transformation
@@ -223,7 +230,7 @@ namespace ivis.controller
         dST : any
         constructor(tp)  { this.tp = tp }
         transformPoint = (n:N) => {
-                             var s = CktoCp(this.tp.λ).θ
+                             var s = CktoCp(this.tp.λ).θ / Math.PI
                              var w = CktoCp(this.tp.θ).θ
                              var zp = CktoCp(n.z)
                              var rz = CptoCk({ θ:zp.θ+w, r:zp.r })
@@ -233,13 +240,11 @@ namespace ivis.controller
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C) => {
-                              CassignC(this.tp.λ, setR(e, 1))
-                              this.tp.λ.θ = πify(this.tp.λ.θ)
-                              console.log("λ.θ"CktoCp(this.tp.λ).θ)
+                             CassignC(this.tp.λ, setR(e, 1))
                          }
     }
 
-    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:-3/Math.PI, r:1}) }
+    var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:Math.PI, r:1}) }
     //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
     var left = null

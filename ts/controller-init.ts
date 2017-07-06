@@ -6,7 +6,7 @@ namespace ivis.controller
     slides_.index = [
         { ds:"fromFile('carnivora-en.xml')", ls:'layoutBergé',       name:"Example treeml file<br><small>Tree of Life - Carnivores. |N| = 364</small>" },
         { ds:"fromFile('flare.csv')",        ls:'layoutBergé',       name:"Example csv file<br><small>D3 file format. |N| = 252</small>" },
-        { ds:"fromFile('sample-skos.xml')",  ls:'layoutBergé',       name:"Example skos file (VERY SLOW)<br><small>|N| = 2405. USE λ = ~0.6 !</small>" },
+        { ds:"fromFile('sample-skos.xml')",  ls:'layoutBergé',       name:"Example skos file (VERY SLOW)<br><small>|N| = 2405. Set λ to ~10h !</small>" },
         { ds:"nTreeAtFirst",                 ls:'layoutBergé',       name:"Deep path example<br><small>|N| = 101</small>" },
         { ds:"code",                         ls:'layoutBergé',       name:"Reflection <br><small>Namespaces and classes. |N| = 49</small>" },
         { ds:"nTree",                        ls:'layoutBergé',       name:"Balanced tree <br><small>|N| = 2⁷ -1 = 127</small>" },
@@ -26,8 +26,8 @@ namespace ivis.controller
         { ds:"fromFile('paarhufer.xml')",    ls:'layoutBergé',       name:"Paarhufer" },
         //{ ds:"fromFile('mammal.xml')",     ls:'layoutBergé',       name:"Mammals" },
     ]
-    var slides = null
 
+    var slides = null
     export var slide = {
         initUi:null,
         unitDisk:null,
@@ -49,9 +49,12 @@ namespace ivis.controller
             { text:"sample.xml",     value:"fromFile('sample.xml')"        },
             { text:"sample.json",    value:"fromFile('sample.json')"       },
             { text:"sample-skos.xml",value:"fromFile('sample-skos.xml')",  },
-            { text:"Tree of life 1", value:"fromFile('carnivora-en.xml')"  },
-            { text:"Tree of life 2", value:"fromFile('primates.xml')"      },
-            { text:"Tree of life 3", value:"fromFile('placentalia.xml')"   },
+            { text:"Tree of life 1", value:"fromFile('carnivora-en.xml')", },
+            { text:"Tree of life 2", value:"fromFile('carnivora-de.xml')", },
+            { text:"Tree of life 3", value:"fromFile('primates.xml')",     },
+            { text:"Tree of life 4", value:"fromFile('whales.xml')",       },
+            { text:"Tree of life 5", value:"fromFile('paarhufer.xml')",    },
+            { text:"Tree of life 6", value:"fromFile('placentalia.xml')",  },
             { text:"Modules",        value:"code",                         },
             { text:"⋆ Star 1+4",     value:"star_(5)",                     },
             { text:"⋆ Star 1+50",    value:"star_(50)",                    },

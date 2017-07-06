@@ -52,11 +52,9 @@ namespace ivis.ui.D3
 
             this.zoom = d3.zoom()
                 .scaleExtent([.1, .9])
-              //.wheelDelta(() => -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 500)
                 .on("zoom", ()=> {
                     console.log(d3.event.transform.k)
-                    ivis.controller.slide.magic = eval(name)
-                    ivis.controller.reLayout()
+                    args.onDrag(null, this.ti(d3.mouse(this.layersSvg)), { name:'λ' })
                 })
 
             this.voronoi = d3.voronoi()
@@ -111,6 +109,7 @@ namespace ivis.ui.D3
                     .on("mouseover", d=> this.updateHover(d))                    
                     .on("mouseout", d=> this.updateHover(d))                    
                     .call(this.drag)
+                    .call(this.zoom)
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
 

@@ -158,6 +158,13 @@ var ivis;
                 this.transformPoint = (n) => h2e(h, n.z);
                 this.onDragStart = (m) => this.dST = clone(this.tp);
                 this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P);
+                this.onDragλ = (s, e) => {
+                    CassignC(this.tp.λ, setR(e, 1));
+                    var newλ = { θ: πify(CktoCp(this.tp.λ).θ), r: 1 };
+                    var normScale = newλ.θ / (2 * Math.PI);
+                    ivis.controller.slide.magic = normScale;
+                    ivis.controller.reLayout();
+                };
                 this.tp = tp;
             }
         }
@@ -165,7 +172,7 @@ var ivis;
         class PanTransformation {
             constructor(tp) {
                 this.transformPoint = (n) => {
-                    var s = CktoCp(this.tp.λ).θ;
+                    var s = CktoCp(this.tp.λ).θ / Math.PI;
                     var w = CktoCp(this.tp.θ).θ;
                     var zp = CktoCp(n.z);
                     var rz = CptoCk({ θ: zp.θ + w, r: zp.r });
@@ -176,14 +183,12 @@ var ivis;
                 this.onDragθ = (s, e) => CassignC(this.tp.θ, setR(e, 1));
                 this.onDragλ = (s, e) => {
                     CassignC(this.tp.λ, setR(e, 1));
-                    this.tp.λ.θ = πify(this.tp.λ.θ);
-                    console.log("λ.θ", CktoCp(this.tp.λ).θ);
                 };
                 this.tp = tp;
             }
         }
         controller.PanTransformation = PanTransformation;
-        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: -3 / Math.PI, r: 1 }) };
+        var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: Math.PI, r: 1 }) };
         //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
         var left = null;
         var right = null;
