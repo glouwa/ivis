@@ -13,7 +13,10 @@ var ivis;
                 this.args = args;
                 this.navData = args.navData,
                     args.dataloader(d3h => {
-                        this.data = args.layout(d3.hierarchy(d3h).sum(controller.slide.weight)); // data ok. calc init layout                
+                        var model = d3.hierarchy(d3h).sum(controller.slide.weight);
+                        //console.log("loaded ", model.links().length+1, "nodes, and ", model.leaves().length, "links")
+                        this.data = args.layout(model); // data ok. calc init layout
+                        //this.data.data.name = (this.data.data.name?this.data.data.name+" ":" ")+ "(" +(model.links().length+1)+" Nodes)"
                         this.create();
                     });
             }
@@ -97,6 +100,7 @@ var ivis;
             updateLayout() {
                 this.data = this.args.layout(this.data);
             }
+            //----------------------------------------------------------------------------------------
             onDragStart(m, n, tt) {
                 if (this.intervallEvent)
                     return;
@@ -135,11 +139,19 @@ var ivis;
                 }, 1);
             }
             caption(n) {
-                if (n.name)
-                    return n.name;
-                if (n.data && n.data.name)
-                    return n.data.name;
-                return "";
+                function findName(n) {
+                    if (n.name)
+                        return n.name;
+                    if (n.data && n.data.name)
+                        return n.data.name;
+                    return "";
+                }
+                function nodeCount(n) {
+                    if (n.links && !n.parent && n.children)
+                        var count = n.links().length + 1;
+                    return count ? " " + count + " Nodes" : "";
+                }
+                return findName(n) + nodeCount(n);
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);
@@ -199,7 +211,8 @@ var ivis;
                 parent: uiRoot,
                 onNodeSelect: (n) => {
                     if (document.getElementById('wiki'))
-                        document.getElementById('wiki').src = "https://en.m.wikipedia.org/wiki/" + n.data.name;
+                        document.getElementById('wiki').src =
+                            "https://en.m.wikipedia.org/wiki/" + n.data.name;
                 }
             });
         }
@@ -210,8 +223,7 @@ var ivis;
         }
         controller.reLayout = reLayout;
         function reDraw() {
-            left.updatePositions();
-            right.updatePositions();
+            left.view.updatePositions();
         }
         controller.reDraw = reDraw;
     })(controller = ivis.controller || (ivis.controller = {}));

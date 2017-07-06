@@ -62,7 +62,7 @@ var ivis;
                 });
             }
             loaders.nTreeAtFirst = nTreeAtFirst;
-            function nTree(ok, depth = 3, childs = 8) {
+            function nTree(ok, depth = 6, childs = 2) {
                 oneNode(d => {
                     function processNode(parent, l) {
                         if (l >= depth)

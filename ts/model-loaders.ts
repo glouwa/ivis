@@ -65,7 +65,7 @@ namespace ivis.model.loaders {
         })
     }
 
-    export function nTree(ok, depth=3, childs=8) {
+    export function nTree(ok, depth=6, childs=2) {
         oneNode(d=> {
             function processNode(parent, l)
             {

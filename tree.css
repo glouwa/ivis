@@ -9,7 +9,7 @@ svg {
 }
 
 .cell {
-    stroke:#eee; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke:#eaeaea; /*#b8b8b8;///#daeccf; #d7ccc8; */
     stroke-width: 0.001;
     pointer-events:visible;
 }
@@ -31,7 +31,7 @@ svg {
 }
 
 .arc {
-    stroke: #bcaaa4; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
+    stroke: #8d6e63 ;//#bcaaa4; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
     fill: none;
     pointer-events: none;
 }

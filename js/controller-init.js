@@ -4,20 +4,30 @@ var ivis;
     var controller;
     (function (controller) {
         var slideNr = -1;
-        var slides = [
-            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Carnivores" },
-            { ds: "code", ls: 'layoutBergé', name: "Code (modules)" },
-            { ds: "fromFile('sample.xml')", ls: 'layoutBuchheim', name: "data from file" },
-            { ds: "nTree", ls: 'layoutBergé', name: "Wedge layout" },
-            { ds: "fromFile('flare.csv')", ls: 'layoutBuchheim', name: "Point transformation seems to work" },
-            { ds: "nTree", ls: 'layoutBuchheim', name: "Full tree. Nodes on unit circle. |Tree| = 2⁸ -1 = 124" },
-            { ds: "nTreeAtFirst", ls: 'layoutBuchheim', name: "Center is never magnified" },
-            { ds: "star_(5)", ls: 'layoutUnitVectors', name: "Unit vectors " },
-            { ds: "deepStar", ls: 'layoutUnitLines', name: "Unit lines" },
-            { ds: "star_(50)", ls: 'layoutSpiral', name: "Star spiral" },
-            { ds: "path_(50)", ls: 'layoutSpiral', name: "Path spiral" },
-            { ds: "path_(500)", ls: 'layoutSpiral', name: "Hypnotoad. 1000 nodes" },
+        var slides_ = {};
+        slides_.index = [
+            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Example treeml file<br><small>Tree of Life - Carnivores. |N| = 364</small>" },
+            { ds: "fromFile('flare.csv')", ls: 'layoutBergé', name: "Example csv file<br><small>D3 file format. |N| = 252</small>" },
+            { ds: "fromFile('sample-skos.xml')", ls: 'layoutBergé', name: "Example skos file (VERY SLOW)<br><small>|N| = 2405. USE λ = ~0.6 !</small>" },
+            { ds: "nTreeAtFirst", ls: 'layoutBergé', name: "Deep path example<br><small>|N| = 101</small>" },
+            { ds: "code", ls: 'layoutBergé', name: "Reflection <br><small>Namespaces and classes. |N| = 49</small>" },
+            { ds: "nTree", ls: 'layoutBergé', name: "Balanced tree <br><small>|N| = 2⁷ -1 = 127</small>" },
+            { ds: "nTree", ls: 'layoutBuchheim', name: "Balanced tree<br><small>Buchheim et al. layout. |N| = 2⁷ -1 = 127</small>" },
+            { ds: "star_(5)", ls: 'layoutUnitVectors', arc: "arc('0', '1')", name: "Unit vectors<br><small>|N| = 5</small>" },
+            { ds: "deepStar", ls: 'layoutUnitLines', arc: "arc('0', '1')", name: "Unit lines<br><small>|N| = 125</small>" },
+            { ds: "star_(50)", ls: 'layoutSpiral', name: "Ball feeling<br><small>Negative curvature</small>" },
+            { ds: "star_(50)", ls: 'layoutSpiral', arc: "arc('0', '1')", name: "Ball feeling<br><small>Positive curvature</small>" },
+            { ds: "path_(50)", ls: 'layoutSpiral', name: "Path spiral<br><small>|N| = 51</small>" },
+            { ds: "path_(500)", ls: 'layoutSpiral', name: "Path spiral<br><small>|N| = 501</small>" },
         ];
+        slides_.wiki = [
+            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Carnivora" },
+            { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Raubtiere" },
+            { ds: "fromFile('primates.xml')", ls: 'layoutBergé', name: "Primates" },
+            { ds: "fromFile('whales.xml')", ls: 'layoutBergé', name: "Whales" },
+            { ds: "fromFile('paarhufer.xml')", ls: 'layoutBergé', name: "Paarhufer" },
+        ];
+        var slides = null;
         controller.slide = {
             initUi: null,
             unitDisk: null,
@@ -29,7 +39,8 @@ var ivis;
             magic: null,
             space: null,
         };
-        function init() {
+        function init(s) {
+            slides = slides_[s];
             var rendererOptions = ['D3', 'Plexx', 'PlexxDbg'];
             var loaderOptions = [
                 { text: "flare.csv (d3)", value: "fromFile('flare.csv')" },
@@ -43,11 +54,11 @@ var ivis;
                 { text: "⋆ Star 1+4", value: "star_(5)", },
                 { text: "⋆ Star 1+50", value: "star_(50)", },
                 { text: "⋆ Star 1+500", value: "star_(500)", },
-                { text: "⋆ Star 4✕50", value: "deepStar", },
+                { text: "⋆ Star 4✕30", value: "deepStar", },
                 { text: "⊶ Path 50", value: "path_(50)", },
                 { text: "⊶ Path 500", value: "path_(500)", },
                 { text: "⊶ Path 5000", value: "path_(5000)", },
-                { text: "𝕋 5³ -1", value: "nTree", },
+                { text: "𝕋 2⁷ -1", value: "nTree", },
                 { text: "𝕋 1+10✕10", value: "nTreeAtFirst", },
                 { text: "User Uploaded", value: "fromFile('user-uploaded.xml')" },
             ];
@@ -158,11 +169,17 @@ var ivis;
             var newDs = slides[slideNr % slides.length].ds;
             var newLs = slides[slideNr % slides.length].ls;
             var newName = slides[slideNr % slides.length].name;
+            var newArc = slides[slideNr % slides.length].arc
+                ? slides[slideNr % slides.length].arc
+                : ("arc('1', '0')");
             var dataSourceSelect = document.getElementById("dataSourceSelect");
             var layoutSelect = document.getElementById("layoutSelect");
+            var arcSelect = document.getElementById("arcSelect");
             dataSourceSelect.value = newDs;
             layoutSelect.value = newLs;
+            arcSelect.value = newArc;
             document.getElementById('slideName').innerHTML = newName;
+            controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
             setDataSource(newDs, false);
             setLayout(newLs);
         }

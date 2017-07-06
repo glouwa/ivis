@@ -24,7 +24,7 @@
     <script type="text/javascript" src="js/ui-plexx.js"></script>
 </head>
 
-<body onload="ivis.controller.init()">
+<body onload="ivis.controller.init('wiki')">
     <div class="split" style="width:55%">
         <div id="header">
             <span id="slide">
@@ -59,11 +59,11 @@
                 <div class="selectCaption">Tree layout</div>
                 <select id="layoutSelect"></select></span>
 
-            <span id="config">
+            <span id="config"  style="display:none">
                 <div class="selectCaption">File upload</div>
                 <input id="userfile" type="file" name="userfile" accept=".xml"></span>
 
-            <span id="config">
+            <span id="config"  style="display:none">
                 <div class="selectCaption">Tree structure</div>
                 <select id="dataSourceSelect"></select></span>
             <span>

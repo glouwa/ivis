@@ -85,38 +85,10 @@ var ivis;
                 return n;
             }
             layouts.layoutLamping = layoutLamping;
-            /*
-            function layoutLamping_old(root) {
-                dfs(root, (n, idx)=> {
-        
-                    var wedge = { p:{ re:0, im:0 }, m:{ re:1, im:0 }, a:2*Math.PI }
-                    if (n.parent)
-                        wedge = n.parent.wedge
-        
-                    n.x = wedge.p.re
-                    n.y = wedge.p.im
-        
-                    if (n.children) {
-                        var ca = (wedge.a / n.children.length) * idx
-        
-                        var s = .12
-                        var it = ((1-s*s) * Math.sin(ca))/(2*s)
-                        var d = Math.sqrt(Math.pow(it,2)+1) - it
-        
-                        var np = h2e(wedge.p, one, CmulR(wedge.m, d))
-                        n.wedge = {
-                            p:np,
-                            m:h2e(Cneg(np), one, h2e(wedge.p, one, wedge.m)),
-                            a:Cklog(h2e({ re:-d, im:0 }, one, Cpow(ca))).im
-                        }
-                    }
-                })
-                return root
-            }*/
             function layoutBergé(n) {
                 var π = Math.PI;
-                var startAngle = 0.5 * π;
-                var defAngleWidth = 1.98 * π;
+                var startAngle = 1.07 * π;
+                var defAngleWidth = 1.999 * π;
                 function wedgeTranslate(w, P) {
                     var t = makeT(P, one);
                     var pα = { re: Math.cos(w.α), im: Math.sin(w.α) };
@@ -144,8 +116,8 @@ var ivis;
                     }
                     var currentAngle = wedge.α;
                     for (var c of n.children || []) {
-                        var α = currentAngle;
-                        currentAngle += angleWidth * ((c.value || 1) / (n.value || n.children.length));
+                        var α = currentAngle; //   +.5
+                        currentAngle += angleWidth * ((c.value || 1) / (n.value || n.children.length || 1));
                         var Ω = πify(currentAngle);
                         layoutNode(c, { α: α, Ω: Ω }, length);
                     }

@@ -30,7 +30,11 @@ namespace ivis.controller
             this.args  = args
             this.navData = args.navData,
             args.dataloader(d3h => {
-                this.data = args.layout(<N>d3.hierarchy(d3h).sum(slide.weight)) // data ok. calc init layout                
+                var model = <N>d3.hierarchy(d3h).sum(slide.weight)
+                //console.log("loaded ", model.links().length+1, "nodes, and ", model.leaves().length, "links")
+
+                this.data = args.layout(model) // data ok. calc init layout
+                //this.data.data.name = (this.data.data.name?this.data.data.name+" ":" ")+ "(" +(model.links().length+1)+" Nodes)"
                 this.create()
             })
         }
@@ -126,6 +130,8 @@ namespace ivis.controller
             this.data = this.args.layout(this.data)
         }
 
+        //----------------------------------------------------------------------------------------
+
         private onDragStart(m:C, n:N, tt:Transformation) : void
         {
             if (this.intervallEvent) return
@@ -174,9 +180,18 @@ namespace ivis.controller
 
         private caption(n:N) : string
         {
-            if (n.name) return n.name
-            if (n.data && n.data.name) return n.data.name
-            return ""
+            function findName(n:N) {
+                if (n.name) return n.name
+                if (n.data && n.data.name) return n.data.name
+                return ""
+            }
+            function nodeCount(n:N) {
+                if (n.links && !n.parent && n.children)
+                    var count = n.links().length+1
+                return count?  " " + count + " Nodes" : ""
+            }
+
+            return findName(n) + nodeCount(n)
         }
 
         private nodeR(np:C) : number
@@ -255,7 +270,8 @@ namespace ivis.controller
             parent:       uiRoot,
             onNodeSelect: (n:N) => {
                 if (document.getElementById('wiki'))
-                    document.getElementById('wiki').src = "https://en.m.wikipedia.org/wiki/"+n.data.name
+                    document.getElementById('wiki').src =
+                        "https://en.m.wikipedia.org/wiki/"+n.data.name
             }
         })
     }
@@ -268,8 +284,7 @@ namespace ivis.controller
 
     export function reDraw()
     {
-        left.updatePositions()
-        right.updatePositions()
+        left.view.updatePositions()
     }
 }
 

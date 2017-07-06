@@ -34,6 +34,7 @@ namespace ivis.ui.D3
         hover: N
 
         drag : any
+        zoom : any
         voronoi : any
         voroLayout : any
 
@@ -48,6 +49,11 @@ namespace ivis.ui.D3
                 .on("start", () => args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg)), dragStartElement = d3mouseElem()))
                 .on("drag",  () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
                 .on("end",   () => args.onDragEnd())
+
+            this.zoom = d3.zoom()
+                .scaleExtent([.1, .9])
+              //.wheelDelta(() => -d3.event.deltaY * (d3.event.deltaMode ? 120 : 1) / 500)
+                .on("zoom", ()=> console.log(d3.event.transform.k))
 
             this.voronoi = d3.voronoi()
                 .x(d=> d.cache.re)
@@ -109,8 +115,8 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append('text')
                     .attr("class", "caption")
-                    .attr("dy", this.args.nodeRadius / 10)
-                    .attr("dx", .01)
+                    .attr("dy", this.args.nodeRadius / 4.5)
+                    .attr("dx", .02)
                     .text(this.args.caption)
                     .call(this.updateText)
 
@@ -124,8 +130,7 @@ namespace ivis.ui.D3
             this.cells = this.cellLayer.selectAll(".cell")
                 .data(this.voroLayout.polygons())
                 .enter().append('path')
-                    .attr("class", "cell")
-                    //.attr("fill", d => (d.data.children?'#fff':'#f5fef0')) //'rgba(150, 202, 152, .05)'
+                    .attr("class", "cell")                    
                     .on("dblclick", d=> this.onDblClick(d.data))
                     .on("click", d=> this.onClick(d.data))
                     .on("mouseover", d=> this.updateHover(d.data))
@@ -133,6 +138,7 @@ namespace ivis.ui.D3
                     .call(this.updateCell)
                     .call(this.updateCellColor)
                     .call(this.drag)
+                    .call(this.zoom)
         }
 
         updatePositions() : void
@@ -255,7 +261,12 @@ namespace ivis.ui.D3
                                                                        : undefined))
 
         private updateArc        = v=> v.attr("d",            d=> this.args.arc(d))
-                                        .attr("stroke-width", d=> this.tr(d) / 130)
+                                                                       .attr("stroke-width", d=> {
+                                                                            var hyperAndSelectionScale = this.tr(d)
+                                                                            var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
+                                                                            return hyperAndSelectionScale  * weightScale / 40 + .0017
+
+                                                                        })
         private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
                                         .attr("visibility",   d=> ((this.args.labelFilter(d) || !this.showCaptions)&&d.parent&&!d.isSelected)
                                                                        ? 'hidden'

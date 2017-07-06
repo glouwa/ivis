@@ -57,7 +57,11 @@ var ivis;
                         ? d.linkColor
                         : undefined));
                     this.updateArc = v => v.attr("d", d => this.args.arc(d))
-                        .attr("stroke-width", d => this.tr(d) / 130);
+                        .attr("stroke-width", d => {
+                        var hyperAndSelectionScale = this.tr(d);
+                        var weightScale = ((d.value || 1) / (this.args.data.value || this.args.data.children.length || 1));
+                        return hyperAndSelectionScale * weightScale / 40 + .0017;
+                    });
                     this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d))
                         .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent && !d.isSelected)
                         ? 'hidden'
@@ -71,6 +75,9 @@ var ivis;
                         .on("start", () => args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg)), dragStartElement = d3mouseElem()))
                         .on("drag", () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
                         .on("end", () => args.onDragEnd());
+                    this.zoom = d3.zoom()
+                        .scaleExtent([.1, .9])
+                        .on("zoom", () => console.log(d3.event.transform.k));
                     this.voronoi = d3.voronoi()
                         .x(d => d.cache.re)
                         .y(d => d.cache.im)
@@ -119,8 +126,8 @@ var ivis;
                         .data(allNodes)
                         .enter().append('text')
                         .attr("class", "caption")
-                        .attr("dy", this.args.nodeRadius / 10)
-                        .attr("dx", .01)
+                        .attr("dy", this.args.nodeRadius / 4.5)
+                        .attr("dx", .02)
                         .text(this.args.caption)
                         .call(this.updateText);
                     this.arcs = this.arcLayer.selectAll(".arc")
@@ -139,7 +146,8 @@ var ivis;
                         .on("mouseout", d => this.updateHover(d.data))
                         .call(this.updateCell)
                         .call(this.updateCellColor)
-                        .call(this.drag);
+                        .call(this.drag)
+                        .call(this.zoom);
                 }
                 updatePositions() {
                     this.nodes.call(this.updateNode);
