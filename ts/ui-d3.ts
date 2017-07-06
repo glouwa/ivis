@@ -52,6 +52,7 @@ namespace ivis.ui.D3
 
             this.zoom = d3.zoom()
                 .scaleExtent([.1, .9])
+                .filter(()=> d3.event.type=='wheel')
                 .on("zoom", ()=> {
                     console.log(d3.event.transform.k)
                     args.onDrag(null, this.ti(d3.mouse(this.layersSvg)), { name:'λ' })
@@ -84,7 +85,7 @@ namespace ivis.ui.D3
             this.layersSvg = this.layers._groups[0][0]
             this.cellLayer = this.layers.append('g')
             this.linkLayer = this.layers.append('g')
-            this.arcLayer = this.layers.append('g')
+            this.arcLayer  = this.layers.append('g')
             this.nodeLayer = this.layers.append('g')
             this.textLayer = this.layers.append('g')
 
@@ -103,16 +104,15 @@ namespace ivis.ui.D3
                 .data(allNodes)
                 .enter().append("circle")
                     .attr("class", "node")
-                    .attr("r", d => this.nodeRi(d))                    
-                    .on("dblclick", d=> this.onDblClick(d))
-                    .on("click", d=> this.onClick(d))
+                    .attr("r",       d=> this.nodeRi(d))
+                    .on("dblclick",  d=> this.onDblClick(d))
+                    .on("click",     d=> this.onClick(d))
                     .on("mouseover", d=> this.updateHover(d))                    
-                    .on("mouseout", d=> this.updateHover(d))                    
+                    .on("mouseout",  d=> this.updateHover(d))
                     .call(this.drag)
                     .call(this.zoom)
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
-
 
             this.captions = this.textLayer.selectAll(".caption")
                 .data(allNodes)
@@ -134,10 +134,10 @@ namespace ivis.ui.D3
                 .data(this.voroLayout.polygons())
                 .enter().append('path')
                     .attr("class", "cell")                    
-                    .on("dblclick", d=> this.onDblClick(d.data))
-                    .on("click", d=> this.onClick(d.data))
+                    .on("dblclick",  d=> this.onDblClick(d.data))
+                    .on("click",     d=> this.onClick(d.data))
                     .on("mouseover", d=> this.updateHover(d.data))
-                    .on("mouseout", d=> this.updateHover(d.data))                    
+                    .on("mouseout",  d=> this.updateHover(d.data))
                     .call(this.updateCell)
                     .call(this.updateCellColor)
                     .call(this.drag)
@@ -275,12 +275,10 @@ namespace ivis.ui.D3
                                                                        : undefined))
 
         private updateArc        = v=> v.attr("d",            d=> ivis.controller.slide.arc(d))
-                                                                       .attr("stroke-width", d=> {
-                                                                            var hyperAndSelectionScale = this.tr(d)
-                                                                            var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
-                                                                            return hyperAndSelectionScale  * weightScale / 40 + .0017
+                                        .attr("stroke-width", d=> {    var hyperAndSelectionScale = this.tr(d)
+                                                                       var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
+                                                                       return hyperAndSelectionScale  * weightScale / 40 + .0017})
 
-                                                                        })
         private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
                                         .attr("visibility",   d=> ((this.args.labelFilter(d) || !this.showCaptions)&&d.parent&&!d.isSelected)
                                                                        ? 'hidden'

@@ -85,6 +85,7 @@ var ivis;
                         .on("end", () => args.onDragEnd());
                     this.zoom = d3.zoom()
                         .scaleExtent([.1, .9])
+                        .filter(() => d3.event.type == 'wheel')
                         .on("zoom", () => {
                         console.log(d3.event.transform.k);
                         args.onDrag(null, this.ti(d3.mouse(this.layersSvg)), { name: 'λ' });

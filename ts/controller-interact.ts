@@ -30,10 +30,7 @@ namespace ivis.controller
             this.args  = args
             this.navData = args.navData,
             args.dataloader(d3h => {
-
                 var model = <N>d3.hierarchy(d3h).sum(slide.weight)
-                //console.log("loaded ", model.links().length+1, "nodes, and ", model.leaves().length, "links")
-
                 this.data = ivis.controller.slide.layout(model)
                 this.create()
             })
