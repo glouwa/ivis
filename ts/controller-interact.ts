@@ -240,7 +240,16 @@ namespace ivis.controller
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C) => {
-                             CassignC(this.tp.λ, setR(e, 1))
+                             if (ivis.controller.slide.space == "PanTransformation") {
+                                CassignC(this.tp.λ, setR(e, 1))
+                             }
+                             else {
+                                 CassignC(this.tp.λ, setR(e, 1))
+                                 var newλ = { θ:πify(CktoCp(this.tp.λ).θ), r:1 }
+                                 var normScale = newλ.θ / (2*Math.PI)
+                                 ivis.controller.slide.magic = normScale
+                                 ivis.controller.reLayout()
+                             }
                          }
     }
 
