@@ -51,11 +51,10 @@ namespace ivis.ui.D3
                 .on("end",   () => args.onDragEnd())
 
             this.zoom = d3.zoom()
-                .scaleExtent([.1, .9])
+                .scaleExtent([0, Math.PI*2])
                 .filter(()=> d3.event.type=='wheel')
                 .on("zoom", ()=> {
-                    console.log(d3.event.transform.k)
-                    args.onDrag(null, this.ti(d3.mouse(this.layersSvg)), { name:'λ' })
+                    args.onDrag(null, CptoCk({ θ:d3.event.transform.k, r:1 }), { name:'λ' })
                 })
 
             this.voronoi = d3.voronoi()
