@@ -84,7 +84,7 @@ var ivis;
                         .on("drag", () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
                         .on("end", () => args.onDragEnd());
                     this.zoom = d3.zoom()
-                        .scaleExtent([0, 2])
+                        .scaleExtent([.5, 1.5])
                         .filter(() => d3.event.type == 'wheel')
                         .on("zoom", () => args.onDrag(null, CptoCk({ θ: d3.event.transform.k * Math.PI * 2 - Math.PI, r: 1 }), { name: 'λ' }));
                     this.voronoi = d3.voronoi()
