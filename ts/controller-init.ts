@@ -106,6 +106,7 @@ namespace ivis.controller
             { text:"Hide on drag",    value:"true",              },
         ]
 
+        
         d3.select('#rendererSelect')
             .on('change', ()=> setRenderer(d3.event.target.value))
             .selectAll('option')
