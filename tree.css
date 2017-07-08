@@ -4,24 +4,27 @@ svg {
 
 .node {
     fill: #a5d6a7;
-    stroke: #5eb561; /* #a1887f; */
+    stroke: #5eb561;
     stroke-width: .003;    
+    pointer-events:none;
 }
 
 .cell {
-    stroke:#eaeaea; /*#b8b8b8;///#daeccf; #d7ccc8; */
+    stroke:#eaeaea;
     stroke-width: 0.001;
-    pointer-events:visible;
+    pointer-events:none;
 }
 
 .caption {
     text-transform: uppercase;
     font-size: 0.025pt;
-    dominant-baseline: middle;
-    pointer-events: none;
+    dominant-baseline: middle;    
     user-select: none;
     cursor: default;
     letter-spacing: 0.11em;
+    pointer-events: none;
+
+    text-rendering:optimizeSpeed;
 
     paint-order:stroke;
     stroke: #fff;
@@ -31,14 +34,17 @@ svg {
 }
 
 .arc {
-    stroke: #8d6e63 ;//#bcaaa4; /*#ddd; #b8b8b8;///#daeccf; #d7ccc8; */
+    stroke: #8d6e63;
     fill: none;
     pointer-events: none;
 }
 
-.background-circle {
-    fill: none; //transparent; //#f9fbe7;
+.background-circle {    
+    fill: #fff;
+    pointer-events:visibleFill;    
 }
+
+/*-----------------------------------------------------------------------------------------*/
 
 .nav-parameter-disc .node {
     fill: #BBDEFB;
@@ -52,11 +58,8 @@ svg {
 }
 
 .nav-parameter-disc .cell {
-    stroke: #ccc; /*#b8b8b8;///#daeccf; #d7ccc8; */
-    stroke-width: .002;
+    stroke: none;
     fill: none;
-    pointer-events:none;
-    stroke-width: .0;
 }
 
 .nav-parameter-disc .caption {
@@ -64,12 +67,15 @@ svg {
     text-anchor: middle;
     font-size: .2pt;
     stroke-width: .04;
-    stroke-opacity: .6;
+    stroke-opacity:.6;
 }
 
-.nav-background-disc .arc {
-    stroke-width: .003;
+.nav-parameter-disc .background-circle {
+    pointer-events:all;
+    fill: none;
 }
+
+/*-----------------------------------------------------------------------------------------*/
 
 #plexxDbg {
     position: absolute;

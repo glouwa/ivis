@@ -95,7 +95,7 @@ namespace ivis.controller
                              },
                 arc:         this.args.arc,
                 caption:     this.caption,
-                labelFilter: (n:N) => CktoCp(n.cache).r > .7,
+                labelFilter: (n:N) => CktoCp(n.cache).r > .5,
 
                 parent:      null,
                 pos:         ArrAddR([50,30], radius),

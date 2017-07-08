@@ -10,7 +10,6 @@ namespace ivis.ui.D3
             .attr("height", "100%")
             .attr("preserveAspectRatio", "xMidYMid")
             .attr("viewBox", "-0 0 1050 1000")
-
     }
 
     export class UnitDiskD3 implements TreeOnUnitDisk
@@ -41,24 +40,33 @@ namespace ivis.ui.D3
         constructor(args : ivis.ui.TreeOnUnitDiskConfig)
         {
             this.args = args
+
+            // interaction dependencies --------------------------------------------------------------
+
             this.selection = this.args.data
             var dragStartPoint = null
             var dragStartElement = null
-            var d3mouseElem = () => d3.event.sourceEvent.target.__data__
+            //var d3mouseElem = () => d3.event.sourceEvent.target.__data__
+            var d3mouseElemByVoro = ()=> { var m = d3.mouse(this.layersSvg); return this.voroLayout.find(m[0], m[1]).data; }
+
             this.drag = d3.drag()
-                .on("start", () => args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg)), dragStartElement = d3mouseElem()))
-                .on("drag",  () => args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
-                .on("end",   () => args.onDragEnd())
+                .on("start", ()=> args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg)), dragStartElement = d3mouseElemByVoro()))
+                .on("drag",  ()=> args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
+                .on("end",   ()=> args.onDragEnd())
 
             this.zoom = d3.zoom()
-                .scaleExtent([.5, 1.5])
+                .scaleExtent([.51, 1.49])
                 .filter(()=> d3.event.type=='wheel')
                 .on("zoom", ()=> args.onDrag(null, CptoCk({ θ:d3.event.transform.k*Math.PI*2-Math.PI, r:1 }), { name:'λ' }))
 
             this.voronoi = d3.voronoi()
                 .x(d=> d.cache.re)
                 .y(d=> d.cache.im)
-                .extent([[-1.6,-1.6], [1.6,1.6]])
+                .extent([[-2,-2], [2,2]])
+
+            this.updatePositionCache()
+
+            // svg elements -------------------------------------------------------------------
 
             var mainGroup = svg.append('g')
                 .attr("class", args.class)
@@ -73,7 +81,14 @@ namespace ivis.ui.D3
                 .attr("class", "background-circle")
                 .attr("r", 1)            
                 .attr("transform", "scale(" + args.radius + ")")
-                .on("click", () => this.onClick(null))
+                .on("dblclick",  d=> this.onDblClick(d3mouseElemByVoro()))
+                .on("click",     d=> this.onClick(d3mouseElemByVoro()))
+                .on("mousemove", d=> this.updateHover(d3mouseElemByVoro()))
+                .on("mouseout",  d=> this.updateHover(d3mouseElemByVoro()))
+                .call(this.drag)
+                .call(this.zoom)
+
+            // layer svg elements ---------------------------------------------------------------
 
             this.layers = mainGroup.append('g')
                 .attr("class", "layers")
@@ -92,22 +107,47 @@ namespace ivis.ui.D3
             this.create()
         }
 
+        //-----------------------------------------------------------------------------------------
+
+        t  = (d:N) => {
+            d.cache = d.cache || { re:0, im:0 }
+            CassignC(d.cache, this.args.transform(d))
+            return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
+        }
+        ti = (e:number[]) => ArrtoC(e)
+
+        private updatePositionCache()
+        {
+            var allNodes = dfsFlat(this.args.data, n=>true)
+            for (var n of allNodes)
+                this.t(n)
+            this.voroLayout = this.voronoi(allNodes)
+        }
+
+        //-----------------------------------------------------------------------------------------
+
         private create() : void
         {
             var allNodes = dfsFlat(this.args.data, n=>true)
             var allLinks = dfsFlat(this.args.data, n=>n.parent)
+/*            this.cells = this.cellLayer.selectAll(".cell")
+                .data(this.voroLayout.polygons())
+                .enter().append('path')
+                    .attr("class", "cell")
+                    .call(this.updateCell)
+                    .call(this.updateCellColor)
+*/
+            this.arcs = this.arcLayer.selectAll(".arc")
+                .data(allLinks)
+                .enter().append("path")
+                    .attr("class", "arc")
+                    .call(this.updateArc)
 
             this.nodes = this.nodeLayer.selectAll(".node")
                 .data(allNodes)
                 .enter().append("circle")
                     .attr("class", "node")
-                    .attr("r",       d=> this.nodeRi(d))
-                    .on("dblclick",  d=> this.onDblClick(d))
-                    .on("click",     d=> this.onClick(d))
-                    .on("mouseover", d=> this.updateHover(d))                    
-                    .on("mouseout",  d=> this.updateHover(d))
-                    .call(this.drag)
-                    .call(this.zoom)
+                    .attr("r", d=> this.nodeRi(d))
                     .call(this.updateNode)
                     .call(this.updateNodeColor)
 
@@ -119,30 +159,12 @@ namespace ivis.ui.D3
                     .attr("dx", .02)
                     .text(this.args.caption)
                     .call(this.updateText)
-
-            this.arcs = this.arcLayer.selectAll(".arc")
-                .data(allLinks)
-                .enter().append("path")
-                    .attr("class", "arc")
-                    .call(this.updateArc)
-
-            this.voroLayout = this.voronoi(allNodes)
-            this.cells = this.cellLayer.selectAll(".cell")
-                .data(this.voroLayout.polygons())
-                .enter().append('path')
-                    .attr("class", "cell")                    
-                    .on("dblclick",  d=> this.onDblClick(d.data))
-                    .on("click",     d=> this.onClick(d.data))
-                    .on("mouseover", d=> this.updateHover(d.data))
-                    .on("mouseout",  d=> this.updateHover(d.data))
-                    .call(this.updateCell)
-                    .call(this.updateCellColor)
-                    .call(this.drag)
-                    .call(this.zoom)
         }
 
         updatePositions() : void
         {            
+            this.updatePositionCache()
+
             this.nodes.call(this.updateNode)            
             this.arcs.call(this.updateArc)
             this.captions.call(this.updateText)
@@ -151,9 +173,8 @@ namespace ivis.ui.D3
 
         updateCells() : void
         {
-            this.voroLayout = this.voronoi(dfsFlat(this.args.data, n=>true))
-            this.cells.data(this.voroLayout.polygons())
-            this.cells.call(this.updateCell)
+//            this.cells.data(this.voroLayout.polygons())
+//            this.cells.call(this.updateCell)
         }
 
         showCaptions = true
@@ -161,9 +182,10 @@ namespace ivis.ui.D3
         {
             this.showCaptions = visible
             this.captions.call(this.updateText)
-            /*this.captions.transition()
+/*          this.captions.transition()
                 .duration(this.showCaptions?750:0)
-                .attr("opacity", d=> this.showCaptions?1:0)*/
+                .attr("opacity", d=> this.showCaptions?1:0)
+*/
         }
 
         private updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor)
@@ -186,6 +208,7 @@ namespace ivis.ui.D3
             }
             this.updateColors()
             this.updateCaptions(true)
+            this.nodes.call(this.updateNode)
         }
 
         updateSelection(n:N)
@@ -199,7 +222,7 @@ namespace ivis.ui.D3
         {
             var oldHover = this.hover
             this.hover = n
-            this.updatePath(oldHover, this.hover, "#42a5f5", undefined, /*"#bbdefb"*/ "#e3f2fd")
+            this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd")
             this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082")
         }
 
@@ -213,34 +236,28 @@ namespace ivis.ui.D3
         //-----------------------------------------------------------------------------------------
 
         private dblClickTimerEvent = null
-        private onClick = d => {            
+        private onClick = d =>
+        {
             d3.event.preventDefault()
             var m = this.ti(d3.mouse(this.layersSvg))
             if (!this.dblClickTimerEvent)
                 this.dblClickTimerEvent = setTimeout(() => {
                     this.dblClickTimerEvent = null
-
                     this.args.onClick(m, d)
-                }, 200)
+                },
+                200)
         }
 
-        private onDblClick = d => {            
-            d3.event.preventDefault()            
-
+        private onDblClick = d =>
+        {
+            d3.event.preventDefault()
             clearTimeout(this.dblClickTimerEvent)
             this.dblClickTimerEvent = null
-
             this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d)
         }
 
         // snippets ------------------------------------------------------------------------------
 
-        t  = (d:N) => {
-            d.cache = d.cache || { re:0, im:0 }
-            CassignC(d.cache, this.args.transform(d))
-            return d.strCache = d.cache.re + ' ' + d.cache.im //CtoArr(newPosC).toString()
-        }
-        ti = (e:number[]) => ArrtoC(e)
         tr =                                                 (d:N) => ((d.parent && !d.isSelected)
                                                                        ? this.args.transformR(d)
                                                                        : .5+.5*this.args.transformR(d))

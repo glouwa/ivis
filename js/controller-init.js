@@ -6,19 +6,19 @@ var ivis;
         var slideNr = -1;
         var slides_ = {};
         slides_.index = [
-            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Example treeml file<br><small>Tree of Life - Carnivores. |N| = 364</small>" },
-            { ds: "fromFile('flare.csv')", ls: 'layoutBergé', name: "Example csv file<br><small>D3 file format. |N| = 252</small>" },
-            { ds: "fromFile('sample-skos.xml')", ls: 'layoutBergé', name: "Example skos file (VERY SLOW)<br><small>|N| = 2405. Set λ to ~10h !</small>" },
-            { ds: "nTreeAtFirst", ls: 'layoutBergé', name: "Deep path example<br><small>|N| = 101</small>" },
-            { ds: "code", ls: 'layoutBergé', name: "Reflection <br><small>Namespaces and classes. |N| = 49</small>" },
-            { ds: "nTree", ls: 'layoutBergé', name: "Balanced tree <br><small>|N| = 2⁷ -1 = 127</small>" },
-            { ds: "nTree", ls: 'layoutBuchheim', name: "Balanced tree<br><small>Buchheim et al. layout. |N| = 2⁷ -1 = 127</small>" },
-            { ds: "star_(5)", ls: 'layoutUnitVectors', arc: "arc('0', '1')", name: "Unit vectors<br><small>|N| = 5</small>" },
-            { ds: "deepStar", ls: 'layoutUnitLines', arc: "arc('0', '1')", name: "Unit lines<br><small>|N| = 125</small>" },
-            { ds: "star_(50)", ls: 'layoutSpiral', name: "Ball feeling<br><small>Negative curvature</small>" },
-            { ds: "star_(50)", ls: 'layoutSpiral', arc: "arc('0', '1')", name: "Ball feeling<br><small>Positive curvature</small>" },
-            { ds: "path_(50)", ls: 'layoutSpiral', name: "Path spiral<br><small>|N| = 51</small>" },
-            { ds: "path_(500)", ls: 'layoutSpiral', name: "Path spiral<br><small>|N| = 501</small>" },
+            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Example treeml file" },
+            { ds: "fromFile('flare.csv')", ls: 'layoutBergé', name: "Example csv file" },
+            { ds: "fromFile('sample-skos.xml')", ls: 'layoutBergé', name: "Example skos file" },
+            { ds: "nTreeAtFirst", ls: 'layoutBergé', name: "Deep path example" },
+            { ds: "code", ls: 'layoutBergé', name: "Reflection" },
+            { ds: "nTree", ls: 'layoutBergé', name: "Balanced tree" },
+            { ds: "nTree", ls: 'layoutBuchheim', name: "Balanced tree" },
+            { ds: "star_(5)", ls: 'layoutUnitVectors', arc: "arc('0', '1')", name: "Unit vectors" },
+            { ds: "deepStar", ls: 'layoutUnitLines', arc: "arc('0', '1')", name: "Unit lines" },
+            { ds: "star_(50)", ls: 'layoutSpiral', name: "Ball feeling" },
+            { ds: "star_(50)", ls: 'layoutSpiral', arc: "arc('0', '1')", name: "Ball feeling" },
+            { ds: "path_(50)", ls: 'layoutSpiral', name: "Path spiral" },
+            { ds: "path_(500)", ls: 'layoutSpiral', name: "Path spiral" },
         ];
         slides_.wiki = [
             { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Carnivora" },
@@ -26,6 +26,7 @@ var ivis;
             { ds: "fromFile('primates.xml')", ls: 'layoutBergé', name: "Primates" },
             { ds: "fromFile('whales.xml')", ls: 'layoutBergé', name: "Whales" },
             { ds: "fromFile('paarhufer.xml')", ls: 'layoutBergé', name: "Paarhufer" },
+            { ds: "fromFile('placentalia.xml')", ls: 'layoutBergé', name: "Placentalia" },
         ];
         var slides = null;
         controller.slide = {
