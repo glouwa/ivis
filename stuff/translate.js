@@ -34,8 +34,7 @@ function convertNode(node)
     ]
 
     if (node.branch)
-        for (var i=0; i<node.branch.length; ++i)
-        {
+        for (var i=0; i<node.branch.length; ++i) {
             out.branch = out.branch || []
             out.branch.push(convertNode(node.branch[i]))
         }

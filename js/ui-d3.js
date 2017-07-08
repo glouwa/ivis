@@ -185,7 +185,7 @@ var ivis;
                                     .attr("opacity", d=> this.showCaptions?1:0)
                     */
                 }
-                updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor) {
+                updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor, animate) {
                     if (oldN && oldN.ancestors) {
                         delete oldN.nodeColor;
                         for (var a of oldN.ancestors()) {
@@ -203,8 +203,9 @@ var ivis;
                         newN.nodeColor = lastNodeColor;
                     }
                     this.updateCaptions(true);
-                    this.arcs.call(this.updateArcColor);
-                    this.nodes
+                    animate(this.arcs)
+                        .call(this.updateArcColor);
+                    animate(this.nodes)
                         .call(this.updateNodeColor)
                         .call(this.updateNodeStroke)
                         .call(this.updateNode);
@@ -212,13 +213,13 @@ var ivis;
                 updateSelection(n) {
                     var oldSelection = this.selection;
                     this.selection = n;
-                    this.updatePath(oldSelection, this.selection, "orange", "#fff59d", "#ffe082");
+                    this.updatePath(oldSelection, this.selection, "orange", "#fff59d", "#ffe082", v => v.transition().delay(100));
                 }
                 updateHover(n) {
                     var oldHover = this.hover;
                     this.hover = n;
-                    this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd");
-                    this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082");
+                    this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd", v => v);
+                    this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082", v => v);
                 }
             }
             D3.UnitDiskD3 = UnitDiskD3;

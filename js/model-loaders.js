@@ -35,7 +35,7 @@ var ivis;
                 if (file.endsWith('.xml') ||
                     file.endsWith('.json') ||
                     file.endsWith('.rdf'))
-                    if (file.endsWith('direct.json'))
+                    if (file.endsWith('.d3.json'))
                         d3.json(file, (error, treeData) => ok(treeData));
                     else
                         new model.Tree(ok, file);

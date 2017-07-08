@@ -188,7 +188,7 @@ namespace ivis.ui.D3
 */
         }
 
-        private updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor)
+        private updatePath(oldN, newN, arcColor, nodesColor, lastNodeColor, animate)
         {
             if (oldN && oldN.ancestors) {
                 delete oldN.nodeColor
@@ -208,29 +208,27 @@ namespace ivis.ui.D3
             }
 
             this.updateCaptions(true)
-            this.arcs.call(this.updateArcColor)
-
-            this.nodes
-                //.transition()
-                //.delay(100)
-                    .call(this.updateNodeColor)
-                    .call(this.updateNodeStroke)
-                    .call(this.updateNode)
+            animate(this.arcs)
+                .call(this.updateArcColor)
+            animate(this.nodes)
+                .call(this.updateNodeColor)
+                .call(this.updateNodeStroke)
+                .call(this.updateNode)
         }
 
         updateSelection(n:N)
         {
             var oldSelection = this.selection
             this.selection = n
-            this.updatePath(oldSelection, this.selection, "orange", "#fff59d", "#ffe082")
+            this.updatePath(oldSelection, this.selection, "orange", "#fff59d", "#ffe082", v=> v.transition().delay(100))
         }
 
         updateHover(n:N)
         {
             var oldHover = this.hover
             this.hover = n
-            this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd")
-            this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082")
+            this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd", v=> v)
+            this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082", v=> v)
         }
 
         //-----------------------------------------------------------------------------------------

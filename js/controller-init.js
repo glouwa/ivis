@@ -98,7 +98,7 @@ var ivis;
             var arcOptions = [
                 { text: "Negative curvature", value: "arc('1', '0')", },
                 { text: "Positive curvature", value: "arc('0', '1')", },
-                { text: "Strait line", value: "arcLine", },
+                { text: "Straight line", value: "arcLine", },
             ];
             var captionOptions = [
                 { text: "Hide on drag", value: "true", },
