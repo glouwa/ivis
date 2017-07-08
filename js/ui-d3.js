@@ -42,16 +42,17 @@ var ivis;
                         this.args.onDblClick(this.ti(d3.mouse(this.layersSvg)), d);
                     };
                     // snippets ------------------------------------------------------------------------------
-                    this.tr = (d) => ((d.parent && !d.isSelected)
+                    this.tr = (d, a, b) => ((d.parent && !d.isSelected)
                         ? this.args.transformR(d)
-                        : .5 + .5 * this.args.transformR(d));
+                        : a + b * this.args.transformR(d));
                     this.nodeRi = d => ((d.children && d.parent)
                         ? (this.args.nodeRadius * .3)
                         : this.args.nodeRadius);
                     this.transformStr = d => " translate(" + this.t(d) + ")";
-                    this.scaleStr = d => " scale(" + this.tr(d) + ")";
+                    this.scaleStrNode = d => " scale(" + this.tr(d, .1, .9) + ")";
+                    this.scaleStrText = d => " scale(" + this.tr(d, .5, .5) + ")";
                     // element updates ------------------------------------------------------------------------
-                    this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d));
+                    this.updateNode = v => v.attr("transform", d => this.transformStr(d) + this.scaleStrNode(d));
                     this.updateCellColor = v => v.attr("fill", d => (d.data.children ? '#fff' : '#f5fef0')); //'rgba(150, 202, 152, .05)'
                     this.updateNodeColor = v => v.style("fill", d => (d.parent
                         ? (d.nodeColor
@@ -67,11 +68,11 @@ var ivis;
                         : undefined));
                     this.updateArc = v => v.attr("d", d => ivis.controller.slide.arc(d))
                         .attr("stroke-width", d => {
-                        var hyperAndSelectionScale = this.tr(d);
+                        var hyperAndSelectionScale = this.tr(d, .5, .5);
                         var weightScale = ((d.value || 1) / (this.args.data.value || this.args.data.children.length || 1));
                         return hyperAndSelectionScale * weightScale / 40 + .0017;
                     });
-                    this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStr(d))
+                    this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStrText(d))
                         .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent && !d.isSelected)
                         ? 'hidden'
                         : 'visible');
@@ -201,9 +202,12 @@ var ivis;
                         }
                         newN.nodeColor = lastNodeColor;
                     }
-                    this.updateColors();
                     this.updateCaptions(true);
-                    this.nodes.call(this.updateNode);
+                    this.arcs.call(this.updateArcColor);
+                    this.nodes
+                        .call(this.updateNodeColor)
+                        .call(this.updateNodeStroke)
+                        .call(this.updateNode);
                 }
                 updateSelection(n) {
                     var oldSelection = this.selection;
@@ -215,11 +219,6 @@ var ivis;
                     this.hover = n;
                     this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd");
                     this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082");
-                }
-                updateColors() {
-                    this.nodes.call(this.updateNodeColor);
-                    this.nodes.call(this.updateNodeStroke);
-                    this.arcs.call(this.updateArcColor);
                 }
             }
             D3.UnitDiskD3 = UnitDiskD3;

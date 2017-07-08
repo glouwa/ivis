@@ -206,9 +206,16 @@ namespace ivis.ui.D3
                 }
                 newN.nodeColor =  lastNodeColor
             }
-            this.updateColors()
+
             this.updateCaptions(true)
-            this.nodes.call(this.updateNode)
+            this.arcs.call(this.updateArcColor)
+
+            this.nodes
+                //.transition()
+                //.delay(100)
+                    .call(this.updateNodeColor)
+                    .call(this.updateNodeStroke)
+                    .call(this.updateNode)
         }
 
         updateSelection(n:N)
@@ -224,13 +231,6 @@ namespace ivis.ui.D3
             this.hover = n
             this.updatePath(oldHover, this.hover, "#42a5f5", "#e3f2fd", "#e3f2fd")
             this.updatePath(null, this.selection, "orange", "#fff59d", "#ffe082")
-        }
-
-        updateColors()
-        {
-            this.nodes.call(this.updateNodeColor)
-            this.nodes.call(this.updateNodeStroke)
-            this.arcs.call(this.updateArcColor)
         }
 
         //-----------------------------------------------------------------------------------------
@@ -258,20 +258,21 @@ namespace ivis.ui.D3
 
         // snippets ------------------------------------------------------------------------------
 
-        tr =                                                 (d:N) => ((d.parent && !d.isSelected)
+        tr =                                                 (d:N, a, b) => ((d.parent && !d.isSelected)
                                                                        ? this.args.transformR(d)
-                                                                       : .5+.5*this.args.transformR(d))
+                                                                       : a+b*this.args.transformR(d))
 
         private nodeRi =                                      d=> ((d.children && d.parent)
                                                                        ? (this.args.nodeRadius*.3)
                                                                        : this.args.nodeRadius)
 
         private transformStr =                                d=> " translate(" + this.t(d) + ")"
-        private scaleStr     =                                d=> " scale(" + this.tr(d) +  ")"
+        private scaleStrNode =                                d=> " scale(" + this.tr(d, .1, .9) +  ")"
+        private scaleStrText =                                d=> " scale(" + this.tr(d, .5, .5) +  ")"
 
         // element updates ------------------------------------------------------------------------
 
-        private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))        
+        private updateNode       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStrNode(d))
         private updateCellColor  = v=> v.attr("fill",         d=> (d.data.children?'#fff':'#f5fef0')) //'rgba(150, 202, 152, .05)'
         private updateNodeColor  = v=> v.style("fill",        d=> (d.parent
                                                                        ? (d.nodeColor
@@ -289,11 +290,11 @@ namespace ivis.ui.D3
                                                                        : undefined))
 
         private updateArc        = v=> v.attr("d",            d=> ivis.controller.slide.arc(d))
-                                        .attr("stroke-width", d=> {    var hyperAndSelectionScale = this.tr(d)
+                                        .attr("stroke-width", d=> {    var hyperAndSelectionScale = this.tr(d, .5, .5)
                                                                        var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
                                                                        return hyperAndSelectionScale  * weightScale / 40 + .0017})
 
-        private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStr(d))
+        private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStrText(d))
                                         .attr("visibility",   d=> ((this.args.labelFilter(d) || !this.showCaptions)&&d.parent&&!d.isSelected)
                                                                        ? 'hidden'
                                                                        : 'visible')

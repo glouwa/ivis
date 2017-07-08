@@ -101,8 +101,8 @@ var ivis;
                 { text: "Strait line", value: "arcLine", },
             ];
             var captionOptions = [
-                { text: "Show always", value: "false", },
                 { text: "Hide on drag", value: "true", },
+                { text: "Show always", value: "false", },
             ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))

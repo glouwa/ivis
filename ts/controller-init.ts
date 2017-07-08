@@ -101,9 +101,9 @@ namespace ivis.controller
             { text:"Positive curvature", value:"arc('0', '1')",  },
             { text:"Strait line",        value:"arcLine",        },
         ]
-        var captionOptions = [            
-            { text:"Show always",     value:"false",             },
+        var captionOptions = [                        
             { text:"Hide on drag",    value:"true",              },
+            { text:"Show always",     value:"false",             },
         ]
 
         d3.select('#rendererSelect')
