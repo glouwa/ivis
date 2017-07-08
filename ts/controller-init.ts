@@ -99,13 +99,14 @@ namespace ivis.controller
         var arcOptions = [            
             { text:"Negative curvature", value:"arc('1', '0')",  },
             { text:"Positive curvature", value:"arc('0', '1')",  },
-            { text:"Strait line",        value:"arcLine",        },
+            { text:"Straight line",        value:"arcLine",        },
         ]
         var captionOptions = [                        
             { text:"Hide on drag",    value:"true",              },
             { text:"Show always",     value:"false",             },
         ]
 
+        
         d3.select('#rendererSelect')
             .on('change', ()=> setRenderer(d3.event.target.value))
             .selectAll('option')
