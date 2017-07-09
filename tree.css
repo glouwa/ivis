@@ -40,8 +40,10 @@ svg {
 }
 
 .background-circle {    
+/*    fill: none;
+    pointer-events: all;*/
     fill: #fff;
-    pointer-events:visibleFill;    
+    pointer-events:visibleFill;
 }
 
 /*-----------------------------------------------------------------------------------------*/

@@ -289,8 +289,9 @@ namespace ivis.ui.D3
 
         private updateArc        = v=> v.attr("d",            d=> ivis.controller.slide.arc(d))
                                         .attr("stroke-width", d=> {    var hyperAndSelectionScale = this.tr(d, .5, .5)
-                                                                       var weightScale = ((d.value||1) / (this.args.data.value||this.args.data.children.length||1))
-                                                                       return hyperAndSelectionScale  * weightScale / 40 + .0017})
+                                                                       var weightScale = (Math.log2(d.value)||1)
+                                                                                       / (Math.log2(this.args.data.value||this.args.data.children.length)||1)
+                                                                       return hyperAndSelectionScale  * weightScale / 50 /*+ .00000017*/ })
 
         private updateText       = v=> v.attr("transform",    d=> this.transformStr(d) + this.scaleStrText(d))
                                         .attr("visibility",   d=> ((this.args.labelFilter(d) || !this.showCaptions)&&d.parent&&!d.isSelected)

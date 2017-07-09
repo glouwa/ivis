@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Unpaarhufer"/>
+    <branch>
+      <attribute name="name" value="Equidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Palaeotheriidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Brontotheriidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Anchilophidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Eomoropidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Chalicotherien"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Hyracodontidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Nashörner"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Helaletidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Isectolophidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Lophiodontidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Deperetellidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Lophialetidae"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Tapire"/>
+    </branch>
+  </branch>
+</tree>

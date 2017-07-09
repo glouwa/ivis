@@ -181,7 +181,8 @@ namespace ivis.controller
                 return count?  " " + count + " Nodes" : ""
             }
 
-            return findName(n) + nodeCount(n)
+
+            return findName(n).replace('Wikipedia – Die freie ', '') + nodeCount(n)
         }
 
         private nodeR(np:C) : number
@@ -279,7 +280,7 @@ namespace ivis.controller
             onNodeSelect: (n:N) => {
                 if (document.getElementById('wiki'))
                     document.getElementById('wiki').src =
-                        "https://en.m.wikipedia.org/wiki/"+n.data.name
+                        "https://de.m.wikipedia.org/wiki/"+n.data.name
             }
         })
     }

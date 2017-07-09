@@ -6,9 +6,9 @@ var ivis;
         var slideNr = -1;
         var slides_ = {};
         slides_.index = [
-            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Example treeml file" },
+            { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Example treeml file" },
             { ds: "fromFile('flare.csv')", ls: 'layoutBergé', name: "Example csv file" },
-            { ds: "fromFile('sample-skos.xml')", ls: 'layoutBergé', name: "Example skos file" },
+            { ds: "fromFile('sample.skos.xml')", ls: 'layoutBergé', name: "Example skos file" },
             { ds: "nTreeAtFirst", ls: 'layoutBergé', name: "Deep path example" },
             { ds: "code", ls: 'layoutBergé', name: "Reflection" },
             { ds: "nTree", ls: 'layoutBergé', name: "Balanced tree" },
@@ -21,12 +21,12 @@ var ivis;
             { ds: "path_(500)", ls: 'layoutSpiral', name: "Path spiral" },
         ];
         slides_.wiki = [
-            { ds: "fromFile('carnivora-en.xml')", ls: 'layoutBergé', name: "Carnivora" },
             { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Raubtiere" },
-            { ds: "fromFile('primates.xml')", ls: 'layoutBergé', name: "Primates" },
-            { ds: "fromFile('whales.xml')", ls: 'layoutBergé', name: "Whales" },
-            { ds: "fromFile('paarhufer.xml')", ls: 'layoutBergé', name: "Paarhufer" },
-            { ds: "fromFile('placentalia.xml')", ls: 'layoutBergé', name: "Placentalia" },
+            { ds: "fromFile('cetacea-de.xml')", ls: 'layoutBergé', name: "Wahle" },
+            { ds: "fromFile('primates-de.xml')", ls: 'layoutBergé', name: "Primaten" },
+            { ds: "fromFile('perissodactyla-de.xml')", ls: 'layoutBergé', name: "Unpaarhufer" },
+            { ds: "fromFile('insectivora-de.xml')", ls: 'layoutBergé', name: "Insektenfresser" },
+            { ds: "fromFile('artiodactyla-de.xml')", ls: 'layoutBergé', name: "Paarhufer" },
         ];
         var slides = null;
         controller.slide = {
@@ -47,13 +47,13 @@ var ivis;
                 { text: "flare.csv (d3)", value: "fromFile('flare.csv')" },
                 { text: "sample.xml", value: "fromFile('sample.xml')" },
                 { text: "sample.json", value: "fromFile('sample.json')" },
-                { text: "sample-skos.xml", value: "fromFile('sample-skos.xml')", },
-                { text: "Tree of life 1", value: "fromFile('carnivora-en.xml')", },
-                { text: "Tree of life 2", value: "fromFile('carnivora-de.xml')", },
-                { text: "Tree of life 3", value: "fromFile('primates.xml')", },
-                { text: "Tree of life 4", value: "fromFile('whales.xml')", },
-                { text: "Tree of life 5", value: "fromFile('paarhufer.xml')", },
-                { text: "Tree of life 6", value: "fromFile('placentalia.xml')", },
+                { text: "sample-skos.xml", value: "fromFile('sample.skos.xml')", },
+                { text: "Tree of life 1", value: "fromFile('carnivora-de.xml')", },
+                { text: "Tree of life 2", value: "fromFile('cetacea-de.xml')", },
+                { text: "Tree of life 3", value: "fromFile('primates-de.xml')", },
+                { text: "Tree of life 4", value: "fromFile('perissodactyla-de.xml')", },
+                { text: "Tree of life 5", value: "fromFile('insectivora-de.xml')", },
+                { text: "Tree of life 6", value: "fromFile('artiodactyla-de.xml')", },
                 { text: "Modules", value: "code", },
                 { text: "⋆ Star 1+4", value: "star_(5)", },
                 { text: "⋆ Star 1+50", value: "star_(50)", },
