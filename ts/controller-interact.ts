@@ -134,7 +134,7 @@ namespace ivis.controller
         private onDrag(s:C, e:C, n:N, tt:Transformation) : void
         {
             var postfix = n?(n.name?n.name:'P'):'P' // n.name bei parameter, n.data.name bei normalen nodes :(
-            tt['onDrag'+postfix](s, e)
+            tt['onDrag'+postfix](s, e, this.data)
             this.updatePositions()
         }
 
@@ -180,7 +180,7 @@ namespace ivis.controller
                     var count = n.links().length+1
                 return count?  " " + count + " Nodes" : ""
             }
-            return findName(n) + nodeCount(n)
+            return (!n.value || n.value==1?"":n.value+' ') + findName(n)
         }
 
         private nodeR(np:C) : number
@@ -211,7 +211,12 @@ namespace ivis.controller
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P)
         onDragθ:         (s:C, e:C) => {}
-        onDragλ =        (s:C, e:C) => {
+        onDragλ =        (s:C, e:C, r:N) => {
+                             /*var captionCount=0
+                             dfs(r, n=> if(CktoCp(n.cache).r > .5) captionCount++)
+                             if (captionCount > 20 || captionCount < 10)
+                                 return*/
+
                              CassignC(this.tp.λ, setR(e, 1))
                              var newλ = { θ:πify(CktoCp(this.tp.λ).θ), r:1 }
                              var normScale = newλ.θ / (2*Math.PI)
@@ -235,7 +240,12 @@ namespace ivis.controller
         onDragStart =    (m:C) => this.dST = clone(this.tp)
         onDragP =        (s:C, e:C) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)))
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
-        onDragλ =        (s:C, e:C) => {
+        onDragλ =        (s:C, e:C, r:N) => {
+                             var captionCount=0
+                             dfs(r, n=> if(CktoCp(n.cache).r < .5) captionCount++)
+                             if (captionCount > 20 /*|| captionCount < 10*/)
+                                 return
+
                              if (ivis.controller.slide.space == "PanTransformation") {
                                  CassignC(this.tp.λ, setR(e, 1))
                              }

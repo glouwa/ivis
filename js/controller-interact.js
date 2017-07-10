@@ -101,7 +101,7 @@ var ivis;
             }
             onDrag(s, e, n, tt) {
                 var postfix = n ? (n.name ? n.name : 'P') : 'P'; // n.name bei parameter, n.data.name bei normalen nodes :(
-                tt['onDrag' + postfix](s, e);
+                tt['onDrag' + postfix](s, e, this.data);
                 this.updatePositions();
             }
             onDragEnd() {
@@ -142,7 +142,7 @@ var ivis;
                         var count = n.links().length + 1;
                     return count ? " " + count + " Nodes" : "";
                 }
-                return findName(n) + nodeCount(n);
+                return (!n.value || n.value == 1 ? "" : n.value + ' ') + findName(n);
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);
@@ -157,7 +157,11 @@ var ivis;
                 this.transformPoint = (n) => h2e(h, n.z);
                 this.onDragStart = (m) => this.dST = clone(this.tp);
                 this.onDragP = (s, e) => CassignC(this.tp.P, compose(this.dST, shift(this.dST, s, maxR(e, .95))).P);
-                this.onDragλ = (s, e) => {
+                this.onDragλ = (s, e, r) => {
+                    /*var captionCount=0
+                    dfs(r, n=> if(CktoCp(n.cache).r > .5) captionCount++)
+                    if (captionCount > 20 || captionCount < 10)
+                        return*/
                     CassignC(this.tp.λ, setR(e, 1));
                     var newλ = { θ: πify(CktoCp(this.tp.λ).θ), r: 1 };
                     var normScale = newλ.θ / (2 * Math.PI);
@@ -180,7 +184,12 @@ var ivis;
                 this.onDragStart = (m) => this.dST = clone(this.tp);
                 this.onDragP = (s, e) => CassignC(this.tp.P, CaddC(this.dST.P, CsubC(maxR(e, .95), s)));
                 this.onDragθ = (s, e) => CassignC(this.tp.θ, setR(e, 1));
-                this.onDragλ = (s, e) => {
+                this.onDragλ = (s, e, r) => {
+                    var captionCount = 0;
+                    dfs(r, n => { if (CktoCp(n.cache).r < .5)
+                        captionCount++; });
+                    if (captionCount > 20 /*|| captionCount < 10*/)
+                        return;
                     if (ivis.controller.slide.space == "PanTransformation") {
                         CassignC(this.tp.λ, setR(e, 1));
                     }
