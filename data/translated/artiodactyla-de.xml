@@ -6,7 +6,7 @@
   <branch>
     <attribute name="name" value="Paarhufer"/>
     <branch>
-      <attribute name="name" value="Wikipedia – Die freie "/>
+      <attribute name="name" value=""/>
       <branch>
         <attribute name="name" value="Echte Schweine"/>
         <branch>
@@ -24,12 +24,6 @@
             </branch>
             <branch>
               <attribute name="name" value="Wüstenwarzenschwein"/>
-              <branch>
-                <attribute name="name" value="Phacochoerus aethiopicus delamerei"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Phacochoerus aethiopicus aethiopicus"/>
-              </branch>
             </branch>
           </branch>
           <branch>
@@ -65,160 +59,16 @@
               <attribute name="name" value="Sulawesi-Pustelschwein"/>
             </branch>
             <branch>
-              <attribute name="name" value="Sus heureni"/>
-            </branch>
-            <branch>
               <attribute name="name" value="Mindoro-Pustelschwein"/>
             </branch>
             <branch>
               <attribute name="name" value="Philippinisches Pustelschwein"/>
             </branch>
-            <branch>
-              <attribute name="name" value="Sus timoriensis"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Celebochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Eumaiochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hippohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hippopotamodon"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Kolpochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Korynochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Metridiochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Microstonyx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Molarochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Potamochoeroides"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Propotamochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Sinohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Sivahyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Stylochoerus"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Cainochoerus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hyotheriinae"/>
-          <branch>
-            <attribute name="name" value="Chleuastochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Dubiotherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hyotherium"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Kubanochoerinae"/>
-          <branch>
-            <attribute name="name" value="Nguruwe"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Kenyasus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Kubanochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Libycochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Megalochoerus"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Listriodontinae"/>
-          <branch>
-            <attribute name="name" value="Bunolistriodon"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Eurolistriodon"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Listriodon"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Lopholistriodon"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Namachoerus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Palaeochoerinae"/>
-          <branch>
-            <attribute name="name" value="Aureliachoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Palaeochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Yunnanochoerus"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Siamochoerus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Sinapriculus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Tetraconodontinae"/>
-          <branch>
-            <attribute name="name" value="Conohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Lophochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Notochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Nyanzachoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Parachleuastochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Sivachoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Tetraconodon"/>
           </branch>
         </branch>
       </branch>
       <branch>
         <attribute name="name" value="Nabelschweine"/>
-        <branch>
-          <attribute name="name" value="Odoichoerus"/>
-        </branch>
         <branch>
           <attribute name="name" value="Tayassuinae"/>
           <branch>
@@ -230,90 +80,18 @@
           <branch>
             <attribute name="name" value="Halsbandpekari"/>
           </branch>
-          <branch>
-            <attribute name="name" value="Argyrohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Brasiliochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Chaenohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Cynorca"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Dyseohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Egatochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hesperhys"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Mylohyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Perchoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Platygonus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Prosthennops"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Thinohyus"/>
-          </branch>
         </branch>
-        <branch>
-          <attribute name="name" value="Doliochoerinae"/>
-          <branch>
-            <attribute name="name" value="Barberahyus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Doliochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Pecarichoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Schizochoerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Taucanamo"/>
-          </branch>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Xenohyus"/>
       </branch>
     </branch>
     <branch>
       <attribute name="name" value="Flusspferde"/>
       <branch>
-        <attribute name="name" value="Kenyapotamus"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Hexaprotodon"/>
-      </branch>
-      <branch>
         <attribute name="name" value="Zwergflusspferd"/>
       </branch>
       <branch>
-        <attribute name="name" value="Trilobophorus afarensis"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
           <attribute name="name" value="Flusspferd"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hippopotamus gorgops"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hippopotamus kaisensis"/>
         </branch>
         <branch>
           <attribute name="name" value="Madagassische Flusspferde"/>
@@ -324,18 +102,12 @@
         <branch>
           <attribute name="name" value="Hippopotamus antiquus"/>
         </branch>
-        <branch>
-          <attribute name="name" value="Hippopotamus creutzburgi"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hippopotamus melitensis"/>
-        </branch>
       </branch>
     </branch>
     <branch>
       <attribute name="name" value="Kamele"/>
       <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
           <attribute name="name" value="Kamele"/>
           <branch>
@@ -347,21 +119,6 @@
               </branch>
               <branch>
                 <attribute name="name" value="Trampeltier"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Procamelus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Megatylopus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Titanotylopus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Megacamelus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Gigantocamelus"/>
               </branch>
             </branch>
             <branch>
@@ -379,137 +136,17 @@
                 <attribute name="name" value="Vikunja"/>
               </branch>
               <branch>
-                <attribute name="name" value="Hemiauchenia"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Pliauchenia"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Alforjas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Blancocamelus"/>
-              </branch>
-              <branch>
                 <attribute name="name" value="Camelops"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Palaeolama"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Eulamaops"/>
               </branch>
               <branch>
                 <attribute name="name" value="Aepycamelus"/>
               </branch>
             </branch>
-            <branch>
-              <attribute name="name" value="Dyseotylopus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Delahomeryx"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Hesperocamelus"/>
-            </branch>
           </branch>
-          <branch>
-            <attribute name="name" value="Floridatragulinae"/>
-            <branch>
-              <attribute name="name" value="Floridatragulus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Aguascalientia"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Miolabinae"/>
-            <branch>
-              <attribute name="name" value="Paramiolabis"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Miolabis"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Cuyamacamelus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Nothotylopus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Capricamelus"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Protolabinae"/>
-            <branch>
-              <attribute name="name" value="Tanymykter"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Protolabis"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Michenia"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Stenomylinae"/>
-            <branch>
-              <attribute name="name" value="Stenomylus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Blickomylus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Rakomylus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Pseudolabis"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Miotylopus"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Poebrodon"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hidrosotherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Poebrotherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Paralabis"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Paratylopus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Oxydactylus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Australocamelus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Priscocamelus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Nothokemas"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Gentilicamelus"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Oromerycidae"/>
         </branch>
       </branch>
       <branch>
         <attribute name="name" value="Protoceratidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Xiphodontidae"/>
       </branch>
     </branch>
     <branch>
@@ -517,13 +154,13 @@
       <branch>
         <attribute name="name" value="Pecora"/>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
             <attribute name="name" value="Hornträger"/>
             <branch>
               <attribute name="name" value="Bovinae"/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Wisent"/>
                 </branch>
@@ -537,7 +174,7 @@
                   <attribute name="name" value="Yak"/>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Banteng"/>
                   </branch>
@@ -550,7 +187,7 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Nilgauantilope"/>
                 </branch>
@@ -559,17 +196,14 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Wasserbüffel"/>
                   </branch>
                   <branch>
                     <attribute name="name" value="Flachland-Anoa"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Bubalus mephistopheles"/>
                   </branch>
                   <branch>
                     <attribute name="name" value="Tamarau"/>
@@ -583,7 +217,7 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Riesen-Elenantilope"/>
                 </branch>
@@ -615,150 +249,15 @@
               <branch>
                 <attribute name="name" value="Saola"/>
               </branch>
-              <branch>
-                <attribute name="name" value="Miscellaneous fossil Bovinae"/>
-                <branch>
-                  <attribute name="name" value="Adjiderebos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Alephis"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Brabovus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Bucapra"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Duboisia"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Elachistoceras"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Eosyncerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Eotragus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Epileptobos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Gona"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Hemibos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Ioribos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Kipsigicerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Leptobos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Mesembriportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Miotragocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Pachyportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Parabos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Pelorovis"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Perimia"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Phronetragus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Platybos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Platycerabos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Pliodorcas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Plioportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Proamphibos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Probison"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Proboselaphus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Proleptobos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Protobison"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Protragocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Ruticeros"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Samokeros"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Selenoportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Simatherium"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Sivaportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Sivoreas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Strogulognathus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Tragoportax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Tragoreas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Udabnocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Ugandax"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Urmiabos"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Yakopsis"/>
-                </branch>
-              </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Kuhantilopen"/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Nordafrikanische Kuhantilope"/>
                     </branch>
@@ -767,7 +266,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Streifengnu"/>
                     </branch>
@@ -776,7 +275,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Leierantilope"/>
                     </branch>
@@ -786,24 +285,6 @@
                     <branch>
                       <attribute name="name" value="Buntbock"/>
                     </branch>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Damalops"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Oreonagor"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Parestigorgon"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Parmularius"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Rabaticeras"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Rhynotragus"/>
                   </branch>
                   <branch>
                     <attribute name="name" value="Rusingoryx"/>
@@ -824,7 +305,7 @@
                     <attribute name="name" value="Rappenantilope"/>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Säbelantilope"/>
                     </branch>
@@ -835,20 +316,14 @@
                       <attribute name="name" value="Arabische Oryx"/>
                     </branch>
                   </branch>
-                  <branch>
-                    <attribute name="name" value="Praedamalis"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Wellsiana"/>
-                  </branch>
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Ziegenartige"/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Mähnenspringer"/>
                     </branch>
@@ -873,7 +348,7 @@
                         <attribute name="name" value="Syrischer Steinbock"/>
                       </branch>
                       <branch>
-                        <attribute name="name" value="Wikipedia – Die freie "/>
+                        <attribute name="name" value=""/>
                         <branch>
                           <attribute name="name" value="Iberiensteinbock"/>
                         </branch>
@@ -932,7 +407,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Gorale"/>
                       <branch>
@@ -942,16 +417,7 @@
                         <attribute name="name" value="Langschwanzgoral"/>
                       </branch>
                       <branch>
-                        <attribute name="name" value="Naemorhedus crispus"/>
-                      </branch>
-                      <branch>
                         <attribute name="name" value="Grauer Goral"/>
-                      </branch>
-                      <branch>
-                        <attribute name="name" value="Naemorhedus sumatraensis"/>
-                      </branch>
-                      <branch>
-                        <attribute name="name" value="Naemorhedus swinhoei"/>
                       </branch>
                     </branch>
                     <branch>
@@ -970,147 +436,6 @@
                       <attribute name="name" value="Gämse"/>
                     </branch>
                   </branch>
-                  <branch>
-                    <attribute name="name" value="Fossil Caprinae"/>
-                    <branch>
-                      <attribute name="name" value="Benicerus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Boopsis"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Helm-Moschusochse"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Capraoryx"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Caprotragoides"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Criotherium"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Damalavus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Euceratherium"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Gallogoral"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Höhlenziege"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Oioceros"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Lyrocerus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Makapania"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Megalovis"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mesembriacerus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Neotragocerus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Nesogoral"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Norbertia"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Numidocapra"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Olonbulukia"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Pachygazella"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Pachytragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Palaeoreas"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Palaeoryx"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Paraprotoryx"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Parapseudotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Parurmiatherium"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Praeovibos"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Preptoceras"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Procamptoceras"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Prosinotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Protoryx"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Pseudotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Samotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sinocapra"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sinopalaeoceros"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sinotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sivacapra"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Soergelia"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sporadotragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Helm-Moschusochse"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Tethytragus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Tossunnoria"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Tsaidamotherium"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Turcocerus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Urmiatherium"/>
-                    </branch>
-                  </branch>
                 </branch>
                 <branch>
                   <attribute name="name" value="Tschiru"/>
@@ -1122,19 +447,16 @@
               <branch>
                 <attribute name="name" value="Ducker"/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Petersducker"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Cephalophus weynsi"/>
                   </branch>
                   <branch>
                     <attribute name="name" value="Ogilby-Ducker"/>
                   </branch>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Harvey-Rotducker"/>
                   </branch>
@@ -1149,7 +471,7 @@
                   </branch>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Abbott-Ducker"/>
                   </branch>
@@ -1165,9 +487,6 @@
                 </branch>
                 <branch>
                   <attribute name="name" value="Jentink-Ducker"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Cephalophus leucogaster"/>
                 </branch>
                 <branch>
                   <attribute name="name" value="Maxwell-Ducker"/>
@@ -1189,11 +508,11 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Reduncini"/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Großriedbock"/>
                     </branch>
@@ -1205,7 +524,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Wasserbock"/>
                     </branch>
@@ -1220,39 +539,6 @@
                     </branch>
                     <branch>
                       <attribute name="name" value="Puku"/>
-                    </branch>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Fossil Reduncinae"/>
-                    <branch>
-                      <attribute name="name" value="Cambayella"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Dorcadoxa"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Gangicobus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Hydaspicobus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Kobikeryx"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Menelikia"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sivacobus"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Sivadenota"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Thaleroceros"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Vishnucobus"/>
                     </branch>
                   </branch>
                 </branch>
@@ -1283,9 +569,6 @@
                     <attribute name="name" value="Indische Gazelle"/>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Gazella bilkis"/>
-                  </branch>
-                  <branch>
                     <attribute name="name" value="Cuviergazelle"/>
                   </branch>
                   <branch>
@@ -1313,16 +596,10 @@
                     <attribute name="name" value="Saudi-Gazelle"/>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Gazella soemmerringii"/>
-                  </branch>
-                  <branch>
                     <attribute name="name" value="Spekegazelle"/>
                   </branch>
                   <branch>
                     <attribute name="name" value="Kropfgazelle"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Gazella thomsonii"/>
                   </branch>
                 </branch>
                 <branch>
@@ -1373,48 +650,6 @@
                 <branch>
                   <attribute name="name" value="Saiga"/>
                 </branch>
-                <branch>
-                  <attribute name="name" value="Antilospira"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Dorcadoryx"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Gazellospira"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Hispanodorcas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Nisidorcas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Ouzocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Parastrepsiceros"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Prostrepsiceros"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Protragelaphus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Qurliqnoria"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Sinapocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Sinoreas"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Spirocerus"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Tragospira"/>
-                </branch>
               </branch>
               <branch>
                 <attribute name="name" value="Kleinstböckchen"/>
@@ -1432,63 +667,6 @@
                 <attribute name="name" value="Klippspringer"/>
               </branch>
             </branch>
-            <branch>
-              <attribute name="name" value="Miscellaneous fossil bovids"/>
-              <branch>
-                <attribute name="name" value="Damalacra"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Fenhoryx"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Homoiodorcas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Hypsodontus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Kabulicornis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Kubanotragus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Namibiomeryx"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Palaeotragiscus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Parabubalis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Pontoceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Procobus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Prodamaliscus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Pseudoeotragus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Samodorcas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Shaanxispira"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Torticornis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Tyrrhenotragus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Vishnumeryx"/>
-              </branch>
-            </branch>
           </branch>
           <branch>
             <attribute name="name" value="Moschustiere"/>
@@ -1499,29 +677,20 @@
               <attribute name="name" value="Gelbbauch-Moschustier"/>
             </branch>
             <branch>
-              <attribute name="name" value="Moschus cupreus"/>
-            </branch>
-            <branch>
               <attribute name="name" value="Schwarzes Moschustier"/>
             </branch>
             <branch>
-              <attribute name="name" value="Moschus leucogaster"/>
-            </branch>
-            <branch>
               <attribute name="name" value="Sibirisches Moschustier"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Micromeryx"/>
             </branch>
           </branch>
           <branch>
             <attribute name="name" value="Hirsche"/>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Old World deer"/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Axis"/>
                     <branch>
@@ -1538,7 +707,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Barasinghas"/>
                     </branch>
@@ -1548,20 +717,17 @@
                   </branch>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Dama"/>
                     <branch>
                       <attribute name="name" value="Damhirsch"/>
                     </branch>
-                    <branch>
-                      <attribute name="name" value="Dama mesopotamica"/>
-                    </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
-                      <attribute name="name" value="Wikipedia – Die freie "/>
+                      <attribute name="name" value=""/>
                       <branch>
                         <attribute name="name" value="Rothirsch"/>
                       </branch>
@@ -1585,7 +751,7 @@
                       </branch>
                     </branch>
                     <branch>
-                      <attribute name="name" value="Wikipedia – Die freie "/>
+                      <attribute name="name" value=""/>
                       <branch>
                         <attribute name="name" value="Davidshirsch"/>
                       </branch>
@@ -1595,81 +761,18 @@
                     </branch>
                   </branch>
                 </branch>
-                <branch>
-                  <attribute name="name" value="Miscellaneous fossil Old World deer"/>
-                  <branch>
-                    <attribute name="name" value="Allocaenelaphus"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Arvernoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Candiacervus"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Cervocerus novorossiae"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Croizetoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Eucladoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Megaceroides"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Megaloceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Neomegaloceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Nesoleipoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Orchonoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Praemegaceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Praesinomegaceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Psekupsoceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Sangamona"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Sinomegaceros"/>
-                  </branch>
-                </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Schopfhirsch"/>
                 </branch>
                 <branch>
                   <attribute name="name" value="Muntjacs"/>
                   <branch>
-                    <attribute name="name" value="Eostyloceros"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Megamuntiacus vuquangensis"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Metacervulus"/>
-                  </branch>
-                  <branch>
                     <attribute name="name" value="Muntjaks"/>
                     <branch>
                       <attribute name="name" value="Borneo-Muntjak"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Muntiacus crinifrons"/>
                     </branch>
                     <branch>
                       <attribute name="name" value="Tenasserim-Muntjak"/>
@@ -1686,26 +789,14 @@
                     <branch>
                       <attribute name="name" value="Chinesischer Muntjak"/>
                     </branch>
-                    <branch>
-                      <attribute name="name" value="Muntiacus rooseveltorum"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Muntiacus truongsonensis"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Muntiacus leilaoensis"/>
-                    </branch>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Paracervulus"/>
                   </branch>
                 </branch>
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Capreolus"/>
                   <branch>
@@ -1720,9 +811,9 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Sumpfhirsch"/>
                   </branch>
@@ -1739,24 +830,6 @@
                     <attribute name="name" value="Spießhirsche"/>
                     <branch>
                       <attribute name="name" value="Großmazama"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama bororo"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama bricenii"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama chunyi"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama gouazoupira"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama nana"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mazama rufina"/>
                     </branch>
                   </branch>
                   <branch>
@@ -1788,354 +861,36 @@
               <branch>
                 <attribute name="name" value="Elch"/>
               </branch>
-              <branch>
-                <attribute name="name" value="Agalmaceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Antifer"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Bretzia"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Cervalces"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Charitoceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Eocoileus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Epieuryceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Morenelaphus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Navahoceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Paraceros"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Pavlodaria"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Procapreolus"/>
-              </branch>
-            </branch>
-            <branch>
-              <attribute name="name" value="Miscellaneous fossil cervids"/>
-              <branch>
-                <attribute name="name" value="Acteocemas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Amphiprox"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Cervavitulus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Dicrocerus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Euprox"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Heteroprox"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Lagomeryx"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Lucentia"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Muva"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Oschinotherium"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Palaeoplatycerus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Paradicrocerus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Platycemas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Procervulus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Pseudalces"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Stephanocemas"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Tamanalces"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Torontoceros"/>
-              </branch>
             </branch>
           </branch>
         </branch>
         <branch>
           <attribute name="name" value="Giraffoidea"/>
           <branch>
-            <attribute name="name" value="Canthumeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Climacoceras"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Georgiomeryx"/>
-          </branch>
-          <branch>
             <attribute name="name" value="Giraffenartige"/>
             <branch>
-              <attribute name="name" value="Birgerbohlinia"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Bramatherium"/>
-            </branch>
-            <branch>
               <attribute name="name" value="(720) Bohlinia"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Csakvarotherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Decennatherium"/>
             </branch>
             <branch>
               <attribute name="name" value="Giraffen"/>
               <branch>
                 <attribute name="name" value="Giraffen"/>
               </branch>
-              <branch>
-                <attribute name="name" value="Giraffa gracilis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa jumae"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa priscilla"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa punjabiensis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa pygmaea"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa sivalensis"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Giraffa stillei"/>
-              </branch>
-            </branch>
-            <branch>
-              <attribute name="name" value="Helladotherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Honanotherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Hydaspitherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Karsimatherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Macedonitherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Mitilanotherium"/>
             </branch>
             <branch>
               <attribute name="name" value="Okapi"/>
             </branch>
-            <branch>
-              <attribute name="name" value="Praepalaeotragus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Palaeotragus"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Samotherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Sivatherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Sogdianotherium"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Vishnutherium"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Giraffokeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Injanatherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Lorancameryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Nyanzameryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Orangemeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Progiraffa"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Propalaeomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Propalaeoryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Sperrgebietomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Teruelia"/>
           </branch>
         </branch>
         <branch>
           <attribute name="name" value="Gabelbock"/>
           <branch>
             <attribute name="name" value="Gabelbock"/>
-            <branch>
-              <attribute name="name" value="Antilocapra americana americana"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Antilocapra americana mexicana"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Antilocapra americana peninsularis"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Antilocapra americana sonoriensis"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Capromeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Ceratomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Cosoryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hayoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hexameryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hexobelomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Ilingoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Merriamoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Merycodus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Osbornoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Ottoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Paracosoryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Plioceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Proantilocapra"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Ramoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Sphenophalos"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Stockoceros"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Subantilocapra"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Tetrameryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Texoceros"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Miscellaneous fossil pecorans"/>
-          <branch>
-            <attribute name="name" value="Andegameryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Blastomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Bugtimeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Dremotherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Eumeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hanhaicerus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hispanomeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Hoplitomerycidae"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Longirostromeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Machaeromeryx"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Palaeohypsodontus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Palaeomerycidae"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Rutitherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Walangania"/>
           </branch>
         </branch>
       </branch>
       <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
           <attribute name="name" value="Hirschferkel"/>
           <branch>
@@ -2145,204 +900,21 @@
             <attribute name="name" value="Ceylon-Kantschil"/>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Kleinkantschil"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Tragulus williamsoni"/>
             </branch>
             <branch>
               <attribute name="name" value="Kleinkantschil"/>
             </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Großkantschil"/>
             </branch>
-            <branch>
-              <attribute name="name" value="Tragulus nigricans"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Tragulus versicolor"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Siamotragulus sanyathanai"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Yunnanotherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Dorcatherium"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Dorcabune"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Archaeotragulus krabiensis"/>
           </branch>
         </branch>
-        <branch>
-          <attribute name="name" value="Lophiomerycidae"/>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Bachitheriidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Climacoceratidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Gelocidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Gobiocerus"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Hypertragulidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Leptomerycidae"/>
-      </branch>
-    </branch>
-    <branch>
-      <attribute name="name" value="Miscellaneous fossil artiodactyls"/>
-      <branch>
-        <attribute name="name" value="Agriochoeridae"/>
-        <branch>
-          <attribute name="name" value="Agriochoerus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Diplobunops"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Protoreodon"/>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Aksyiria"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Amphimerycidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Anoplotheriidae"/>
-        <branch>
-          <attribute name="name" value="Anoplotherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Catodontherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Dacrytherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Deilotherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Diplartiopus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Diplobune"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Ephelcomenus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hyracodontherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Leptotheridium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Robiacina"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Robiatherium"/>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Anthracotheriidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Cainotheriidae"/>
-        <branch>
-          <attribute name="name" value="Caenomeryx"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Cainotherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Oxacron"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Paroxacron"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Plesiomeryx"/>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Cebochoeridae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Choeropotamidae"/>
-        <branch>
-          <attribute name="name" value="Amphirhagatherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Choeropotamus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Cuisitherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Hallebune"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Haplobunodon"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Lophiobunodon"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Masillabune"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Parabunodon"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Rhagatherium"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Tapirulus"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Thaumastognathus"/>
-        </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Dichobunidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Entelodontidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Helohyidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Merycoidodontidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Mixtotheriidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Raoellidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Sanitheriidae"/>
       </branch>
     </branch>
   </branch>

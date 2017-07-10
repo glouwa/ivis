@@ -142,7 +142,7 @@ var ivis;
                         var count = n.links().length + 1;
                     return count ? " " + count + " Nodes" : "";
                 }
-                return findName(n).replace('Wikipedia – Die freie ', '') + nodeCount(n);
+                return findName(n) + nodeCount(n);
             }
             nodeR(np) {
                 var r = Math.sqrt(np.re * np.re + np.im * np.im);
@@ -197,7 +197,6 @@ var ivis;
         }
         controller.PanTransformation = PanTransformation;
         var h = { P: { re: 0, im: 0 }, θ: { re: 1, im: 0 }, λ: CptoCk({ θ: Math.PI, r: 1 }) };
-        //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
         var left = null;
         var right = null;
         /**

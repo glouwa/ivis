@@ -130,13 +130,14 @@ namespace ivis.ui.D3
         {
             var allNodes = dfsFlat(this.args.data, n=>true)
             var allLinks = dfsFlat(this.args.data, n=>n.parent)
-/*            this.cells = this.cellLayer.selectAll(".cell")
+
+            this.cells = this.cellLayer.selectAll(".cell")
                 .data(this.voroLayout.polygons())
-                .enter().append('path')
+                .enter().append('polygon')
                     .attr("class", "cell")
                     .call(this.updateCell)
                     .call(this.updateCellColor)
-*/
+
             this.arcs = this.arcLayer.selectAll(".arc")
                 .data(allLinks)
                 .enter().append("path")
@@ -173,8 +174,8 @@ namespace ivis.ui.D3
 
         updateCells() : void
         {
-//            this.cells.data(this.voroLayout.polygons())
-//            this.cells.call(this.updateCell)
+            this.cells.data(this.voroLayout.polygons())
+            this.cells.call(this.updateCell)
         }
 
         showCaptions = true
@@ -282,7 +283,7 @@ namespace ivis.ui.D3
                                                                        ? d.linkColor
                                                                        : undefined))
 
-        private updateCell       = v=> v.attr("d",            d=> (d   ? "M"+d.join("L")+"Z" : null))
+        private updateCell       = v=> v.attr("points",       d=> d.join(" "))
         private updateArcColor   = v=> v.style("stroke",      d=> (d.linkColor
                                                                        ? d.linkColor
                                                                        : undefined))

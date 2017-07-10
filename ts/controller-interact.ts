@@ -180,9 +180,7 @@ namespace ivis.controller
                     var count = n.links().length+1
                 return count?  " " + count + " Nodes" : ""
             }
-
-
-            return findName(n).replace('Wikipedia – Die freie ', '') + nodeCount(n)
+            return findName(n) + nodeCount(n)
         }
 
         private nodeR(np:C) : number
@@ -239,7 +237,7 @@ namespace ivis.controller
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C) => {
                              if (ivis.controller.slide.space == "PanTransformation") {
-                                CassignC(this.tp.λ, setR(e, 1))
+                                 CassignC(this.tp.λ, setR(e, 1))
                              }
                              else {
                                  CassignC(this.tp.λ, setR(e, 1))
@@ -252,7 +250,6 @@ namespace ivis.controller
     }
 
     var h:T = { P:{ re:0, im:0 }, θ:{ re:1, im:0 }, λ:CptoCk({ θ:Math.PI, r:1}) }
-    //var o   = { P:{ re:0, im:0 }, θ:{ re:-1, im:0 }, λ:{ re:0.5403023058681398, im:-0.8414709848078965 } }
 
     var left = null
     var right = null

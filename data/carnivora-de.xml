@@ -8,9 +8,6 @@
     <branch>
       <attribute name="name" value="Katzenartige"/>
       <branch>
-        <attribute name="name" value="Viverravidae"/>
-      </branch>
-      <branch>
         <attribute name="name" value="Nimravidae"/>
       </branch>
       <branch>
@@ -363,9 +360,6 @@
             <attribute name="name" value="Kurzschwanzmanguste"/>
           </branch>
           <branch>
-            <attribute name="name" value="Herpestes edwardsi"/>
-          </branch>
-          <branch>
             <attribute name="name" value="Indische Kurzschwanzmanguste"/>
           </branch>
           <branch>
@@ -373,9 +367,6 @@
           </branch>
           <branch>
             <attribute name="name" value="Kleiner Mungo"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Herpestes naso"/>
           </branch>
           <branch>
             <attribute name="name" value="Halsbandmanguste"/>
@@ -475,9 +466,6 @@
     </branch>
     <branch>
       <attribute name="name" value="Hundeartige"/>
-      <branch>
-        <attribute name="name" value="Miacidae"/>
-      </branch>
       <branch>
         <attribute name="name" value="Hunde"/>
         <branch>
@@ -597,10 +585,7 @@
             <attribute name="name" value="Insel-Graufuchs"/>
           </branch>
         </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Kleiner Panda"/>
-      </branch>
+      </branch>      
       <branch>
         <attribute name="name" value="Amphicyonidae"/>
       </branch>
@@ -630,9 +615,6 @@
         <branch>
           <attribute name="name" value="Brillenbär"/>
         </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Hemicyonidae"/>
       </branch>
       <branch>
         <attribute name="name" value="Skunks"/>
@@ -671,9 +653,6 @@
         </branch>
         <branch>
           <attribute name="name" value="Fleckenskunks"/>
-          <branch>
-            <attribute name="name" value="Spilogale aquaticus"/>
-          </branch>
           <branch>
             <attribute name="name" value="Südlicher Fleckenskunk"/>
           </branch>
@@ -900,6 +879,9 @@
             <attribute name="name" value="Riesenotter"/>
           </branch>
         </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Kleiner Panda"/>
       </branch>
       <branch>
         <attribute name="name" value="Kleinbären"/>

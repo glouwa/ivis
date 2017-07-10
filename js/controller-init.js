@@ -8,7 +8,6 @@ var ivis;
         slides_.index = [
             { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Example treeml file" },
             { ds: "fromFile('flare.csv')", ls: 'layoutBergé', name: "Example csv file" },
-            { ds: "fromFile('sample.skos.xml')", ls: 'layoutBergé', name: "Example skos file" },
             { ds: "nTreeAtFirst", ls: 'layoutBergé', name: "Deep path example" },
             { ds: "code", ls: 'layoutBergé', name: "Reflection" },
             { ds: "nTree", ls: 'layoutBergé', name: "Balanced tree" },
@@ -22,7 +21,7 @@ var ivis;
         ];
         slides_.wiki = [
             { ds: "fromFile('carnivora-de.xml')", ls: 'layoutBergé', name: "Raubtiere" },
-            { ds: "fromFile('cetacea-de.xml')", ls: 'layoutBergé', name: "Wahle" },
+            { ds: "fromFile('cetacea-de.xml')", ls: 'layoutBergé', name: "Whale" },
             { ds: "fromFile('primates-de.xml')", ls: 'layoutBergé', name: "Primaten" },
             { ds: "fromFile('perissodactyla-de.xml')", ls: 'layoutBergé', name: "Unpaarhufer" },
             { ds: "fromFile('insectivora-de.xml')", ls: 'layoutBergé', name: "Insektenfresser" },

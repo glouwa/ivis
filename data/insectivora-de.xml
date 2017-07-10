@@ -42,7 +42,7 @@
             <attribute name="name" value="Großer Tenrek"/>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Kleiner Igeltenrek"/>
             </branch>
@@ -61,14 +61,11 @@
                 <attribute name="name" value="Eigentlicher Reiswühler"/>
               </branch>
               <branch>
-                <attribute name="name" value="Oryzorictes talpoides"/>
-              </branch>
-              <branch>
                 <attribute name="name" value="Vierzehen-Reiswühler"/>
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Kleintenreks"/>
                 <branch>
@@ -111,9 +108,6 @@
                   <attribute name="name" value="Großer Langschwanz-Kleintenrek"/>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Microgale pulla"/>
-                </branch>
-                <branch>
                   <attribute name="name" value="Madagaskar-Kleintenrek"/>
                 </branch>
                 <branch>
@@ -139,15 +133,6 @@
             <branch>
               <attribute name="name" value="Erdtenrek"/>
             </branch>
-            <branch>
-              <attribute name="name" value="Parageogale"/>
-            </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Erythrozootes"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Protenrec"/>
           </branch>
         </branch>
       </branch>
@@ -164,7 +149,7 @@
         <attribute name="name" value="Wüstengoldmull"/>
       </branch>
       <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
           <attribute name="name" value="De Wintons Goldmull"/>
         </branch>
@@ -175,19 +160,7 @@
       <branch>
         <attribute name="name" value="South African golden moles"/>
         <branch>
-          <attribute name="name" value="Amblysomus (Neamblysomus)"/>
-          <branch>
-            <attribute name="name" value="Amblysomus julianae"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Amblysomus gunningi"/>
-          </branch>
-        </branch>
-        <branch>
           <attribute name="name" value="Amblysomus (Amblysomus)"/>
-          <branch>
-            <attribute name="name" value="Amblysomus iris"/>
-          </branch>
           <branch>
             <attribute name="name" value="Highveld-Goldmull"/>
           </branch>
@@ -199,19 +172,10 @@
       <branch>
         <attribute name="name" value="African golden moles"/>
         <branch>
-          <attribute name="name" value="Chlorotalpa tytonis"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Chlorotalpa leucorhina"/>
-        </branch>
-        <branch>
           <attribute name="name" value="Sclaters Goldmull"/>
         </branch>
         <branch>
           <attribute name="name" value="Duthies Goldmull"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Chlorotalpa arendsi"/>
         </branch>
       </branch>
       <branch>
@@ -226,9 +190,6 @@
       <branch>
         <attribute name="name" value="Cape golden moles"/>
         <branch>
-          <attribute name="name" value="Chrysochloris visagei"/>
-        </branch>
-        <branch>
           <attribute name="name" value="Stuhlmanns Goldmull"/>
         </branch>
         <branch>
@@ -237,46 +198,7 @@
       </branch>
     </branch>
     <branch>
-      <attribute name="name" value="Adapisoriculidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Sespedectidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Amphilemuridae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Adapisoricidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Creotarsidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Proscalopidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Dimylidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Otlestidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Geolabididae"/>
-    </branch>
-    <branch>
       <attribute name="name" value="Karibische Spitzmäuse"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Micropternodontidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Apternodontidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Plesiosoricidae"/>
-    </branch>
-    <branch>
-      <attribute name="name" value="Nyctitheriidae"/>
     </branch>
   </branch>
 </tree>

@@ -8,9 +8,6 @@
     <branch>
       <attribute name="name" value="Zahnwale"/>
       <branch>
-        <attribute name="name" value="Agorophiidae"/>
-      </branch>
-      <branch>
         <attribute name="name" value="Physeteroidea"/>
         <branch>
           <attribute name="name" value="Zwergpottwale"/>
@@ -20,25 +17,19 @@
         </branch>
       </branch>
       <branch>
-        <attribute name="name" value="Dalpiazinidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Delfinartige"/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Schweinswale"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Albireonidae"/>
                   </branch>
                 </branch>
                 <branch>
@@ -49,12 +40,9 @@
                 <attribute name="name" value="Delfine"/>
               </branch>
             </branch>
-            <branch>
-              <attribute name="name" value="Kentriodontidae"/>
-            </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="La-Plata-Delfin"/>
             </branch>
@@ -70,24 +58,9 @@
           <attribute name="name" value="Schnabelwale"/>
         </branch>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
-          <branch>
-            <attribute name="name" value="Squalodelphidae"/>
-          </branch>
+          <attribute name="name" value=""/>
           <branch>
             <attribute name="name" value="Platanista"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Squalodontidae"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
-          <branch>
-            <attribute name="name" value="Eoplatanistidae"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Eurhinodelphidae"/>
           </branch>
         </branch>
       </branch>
@@ -95,20 +68,11 @@
     <branch>
       <attribute name="name" value="Bartenwale"/>
       <branch>
-        <attribute name="name" value="Llanocetidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Mammalodontidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Kekenodontidae"/>
-      </branch>
-      <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Furchenwale"/>
               <branch>
@@ -121,16 +85,7 @@
                 <attribute name="name" value="Südlicher Zwergwal"/>
               </branch>
               <branch>
-                <attribute name="name" value="Balaenoptera siberi"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Parabalaenoptera"/>
-              </branch>
-              <branch>
                 <attribute name="name" value="Buckelwal"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Balaenoptera davidsonii"/>
               </branch>
               <branch>
                 <attribute name="name" value="Ungültiger Titel"/>
@@ -158,25 +113,7 @@
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Eschrichtius robustus (grey whale)"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Caperea marginata (pygmy right whale)"/>
-            </branch>
-            <branch>
               <attribute name="name" value="Glattwale"/>
-              <branch>
-                <attribute name="name" value="Morenocetus"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Balaenula"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Protobalaena"/>
-              </branch>
-              <branch>
-                <attribute name="name" value="Mesoteras"/>
-              </branch>
               <branch>
                 <attribute name="name" value="Grönlandwal"/>
               </branch>
@@ -192,13 +129,7 @@
             <attribute name="name" value="Cetotheriidae"/>
           </branch>
         </branch>
-        <branch>
-          <attribute name="name" value="Aetiocetidae"/>
-        </branch>
       </branch>
-    </branch>
-    <branch>
-      <attribute name="name" value="Archaeoceti"/>
     </branch>
   </branch>
 </tree>

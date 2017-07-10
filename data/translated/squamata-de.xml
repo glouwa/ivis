@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Schuppenkriechtiere"/>
+    <branch>
+      <attribute name="name" value="Leguanartige"/>
+      <branch>
+        <attribute name="name" value="Kielschwanzleguane"/>
+        <branch>
+          <attribute name="name" value="Glattkopfleguane"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Liolaemidae"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Acrodonta"/>
+        <branch>
+          <attribute name="name" value="Schmetterlingsagamen"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Chamäleons"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Corytophanidae"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Crotaphytidae"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Stachelschwanzleguane"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Madagaskarleguane"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Phrynosomatidae"/>
+        <branch>
+          <attribute name="name" value=""/>
+          <branch>
+            <attribute name="name" value="Krötenechsen"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Sceloporus group"/>
+          <branch>
+            <attribute name="name" value="UTA"/>
+          </branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <branch>
+              <attribute name="name" value=""/>
+              <branch>
+                <attribute name="name" value="Sator"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Stachelleguane"/>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Scleroglossa"/>
+      <branch>
+        <attribute name="name" value="Geckoartige"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Schlangenschleichen"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Schlangen"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Doppelschleichen"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Skinkartige"/>
+        <branch>
+          <attribute name="name" value="Skinkartige"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Schleichenartige"/>
+        <branch>
+          <attribute name="name" value="Schleichen"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Höckerechsen"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Schleichenartige"/>
+        </branch>
+      </branch>
+    </branch>
+  </branch>
+</tree>

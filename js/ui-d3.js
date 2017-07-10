@@ -62,7 +62,7 @@ var ivis;
                     this.updateNodeStroke = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
-                    this.updateCell = v => v.attr("d", d => (d ? "M" + d.join("L") + "Z" : null));
+                    this.updateCell = v => v.attr("points", d => d.join(" "));
                     this.updateArcColor = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
@@ -139,13 +139,12 @@ var ivis;
                 create() {
                     var allNodes = dfsFlat(this.args.data, n => true);
                     var allLinks = dfsFlat(this.args.data, n => n.parent);
-                    /*            this.cells = this.cellLayer.selectAll(".cell")
-                                    .data(this.voroLayout.polygons())
-                                    .enter().append('path')
-                                        .attr("class", "cell")
-                                        .call(this.updateCell)
-                                        .call(this.updateCellColor)
-                    */
+                    this.cells = this.cellLayer.selectAll(".cell")
+                        .data(this.voroLayout.polygons())
+                        .enter().append('polygon')
+                        .attr("class", "cell")
+                        .call(this.updateCell)
+                        .call(this.updateCellColor);
                     this.arcs = this.arcLayer.selectAll(".arc")
                         .data(allLinks)
                         .enter().append("path")
@@ -175,8 +174,8 @@ var ivis;
                     this.updateCells();
                 }
                 updateCells() {
-                    //            this.cells.data(this.voroLayout.polygons())
-                    //            this.cells.call(this.updateCell)
+                    this.cells.data(this.voroLayout.polygons());
+                    this.cells.call(this.updateCell);
                 }
                 updateCaptions(visible) {
                     this.showCaptions = visible;

@@ -9,8 +9,12 @@ var coolStuff = {
     Osteichthyes                        14921     fische
     amphibiel
     reptilien
+        Sauria                          14913
+        Squamata                        14933
+        Lepidosauria                    14932
     pfalnzen
     vögel                               15721
+    lizards
     Mammalia
         Laurasiatheria
             Artiodactyla/Paraxonia      15976          paarhufer
@@ -23,11 +27,11 @@ var coolStuff = {
         Afrotheria
         Xenarthra
 }*/
+var tolids = [15976, 15977, 15980, 15971, 15968, 15963, 14913]
 var langs = ['de', 'en', 'ru', 'ro', 'zh', ]
-
-
+var langErrors = ['Diese Seite existiert nicht', ]
 var inject = {
-    tolIds:15976,
+    tolIds:14917,
     lang:'de',
 }
 
@@ -39,8 +43,27 @@ var queryWiki = searched=> new Promise((resolve, reject) => {
     xhr.onload = () => {
         var start = xhr.responseText.search('<title>')
         var end = xhr.responseText.search('</title>')
-        resolve(xhr.responseText.substr(start+7, end-start-19).replace(' - ',''))
+        resolve({
+            translation:xhr.responseText
+                .substr(start+7, end-start-19)
+                .replace(' - ', '')
+                .replace('Wikipedia – Die freie ', ''),
+            pageExits:xhr.responseText
+                .indexOf('Diese Seite existiert nicht') == -1
+        })
     }
+    xhr.onerror = e=> reject(e)
+    xhr.send()
+})
+
+var queryWikiJson = searched=> new Promise((resolve, reject) => {
+    if (!searched) resolve("")
+    var url = "https://de.wikipedia.org/w/api.php?"
+    var args = "action=query&format=json"
+    var args2 = "&titles=" +searched+ "&redirects&prop=info"
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url+args+args2, true)
+    xhr.onload = ()=> resolve(xhr.responseText)
     xhr.onerror = e=> reject(e)
     xhr.send()
 })
@@ -48,7 +71,7 @@ var queryWiki = searched=> new Promise((resolve, reject) => {
 var queryTol = searched=> new Promise((resolve, reject) => {
     console.log("fetching xml...")
     var args = "service=external&page=xml/TreeStructureService&optype=1&"
-    var url = "http://tolweb.org/onlinecontributors/app?"+args+"node_id=" + searched
+    var url = "http://tolweb.org/onlinecontributors/app?" +args+ "node_id=" +searched
     var xhr = new XMLHttpRequest()
     xhr.open('GET', url, true)
     xhr.onload = ()=> resolve(xhr.responseText)
@@ -85,34 +108,36 @@ var collectNodeNames = parsed=> new Promise((resolve, reject) => {
     resolve({ parsed:parsed, nodeNames:nodeNames})
 })
 
-var convertTree = (parsed, untranslatedNodeNames, translatedNodeNames)=> new Promise((resolve, reject) => {
-    console.log(translatedNodeNames.length + " names translated...")
+var convertTree = (parsed, inputNames, wikiResult)=> new Promise((resolve, reject) => {
+    console.log(wikiResult.length + " names translated...", inputNames.length)
     var translatedNodeNamesMap = {}
-    for (var i=0; i<untranslatedNodeNames.length; ++i)
-        translatedNodeNamesMap[untranslatedNodeNames[i]] = translatedNodeNames[i]
 
-    function convertNode(node) {
-        var out = {}
-        out.attribute = [
-            { $:{ name:"name", value:translatedNodeNamesMap[node.attribute[0].$.value] }},
-            //{ $:{ name:"extinct", value:"-" }},
-        ]
+    for (var i=0; i<inputNames.length; ++i)
+        translatedNodeNamesMap[inputNames[i]] = wikiResult[i]
+
+    function filter(n, c) {
+        var isFossil = c.attribute[0].$.value && c.attribute[0].$.value.toUpperCase().indexOf('FOSSIL') != -1
+        var noPageAndNoChildren = !translatedNodeNamesMap[n.attribute[0].$.value].pageExits && !c.branch
+        return isFossil || noPageAndNoChildren
+    }
+
+    function convertNode(node) {        
+        var name = translatedNodeNamesMap[node.attribute[0].$.value].translation || ""
+        var out = { attribute:[{ $:{ name:"name", value:name }}]}
         if (node.branch)
-            for (var i=0; i<node.branch.length; ++i) {
-                out.branch = out.branch || []
-                out.branch.push(convertNode(node.branch[i]))
-            }
+            for (var i=0; i < node.branch.length; ++i) {
+                var c = convertNode(node.branch[i])
+                if (!filter(node.branch[i], c)) {
+                    out.branch = out.branch || []
+                    out.branch.push(c)
+                }
+            }                
         return out
     }
 
     var converted = {
         tree:{
-            declarations: {
-                attributeDecl:[
-                    { $:{ name:"name", type:"String" }},
-                    //{ $:{ name:"extinct", type:"String" }}
-                ]
-            },
+            declarations: { attributeDecl:[ { $:{ name:"name", type:"String" }}]},
             branch:convertNode(parsed.tree.branch[0])
         }
     }
@@ -128,18 +153,23 @@ var saveTranslated = result=> new Promise((resolve, reject) => {
 })
 
 var parsed = null
-var untranslatedNodeNames = null
+var inputNames = null
 queryTol(inject.tolIds)
     .then(d=> parseXml(d))
     .then(d=> saveRawXml(d))
     .then(d=> collectNodeNames(d))
     .then(d=> {
         parsed = d.parsed
-        untranslatedNodeNames = d.nodeNames
+        inputNames = d.nodeNames
         return Promise.all(d.nodeNames.map(queryWiki))
     })
-    .then(d=> convertTree(parsed, untranslatedNodeNames, d))
+    .then(d=> convertTree(parsed, inputNames, d))
     .then(d=> saveTranslated(d))
     //.then(d=> console.log(process._getActiveHandles()))
     .then(d=> process.exit(1))
-    .catch(e=> console.log(e))
+    .catch(e=> console.log(e.stack))
+
+/*
+queryWikiJson('Felidae')
+    .then(d=> console.log(JSON.stringify(JSON.parse(d), null, 4)))
+*/

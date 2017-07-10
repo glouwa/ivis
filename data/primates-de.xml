@@ -6,23 +6,23 @@
   <branch>
     <attribute name="name" value="Primaten"/>
     <branch>
-      <attribute name="name" value="Wikipedia – Die freie "/>
+      <attribute name="name" value=""/>
       <branch>
-        <attribute name="name" value="Wikipedia – Die freie "/>
+        <attribute name="name" value=""/>
         <branch>
           <attribute name="name" value="Neuweltaffen"/>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
-                      <attribute name="name" value="Wikipedia – Die freie "/>
+                      <attribute name="name" value=""/>
                       <branch>
                         <attribute name="name" value="Büschelaffen"/>
                       </branch>
@@ -43,7 +43,7 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Ungehaubte Kapuziner"/>
                 </branch>
@@ -53,7 +53,7 @@
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Aotus"/>
               </branch>
@@ -63,14 +63,14 @@
             </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Sakis"/>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Uakaris"/>
                 </branch>
@@ -80,14 +80,14 @@
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Brüllaffen"/>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Klammeraffen"/>
                   </branch>
@@ -107,16 +107,16 @@
           <branch>
             <attribute name="name" value="Meerkatzenverwandte"/>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Makaken"/>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Weißlid-Mangaben"/>
                     </branch>
@@ -125,7 +125,7 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Paviane"/>
                     </branch>
@@ -136,11 +136,11 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Meerkatzen"/>
                     </branch>
@@ -158,25 +158,22 @@
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
-                <branch>
-                  <attribute name="name" value="Collobus"/>
-                </branch>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Grüner Stummelaffe"/>
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Kleideraffen"/>
                 </branch>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Pageh-Stumpfnase"/>
                     </branch>
@@ -192,7 +189,7 @@
             </branch>
           </branch>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Menschenaffen"/>
               <branch>
@@ -205,9 +202,9 @@
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
-                  <attribute name="name" value="Wikipedia – Die freie "/>
+                  <attribute name="name" value=""/>
                   <branch>
                     <attribute name="name" value="Pan"/>
                     <branch>
@@ -218,12 +215,12 @@
                     </branch>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
                       <attribute name="name" value="Ardipithecus"/>
                     </branch>
                     <branch>
-                      <attribute name="name" value="Wikipedia – Die freie "/>
+                      <attribute name="name" value=""/>
                       <branch>
                         <attribute name="name" value="Australopithecus"/>
                       </branch>
@@ -262,15 +259,15 @@
             <branch>
               <attribute name="name" value="Gibbons"/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Kleine Gibbons"/>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
+                    <attribute name="name" value=""/>
                     <branch>
-                      <attribute name="name" value="Wikipedia – Die freie "/>
+                      <attribute name="name" value=""/>
                       <branch>
-                        <attribute name="name" value="Wikipedia – Die freie "/>
+                        <attribute name="name" value=""/>
                         <branch>
                           <attribute name="name" value="Schwarzhandgibbon"/>
                         </branch>
@@ -325,9 +322,9 @@
       <branch>
         <attribute name="name" value="Sulawesi-Koboldmakis"/>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Sunda-Koboldmaki"/>
             </branch>
@@ -356,18 +353,6 @@
               <attribute name="name" value="Lariang-Koboldmaki"/>
             </branch>
           </branch>
-          <branch>
-            <attribute name="name" value="Tarsius eocaenus"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Afrotarsius chatrathi"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Tarsius thailandicus"/>
-          </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Xanthrorhysis tabrumi"/>
         </branch>
       </branch>
     </branch>
@@ -376,13 +361,13 @@
       <branch>
         <attribute name="name" value="Lemuren"/>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
-            <attribute name="name" value="Wikipedia – Die freie "/>
+            <attribute name="name" value=""/>
             <branch>
               <attribute name="name" value="Gewöhnliche Makis"/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Katta"/>
                 </branch>
@@ -394,13 +379,10 @@
                   <branch>
                     <attribute name="name" value="Östlicher Bambuslemur"/>
                   </branch>
-                  <branch>
-                    <attribute name="name" value="Hapalemur simus"/>
-                  </branch>
                 </branch>
               </branch>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Kronenmaki"/>
                 </branch>
@@ -420,14 +402,11 @@
               <branch>
                 <attribute name="name" value="Schwarzweißer Vari"/>
               </branch>
-              <branch>
-                <attribute name="name" value="Pachylemur insignis"/>
-              </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Indriartige"/>
                   <branch>
@@ -455,28 +434,7 @@
                     <attribute name="name" value="Archaeoindris"/>
                   </branch>
                   <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
-                    <branch>
-                      <attribute name="name" value="Palaeopropithecus ingens"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Palaeopropithecus maximus"/>
-                    </branch>
-                  </branch>
-                  <branch>
                     <attribute name="name" value="Babakotia"/>
-                  </branch>
-                  <branch>
-                    <attribute name="name" value="Wikipedia – Die freie "/>
-                    <branch>
-                      <attribute name="name" value="Mesopropithecus globiceps"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mesopropithecus pithecoides"/>
-                    </branch>
-                    <branch>
-                      <attribute name="name" value="Mesopropithecus dolichobrachion"/>
-                    </branch>
                   </branch>
                 </branch>
               </branch>
@@ -485,21 +443,15 @@
                 <branch>
                   <attribute name="name" value="Hadropithecus"/>
                 </branch>
-                <branch>
-                  <attribute name="name" value="Archaeolemur edwardsi"/>
-                </branch>
-                <branch>
-                  <attribute name="name" value="Archaeolemur majori"/>
-                </branch>
               </branch>
             </branch>
           </branch>
           <branch>
             <attribute name="name" value="Katzenmakis"/>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
-                <attribute name="name" value="Wikipedia – Die freie "/>
+                <attribute name="name" value=""/>
                 <branch>
                   <attribute name="name" value="Mouse lemurs"/>
                   <branch>
@@ -524,7 +476,7 @@
               </branch>
             </branch>
             <branch>
-              <attribute name="name" value="Wikipedia – Die freie "/>
+              <attribute name="name" value=""/>
               <branch>
                 <attribute name="name" value="Büschelohrmaki"/>
               </branch>
@@ -557,21 +509,9 @@
               <attribute name="name" value="Nördlicher Wieselmaki"/>
             </branch>
           </branch>
-          <branch>
-            <attribute name="name" value="Koala lemurs"/>
-            <branch>
-              <attribute name="name" value="Megaladapis grandidieri"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Megaladapis edwardsi"/>
-            </branch>
-            <branch>
-              <attribute name="name" value="Megaladapis madagascariensis"/>
-            </branch>
-          </branch>
         </branch>
         <branch>
-          <attribute name="name" value="Wikipedia – Die freie "/>
+          <attribute name="name" value=""/>
           <branch>
             <attribute name="name" value="Fingertier"/>
           </branch>
@@ -579,9 +519,6 @@
             <attribute name="name" value="Riesenfingertier"/>
           </branch>
         </branch>
-      </branch>
-      <branch>
-        <attribute name="name" value="Karanisia clarki"/>
       </branch>
       <branch>
         <attribute name="name" value="Loriartige"/>
@@ -616,19 +553,7 @@
             <branch>
               <attribute name="name" value="Südlicher Kielnagelgalago"/>
             </branch>
-            <branch>
-              <attribute name="name" value="Euoticus inustus"/>
-            </branch>
           </branch>
-        </branch>
-        <branch>
-          <attribute name="name" value="Saharagalago misrensis"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Wadilemur elegans"/>
-        </branch>
-        <branch>
-          <attribute name="name" value="Komba robustus"/>
         </branch>
         <branch>
           <attribute name="name" value="Loris"/>
@@ -646,9 +571,6 @@
             <branch>
               <attribute name="name" value="Zwerglori"/>
             </branch>
-          </branch>
-          <branch>
-            <attribute name="name" value="Nycticeboides simpsoni"/>
           </branch>
           <branch>
             <attribute name="name" value="Potto"/>

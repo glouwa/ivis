@@ -24,7 +24,7 @@ svg {
     letter-spacing: 0.11em;
     pointer-events: none;
 
-    text-rendering: optimizeSpeed;
+    /*text-rendering: optimizeSpeed;*/
 
     paint-order:stroke;
     stroke: #fff;

@@ -8,9 +8,6 @@
     <branch>
       <attribute name="name" value="Katzenartige"/>
       <branch>
-        <attribute name="name" value="Viverravidae"/>
-      </branch>
-      <branch>
         <attribute name="name" value="Nimravidae"/>
       </branch>
       <branch>
@@ -363,9 +360,6 @@
             <attribute name="name" value="Kurzschwanzmanguste"/>
           </branch>
           <branch>
-            <attribute name="name" value="Herpestes edwardsi"/>
-          </branch>
-          <branch>
             <attribute name="name" value="Indische Kurzschwanzmanguste"/>
           </branch>
           <branch>
@@ -373,9 +367,6 @@
           </branch>
           <branch>
             <attribute name="name" value="Kleiner Mungo"/>
-          </branch>
-          <branch>
-            <attribute name="name" value="Herpestes naso"/>
           </branch>
           <branch>
             <attribute name="name" value="Halsbandmanguste"/>
@@ -475,9 +466,6 @@
     </branch>
     <branch>
       <attribute name="name" value="Hundeartige"/>
-      <branch>
-        <attribute name="name" value="Miacidae"/>
-      </branch>
       <branch>
         <attribute name="name" value="Hunde"/>
         <branch>
@@ -632,9 +620,6 @@
         </branch>
       </branch>
       <branch>
-        <attribute name="name" value="Hemicyonidae"/>
-      </branch>
-      <branch>
         <attribute name="name" value="Skunks"/>
         <branch>
           <attribute name="name" value="Weißrüsselskunks"/>
@@ -671,9 +656,6 @@
         </branch>
         <branch>
           <attribute name="name" value="Fleckenskunks"/>
-          <branch>
-            <attribute name="name" value="Spilogale aquaticus"/>
-          </branch>
           <branch>
             <attribute name="name" value="Südlicher Fleckenskunk"/>
           </branch>
