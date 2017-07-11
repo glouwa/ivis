@@ -50,6 +50,7 @@ namespace ivis.ui.D3
             var d3mouseElemByVoro = ()=> { var m = d3.mouse(this.layersSvg); return this.voroLayout.find(m[0], m[1]).data; }
 
             this.drag = d3.drag()
+                //.filter(()=> console.log(d3.event.type); return true; )
                 .on("start", ()=> args.onDragStart(dragStartPoint = this.ti(d3.mouse(this.layersSvg)), dragStartElement = d3mouseElemByVoro()))
                 .on("drag",  ()=> args.onDrag(dragStartPoint, this.ti(d3.mouse(this.layersSvg)), dragStartElement))
                 .on("end",   ()=> args.onDragEnd())

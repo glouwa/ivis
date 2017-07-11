@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Hyperbolic tree</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" media="screen,projection">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="tree.css">
-
     <script type="text/javascript" src="js/lib/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3-ease.v1.min.js"></script>
@@ -22,6 +26,7 @@
     <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="js/ui-d3.js"></script>
     <script type="text/javascript" src="js/ui-plexx.js"></script>
+
 </head>
 
 <body onload="ivis.controller.init('index')">
@@ -29,57 +34,63 @@
     <div id="config">
         <div id="header">
             <span id="slide">
-                <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
+                <button class="btn-small waves-effect waves-orange btn green lighten-5 black-text" onclick="ivis.controller.next(-1)">
+                    ◄</button>
+                <button class="btn-small waves-effect waves-orange btn green lighten-5 black-text"" onclick="ivis.controller.next(1)">
+                    ►</button>
                 <span id="slideName"></span>
             </span>
         </div>
 
         <div class="configLine">
-            <span class="configItem">
-                <div class="selectCaption">Data source</div>
-                <select id="dataSourceSelect"></select></span>
-            <span class="configItem">
-                <div class="selectCaption">Upload treeml, skos, csv, json, rdf</div>
-                <input id="userfile" type="file" name="userfile" accept=".xml, .rdf, .csv, .json"></span>
+            <span class="configItem input-field">
+                <select id="dataSourceSelect"></select>
+                <label>Data source</label></span>
+
+            <span class="configItem file-field input-field">
+                <div class="btn-small waves-effect waves-orange btn green lighten-5 black-text"">
+                    <span>File</span>
+                    <input type="file" multiple></div>
+                <div class="file-path-wrapper">
+                    <input id="userfile" class="file-path validate" type="text" placeholder="Upload" name="userfile" accept=".xml, .rdf, .csv, .json"></input></div>
+                </span>
         </div>
 
         <div class="seperator"></div>
 
         <div class="configLine">
-            <span class="configItem">
-                <div class="selectCaption">Renderer</div>
-                <select id="rendererSelect"></select></span>
+            <span class="configItem input-field">
+                <select id="rendererSelect"></select>
+                <label>Renderer</label></span>
         </div>
 
         <div class="seperator"></div>
 
         <div class="configLine">
-            <span class="configItem">
-                <div class="selectCaption">Node layout</div>
-                <select id="layoutSelect"></select></span>
-            <span class="configItem"  style="display:none">
-                <div class="selectCaption">Distance (λ)</div>
-                <select id="magicSelect"></select></span>
-            <span class="configItem">
-                <div class="selectCaption">Weights</div>
-                <select id="weightSelect"></select></span></div>
+            <span class="configItem input-field">
+                <select id="layoutSelect"></select>
+                <label>Node layout</label></span>
+            <span class="configItem input-field"  style="display:none">
+                <select id="magicSelect">
+                <label>>Distance (λ)</label></select></span>
+            <span class="configItem input-field">
+                <select id="weightSelect"></select>
+                <label>Weights</label></span></div>
 
         <div class="configLine">
-            <span class="configItem">
-                <div class="selectCaption">Layout space</div>
-                <select id="spaceSelect"></select></span>
-            <span class="configItem">
-                <div class="selectCaption">Line transformation</div>
-                <select id="arcSelect"></select></span></div>
-
+            <span class="configItem input-field">
+                <select id="spaceSelect"></select>
+                <label>Layout space</label></span>
+            <span class="configItem input-field">
+                <select id="arcSelect"></select>
+                <label>Line transformation</label></span></div>
 
         <div class="configLine">        
-            <span class="configItem">
-                <div class="selectCaption">Captions</div>
-                <select id="captionSelect"></select></span></div>
-
+            <span class="configItem  input-field">
+                <select id="captionSelect"></select>
+                <label>Captions</label></span></div>
     </div>
     <div id="hypertree" class="plexx"></div>
-    <nav id="plexxDbg" style="display: table"></nav>
+    <div id="plexxDbg" style="display: table"></div>
 </body>
 </html>

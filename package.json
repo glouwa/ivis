@@ -28,6 +28,7 @@
     "d3": "^4.0.0",
     "d3-ease": "^1.0.3",
     "formidable": "^1.1.1",
+    "materialize-css": "^0.99.0",
     "serve-static": "^1.10.3",
     "typescript": "^2.3.4",
     "watch": "^1.0.2",

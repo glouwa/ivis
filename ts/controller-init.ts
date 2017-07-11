@@ -104,7 +104,6 @@ namespace ivis.controller
             { text:"Hide on drag",    value:"true",              },
             { text:"Show always",     value:"false",             },
         ]
-
         
         d3.select('#rendererSelect')
             .on('change', ()=> setRenderer(d3.event.target.value))
@@ -113,25 +112,29 @@ namespace ivis.controller
             .enter().append('option')
                 .attr('value', d=> d)
                 .text(d=> d)
+        if (window.$) $('#rendererSelect').material_select()
+        if (window.$) $('#rendererSelect').change(function() { setRenderer(this.value) })
 
         function buildCombo(selector, data, onChange)
         {
             d3.select(selector)
-                .on('change', onChange)
+                .on('change', ()=> onChange(d3.event.target.value))
                 .selectAll('option')
                 .data(data)
                 .enter().append('option')
                     .attr('value', (d:{value:string}) => d.value)
                     .text((d:{text:string}) => d.text)
+            if (window.$) $(selector).material_select()
+            if (window.$) $(selector).change(function() { onChange(this.value) })
         }
 
-        buildCombo('#dataSourceSelect', loaderOptions,  ()=> setDataSource(d3.event.target.value))
-        buildCombo('#spaceSelect',      spaceOptions,   ()=> setSpace(d3.event.target.value))
-        buildCombo('#layoutSelect',     layoutOptions,  ()=> setLayout(d3.event.target.value))
-        buildCombo('#weightSelect',     weightOptions,  ()=> setWeight(d3.event.target.value))
-        buildCombo('#magicSelect',      magicOptions,   ()=> setMagic(d3.event.target.value))
-        buildCombo('#arcSelect',        arcOptions,     ()=> setArc(d3.event.target.value))
-        buildCombo('#captionSelect',    captionOptions, ()=> setCaption(d3.event.target.value))
+        buildCombo('#dataSourceSelect', loaderOptions,  setDataSource)
+        buildCombo('#spaceSelect',      spaceOptions,   setSpace)
+        buildCombo('#layoutSelect',     layoutOptions,  setLayout)
+        buildCombo('#weightSelect',     weightOptions,  setWeight)
+        buildCombo('#magicSelect',      magicOptions,   setMagic)
+        buildCombo('#arcSelect',        arcOptions,     setArc)
+        buildCombo('#captionSelect',    captionOptions, setCaption)
 
         var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect")
         var spaceSelect      = <HTMLInputElement>document.getElementById("spaceSelect")

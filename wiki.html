@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Hyperbolic tree</title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" media="screen,projection">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+
     <link rel="stylesheet" href="wiki.css">
     <link rel="stylesheet" href="tree.css">
-
     <script type="text/javascript" src="js/lib/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3-ease.v1.min.js"></script>
@@ -28,49 +32,51 @@
     <div class="split" style="width:55%">
         <div id="header">
             <span id="slide">
-                <button onclick="ivis.controller.next(-1)">◄</button><button onclick="ivis.controller.next(1)">►</button>
-                <span id="slideName"></span></span>
-            <span>
-            <span id="config">
-                <div class="selectCaption">Captions</div>
-                <select id="captionSelect"></select></span>
+                <button class="btn-small waves-effect waves-orange btn green lighten-5 black-text" onclick="ivis.controller.next(-1)">◄</button>
+                <button class="btn-small waves-effect waves-orange btn green lighten-5 black-text" onclick="ivis.controller.next(1)">►</button>
+                <span id="slideName"></span>
+            </span>
+            <span id="configline">
+                <span class="input-field config">
+                    <select id="captionSelect"></select>
+                    <label>Captions</label></span>
 
-            <span id="config" style="display:none">
-                <div class="selectCaption">Link curvature</div>
-                <select id="arcSelect"></select></span>
+                <span class="config" style="display:none">
+                    <div class="selectCaption">Link curvature</div>
+                    <select id="arcSelect"></select></span>
 
-            <span id="config" style="display:none">
-                <div class="selectCaption">Renderer</div>
-                <select id="rendererSelect"></select></span>
+                <span class="config" style="display:none">
+                    <div class="selectCaption">Renderer</div>
+                    <select id="rendererSelect"></select></span>
 
-            <span class="config"  style="display:none">
-                <div class="selectCaption">Source space</div>
-                <select id="spaceSelect"></select></span>
+                <span class="config"  style="display:none">
+                    <div class="selectCaption">Source space</div>
+                    <select id="spaceSelect"></select></span>
 
-            <span id="config">
-                <div class="selectCaption">Weights</div>
-                <select id="weightSelect"></select></span>
+                <span class="config input-field">
+                    <select id="weightSelect"></select>
+                    <label>Weights</label></span>
 
-            <span id="config" style="display:none">
-                <div class="selectCaption">Distance</div>
-                <select id="magicSelect"></select></span>
+                <span class="config" style="display:none">
+                    <div class="selectCaption">Distance</div>
+                    <select id="magicSelect"></select></span>
 
-            <span id="config" style="display:none">
-                <div class="selectCaption">Tree layout</div>
-                <select id="layoutSelect"></select></span>
+                <span class="config" style="display:none">
+                    <div class="selectCaption">Tree layout</div>
+                    <select id="layoutSelect"></select></span>
 
-            <span id="config"  style="display:none">
-                <div class="selectCaption">File upload</div>
-                <input id="userfile" type="file" name="userfile" accept=".xml"></span>
+                <span class="config"  style="display:none">
+                    <div class="selectCaption">File upload</div>
+                    <input id="userfile" type="file" name="userfile" accept=".xml"></span>
 
-            <span id="config"  style="display:none">
-                <div class="selectCaption">Tree structure</div>
-                <select id="dataSourceSelect"></select></span>
-            <span>
-
+                <span class="config"  style="display:none">
+                    <div class="selectCaption">Tree structure</div>
+                    <select id="dataSourceSelect"></select></span>
+            </span>
+        </span>
         </div>
         <div id="hypertree" class="plexx"></div>
-        <nav id="plexxDbg"></nav>
+        <div id="plexxDbg"></div>
     </div>
     <div class="split" style="width:45%">
         <iframe id="wiki" class="wiki" src="https://en.m.wikipedia.org/wiki/Mammal"></iframe>

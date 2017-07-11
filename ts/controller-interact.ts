@@ -242,7 +242,7 @@ namespace ivis.controller
         onDragθ =        (s:C, e:C) => CassignC(this.tp.θ, setR(e, 1))
         onDragλ =        (s:C, e:C, r:N) => {
                              var captionCount=0
-                             dfs(r, n=> if(CktoCp(n.cache).r < .5) captionCount++)
+                             dfs(r, n=> { if(CktoCp(n.cache).r < .5) captionCount++ })
                              if (captionCount > 20 /*|| captionCount < 10*/)
                                  return
 
