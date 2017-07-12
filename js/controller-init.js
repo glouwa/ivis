@@ -110,10 +110,8 @@ var ivis;
                 .enter().append('option')
                 .attr('value', d => d)
                 .text(d => d);
-            if (window.$)
-                $('#rendererSelect').material_select();
-            if (window.$)
-                $('#rendererSelect').change(function () { setRenderer(this.value); });
+            $('#rendererSelect').material_select();
+            $('#rendererSelect').change(function () { setRenderer(this.value); });
             function buildCombo(selector, data, onChange) {
                 d3.select(selector)
                     .on('change', () => onChange(d3.event.target.value))
@@ -122,29 +120,23 @@ var ivis;
                     .enter().append('option')
                     .attr('value', (d) => d.value)
                     .text((d) => d.text);
-                if (window.$)
-                    $(selector).material_select();
-                if (window.$)
-                    $(selector).change(function () { onChange(this.value); });
+                $(selector).material_select();
+                $(selector).change(function () { onChange(this.value); });
             }
-            buildCombo('#dataSourceSelect', loaderOptions, setDataSource);
-            buildCombo('#spaceSelect', spaceOptions, setSpace);
-            buildCombo('#layoutSelect', layoutOptions, setLayout);
-            buildCombo('#weightSelect', weightOptions, setWeight);
-            buildCombo('#magicSelect', magicOptions, setMagic);
-            buildCombo('#arcSelect', arcOptions, setArc);
-            buildCombo('#captionSelect', captionOptions, setCaption);
+            var dataSourceSelect = buildCombo('#dataSourceSelect', loaderOptions, setDataSource);
+            var spaceSelect = buildCombo('#spaceSelect', spaceOptions, setSpace);
+            var layoutSelect = buildCombo('#layoutSelect', layoutOptions, setLayout);
+            var weightSelect = buildCombo('#weightSelect', weightOptions, setWeight);
+            var magicSelect = buildCombo('#magicSelect', magicOptions, setMagic);
+            var arcSelect = buildCombo('#arcSelect', arcOptions, setArc);
+            var captionSelect = buildCombo('#captionSelect', captionOptions, setCaption);
             var rendererSelect = document.getElementById("rendererSelect");
             var spaceSelect = document.getElementById("spaceSelect");
             var arcSelect = document.getElementById("arcSelect");
             var captionSelect = document.getElementById("captionSelect");
             var weightSelect = document.getElementById("weightSelect");
             var magicSelect = document.getElementById("magicSelect");
-            document.querySelector('#userfile').addEventListener('change', function (e) {
-                console.log(this);
-                var file = this.files[0];
-                var fd = new FormData();
-                fd.append("userfile", file);
+            document.getElementById('userfileControl').addEventListener('change', function (e) {
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '/fileupload', true);
                 xhr.upload.onprogress = function (e) {
@@ -157,12 +149,12 @@ var ivis;
                     if (this.status == 200) {
                         let resp = JSON.parse(this.response);
                         console.log('Server got:', resp);
-                        var dataSourceSelect = document.getElementById("dataSourceSelect");
-                        dataSourceSelect.value = "fromFile('user-uploaded.xml')";
-                        setDataSource(dataSourceSelect.value);
+                        $("#dataSourceSelect").val("fromFile('user-uploaded.xml')").material_select();
+                        setDataSource($("#dataSourceSelect").val());
                     }
-                    ;
                 };
+                var fd = new FormData();
+                fd.append("userfile", document.getElementById('userfile').files[0]);
                 xhr.send(fd);
             }, false);
             controller.slide.initUi = eval('ivis.ui.' + rendererSelect.value + '.init' + rendererSelect.value);
@@ -183,16 +175,13 @@ var ivis;
             var newArc = slides[slideNr % slides.length].arc
                 ? slides[slideNr % slides.length].arc
                 : ("arc('1', '0')");
-            var dataSourceSelect = document.getElementById("dataSourceSelect");
-            var layoutSelect = document.getElementById("layoutSelect");
-            var arcSelect = document.getElementById("arcSelect");
-            dataSourceSelect.value = newDs;
-            layoutSelect.value = newLs;
-            arcSelect.value = newArc;
+            $("#dataSourceSelect").val(newDs).material_select();
+            $("#layoutSelect").val(newLs).material_select();
+            $("#arcSelect").val(newArc).material_select();
             document.getElementById('slideName').innerHTML = newName;
-            controller.slide.arc = eval('ivis.ui.' + arcSelect.value);
-            controller.slide.loader = eval('ivis.model.loaders.' + dataSourceSelect.value);
-            controller.slide.layout = eval('ivis.model.layouts.' + layoutSelect.value);
+            controller.slide.arc = eval('ivis.ui.' + newArc);
+            controller.slide.loader = eval('ivis.model.loaders.' + newDs);
+            controller.slide.layout = eval('ivis.model.layouts.' + newLs);
             ivis.controller.reCreate();
         }
         controller.next = next;

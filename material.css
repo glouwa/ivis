@@ -1,0 +1,29 @@
+.btn-small {
+    height: 2.2em;
+    line-height: 1.1em;
+    padding: 0 1.3rem;
+    vertical-align:middle;
+}
+
+.select-wrapper {
+    font-weight: bold;
+}
+
+.select-wrapper input.select-dropdown {
+    height: 2.2rem;
+}
+
+.select-wrapper + label {
+    top: -12px;
+    font-size: 0.7rem;
+}
+
+.file-field .btn, .file-field .btn-large {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    font-weight: bold;
+}
+
+.file-field input.file-path {
+    height: 2.2rem;
+}

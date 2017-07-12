@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="tree.css">
+    <link rel="stylesheet" href="material.css">
     <script type="text/javascript" src="js/lib/plexx.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="https://d3js.org/d3-ease.v1.min.js"></script>
@@ -47,13 +48,15 @@
                 <select id="dataSourceSelect"></select>
                 <label>Data source</label></span>
 
-            <span class="configItem file-field input-field">
+            <span id="userfileControl" class="configItem file-field input-field">
                 <div class="btn-small waves-effect waves-orange btn green lighten-5 black-text"">
-                    <span>File</span>
-                    <input type="file" multiple></div>
-                <div class="file-path-wrapper">
-                    <input id="userfile" class="file-path validate" type="text" placeholder="Upload" name="userfile" accept=".xml, .rdf, .csv, .json"></input></div>
-                </span>
+                    <span><i class="material-icons">file_upload</i></span>
+                    <input id="userfile" type="file" name="userfile" accept=".xml, .rdf, .csv, .json"></input>
+                </div>
+                <div class="file-path-wrapper" style="display:none">
+                    <input class="file-path validate" type="text" placeholder="Upload"></input>
+                </div>
+            </span>
         </div>
 
         <div class="seperator"></div>

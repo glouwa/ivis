@@ -22,7 +22,8 @@ body {
     height: calc(100vh - 4em);
     float: left;
     margin: 2em;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 4px 15px 0 rgba(0, 0, 0, 0.15);*/
+    border-radius: 2px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.15), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 #config .seperator {
@@ -37,6 +38,8 @@ body {
     padding: 0.3em;
     margin-bottom: 2em;
     display: flow-root;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
     /*box-shadow: inset 0 -1px 3px rgba(0,0,0,0.18);*/
 }
 
@@ -65,29 +68,6 @@ body {
     width:11em;    
 }
 
-.btn-small {
-    height: 2.2em;
-    line-height: 1.1em;
-    padding: 0 1.3rem;
-    vertical-align:middle;
-}
 
-.select-wrapper input.select-dropdown {
-    height: 2.2rem;
-}
-
-.select-wrapper + label {
-    top: -12px;
-    font-size: 0.7rem;
-}
-
-.file-field .btn, .file-field .btn-large {
-    height: 2.2rem;
-    line-height: 2.2rem;
-}
-
-.file-field input.file-path {
-    height: 2.2rem;
-}
 
 

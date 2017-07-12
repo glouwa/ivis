@@ -112,8 +112,8 @@ namespace ivis.controller
             .enter().append('option')
                 .attr('value', d=> d)
                 .text(d=> d)
-        if (window.$) $('#rendererSelect').material_select()
-        if (window.$) $('#rendererSelect').change(function() { setRenderer(this.value) })
+        $('#rendererSelect').material_select()
+        $('#rendererSelect').change(function() { setRenderer(this.value) })
 
         function buildCombo(selector, data, onChange)
         {
@@ -124,17 +124,17 @@ namespace ivis.controller
                 .enter().append('option')
                     .attr('value', (d:{value:string}) => d.value)
                     .text((d:{text:string}) => d.text)
-            if (window.$) $(selector).material_select()
-            if (window.$) $(selector).change(function() { onChange(this.value) })
+            $(selector).material_select()
+            $(selector).change(function() { onChange(this.value) })
         }
 
-        buildCombo('#dataSourceSelect', loaderOptions,  setDataSource)
-        buildCombo('#spaceSelect',      spaceOptions,   setSpace)
-        buildCombo('#layoutSelect',     layoutOptions,  setLayout)
-        buildCombo('#weightSelect',     weightOptions,  setWeight)
-        buildCombo('#magicSelect',      magicOptions,   setMagic)
-        buildCombo('#arcSelect',        arcOptions,     setArc)
-        buildCombo('#captionSelect',    captionOptions, setCaption)
+        var dataSourceSelect = buildCombo('#dataSourceSelect', loaderOptions,  setDataSource)
+        var spaceSelect      = buildCombo('#spaceSelect',      spaceOptions,   setSpace)
+        var layoutSelect     = buildCombo('#layoutSelect',     layoutOptions,  setLayout)
+        var weightSelect     = buildCombo('#weightSelect',     weightOptions,  setWeight)
+        var magicSelect      = buildCombo('#magicSelect',      magicOptions,   setMagic)
+        var arcSelect        = buildCombo('#arcSelect',        arcOptions,     setArc)
+        var captionSelect    = buildCombo('#captionSelect',    captionOptions, setCaption)
 
         var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect")
         var spaceSelect      = <HTMLInputElement>document.getElementById("spaceSelect")
@@ -143,41 +143,38 @@ namespace ivis.controller
         var weightSelect     = <HTMLInputElement>document.getElementById("weightSelect")
         var magicSelect      = <HTMLInputElement>document.getElementById("magicSelect")
 
-        document.querySelector('#userfile').addEventListener('change', function(e) {
-            console.log(this);
-            var file = this.files[0];
-            var fd = new FormData();
-            fd.append("userfile", file);
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/fileupload', true);
-            
+        document.getElementById('userfileControl').addEventListener('change', function(e) {
+            var xhr = new XMLHttpRequest()
+            xhr.open('POST', '/fileupload', true)
             xhr.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
-                    let percentComplete = (e.loaded / e.total) * 100;
-                    console.log(percentComplete + '% uploaded');
+                    let percentComplete = (e.loaded / e.total) * 100
+                    console.log(percentComplete + '% uploaded')
                 }
-            };
-
+            }
             xhr.onload = function() {
                 if (this.status == 200) {
-                    let resp = JSON.parse(this.response);
-                    console.log('Server got:', resp);
-                    var dataSourceSelect = <HTMLInputElement>document.getElementById("dataSourceSelect")
-                    dataSourceSelect.value = "fromFile('user-uploaded.xml')"
-                    setDataSource(dataSourceSelect.value)
-                };
-            };
+                    let resp = JSON.parse(this.response)
+                    console.log('Server got:', resp)
 
-            xhr.send(fd);
-        }, false);
+                    $("#dataSourceSelect").val("fromFile('user-uploaded.xml')").material_select()
+                    setDataSource($("#dataSourceSelect").val())
+                }
+            }
+
+            var fd = new FormData()
+            fd.append("userfile", document.getElementById('userfile').files[0])
+            xhr.send(fd)
+        },
+        false)
         
-        slide.initUi = eval('ivis.ui.'+rendererSelect.value+'.init' + rendererSelect.value)
-        slide.unitDisk = eval('ivis.ui.'+rendererSelect.value+'.UnitDisk' + rendererSelect.value)
-        slide.arc = eval('ivis.ui.' + arcSelect.value)
+        slide.initUi   = eval('ivis.ui.' + rendererSelect.value+'.init' + rendererSelect.value)
+        slide.unitDisk = eval('ivis.ui.' + rendererSelect.value+'.UnitDisk' + rendererSelect.value)
+        slide.arc      = eval('ivis.ui.' + arcSelect.value)
         slide.captions = eval(captionSelect.value)
-        slide.weight = eval(weightSelect.value)
-        slide.magic = eval(magicSelect.value)
-        slide.space = eval('ivis.controller.'+spaceSelect.value)
+        slide.weight   = eval(weightSelect.value)
+        slide.magic    = eval(magicSelect.value)
+        slide.space    = eval('ivis.controller.' + spaceSelect.value)
         next(1)
     }
 
@@ -185,25 +182,22 @@ namespace ivis.controller
     {
         slideNr = slideNr + d + slides.length
 
-        var newDs = slides[slideNr%slides.length].ds
-        var newLs = slides[slideNr%slides.length].ls
+        var newDs   = slides[slideNr%slides.length].ds
+        var newLs   = slides[slideNr%slides.length].ls
         var newName = slides[slideNr%slides.length].name
-        var newArc = slides[slideNr%slides.length].arc
-                   ? slides[slideNr%slides.length].arc
-                   : ("arc('1', '0')")
+        var newArc  = slides[slideNr%slides.length].arc
+                    ? slides[slideNr%slides.length].arc
+                    : ("arc('1', '0')")
 
-        var dataSourceSelect = <HTMLInputElement>document.getElementById("dataSourceSelect")
-        var layoutSelect     = <HTMLInputElement>document.getElementById("layoutSelect")
-        var arcSelect        = <HTMLInputElement>document.getElementById("arcSelect")
+        $("#dataSourceSelect").val(newDs).material_select()
+        $("#layoutSelect").val(newLs).material_select()
+        $("#arcSelect").val(newArc).material_select()
 
-        dataSourceSelect.value = newDs
-        layoutSelect.value = newLs
-        arcSelect.value = newArc
         document.getElementById('slideName').innerHTML = newName
 
-        slide.arc = eval('ivis.ui.'+arcSelect.value)
-        slide.loader = eval('ivis.model.loaders.'+dataSourceSelect.value)
-        slide.layout = eval('ivis.model.layouts.'+layoutSelect.value)
+        slide.arc    = eval('ivis.ui.' + newArc)
+        slide.loader = eval('ivis.model.loaders.' + newDs)
+        slide.layout = eval('ivis.model.layouts.' + newLs)
         ivis.controller.reCreate()
     }
 
