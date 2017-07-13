@@ -100,8 +100,8 @@ var ivis;
                 { text: "Straight line", value: "arcLine", },
             ];
             var captionOptions = [
-                { text: "Hide on drag", value: "true", },
                 { text: "Show always", value: "false", },
+                { text: "Hide on drag", value: "true", },
             ];
             d3.select('#rendererSelect')
                 .on('change', () => setRenderer(d3.event.target.value))
@@ -140,15 +140,11 @@ var ivis;
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', '/fileupload', true);
                 xhr.upload.onprogress = function (e) {
-                    if (e.lengthComputable) {
-                        let percentComplete = (e.loaded / e.total) * 100;
-                        console.log(percentComplete + '% uploaded');
-                    }
+                    if (e.lengthComputable)
+                        var percentComplete = (e.loaded / e.total) * 100;
                 };
                 xhr.onload = function () {
                     if (this.status == 200) {
-                        let resp = JSON.parse(this.response);
-                        console.log('Server got:', resp);
                         $("#dataSourceSelect").val("fromFile('user-uploaded.xml')").material_select();
                         setDataSource($("#dataSourceSelect").val());
                     }
@@ -157,6 +153,17 @@ var ivis;
                 fd.append("userfile", document.getElementById('userfile').files[0]);
                 xhr.send(fd);
             }, false);
+            //$('.carousel').carousel({indicators: true, dist:-300})
+            $('.dropdown-button').dropdown({
+                inDuration: 300,
+                outDuration: 225,
+                constrainWidth: false,
+                hover: false,
+                gutter: 0,
+                belowOrigin: true,
+                alignment: 'right',
+                stopPropagation: false // Stops event propagation
+            });
             controller.slide.initUi = eval('ivis.ui.' + rendererSelect.value + '.init' + rendererSelect.value);
             controller.slide.unitDisk = eval('ivis.ui.' + rendererSelect.value + '.UnitDisk' + rendererSelect.value);
             controller.slide.arc = eval('ivis.ui.' + arcSelect.value);

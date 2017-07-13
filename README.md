@@ -31,7 +31,8 @@ todos:
 - cache reaftoring
 - multiple foci
 
-
+curl -X POST https://api.opentreeoflife.org/v3/taxonomy/taxon_info \
+-H 'content-type:application/json' -d '{"ott_id":827259, "include_children":true}'
 
 
 

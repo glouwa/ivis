@@ -188,8 +188,8 @@ var ivis;
                     var captionCount = 0;
                     dfs(r, n => { if (CktoCp(n.cache).r < .5)
                         captionCount++; });
-                    if (captionCount > 20 /*|| captionCount < 10*/)
-                        return;
+                    //if (captionCount > 20 /*|| captionCount < 10*/)
+                    //    return
                     if (ivis.controller.slide.space == "PanTransformation") {
                         CassignC(this.tp.λ, setR(e, 1));
                     }

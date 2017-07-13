@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Fledertiere"/>
+    <branch>
+      <attribute name="name" value="Flughunde"/>
+    </branch>
+    <branch>
+      <attribute name="name" value=""/>
+      <branch>
+        <attribute name="name" value=""/>
+        <branch>
+          <attribute name="name" value=""/>
+          <branch>
+            <attribute name="name" value=""/>
+            <branch>
+              <attribute name="name" value="Fledermäuse"/>
+              <branch>
+                <attribute name="name" value=""/>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <branch>
+                    <attribute name="name" value="Mausschwanzartige"/>
+                    <branch>
+                      <attribute name="name" value="Mausschwanzfledermäuse"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Schweinsnasenfledermaus"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Hufeisennasenartige"/>
+                    <branch>
+                      <attribute name="name" value="Schlitznasen"/>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <branch>
+                        <attribute name="name" value="Großblattnasen"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Hufeisennasen"/>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <branch>
+                    <attribute name="name" value="Hasenmaulartige"/>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <branch>
+                          <attribute name="name" value="Kinnblattfledermäuse"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Hasenmäuler"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Blattnasen"/>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Neuseelandfledermäuse"/>
+                    </branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <branch>
+                      <attribute name="name" value="Trichterohrartige"/>
+                      <branch>
+                        <attribute name="name" value="Madagassische Haftscheibenfledermäuse"/>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <branch>
+                          <attribute name="name" value="Amerikanische Haftscheibenfledermäuse"/>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <branch>
+                            <attribute name="name" value="Stummeldaumen"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value="Trichterohren"/>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <branch>
+                        <attribute name="name" value="Bulldoggfledermäuse"/>
+                        <branch>
+                          <attribute name="name" value="Bulldoggfledermäuse"/>
+                          <branch>
+                            <attribute name="name" value="Tomopeas ravus"/>
+                          </branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Antrozoinae"/>
+                        </branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Glattnasen"/>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <branch>
+                            <attribute name="name" value="Langflügelfledermäuse"/>
+                          </branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <branch>
+                                <attribute name="name" value="Wollfledermäuse"/>
+                              </branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+  </branch>
+</tree>

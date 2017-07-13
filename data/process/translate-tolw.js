@@ -27,13 +27,10 @@ var coolStuff = {
         Afrotheria
         Xenarthra
 }*/
-var tolids = [15976, 15977, 15980, 15971, 15968, 15963, 14913]
-var langs = ['de', 'en', 'ru', 'ro', 'zh', ]
-var langErrors = ['Diese Seite existiert nicht', ]
-var inject = {
-    tolIds:14917,
-    lang:'de',
-}
+var tolids     = [15976, 15977, 15980, 15971, 15968, 15963, 14913]
+var langs      = ['de', 'en', 'ru', 'ro', 'zh']
+var langErrors = ['Diese Seite existiert nicht']
+var inject     = {tolIds:15997, lang:'de'}
 
 var queryWiki = searched=> new Promise((resolve, reject) => {
     if (!searched) resolve("")
