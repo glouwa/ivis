@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+  </declarations>
+  <branch>
+    <attribute name="name" value="Insektenfresser"/>
+    <branch>
+      <attribute name="name" value="Igel"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Schlitzrüssler"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Spitzmäuse"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Tenreks"/>
+      <branch>
+        <attribute name="name" value="Otterspitzmäuse"/>
+        <branch>
+          <attribute name="name" value="Kleine Otterspitzmäuse"/>
+          <branch>
+            <attribute name="name" value="Zwerg-Otterspitzmaus"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Ruwenzori-Otterspitzmaus"/>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Große Otterspitzmaus"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Malagasy tenrecs"/>
+        <branch>
+          <attribute name="name" value="Tenrecinae (spiny tenrecs )"/>
+          <branch>
+            <attribute name="name" value="Eigentlicher Streifentenrek"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Großer Tenrek"/>
+          </branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <branch>
+              <attribute name="name" value="Kleiner Igeltenrek"/>
+            </branch>
+            <branch>
+              <attribute name="name" value="Großer Igeltenrek"/>
+            </branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Soft tenrecs"/>
+          <branch>
+            <attribute name="name" value="Reistenreks"/>
+            <branch>
+              <attribute name="name" value="Reiswühler"/>
+              <branch>
+                <attribute name="name" value="Eigentlicher Reiswühler"/>
+              </branch>
+              <branch>
+                <attribute name="name" value="Vierzehen-Reiswühler"/>
+              </branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <branch>
+                <attribute name="name" value="Kleintenreks"/>
+                <branch>
+                  <attribute name="name" value="Kurzschwanz-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Cowan-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Dobson-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Drouhard-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Dryad-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Blasser Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Graziler Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Nacktnasen-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Kleiner Langschwanz-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Gebirgs-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Nasolo-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Zwergkleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Großer Langschwanz-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Madagaskar-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Spitzmaus-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Taiva-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Talazac-Kleintenrek"/>
+                </branch>
+                <branch>
+                  <attribute name="name" value="Thomas-Kleintenrek"/>
+                </branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Wassertenrek"/>
+              </branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Erdtenrek"/>
+            <branch>
+              <attribute name="name" value="Erdtenrek"/>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Maulwürfe"/>
+    </branch>
+    <branch>
+      <attribute name="name" value="Goldmulle"/>
+      <branch>
+        <attribute name="name" value="Gelber Goldmull"/>
+      </branch>
+      <branch>
+        <attribute name="name" value="Wüstengoldmull"/>
+      </branch>
+      <branch>
+        <attribute name="name" value=""/>
+        <branch>
+          <attribute name="name" value="De Wintons Goldmull"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Van Zyls Goldmull"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="South African golden moles"/>
+        <branch>
+          <attribute name="name" value="Amblysomus (Amblysomus)"/>
+          <branch>
+            <attribute name="name" value="Highveld-Goldmull"/>
+          </branch>
+          <branch>
+            <attribute name="name" value="Hottentotten-Goldmull"/>
+          </branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="African golden moles"/>
+        <branch>
+          <attribute name="name" value="Sclaters Goldmull"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Duthies Goldmull"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Large golden moles"/>
+        <branch>
+          <attribute name="name" value="Riesengoldmull"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Rauhaar-Goldmull"/>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Cape golden moles"/>
+        <branch>
+          <attribute name="name" value="Stuhlmanns Goldmull"/>
+        </branch>
+        <branch>
+          <attribute name="name" value="Kap-Goldmull"/>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Karibische Spitzmäuse"/>
+    </branch>
+  </branch>
+</tree>

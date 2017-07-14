@@ -66,6 +66,10 @@ var ivis;
                     this.updateArcColor = v => v.style("stroke", d => (d.linkColor
                         ? d.linkColor
                         : undefined));
+                    this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStrText(d))
+                        .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent && !d.isSelected)
+                        ? 'hidden'
+                        : 'visible');
                     this.updateArc = v => v.attr("d", d => ivis.controller.slide.arc(d))
                         .attr("stroke-width", d => {
                         var hyperAndSelectionScale = this.tr(d, .5, .5);
@@ -73,10 +77,6 @@ var ivis;
                             / (Math.log2(this.args.data.value || this.args.data.children.length) || 1);
                         return hyperAndSelectionScale * weightScale / 50; /*+ .00000017*/
                     });
-                    this.updateText = v => v.attr("transform", d => this.transformStr(d) + this.scaleStrText(d))
-                        .attr("visibility", d => ((this.args.labelFilter(d) || !this.showCaptions) && d.parent && !d.isSelected)
-                        ? 'hidden'
-                        : 'visible');
                     this.args = args;
                     // interaction dependencies --------------------------------------------------------------
                     this.selection = this.args.data;
@@ -140,7 +140,7 @@ var ivis;
                     var allNodes = dfsFlat(this.args.data, n => true);
                     var allLinks = dfsFlat(this.args.data, n => n.parent);
                     this.cells = this.cellLayer.selectAll(".cell")
-                        .data(this.voroLayout.polygons())
+                        .data(this.voroLayout.polygons().filter(e => !e))
                         .enter().append('polygon')
                         .attr("class", "cell")
                         .call(this.updateCell)
@@ -174,7 +174,7 @@ var ivis;
                     this.updateCells();
                 }
                 updateCells() {
-                    this.cells.data(this.voroLayout.polygons());
+                    this.cells.data(this.voroLayout.polygons().filter(e => !e));
                     this.cells.call(this.updateCell);
                 }
                 updateCaptions(visible) {

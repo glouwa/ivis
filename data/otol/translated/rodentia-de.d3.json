@@ -1,0 +1,1557 @@
+{
+    "name": "Nagetiere",
+    "numTips": 3400,
+    "ottId": "ott864593",
+    "children": [
+        {
+            "name": "",
+            "numTips": 410,
+            "ottId": "mrcaott10477ott159164",
+            "children": [
+                {
+                    "name": "Bilche",
+                    "numTips": 34,
+                    "ottId": "ott425409",
+                    "children": [
+                        {
+                            "name": "Salzkrautbilch",
+                            "numTips": 0,
+                            "ottId": "ott3610934"
+                        },
+                        {
+                            "name": "Chinesischer Bilch",
+                            "numTips": 0,
+                            "ottId": "ott3608168"
+                        },
+                        {
+                            "name": "",
+                            "numTips": 12,
+                            "ottId": "mrcaott664079ott1038448",
+                            "children": [
+                                {
+                                    "name": "Mausschläfer",
+                                    "numTips": 0,
+                                    "ottId": "ott1038448"
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 9,
+                                    "ottId": "mrcaott664079ott668815",
+                                    "children": [
+                                        {
+                                            "name": "",
+                                            "numTips": 8,
+                                            "ottId": "mrcaott668815ott964576",
+                                            "children": [
+                                                {
+                                                    "name": "Gartenschläfer (Gattung)",
+                                                    "numTips": 3,
+                                                    "ottId": "ott964575",
+                                                    "children": [
+                                                        {
+                                                            "name": "Tunesischer Gartenschläfer",
+                                                            "numTips": 0,
+                                                            "ottId": "ott3608173"
+                                                        },
+                                                        {
+                                                            "name": "Löffelbilch",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1038450"
+                                                        },
+                                                        {
+                                                            "name": "Gartenschläfer",
+                                                            "numTips": 0,
+                                                            "ottId": "ott964576"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Baumschläfer",
+                                                    "numTips": 2,
+                                                    "ottId": "ott909552"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Haselmaus",
+                                            "numTips": 0,
+                                            "ottId": "ott664079"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "",
+                            "numTips": 19,
+                            "ottId": "mrcaott159164ott185345",
+                            "children": [
+                                {
+                                    "name": "Glirinae",
+                                    "numTips": 2,
+                                    "ottId": "ott159160",
+                                    "children": [
+                                        {
+                                            "name": "Japanischer Bilch",
+                                            "numTips": 0,
+                                            "ottId": "ott909549"
+                                        },
+                                        {
+                                            "name": "Siebenschläfer",
+                                            "numTips": 0,
+                                            "ottId": "ott185345"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Angola-Bilch",
+                                    "numTips": 0,
+                                    "ottId": "ott3608142"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "numTips": 376,
+                    "ottId": "mrcaott10477ott829369",
+                    "children": [
+                        {
+                            "name": "Stummelschwanzhörnchen",
+                            "numTips": 7,
+                            "ottId": "ott159158"
+                        },
+                        {
+                            "name": "Hörnchen",
+                            "numTips": 369,
+                            "ottId": "ott384218",
+                            "children": [
+                                {
+                                    "name": "",
+                                    "numTips": 6,
+                                    "ottId": "mrcaott260944ott898820",
+                                    "children": [
+                                        {
+                                            "name": "Riesenhörnchen",
+                                            "numTips": 5,
+                                            "ottId": "ott1054153",
+                                            "children": [
+                                                {
+                                                    "name": "Königsriesenhörnchen",
+                                                    "numTips": 1,
+                                                    "ottId": "ott3609171"
+                                                },
+                                                {
+                                                    "name": "Sri-Lanka-Riesenhörnchen",
+                                                    "numTips": 0,
+                                                    "ottId": "ott3609170"
+                                                },
+                                                {
+                                                    "name": "Blasses Riesenhörnchen",
+                                                    "numTips": 0,
+                                                    "ottId": "ott1054154"
+                                                },
+                                                {
+                                                    "name": "Schwarzes Riesenhörnchen",
+                                                    "numTips": 0,
+                                                    "ottId": "ott1054150"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Neuweltliches Kleinsthörnchen",
+                                            "numTips": 1,
+                                            "ottId": "ott580354"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 362,
+                                    "ottId": "mrcaott10477ott43432",
+                                    "children": [
+                                        {
+                                            "name": "",
+                                            "numTips": 117,
+                                            "ottId": "mrcaott43432ott125718",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 51,
+                                                    "ottId": "mrcaott125718ott131937",
+                                                    "children": [
+                                                        {
+                                                            "name": "Rothörnchen",
+                                                            "numTips": 6,
+                                                            "ottId": "ott866986",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 2,
+                                                                    "ottId": "mrcaott345256ott345257",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Douglas-Hörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott345257"
+                                                                        },
+                                                                        {
+                                                                            "name": "Mearns-Rothörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott345256"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Gemeines Rothörnchen",
+                                                                    "numTips": 3,
+                                                                    "ottId": "ott866988"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Baumhörnchen",
+                                                            "numTips": 45,
+                                                            "ottId": "ott649553",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Yucatan-Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609017"
+                                                                },
+                                                                {
+                                                                    "name": "Arizona-Grauhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609016"
+                                                                },
+                                                                {
+                                                                    "name": "Junin-Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609015"
+                                                                },
+                                                                {
+                                                                    "name": "Mexikanisches Fuchshörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609014"
+                                                                },
+                                                                {
+                                                                    "name": "Nordamazonisches Rothörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609013"
+                                                                },
+                                                                {
+                                                                    "name": "Südamazonisches Rothörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609011"
+                                                                },
+                                                                {
+                                                                    "name": "Kolumbianisches Eichhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609009"
+                                                                },
+                                                                {
+                                                                    "name": "Peters’ Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609008"
+                                                                },
+                                                                {
+                                                                    "name": "Sanborns Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609007"
+                                                                },
+                                                                {
+                                                                    "name": "Collie-Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609006"
+                                                                },
+                                                                {
+                                                                    "name": "Gelbkehlhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609005"
+                                                                },
+                                                                {
+                                                                    "name": "Richmonds Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609004"
+                                                                },
+                                                                {
+                                                                    "name": "Allens Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609001"
+                                                                },
+                                                                {
+                                                                    "name": "Deppes Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609000"
+                                                                },
+                                                                {
+                                                                    "name": "Rotbauchhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3608999"
+                                                                },
+                                                                {
+                                                                    "name": "Venezolanisches Hörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3608998"
+                                                                },
+                                                                {
+                                                                    "name": "Kaukasisches Eichhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott568460"
+                                                                },
+                                                                {
+                                                                    "name": "Fuchshörnchen",
+                                                                    "numTips": 1,
+                                                                    "ottId": "ott798031"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 4,
+                                                                    "ottId": "mrcaott125718ott477824",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Borneo-Hörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott477824"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 3,
+                                                                            "ottId": "mrcaott125718ott384216",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Japanisches Eichhörnchen",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott384216"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Eichhörnchen",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott286193"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 65,
+                                                    "ottId": "mrcaott43432ott3609183",
+                                                    "children": [
+                                                        {
+                                                            "name": "Biswamoyopterus",
+                                                            "numTips": 2,
+                                                            "ottId": "ott3609184",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Laos-Gleithörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott6144982"
+                                                                },
+                                                                {
+                                                                    "name": "Namdapha-Gleithörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609183"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Gleithörnchen",
+                                                            "numTips": 63,
+                                                            "ottId": "ott23775",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 23,
+                                                                    "ottId": "mrcaott43438ott348579",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Riesengleithörnchen",
+                                                                            "numTips": 14,
+                                                                            "ottId": "ott384210",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Hodgson-Riesengleithörnchen",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott3609023"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Geflecktes Riesengleithörnchen",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott121141"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Bhutan-Riesengleithörnchen",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott3609021"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Echte Gleithörnchen",
+                                                                            "numTips": 2,
+                                                                            "ottId": "ott384215"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 40,
+                                                                    "ottId": "mrcaott43432ott427317",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Kaschmir-Gleithörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott427317"
+                                                                        },
+                                                                        {
+                                                                            "name": "Neuweltliche Gleithörnchen",
+                                                                            "numTips": 14,
+                                                                            "ottId": "ott580347"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 245,
+                                            "ottId": "mrcaott10477ott97818",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 73,
+                                                    "ottId": "mrcaott97818ott319616",
+                                                    "children": [
+                                                        {
+                                                            "name": "Gestreifte Palmenhörnchen",
+                                                            "numTips": 5,
+                                                            "ottId": "ott1030039",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Dschungel-Palmenhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3609135"
+                                                                },
+                                                                {
+                                                                    "name": "Layard-Palmenhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott926932"
+                                                                },
+                                                                {
+                                                                    "name": "Dunkles Palmenhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott926930"
+                                                                },
+                                                                {
+                                                                    "name": "Nördliches Palmenhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott659094"
+                                                                },
+                                                                {
+                                                                    "name": "Indisches Palmenhörnchen",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott319616"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Callosciurini",
+                                                            "numTips": 68,
+                                                            "ottId": "ott173836",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Asiatische Zwerghörnchen",
+                                                                    "numTips": 3,
+                                                                    "ottId": "ott724389",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Quasten-Zwerghörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3609136"
+                                                                        },
+                                                                        {
+                                                                            "name": "Philippinen-Zwerghörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott724376"
+                                                                        },
+                                                                        {
+                                                                            "name": "Borneo-Kleinsthörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott724374"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 65,
+                                                                    "ottId": "mrcaott97818ott97836",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Braunes Zwerghörnchen",
+                                                                            "numTips": 1,
+                                                                            "ottId": "ott738648"
+                                                                        },
+                                                                        {
+                                                                            "name": "Sunda-Baumhörnchen",
+                                                                            "numTips": 17,
+                                                                            "ottId": "ott149969"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 172,
+                                                    "ottId": "mrcaott10477ott259084",
+                                                    "children": [
+                                                        {
+                                                            "name": "Borstenhörnchen",
+                                                            "numTips": 7,
+                                                            "ottId": "ott325274",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 6,
+                                                                    "ottId": "mrcaott327763ott373581",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Schlichtborstenhörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott953165"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 2,
+                                                                            "ottId": "mrcaott327763ott898084",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Gestreiftes Borstenhörnchen",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott898084"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Atlantoxerus",
+                                                                                    "numTips": 1,
+                                                                                    "ottId": "ott327765"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Zieselmaus",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott259084"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 165,
+                                                            "ottId": "mrcaott10477ott152097",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 33,
+                                                                    "ottId": "mrcaott152097ott152101",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Sonnenhörnchen",
+                                                                            "numTips": 6,
+                                                                            "ottId": "ott152099"
+                                                                        },
+                                                                        {
+                                                                            "name": "Afrikanisches Zwerghörnchen",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott152097"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Echte Erdhörnchen",
+                                                                    "numTips": 132,
+                                                                    "ottId": "ott394009",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Streifenhörnchen",
+                                                                            "numTips": 27,
+                                                                            "ottId": "ott194271",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Lodgepole-Streifenhörnchen",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott800575"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Burunduk",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott659097"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Chinesische Rothörnchen",
+                                                                            "numTips": 2,
+                                                                            "ottId": "ott902083"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "",
+            "numTips": 2990,
+            "ottId": "mrcaott42ott38834",
+            "children": [
+                {
+                    "name": "",
+                    "numTips": 387,
+                    "ottId": "mrcaott38834ott84064",
+                    "children": [
+                        {
+                            "name": "",
+                            "numTips": 6,
+                            "ottId": "mrcaott84064ott506983",
+                            "children": [
+                                {
+                                    "name": "Kammfinger",
+                                    "numTips": 5,
+                                    "ottId": "ott692690",
+                                    "children": [
+                                        {
+                                            "name": "Speke-Kammfinger",
+                                            "numTips": 0,
+                                            "ottId": "ott3609373"
+                                        },
+                                        {
+                                            "name": "Senegal-Gundi",
+                                            "numTips": 0,
+                                            "ottId": "ott3609364"
+                                        },
+                                        {
+                                            "name": "Eigentlicher Gundi",
+                                            "numTips": 0,
+                                            "ottId": "ott692686"
+                                        },
+                                        {
+                                            "name": "Langhaar-Gundi",
+                                            "numTips": 0,
+                                            "ottId": "ott506983"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Laotische Felsenratte",
+                                    "numTips": 0,
+                                    "ottId": "ott84064"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "",
+                            "numTips": 381,
+                            "ottId": "mrcaott38834ott173065",
+                            "children": [
+                                {
+                                    "name": "Stachelschweine",
+                                    "numTips": 12,
+                                    "ottId": "ott220323",
+                                    "children": [
+                                        {
+                                            "name": "Pinselstachler",
+                                            "numTips": 0,
+                                            "ottId": "ott475301"
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 11,
+                                            "ottId": "mrcaott173065ott220326",
+                                            "children": [
+                                                {
+                                                    "name": "Hystrix",
+                                                    "numTips": 9,
+                                                    "ottId": "ott220325",
+                                                    "children": [
+                                                        {
+                                                            "name": "Sumatra-Stachelschwein",
+                                                            "numTips": 0,
+                                                            "ottId": "ott3609870"
+                                                        },
+                                                        {
+                                                            "name": "Südafrikanisches Stachelschwein",
+                                                            "numTips": 0,
+                                                            "ottId": "ott220335"
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 2,
+                                                            "ottId": "mrcaott220326ott276719",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Indisches Weißschwanz-Stachelschwein",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott276719"
+                                                                },
+                                                                {
+                                                                    "name": "Gewöhnliches Stachelschwein",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott220326"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Asiatischer Quastenstachler",
+                                                    "numTips": 0,
+                                                    "ottId": "ott173065"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 369,
+                                    "ottId": "mrcaott38834ott45520",
+                                    "children": [
+                                        {
+                                            "name": "",
+                                            "numTips": 41,
+                                            "ottId": "mrcaott45520ott692678",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 3,
+                                                    "ottId": "mrcaott692678ott1048199",
+                                                    "children": [
+                                                        {
+                                                            "name": "Felsenratte",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1048199"
+                                                        },
+                                                        {
+                                                            "name": "Rohrratten",
+                                                            "numTips": 2,
+                                                            "ottId": "ott692681"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Sandgräber",
+                                                    "numTips": 38,
+                                                    "ottId": "ott692682",
+                                                    "children": [
+                                                        {
+                                                            "name": "Nacktmull",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1048195"
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 37,
+                                                            "ottId": "mrcaott45520ott170887",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Silbergrauer Erdbohrer",
+                                                                    "numTips": 1,
+                                                                    "ottId": "ott118526"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 33,
+                                                                    "ottId": "mrcaott45520ott108972",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Graumulle",
+                                                                            "numTips": 11,
+                                                                            "ottId": "ott118546"
+                                                                        },
+                                                                        {
+                                                                            "name": "Ghana-Graumull",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3609786"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 328,
+                                            "ottId": "mrcaott38834ott44975",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 70,
+                                                    "ottId": "mrcaott44975ott67355",
+                                                    "children": [
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 50,
+                                                            "ottId": "mrcaott67355ott88915",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 48,
+                                                                    "ottId": "mrcaott88915ott236057",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Meerschweinchen",
+                                                                            "numTips": 32,
+                                                                            "ottId": "ott220339"
+                                                                        },
+                                                                        {
+                                                                            "name": "Agutis und Acouchis",
+                                                                            "numTips": 14,
+                                                                            "ottId": "ott410922",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Agutis",
+                                                                                    "numTips": 11,
+                                                                                    "ottId": "ott848923"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Acouchis",
+                                                                                    "numTips": 3,
+                                                                                    "ottId": "ott980450"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Paka",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott296191"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Baumstachler",
+                                                            "numTips": 20,
+                                                            "ottId": "ott410914",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Borstenbaumstachler",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott463598"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 14,
+                                                                    "ottId": "mrcaott44975ott848921",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Urson",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott848921"
+                                                                        },
+                                                                        {
+                                                                            "name": "Mittelamerikanischer Baumstachler",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott1080803"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 258,
+                                                    "ottId": "mrcaott38834ott159122",
+                                                    "children": [
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 12,
+                                                            "ottId": "mrcaott159122ott234025",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Pakarana",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott234025"
+                                                                },
+                                                                {
+                                                                    "name": "Chinchillas",
+                                                                    "numTips": 11,
+                                                                    "ottId": "ott169710",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Viscacha",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott169719"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 10,
+                                                                            "ottId": "mrcaott159122ott169705",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Chinchilla",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott169713"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Hasenmäuse",
+                                                                                    "numTips": 8,
+                                                                                    "ottId": "ott109654"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 246,
+                                                            "ottId": "mrcaott38834ott320376",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Chinchillaratten",
+                                                                    "numTips": 12,
+                                                                    "ottId": "ott234029",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Machu-Picchu-Inkaratte",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3609760"
+                                                                        },
+                                                                        {
+                                                                            "name": "Machu-Picchu-Inkaratte",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3609751"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Kammratten",
+                                                                    "numTips": 65,
+                                                                    "ottId": "ott44555"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "numTips": 2603,
+                    "ottId": "mrcaott42ott48903",
+                    "children": [
+                        {
+                            "name": "",
+                            "numTips": 277,
+                            "ottId": "mrcaott48903ott306690",
+                            "children": [
+                                {
+                                    "name": "Castor",
+                                    "numTips": 7,
+                                    "ottId": "ott1048190",
+                                    "children": [
+                                        {
+                                            "name": "Kanadischer Biber",
+                                            "numTips": 0,
+                                            "ottId": "ott886085"
+                                        },
+                                        {
+                                            "name": "Europäischer Biber",
+                                            "numTips": 6,
+                                            "ottId": "ott1048188"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 270,
+                                    "ottId": "mrcaott48903ott80974",
+                                    "children": [
+                                        {
+                                            "name": "Taschenratten",
+                                            "numTips": 178,
+                                            "ottId": "ott342244",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 60,
+                                                    "ottId": "mrcaott111894ott791961",
+                                                    "children": [
+                                                        {
+                                                            "name": "Tuza",
+                                                            "numTips": 0,
+                                                            "ottId": "ott791961"
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 58,
+                                                            "ottId": "mrcaott111894ott229557",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Flachland-Taschenratten",
+                                                                    "numTips": 27,
+                                                                    "ottId": "ott1021691"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 31,
+                                                                    "ottId": "mrcaott111894ott372804",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Riesentaschenratte",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott372804"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 19,
+                                                                            "ottId": "mrcaott111894ott111919",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Pappogeomys",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott685938"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Cratogeomys",
+                                                                                    "numTips": 17,
+                                                                                    "ottId": "ott747772"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Gebirgs-Taschenratte",
+                                                    "numTips": 40,
+                                                    "ottId": "ott342237"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Taschenmäuse",
+                                            "numTips": 92,
+                                            "ottId": "ott342252",
+                                            "children": [
+                                                {
+                                                    "name": "Dipodomyinae",
+                                                    "numTips": 32,
+                                                    "ottId": "ott427278",
+                                                    "children": [
+                                                        {
+                                                            "name": "Kängurumäuse",
+                                                            "numTips": 3,
+                                                            "ottId": "ott241225",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Dunkle Kängurumaus",
+                                                                    "numTips": 1,
+                                                                    "ottId": "ott241226"
+                                                                },
+                                                                {
+                                                                    "name": "Blasse Kängurumaus",
+                                                                    "numTips": 2,
+                                                                    "ottId": "ott844945"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Wüstenkängururatte",
+                                                            "numTips": 1,
+                                                            "ottId": "ott921967"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 60,
+                                                    "ottId": "mrcaott48903ott190180",
+                                                    "children": [
+                                                        {
+                                                            "name": "Perognathinae",
+                                                            "numTips": 42,
+                                                            "ottId": "ott723418",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Seiden-Taschenmäuse",
+                                                                    "numTips": 20,
+                                                                    "ottId": "ott1024545"
+                                                                },
+                                                                {
+                                                                    "name": "Rauhaar-Taschenmäuse",
+                                                                    "numTips": 22,
+                                                                    "ottId": "ott427273"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Wald-Stacheltaschenmäuse",
+                                                            "numTips": 13,
+                                                            "ottId": "ott797289"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "",
+                            "numTips": 2326,
+                            "ottId": "mrcaott42ott98413",
+                            "children": [
+                                {
+                                    "name": "",
+                                    "numTips": 14,
+                                    "ottId": "mrcaott98413ott474589",
+                                    "children": [
+                                        {
+                                            "name": "Südafrikanischer Springhase",
+                                            "numTips": 1,
+                                            "ottId": "ott5281"
+                                        },
+                                        {
+                                            "name": "Dornschwanzhörnchen",
+                                            "numTips": 13,
+                                            "ottId": "ott273800",
+                                            "children": [
+                                                {
+                                                    "name": "Dornschwanzbilch",
+                                                    "numTips": 0,
+                                                    "ottId": "ott3609281"
+                                                },
+                                                {
+                                                    "name": "Gleitbilche",
+                                                    "numTips": 2,
+                                                    "ottId": "ott273807",
+                                                    "children": [
+                                                        {
+                                                            "name": "Zenkers Gleitbilch",
+                                                            "numTips": 0,
+                                                            "ottId": "ott3609278"
+                                                        },
+                                                        {
+                                                            "name": "Großohr-Gleitbilch",
+                                                            "numTips": 0,
+                                                            "ottId": "ott530207"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Pel-Dornschwanzhörnchen",
+                                                    "numTips": 0,
+                                                    "ottId": "ott3609276"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 2312,
+                                    "ottId": "mrcaott42ott55949",
+                                    "children": [
+                                        {
+                                            "name": "Springmäuse",
+                                            "numTips": 95,
+                                            "ottId": "ott410912",
+                                            "children": [
+                                                {
+                                                    "name": "Riesenohr-Springmaus",
+                                                    "numTips": 0,
+                                                    "ottId": "ott752189"
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 74,
+                                                    "ottId": "mrcaott85025ott285530",
+                                                    "children": [
+                                                        {
+                                                            "name": "Zapodinae",
+                                                            "numTips": 34,
+                                                            "ottId": "ott884646",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Chinesische Hüpfmaus",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott379324"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 33,
+                                                                    "ottId": "mrcaott285530ott5340668",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Waldhüpfmaus",
+                                                                            "numTips": 5,
+                                                                            "ottId": "ott379305"
+                                                                        },
+                                                                        {
+                                                                            "name": "Wiesenhüpfmaus",
+                                                                            "numTips": 12,
+                                                                            "ottId": "ott1090614"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 40,
+                                                            "ottId": "mrcaott85025ott85039",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Cardiocraniinae",
+                                                                    "numTips": 6,
+                                                                    "ottId": "ott1062844",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Fünfzehen-Zwergspringmaus",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott1043488"
+                                                                        },
+                                                                        {
+                                                                            "name": "Dreizehen-Zwergspringmäuse",
+                                                                            "numTips": 5,
+                                                                            "ottId": "ott910646",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Dickschwanz-Dreizehenzwergspringmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott3608057"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Kozlov-Dreizehenzwergspringmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott910647"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Allactaginae",
+                                                                    "numTips": 19,
+                                                                    "ottId": "ott85042",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Erdhase",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott1062845"
+                                                                        },
+                                                                        {
+                                                                            "name": "Pferdespringer",
+                                                                            "numTips": 15,
+                                                                            "ottId": "ott475307",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Balikun-Springmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott3608063"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Gobi-Springmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott910642"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Großer Pferdespringer",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott852287"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Mongolischer Pferdespringer",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott814883"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Kleiner Pferdespringer",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott475305"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Dipodinae",
+                                                                    "numTips": 15,
+                                                                    "ottId": "ott85038",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Kammzehen-Springmaus",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3608126"
+                                                                        },
+                                                                        {
+                                                                            "name": "Dickschwanz-Springmäuse",
+                                                                            "numTips": 3,
+                                                                            "ottId": "ott910650",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Östliche Dickschwanzspringmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott933755"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Westliche Dickschwanzspringmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott910652"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Raufuß-Springmaus",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott475308"
+                                                                        },
+                                                                        {
+                                                                            "name": "Kleine Wüstenspringmaus",
+                                                                            "numTips": 2,
+                                                                            "ottId": "ott886091"
+                                                                        },
+                                                                        {
+                                                                            "name": "Lichtenstein-Springmaus",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott85025"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Birkenmäuse",
+                                                    "numTips": 17,
+                                                    "ottId": "ott778692",
+                                                    "children": [
+                                                        {
+                                                            "name": "Severtzov-Birkenmaus",
+                                                            "numTips": 1,
+                                                            "ottId": "ott3608078"
+                                                        },
+                                                        {
+                                                            "name": "Steppenbirkenmaus",
+                                                            "numTips": 3,
+                                                            "ottId": "ott3608079"
+                                                        },
+                                                        {
+                                                            "name": "Langschwanz-Birkenmaus",
+                                                            "numTips": 0,
+                                                            "ottId": "ott3608074"
+                                                        },
+                                                        {
+                                                            "name": "Waldbirkenmaus",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1052919"
+                                                        },
+                                                        {
+                                                            "name": "Tianshan-Birkenmaus",
+                                                            "numTips": 0,
+                                                            "ottId": "ott778690"
+                                                        },
+                                                        {
+                                                            "name": "Chinesische Birkenmaus",
+                                                            "numTips": 0,
+                                                            "ottId": "ott397610"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Mäuseartige",
+                                            "numTips": 2217,
+                                            "ottId": "ott839752",
+                                            "children": [
+                                                {
+                                                    "name": "Stachelbilche",
+                                                    "numTips": 3,
+                                                    "ottId": "ott278588",
+                                                    "children": [
+                                                        {
+                                                            "name": "Südindischer Stachelbilch",
+                                                            "numTips": 0,
+                                                            "ottId": "ott3611037"
+                                                        },
+                                                        {
+                                                            "name": "Typhlomys",
+                                                            "numTips": 2,
+                                                            "ottId": "ott278584",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Vietnam-Zwergbilch",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott3608191"
+                                                                },
+                                                                {
+                                                                    "name": "Chinesischer Zwergbilch",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott278585"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 2214,
+                                                    "ottId": "mrcaott42ott45197",
+                                                    "children": [
+                                                        {
+                                                            "name": "Spalacidae",
+                                                            "numTips": 62,
+                                                            "ottId": "ott148559",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 44,
+                                                                    "ottId": "mrcaott45212ott60409",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Blindmäuse",
+                                                                            "numTips": 23,
+                                                                            "ottId": "ott816254",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Westblindmaus",
+                                                                                    "numTips": 4,
+                                                                                    "ottId": "ott936600"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Ostblindmaus",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott181588"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Afrikanische Maulwurfsratten",
+                                                                            "numTips": 15,
+                                                                            "ottId": "ott741256"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Myospalax",
+                                                                    "numTips": 12,
+                                                                    "ottId": "ott254738",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Sibirischer Blindmull",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott3608556"
+                                                                        },
+                                                                        {
+                                                                            "name": "Daurischer Blindmull",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott996523"
+                                                                        },
+                                                                        {
+                                                                            "name": "Transbaikal-Blindmull",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott618100"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 2152,
+                                                            "ottId": "mrcaott42ott55942",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Maushamster",
+                                                                    "numTips": 12,
+                                                                    "ottId": "ott220330"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 2140,
+                                                                    "ottId": "mrcaott42ott102",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 2054,
+                                                                            "ottId": "mrcaott102ott739",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Wühler",
+                                                                                    "numTips": 1037,
+                                                                                    "ottId": "ott671049"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Langschwanzmäuse",
+                                                                                    "numTips": 1017,
+                                                                                    "ottId": "ott816256"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Madagaskar-Ratten",
+                                                                            "numTips": 30,
+                                                                            "ottId": "ott800170"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

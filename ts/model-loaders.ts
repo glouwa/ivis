@@ -35,7 +35,7 @@ namespace ivis.model.loaders {
         if (file.endsWith('.xml') ||
             file.endsWith('.json') ||
             file.endsWith('.rdf'))
-            if (file.endsWith('.d3.json'))
+            if (file.endsWith('.d3.json') || file == "data/upload/user-uploaded.xml")
                 d3.json(file, (error, treeData) =>
                     ok(treeData))
             else
@@ -50,7 +50,7 @@ namespace ivis.model.loaders {
 
     export var path_ =        n=> ok=> path(ok, n)
     export var star_ =        n=> ok=> star(ok, n)
-    export var fromFile =     f=> ok=> loadFromFile(ok, "data/"+f)
+    export var fromFile =     f=> ok=> loadFromFile(ok, f)
 
     export function nTreeAtFirst(ok, max=10) {        
         oneNode(d=> {

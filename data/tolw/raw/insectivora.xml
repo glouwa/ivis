@@ -1,0 +1,412 @@
+<?xml version="1.0" standalone="yes"?>
+
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="id" type="String"/>
+    <attributeDecl name="image" type="String"/>
+    <attributeDecl name="isLeaf" type="String"/>
+    <attributeDecl name="description" type="String"/>
+    <attributeDecl name="contributors" type="String"/></declarations>
+  <branch>
+    <attribute name="name" value="Insectivora"/>
+    <attribute name="id" value="15968"/>
+    <attribute name="image" value="globe.png"/>
+    <attribute name="description" value="(shrews, moles, hedgehogs, etc.)"/>
+    <branch>
+      <attribute name="name" value="Erinaceidae"/>
+      <attribute name="id" value="16211"/>
+      <attribute name="description" value="(gymnures and hedgehogs)"/></branch>
+    <branch>
+      <attribute name="name" value="Solenodontidae"/>
+      <attribute name="id" value="16220"/>
+      <attribute name="description" value="(solenodons)"/></branch>
+    <branch>
+      <attribute name="name" value="Soricidae"/>
+      <attribute name="id" value="16223"/>
+      <attribute name="description" value="(shrews)"/></branch>
+    <branch>
+      <attribute name="name" value="Tenrecidae"/>
+      <attribute name="id" value="16224"/>
+      <attribute name="image" value="globe.png"/>
+      <attribute name="description" value="(tenrecs, Madagascar &amp;quot;hedgehogs&amp;quot;)"/>
+      <branch>
+        <attribute name="name" value="Potamogalinae"/>
+        <attribute name="id" value="60271"/>
+        <branch>
+          <attribute name="name" value="Micropotamogale"/>
+          <attribute name="id" value="60272"/>
+          <attribute name="image" value="globe.png"/>
+          <attribute name="description" value="(dwarf otter shrews)"/>
+          <branch>
+            <attribute name="name" value="Micropotamogale lamottei"/>
+            <attribute name="id" value="60274"/>
+            <attribute name="isLeaf" value="1"/>
+            <attribute name="description" value="(Nimba otter shrew)"/></branch>
+          <branch>
+            <attribute name="name" value="Micropotamogale ruwenzorii"/>
+            <attribute name="id" value="60275"/>
+            <attribute name="isLeaf" value="1"/>
+            <attribute name="description" value="(Ruwenzori otter shrew)"/></branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Potamogale velox"/>
+          <attribute name="id" value="60278"/>
+          <attribute name="isLeaf" value="1"/>
+          <attribute name="description" value="(giant otter shrew)"/></branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Malagasy tenrecs"/>
+        <attribute name="id" value="60301"/>
+        <branch>
+          <attribute name="name" value="Tenrecinae (spiny tenrecs )"/>
+          <attribute name="id" value="60279"/>
+          <branch>
+            <attribute name="name" value="Hemicentetes semispinosus"/>
+            <attribute name="id" value="60281"/>
+            <attribute name="isLeaf" value="1"/>
+            <attribute name="description" value="(streaked tenrec)"/></branch>
+          <branch>
+            <attribute name="name" value="Tenrec ecaudatus"/>
+            <attribute name="id" value="60287"/>
+            <attribute name="isLeaf" value="1"/>
+            <attribute name="description" value="(tailless tenrec)"/></branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="id" value="60303"/>
+            <branch>
+              <attribute name="name" value="Echinops telfairi"/>
+              <attribute name="id" value="60290"/>
+              <attribute name="isLeaf" value="1"/>
+              <attribute name="description" value="(lesser hedgehog tenrec)"/></branch>
+            <branch>
+              <attribute name="name" value="Setifer setosus"/>
+              <attribute name="id" value="60284"/>
+              <attribute name="isLeaf" value="1"/>
+              <attribute name="description" value="(greater hedgehog tenrec)"/></branch>
+          </branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="soft tenrecs"/>
+          <attribute name="id" value="60302"/>
+          <branch>
+            <attribute name="name" value="Oryzorictinae"/>
+            <attribute name="id" value="60248"/>
+            <branch>
+              <attribute name="name" value="Oryzorictes"/>
+              <attribute name="id" value="60266"/>
+              <attribute name="image" value="globe.png"/>
+              <attribute name="description" value="(rice tenrecs)"/>
+              <branch>
+                <attribute name="name" value="Oryzorictes hova"/>
+                <attribute name="id" value="60268"/>
+                <attribute name="isLeaf" value="1"/>
+                <attribute name="description" value="(Hova rice tenrec)"/></branch>
+              <branch>
+                <attribute name="name" value="Oryzorictes talpoides"/>
+                <attribute name="id" value="60269"/>
+                <attribute name="isLeaf" value="1"/>
+                <attribute name="description" value="(molelike rice tenrec)"/></branch>
+              <branch>
+                <attribute name="name" value="Oryzorictes tetradactylus"/>
+                <attribute name="id" value="60270"/>
+                <attribute name="isLeaf" value="1"/>
+                <attribute name="description" value="(four-toed rice tenrec)"/></branch>
+            </branch>
+            <branch>
+              <attribute name="name" value=""/>
+              <attribute name="id" value="69962"/>
+              <branch>
+                <attribute name="name" value="Microgale"/>
+                <attribute name="id" value="60252"/>
+                <attribute name="image" value="globe.png"/>
+                <attribute name="description" value="(shrew tenrecs)"/>
+                <branch>
+                  <attribute name="name" value="Microgale brevicaudata"/>
+                  <attribute name="id" value="60253"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(short-tailed shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale cowani"/>
+                  <attribute name="id" value="60255"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Cowan's shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale dobsoni"/>
+                  <attribute name="id" value="60256"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Dobson's shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale drouhardi"/>
+                  <attribute name="id" value="60309"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Drouhard's shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale dryas"/>
+                  <attribute name="id" value="60257"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(tree shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale fotsifotsy"/>
+                  <attribute name="id" value="60310"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(pale shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale gracilis"/>
+                  <attribute name="id" value="60258"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(gracile shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale gymnorhyncha"/>
+                  <attribute name="id" value="60311"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(naked-nosed shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale longicaudata"/>
+                  <attribute name="id" value="60259"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(lesser long-tailed shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale monticola"/>
+                  <attribute name="id" value="60312"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(montane shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale nasoloi"/>
+                  <attribute name="id" value="60313"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Nasolo's shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale parvula"/>
+                  <attribute name="id" value="60260"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(pygmy shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale principula"/>
+                  <attribute name="id" value="60261"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(greater long-tailed shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale pulla"/>
+                  <attribute name="id" value="60262"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(dark shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale pusilla"/>
+                  <attribute name="id" value="60263"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(least shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale soricoides"/>
+                  <attribute name="id" value="60314"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(shrew-toothed shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale taiva"/>
+                  <attribute name="id" value="60315"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Taiva shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale talazaci"/>
+                  <attribute name="id" value="60264"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Talazac's shrew tenrec)"/></branch>
+                <branch>
+                  <attribute name="name" value="Microgale thomasi"/>
+                  <attribute name="id" value="60265"/>
+                  <attribute name="isLeaf" value="1"/>
+                  <attribute name="description" value="(Thomas's shrew tenrec)"/></branch>
+              </branch>
+              <branch>
+                <attribute name="name" value="Limnogale mergulus"/>
+                <attribute name="id" value="60251"/>
+                <attribute name="isLeaf" value="1"/>
+                <attribute name="description" value="(aquatic tenrec)"/></branch>
+            </branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Geogalinae"/>
+            <attribute name="id" value="60308"/>
+            <attribute name="image" value="globe.png"/>
+            <branch>
+              <attribute name="name" value="Geogale aurita"/>
+              <attribute name="id" value="60247"/>
+              <attribute name="isLeaf" value="1"/>
+              <attribute name="description" value="(large-eared tenrec)"/></branch>
+            <branch>
+              <attribute name="name" value="Parageogale"/>
+              <attribute name="id" value="60304"/></branch>
+          </branch>
+          <branch>
+            <attribute name="name" value="Erythrozootes"/>
+            <attribute name="id" value="60306"/></branch>
+          <branch>
+            <attribute name="name" value="Protenrec"/>
+            <attribute name="id" value="60307"/></branch>
+        </branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Talpidae"/>
+      <attribute name="id" value="16213"/>
+      <attribute name="description" value="(moles, shrew moles, desmans)"/></branch>
+    <branch>
+      <attribute name="name" value="Chrysochloridae"/>
+      <attribute name="id" value="16206"/>
+      <attribute name="image" value="globe.png"/>
+      <attribute name="description" value="(golden moles)"/>
+      <branch>
+        <attribute name="name" value="Calcochloris obtusirostris"/>
+        <attribute name="id" value="16178"/>
+        <attribute name="isLeaf" value="1"/>
+        <attribute name="description" value="(Yellow golden mole)"/></branch>
+      <branch>
+        <attribute name="name" value="Eremitalpa granti"/>
+        <attribute name="id" value="16179"/>
+        <attribute name="isLeaf" value="1"/>
+        <attribute name="description" value="(Grant's desert golden mole)"/></branch>
+      <branch>
+        <attribute name="name" value=""/>
+        <attribute name="id" value="16180"/>
+        <branch>
+          <attribute name="name" value="Cryptochloris wintoni"/>
+          <attribute name="id" value="16181"/>
+          <attribute name="isLeaf" value="1"/>
+          <attribute name="description" value="(De Winton's golden mole)"/></branch>
+        <branch>
+          <attribute name="name" value="Cryptochloris zyli"/>
+          <attribute name="id" value="16182"/>
+          <attribute name="isLeaf" value="1"/>
+          <attribute name="description" value="(Van Zyl's golden mole)"/></branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="South African golden moles"/>
+        <attribute name="id" value="16183"/>
+        <branch>
+          <attribute name="name" value="Amblysomus (Neamblysomus)"/>
+          <attribute name="id" value="16184"/>
+          <branch>
+            <attribute name="name" value="Amblysomus julianae"/>
+            <attribute name="id" value="16185"/>
+            <attribute name="isLeaf" value="1"/></branch>
+          <branch>
+            <attribute name="name" value="Amblysomus gunningi"/>
+            <attribute name="id" value="16186"/>
+            <attribute name="isLeaf" value="1"/></branch>
+        </branch>
+        <branch>
+          <attribute name="name" value="Amblysomus (Amblysomus)"/>
+          <attribute name="id" value="16187"/>
+          <branch>
+            <attribute name="name" value="Amblysomus iris"/>
+            <attribute name="id" value="16188"/>
+            <attribute name="isLeaf" value="1"/></branch>
+          <branch>
+            <attribute name="name" value="Amblysomus septentrionalis"/>
+            <attribute name="id" value="16189"/>
+            <attribute name="isLeaf" value="1"/></branch>
+          <branch>
+            <attribute name="name" value="Amblysomus hottentotus"/>
+            <attribute name="id" value="16190"/>
+            <attribute name="isLeaf" value="1"/></branch>
+        </branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="African golden moles"/>
+        <attribute name="id" value="16191"/>
+        <branch>
+          <attribute name="name" value="Chlorotalpa tytonis"/>
+          <attribute name="id" value="16192"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chlorotalpa leucorhina"/>
+          <attribute name="id" value="16193"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chlorotalpa sclateri"/>
+          <attribute name="id" value="16194"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chlorotalpa duthieae"/>
+          <attribute name="id" value="16195"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chlorotalpa arendsi"/>
+          <attribute name="id" value="16196"/>
+          <attribute name="isLeaf" value="1"/></branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Large golden moles"/>
+        <attribute name="id" value="16197"/>
+        <branch>
+          <attribute name="name" value="Chrysospalax trevelyani"/>
+          <attribute name="id" value="16198"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chrysospalax villosus"/>
+          <attribute name="id" value="16199"/>
+          <attribute name="isLeaf" value="1"/></branch>
+      </branch>
+      <branch>
+        <attribute name="name" value="Cape golden moles"/>
+        <attribute name="id" value="16200"/>
+        <branch>
+          <attribute name="name" value="Chrysochloris visagei"/>
+          <attribute name="id" value="16201"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chrysochloris stuhlmanni"/>
+          <attribute name="id" value="16202"/>
+          <attribute name="isLeaf" value="1"/></branch>
+        <branch>
+          <attribute name="name" value="Chrysochloris asiatica"/>
+          <attribute name="id" value="16203"/>
+          <attribute name="isLeaf" value="1"/></branch>
+      </branch>
+    </branch>
+    <branch>
+      <attribute name="name" value="Adapisoriculidae"/>
+      <attribute name="id" value="16205"/></branch>
+    <branch>
+      <attribute name="name" value="Sespedectidae"/>
+      <attribute name="id" value="16207"/></branch>
+    <branch>
+      <attribute name="name" value="Amphilemuridae"/>
+      <attribute name="id" value="16208"/></branch>
+    <branch>
+      <attribute name="name" value="Adapisoricidae"/>
+      <attribute name="id" value="16209"/></branch>
+    <branch>
+      <attribute name="name" value="Creotarsidae"/>
+      <attribute name="id" value="16210"/></branch>
+    <branch>
+      <attribute name="name" value="Proscalopidae"/>
+      <attribute name="id" value="16212"/></branch>
+    <branch>
+      <attribute name="name" value="Dimylidae"/>
+      <attribute name="id" value="16214"/></branch>
+    <branch>
+      <attribute name="name" value="Otlestidae"/>
+      <attribute name="id" value="16215"/></branch>
+    <branch>
+      <attribute name="name" value="Geolabididae"/>
+      <attribute name="id" value="16216"/></branch>
+    <branch>
+      <attribute name="name" value="Nesophontidae"/>
+      <attribute name="id" value="16217"/>
+      <attribute name="description" value="(West Indian shrews)"/></branch>
+    <branch>
+      <attribute name="name" value="Micropternodontidae"/>
+      <attribute name="id" value="16218"/></branch>
+    <branch>
+      <attribute name="name" value="Apternodontidae"/>
+      <attribute name="id" value="16219"/></branch>
+    <branch>
+      <attribute name="name" value="Plesiosoricidae"/>
+      <attribute name="id" value="16221"/></branch>
+    <branch>
+      <attribute name="name" value="Nyctitheriidae"/>
+      <attribute name="id" value="16222"/></branch>
+  </branch>
+</tree>
+

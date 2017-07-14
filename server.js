@@ -15,7 +15,7 @@ connect()
                 return
 
             var oldpath = files.userfile.path
-            var newpath = 'data/user-uploaded.xml'
+            var newpath = 'data/upload/user-uploaded.xml'
             fs.rename(oldpath, newpath, function (err) {
                 res.writeHead(200, { 'Content-Type':'text/json' })
                 res.write(JSON.stringify({

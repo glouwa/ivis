@@ -101,7 +101,7 @@ namespace ivis.controller
                 pos:         ArrAddR([50,30], radius),
                 voroBox:     [[-1.01,-1.01], [1.01,1.01]],
                 radius:      radius,
-                nodeRadius:  .04,
+                nodeRadius:  .03,
                 rootColor:   "#fff59d",
                 clip:        true,
             })

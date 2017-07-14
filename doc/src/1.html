@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>PLEXX.JS Example: OnHover and Mark</title>
+</head>
+
+<body>
+<h1>PLEXX.JS Example: first step</h1>
+<a href="./0.html">&lt;</a>
+<a href="./2.html">&gt;</a>
+
+<div class="plexx" id="map-austria" style="height:30em; width:50em;"></div>
+<nav id="map-austria-debug-panel"></nav>
+
+<script type="text/javascript" src="./plexx.js"></script>
+<script>
+
+    //--------------------------------------------------------------------
+
+    function Node(x, y)
+    {
+        function setupMouse(mapFragment)
+        {
+            mapFragment.mapFragmentActive = false;
+
+            mapFragment.on("mousedown", function (e) {
+
+                mapFragment.mapFragmentActive = !mapFragment.mapFragmentActive;
+                if (mapFragment.mapFragmentActive)
+                    mapFragment.setColour("#e91e63");
+                else
+                    mapFragment.setColour("#9c27b0");
+            });
+
+            mapFragment.on("mousein", function (e) {
+                if(!mapFragment.mapFragmentActive) mapFragment.setColour("#9c27b0");
+            });
+
+            mapFragment.on("mouseout", function (e) {
+                if(!mapFragment.mapFragmentActive) mapFragment.setColour(mapFragment.colour);
+            });
+        }
+
+        var circlePoint = new Plexx.Circle({
+            radius: 8,
+            position: [x, y],
+            colour: "#90caf9"
+        });
+
+        setupMouse(circlePoint)
+        return circlePoint
+    }
+
+    function Link()
+    {
+    }
+
+    //--------------------------------------------------------------------
+
+    var nrDn = 24
+    function loadNodes()
+    {
+        var nodes = []
+        for (var i=0; i<5+nrDn; i++)
+            nodes.push(Node())
+
+        return nodes
+    }
+
+    function layout(nodes)
+    {
+        nodes[0].position = [0, 0]
+        nodes[1].position = [1, 0]
+        nodes[2].position = [0, 1]
+        nodes[3].position = [-1, 0]
+        nodes[4].position = [0, -1]
+
+        for (var i=0; i<nrDn; i++)
+        {
+            a = i/nrDn*2*Math.PI
+            r = i/nrDn*0.3+0.3
+            nodes[5+i].position[0] = r*Math.cos(a)
+            nodes[5+i].position[1] = r*Math.sin(a)
+        }
+        return nodes
+    }
+
+    function update(nodesWithLayout)
+    {
+        for (var i=0; i<nodesWithLayout.length; i++)
+        {
+            nodesWithLayout[i].position[0] = nodesWithLayout[i].position[0] * 250
+            nodesWithLayout[i].position[1] = nodesWithLayout[i].position[1] * 250
+        }
+
+        for (var i=0; i<nodesWithLayout.length; i++)
+            rootGroup.add(nodesWithLayout[i])
+    }
+
+    var myCanvas = new Plexx.DrawingArea({ width: "1000", height: "500", align: "xMidYMid", });
+    var renderContext = new Plexx.RenderContext({id: "map-austria"});
+    var debugPanel = new Plexx.DebugHelper("map-austria-debug-panel", renderContext, myCanvas);
+    var rootGroup = new Plexx.Group({translation: [500, 250]});
+    var euclideanSpace = new Plexx.Circle({ radius: 250, position: [0, 0], colour: "#f9fbe7" });
+
+    myCanvas.add(rootGroup);
+    rootGroup.add(euclideanSpace);
+
+    var data = loadNodes()                  // data          = rootnode = { name:'', parent:node, children:[] }
+    var dataAndLayout = layout(data)        // dataAndLayout = nodes + { x, y, size }
+    update(dataAndLayout)
+
+    myCanvas.run(renderContext);
+
+</script>
+</body>
+</html>

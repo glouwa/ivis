@@ -1,0 +1,235 @@
+<?xml version="1.0" standalone="yes"?>
+
+<tree>
+  <declarations>
+    <attributeDecl name="name" type="String"/>
+    <attributeDecl name="id" type="String"/>
+    <attributeDecl name="image" type="String"/>
+    <attributeDecl name="isLeaf" type="String"/>
+    <attributeDecl name="description" type="String"/>
+    <attributeDecl name="contributors" type="String"/></declarations>
+  <branch>
+    <attribute name="name" value="Chiroptera"/>
+    <attribute name="id" value="15966"/>
+    <attribute name="image" value="personglobe.png"/>
+    <attribute name="description" value="(bats)"/>
+    <attribute name="contributors" value="Tenley Conway, Maggie Marotta, Nancy B. Simmons"/>
+    <branch>
+      <attribute name="name" value="Megachiroptera"/>
+      <attribute name="id" value="16076"/>
+      <attribute name="description" value="(Old World Fruit Bats)"/></branch>
+    <branch>
+      <attribute name="name" value=""/>
+      <attribute name="id" value="16077"/>
+      <branch>
+        <attribute name="name" value="Icaronycteris"/>
+        <attribute name="id" value="16078"/></branch>
+      <branch>
+        <attribute name="name" value=""/>
+        <attribute name="id" value="16079"/>
+        <branch>
+          <attribute name="name" value="Archaeonycteris"/>
+          <attribute name="id" value="16080"/></branch>
+        <branch>
+          <attribute name="name" value=""/>
+          <attribute name="id" value="16081"/>
+          <branch>
+            <attribute name="name" value="Hassianycteris"/>
+            <attribute name="id" value="16082"/></branch>
+          <branch>
+            <attribute name="name" value=""/>
+            <attribute name="id" value="16083"/>
+            <branch>
+              <attribute name="name" value="Palaeochiropteryx"/>
+              <attribute name="id" value="16084"/></branch>
+            <branch>
+              <attribute name="name" value="Microchiroptera"/>
+              <attribute name="id" value="16085"/>
+              <attribute name="image" value="globe.png"/>
+              <attribute name="description" value="(Echolocating Bats)"/>
+              <branch>
+                <attribute name="name" value="Emballonuroidea"/>
+                <attribute name="id" value="16087"/></branch>
+              <branch>
+                <attribute name="name" value=""/>
+                <attribute name="id" value="16088"/>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="id" value="16089"/>
+                  <branch>
+                    <attribute name="name" value="Rhinopomatoidea"/>
+                    <attribute name="id" value="16090"/>
+                    <attribute name="image" value="globe.png"/>
+                    <branch>
+                      <attribute name="name" value="Rhinopomatidae"/>
+                      <attribute name="id" value="16128"/>
+                      <attribute name="description" value="(Mouse-tailed Bats)"/></branch>
+                    <branch>
+                      <attribute name="name" value="Craseonycteridae"/>
+                      <attribute name="id" value="16129"/>
+                      <attribute name="description" value="(Bumblebee Bat)"/></branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value="Rhinolophoidea"/>
+                    <attribute name="id" value="16091"/>
+                    <attribute name="image" value="globe.png"/>
+                    <branch>
+                      <attribute name="name" value="Nycteridae"/>
+                      <attribute name="id" value="16123"/>
+                      <attribute name="description" value="(Slit-faced bats)"/></branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="id" value="16124"/>
+                      <branch>
+                        <attribute name="name" value="Megadermatidae"/>
+                        <attribute name="id" value="16125"/>
+                        <attribute name="description" value="(False Vampire bats)"/></branch>
+                      <branch>
+                        <attribute name="name" value="Rhinolophidae"/>
+                        <attribute name="id" value="16126"/>
+                        <attribute name="image" value="globe.png"/>
+                        <attribute name="description" value="(Horseshoe bats)"/>
+                        <branch>
+                          <attribute name="name" value="Rhinolophinae"/>
+                          <attribute name="id" value="16120"/></branch>
+                        <branch>
+                          <attribute name="name" value="Hipposiderinae"/>
+                          <attribute name="id" value="16121"/></branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+                <branch>
+                  <attribute name="name" value=""/>
+                  <attribute name="id" value="16092"/>
+                  <branch>
+                    <attribute name="name" value="Noctilionoidea"/>
+                    <attribute name="id" value="16093"/>
+                    <attribute name="image" value="globe.png"/>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="id" value="16113"/>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="id" value="16114"/>
+                        <branch>
+                          <attribute name="name" value="Mormoopidae"/>
+                          <attribute name="id" value="16115"/>
+                          <attribute name="description" value="(Mustached Bats)"/></branch>
+                        <branch>
+                          <attribute name="name" value="Noctilionidae"/>
+                          <attribute name="id" value="16116"/>
+                          <attribute name="description" value="(Bulldog Bats)"/></branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Phyllostomidae"/>
+                        <attribute name="id" value="16117"/>
+                        <attribute name="description" value="(New World Leaf-Nosed Bats)"/></branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value="Mystacinidae"/>
+                      <attribute name="id" value="16118"/>
+                      <attribute name="image" value="contr.png"/>
+                      <attribute name="description" value="(Short-Tailed Bats)"/>
+                      <attribute name="contributors" value="Stuart Parsons"/></branch>
+                  </branch>
+                  <branch>
+                    <attribute name="name" value=""/>
+                    <attribute name="id" value="16094"/>
+                    <branch>
+                      <attribute name="name" value="Nataloidea"/>
+                      <attribute name="id" value="16095"/>
+                      <attribute name="image" value="globe.png"/>
+                      <branch>
+                        <attribute name="name" value="Myzopodidae"/>
+                        <attribute name="id" value="16106"/>
+                        <attribute name="description" value="(Old World Sucker-footed Bats)"/></branch>
+                      <branch>
+                        <attribute name="name" value=""/>
+                        <attribute name="id" value="16107"/>
+                        <branch>
+                          <attribute name="name" value="Thyropteridae"/>
+                          <attribute name="id" value="16108"/>
+                          <attribute name="description" value="(Disk-winged Bats)"/></branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="id" value="16109"/>
+                          <branch>
+                            <attribute name="name" value="Furipteridae"/>
+                            <attribute name="id" value="16110"/>
+                            <attribute name="description" value="(Thumbless Bats)"/></branch>
+                          <branch>
+                            <attribute name="name" value="Natalidae"/>
+                            <attribute name="id" value="16111"/>
+                            <attribute name="description" value="(Funnel-eared Bats)"/></branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                    <branch>
+                      <attribute name="name" value=""/>
+                      <attribute name="id" value="16096"/>
+                      <branch>
+                        <attribute name="name" value="Molossoidea"/>
+                        <attribute name="id" value="16097"/>
+                        <attribute name="image" value="globe.png"/>
+                        <branch>
+                          <attribute name="name" value="Molossidae"/>
+                          <attribute name="id" value="16103"/>
+                          <attribute name="image" value="globe.png"/>
+                          <attribute name="description" value="(Free-tailed Bats)"/>
+                          <branch>
+                            <attribute name="name" value="Tomopeatinae"/>
+                            <attribute name="id" value="16100"/></branch>
+                          <branch>
+                            <attribute name="name" value="Molossinae"/>
+                            <attribute name="id" value="16101"/></branch>
+                        </branch>
+                        <branch>
+                          <attribute name="name" value="Antrozoidae"/>
+                          <attribute name="id" value="16104"/></branch>
+                      </branch>
+                      <branch>
+                        <attribute name="name" value="Vespertilionidae"/>
+                        <attribute name="id" value="16140"/>
+                        <attribute name="image" value="globe.png"/>
+                        <attribute name="description" value="(Evening Bats)"/>
+                        <branch>
+                          <attribute name="name" value="Vespertilioninae"/>
+                          <attribute name="id" value="16131"/></branch>
+                        <branch>
+                          <attribute name="name" value=""/>
+                          <attribute name="id" value="16132"/>
+                          <branch>
+                            <attribute name="name" value="Miniopterinae"/>
+                            <attribute name="id" value="16133"/></branch>
+                          <branch>
+                            <attribute name="name" value=""/>
+                            <attribute name="id" value="16134"/>
+                            <branch>
+                              <attribute name="name" value="Myotinae"/>
+                              <attribute name="id" value="16135"/></branch>
+                            <branch>
+                              <attribute name="name" value=""/>
+                              <attribute name="id" value="16136"/>
+                              <branch>
+                                <attribute name="name" value="Muriniae"/>
+                                <attribute name="id" value="16137"/></branch>
+                              <branch>
+                                <attribute name="name" value="Kerivoulinae"/>
+                                <attribute name="id" value="16138"/></branch>
+                            </branch>
+                          </branch>
+                        </branch>
+                      </branch>
+                    </branch>
+                  </branch>
+                </branch>
+              </branch>
+            </branch>
+          </branch>
+        </branch>
+      </branch>
+    </branch>
+  </branch>
+</tree>
+

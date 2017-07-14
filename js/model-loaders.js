@@ -35,7 +35,7 @@ var ivis;
                 if (file.endsWith('.xml') ||
                     file.endsWith('.json') ||
                     file.endsWith('.rdf'))
-                    if (file.endsWith('.d3.json'))
+                    if (file.endsWith('.d3.json') || file == "data/upload/user-uploaded.xml")
                         d3.json(file, (error, treeData) => ok(treeData));
                     else
                         new model.Tree(ok, file);
@@ -48,7 +48,7 @@ var ivis;
             }
             loaders.path_ = n => ok => path(ok, n);
             loaders.star_ = n => ok => star(ok, n);
-            loaders.fromFile = f => ok => loadFromFile(ok, "data/" + f);
+            loaders.fromFile = f => ok => loadFromFile(ok, f);
             function nTreeAtFirst(ok, max = 10) {
                 oneNode(d => {
                     var cur = d;

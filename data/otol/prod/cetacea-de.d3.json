@@ -1,0 +1,1086 @@
+{
+    "name": "Wale",
+    "numTips": 259,
+    "ottId": "ott698424",
+    "children": [
+        {
+            "name": "Bartenwale",
+            "numTips": 32,
+            "ottId": "ott800314",
+            "children": [
+                {
+                    "name": "Glattwale",
+                    "numTips": 6,
+                    "ottId": "ott754603",
+                    "children": [
+                        {
+                            "name": "Eubalaena",
+                            "numTips": 3,
+                            "ottId": "ott251473",
+                            "children": [
+                                {
+                                    "name": "Südkaper",
+                                    "numTips": 0,
+                                    "ottId": "ott699249"
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 2,
+                                    "ottId": "mrcaott397247ott1072344",
+                                    "children": [
+                                        {
+                                            "name": "Pazifischer Nordkaper",
+                                            "numTips": 0,
+                                            "ottId": "ott1072344"
+                                        },
+                                        {
+                                            "name": "Atlantischer Nordkaper",
+                                            "numTips": 0,
+                                            "ottId": "ott397247"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Grönlandwal",
+                            "numTips": 0,
+                            "ottId": "ott397231"
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "numTips": 25,
+                    "ottId": "mrcaott44568ott397243",
+                    "children": [
+                        {
+                            "name": "Zwergglattwal",
+                            "numTips": 0,
+                            "ottId": "ott397243"
+                        },
+                        {
+                            "name": "",
+                            "numTips": 24,
+                            "ottId": "mrcaott44568ott800320",
+                            "children": [
+                                {
+                                    "name": "Grauwal",
+                                    "numTips": 0,
+                                    "ottId": "ott800320"
+                                },
+                                {
+                                    "name": "Furchenwale",
+                                    "numTips": 23,
+                                    "ottId": "ott800326",
+                                    "children": [
+                                        {
+                                            "name": "",
+                                            "numTips": 9,
+                                            "ottId": "mrcaott313151ott5555476",
+                                            "children": [
+                                                {
+                                                    "name": "Blauwal",
+                                                    "numTips": 4,
+                                                    "ottId": "ott226190"
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 5,
+                                                    "ottId": "mrcaott313151ott800331",
+                                                    "children": [
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 4,
+                                                            "ottId": "mrcaott800331ott5846419",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Seiwal",
+                                                                    "numTips": 2,
+                                                                    "ottId": "ott800329"
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 2,
+                                                                    "ottId": "mrcaott800331ott959341",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Brydewal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott959341"
+                                                                        },
+                                                                        {
+                                                                            "name": "Brydewal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott800331"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Omurawal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott313151"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 7,
+                                            "ottId": "mrcaott44568ott226198",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 3,
+                                                    "ottId": "mrcaott226198ott5846421",
+                                                    "children": [
+                                                        {
+                                                            "name": "Finnwal",
+                                                            "numTips": 2,
+                                                            "ottId": "ott226193"
+                                                        },
+                                                        {
+                                                            "name": "Buckelwal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott226198"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 4,
+                                                    "ottId": "mrcaott44568ott1055112",
+                                                    "children": [
+                                                        {
+                                                            "name": "Zwergwal",
+                                                            "numTips": 3,
+                                                            "ottId": "ott800317"
+                                                        },
+                                                        {
+                                                            "name": "Südlicher Zwergwal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott44568"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Zahnwale",
+            "numTips": 227,
+            "ottId": "ott698417",
+            "children": [
+                {
+                    "name": "Pottwale",
+                    "numTips": 15,
+                    "ottId": "ott276861",
+                    "children": [
+                        {
+                            "name": "Zwergpottwal",
+                            "numTips": 0,
+                            "ottId": "ott825964"
+                        },
+                        {
+                            "name": "Pottwal",
+                            "numTips": 0,
+                            "ottId": "ott276851"
+                        }
+                    ]
+                },
+                {
+                    "name": "",
+                    "numTips": 212,
+                    "ottId": "mrcaott5269ott234629",
+                    "children": [
+                        {
+                            "name": "Platanista",
+                            "numTips": 3,
+                            "ottId": "ott477489",
+                            "children": [
+                                {
+                                    "name": "Gangesdelfin",
+                                    "numTips": 1,
+                                    "ottId": "ott5256"
+                                },
+                                {
+                                    "name": "Indusdelfin",
+                                    "numTips": 0,
+                                    "ottId": "ott477494"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "",
+                            "numTips": 209,
+                            "ottId": "mrcaott5269ott6470",
+                            "children": [
+                                {
+                                    "name": "Schnabelwale",
+                                    "numTips": 26,
+                                    "ottId": "ott276849",
+                                    "children": [
+                                        {
+                                            "name": "Shepherd-Wal",
+                                            "numTips": 0,
+                                            "ottId": "ott319470"
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 25,
+                                            "ottId": "mrcaott6470ott1003906",
+                                            "children": [
+                                                {
+                                                    "name": "Schwarzwale",
+                                                    "numTips": 2,
+                                                    "ottId": "ott1003909",
+                                                    "children": [
+                                                        {
+                                                            "name": "Südlicher Schwarzwal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1021375"
+                                                        },
+                                                        {
+                                                            "name": "Baird-Wal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott1003906"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "",
+                                                    "numTips": 23,
+                                                    "ottId": "mrcaott6470ott800311",
+                                                    "children": [
+                                                        {
+                                                            "name": "Cuvier-Schnabelwal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott800311"
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 20,
+                                                            "ottId": "mrcaott6470ott575100",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 3,
+                                                                    "ottId": "mrcaott575100ott1003913",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Entenwale",
+                                                                            "numTips": 2,
+                                                                            "ottId": "ott1003908",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Südlicher Entenwal",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott1021371"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Nördlicher Entenwal",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott1003913"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Longman-Schnabelwal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott575100"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "Zweizahnwale",
+                                                                    "numTips": 17,
+                                                                    "ottId": "ott276848",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Sowerby-Zweizahnwal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott1003915"
+                                                                        },
+                                                                        {
+                                                                            "name": "Deraniyagala-Zweizahnwal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott817202"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 13,
+                                                                            "ottId": "mrcaott6470ott346599",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Bahamonde-Schnabelwal",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott346599"
+                                                                                },
+                                                                                {
+                                                                                    "name": "",
+                                                                                    "numTips": 12,
+                                                                                    "ottId": "mrcaott6470ott654357",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "name": "Japanischer Schnabelwal",
+                                                                                            "numTips": 0,
+                                                                                            "ottId": "ott654357"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "",
+                                                                                            "numTips": 11,
+                                                                                            "ottId": "mrcaott6470ott825961",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "name": "Gervais-Zweizahnwal",
+                                                                                                    "numTips": 0,
+                                                                                                    "ottId": "ott825961"
+                                                                                                },
+                                                                                                {
+                                                                                                    "name": "",
+                                                                                                    "numTips": 10,
+                                                                                                    "ottId": "mrcaott6470ott319479",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "True-Wal",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott319479"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "",
+                                                                                                            "numTips": 9,
+                                                                                                            "ottId": "mrcaott6470ott276866",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "",
+                                                                                                                    "numTips": 3,
+                                                                                                                    "ottId": "mrcaott276866ott1021373",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Andrew-Schnabelwal",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott1021373"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "",
+                                                                                                                            "numTips": 2,
+                                                                                                                            "ottId": "mrcaott276866ott1021369",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "name": "Layard-Wal",
+                                                                                                                                    "numTips": 0,
+                                                                                                                                    "ottId": "ott1021369"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "Hubbs-Schnabelwal",
+                                                                                                                                    "numTips": 0,
+                                                                                                                                    "ottId": "ott276866"
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "",
+                                                                                                                    "numTips": 6,
+                                                                                                                    "ottId": "mrcaott6470ott319477",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Hector-Schnabelwal",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott319477"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "",
+                                                                                                                            "numTips": 5,
+                                                                                                                            "ottId": "mrcaott6470ott276883",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "name": "",
+                                                                                                                                    "numTips": 3,
+                                                                                                                                    "ottId": "mrcaott276883ott1021367",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "name": "Camperdown-Wal",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott1021367"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "name": "",
+                                                                                                                                            "numTips": 2,
+                                                                                                                                            "ottId": "mrcaott276883ott825958",
+                                                                                                                                            "children": [
+                                                                                                                                                {
+                                                                                                                                                    "name": "Peruanischer Schnabelwal",
+                                                                                                                                                    "numTips": 0,
+                                                                                                                                                    "ottId": "ott825958"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "name": "Perrin-Schnabelwal",
+                                                                                                                                                    "numTips": 0,
+                                                                                                                                                    "ottId": "ott276883"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "",
+                                                                                                                                    "numTips": 2,
+                                                                                                                                    "ottId": "mrcaott6470ott319467",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "name": "Stejneger-Schnabelwal",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott319467"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "name": "Blainville-Schnabelwal",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott6470"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "",
+                                    "numTips": 183,
+                                    "ottId": "mrcaott5269ott47843",
+                                    "children": [
+                                        {
+                                            "name": "",
+                                            "numTips": 177,
+                                            "ottId": "mrcaott47843ott194312",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 16,
+                                                    "ottId": "mrcaott194312ott306757",
+                                                    "children": [
+                                                        {
+                                                            "name": "Gründelwale",
+                                                            "numTips": 4,
+                                                            "ottId": "ott851307",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Weißwal",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott851318"
+                                                                },
+                                                                {
+                                                                    "name": "Narwal",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott306757"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Schweinswale",
+                                                            "numTips": 12,
+                                                            "ottId": "ott851308",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 3,
+                                                                    "ottId": "mrcaott423943ott1089663",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Kalifornischer Schweinswal",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott1089663"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 2,
+                                                                            "ottId": "mrcaott423943ott548141",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Burmeister-Schweinswal",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott548141"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Brillenschweinswal",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott423943"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 8,
+                                                                    "ottId": "mrcaott194312ott499806",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Glattschweinswale",
+                                                                            "numTips": 3,
+                                                                            "ottId": "ott423941",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Östlicher Glattschweinswal",
+                                                                                    "numTips": 1,
+                                                                                    "ottId": "ott1019449"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Glattschweinswal",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott423949"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 5,
+                                                                            "ottId": "mrcaott194312ott851306",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Weißflankenschweinswal",
+                                                                                    "numTips": 2,
+                                                                                    "ottId": "ott851304"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Gewöhnlicher Schweinswal",
+                                                                                    "numTips": 3,
+                                                                                    "ottId": "ott851312"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Delfine",
+                                                    "numTips": 161,
+                                                    "ottId": "ott698406",
+                                                    "children": [
+                                                        {
+                                                            "name": "Schwertwal",
+                                                            "numTips": 0,
+                                                            "ottId": "ott124215"
+                                                        },
+                                                        {
+                                                            "name": "",
+                                                            "numTips": 160,
+                                                            "ottId": "mrcaott47843ott111103",
+                                                            "children": [
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 145,
+                                                                    "ottId": "mrcaott111103ott825969",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "Weißschnauzendelfin",
+                                                                            "numTips": 0,
+                                                                            "ottId": "ott825969"
+                                                                        },
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 134,
+                                                                            "ottId": "mrcaott111103ott124224",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "",
+                                                                                    "numTips": 115,
+                                                                                    "ottId": "mrcaott124224ott250045",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "name": "",
+                                                                                            "numTips": 12,
+                                                                                            "ottId": "mrcaott250045ott593889",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "name": "Rauzahndelfin",
+                                                                                                    "numTips": 0,
+                                                                                                    "ottId": "ott593889"
+                                                                                                },
+                                                                                                {
+                                                                                                    "name": "Sotalia",
+                                                                                                    "numTips": 7,
+                                                                                                    "ottId": "ott336236",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "Amazonas-Sotalia",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott336231"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "Guyana-Delfin",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott250045"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "",
+                                                                                            "numTips": 103,
+                                                                                            "ottId": "mrcaott124224ott155492",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "name": "",
+                                                                                                    "numTips": 8,
+                                                                                                    "ottId": "mrcaott155492ott336237",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "Borneodelfin",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott336237"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "Ostpazifischer Delfin",
+                                                                                                            "numTips": 4,
+                                                                                                            "ottId": "ott124226"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "name": "",
+                                                                                                    "numTips": 93,
+                                                                                                    "ottId": "mrcaott124224ott246130",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "",
+                                                                                                            "numTips": 15,
+                                                                                                            "ottId": "mrcaott246130ott5846404",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "Schlankdelfin",
+                                                                                                                    "numTips": 2,
+                                                                                                                    "ottId": "ott124220"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "Tursiops",
+                                                                                                                    "numTips": 13,
+                                                                                                                    "ottId": "ott124235",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Burrunan-Delfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott410776"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Indopazifischer Großer Tümmler",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott257323"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Großer Tümmler",
+                                                                                                                            "numTips": 2,
+                                                                                                                            "ottId": "ott124230"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "",
+                                                                                                            "numTips": 78,
+                                                                                                            "ottId": "mrcaott124224ott129046",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "Sousa",
+                                                                                                                    "numTips": 35,
+                                                                                                                    "ottId": "ott916112",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Chinesischer Weißer Delfin",
+                                                                                                                            "numTips": 2,
+                                                                                                                            "ottId": "ott187220"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Sousa sahulensis",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott5839562"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Bleifarbener Delfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott3612064"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Kamerunflussdelfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott460042"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "",
+                                                                                                                    "numTips": 43,
+                                                                                                                    "ottId": "mrcaott124224ott1093924",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Clymene-Delfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott1093924"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "",
+                                                                                                                            "numTips": 42,
+                                                                                                                            "ottId": "mrcaott124224ott1094002",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "name": "",
+                                                                                                                                    "numTips": 3,
+                                                                                                                                    "ottId": "mrcaott5555429ott5846410",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "name": "Langschnäuziger Gemeiner Delfin",
+                                                                                                                                            "numTips": 1,
+                                                                                                                                            "ottId": "ott1094064"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "name": "Gemeiner Delfin",
+                                                                                                                                            "numTips": 2,
+                                                                                                                                            "ottId": "ott698438"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "",
+                                                                                                                                    "numTips": 2,
+                                                                                                                                    "ottId": "mrcaott124224ott336243",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "name": "Zügeldelfin",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott336243"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "name": "Blau-Weißer Delfin",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott124224"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "",
+                                                                                    "numTips": 19,
+                                                                                    "ottId": "mrcaott111103ott701486",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "name": "Weißseitendelfin",
+                                                                                            "numTips": 0,
+                                                                                            "ottId": "ott701486"
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "",
+                                                                                            "numTips": 18,
+                                                                                            "ottId": "mrcaott111103ott825966",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "name": "Glattdelfine",
+                                                                                                    "numTips": 5,
+                                                                                                    "ottId": "ott825968",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "Nördlicher Glattdelfin",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott1093944"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "Südlicher Glattdelfin",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott825966"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    "name": "",
+                                                                                                    "numTips": 13,
+                                                                                                    "ottId": "mrcaott111103ott701489",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "",
+                                                                                                            "numTips": 6,
+                                                                                                            "ottId": "mrcaott701489ott5846416",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "Schwarzdelfin",
+                                                                                                                    "numTips": 2,
+                                                                                                                    "ottId": "ott548145"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "",
+                                                                                                                    "numTips": 4,
+                                                                                                                    "ottId": "mrcaott701489ott763851",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "",
+                                                                                                                            "numTips": 3,
+                                                                                                                            "ottId": "mrcaott763851ott860906",
+                                                                                                                            "children": [
+                                                                                                                                {
+                                                                                                                                    "name": "Heaviside-Delfin",
+                                                                                                                                    "numTips": 0,
+                                                                                                                                    "ottId": "ott860906"
+                                                                                                                                },
+                                                                                                                                {
+                                                                                                                                    "name": "",
+                                                                                                                                    "numTips": 2,
+                                                                                                                                    "ottId": "mrcaott763851ott1094080",
+                                                                                                                                    "children": [
+                                                                                                                                        {
+                                                                                                                                            "name": "Peale-Delfin",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott1094080"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "name": "Stundenglasdelfin",
+                                                                                                                                            "numTips": 0,
+                                                                                                                                            "ottId": "ott763851"
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            ]
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Weißstreifendelfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott701489"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "",
+                                                                                                            "numTips": 5,
+                                                                                                            "ottId": "mrcaott111103ott251469",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "",
+                                                                                                                    "numTips": 3,
+                                                                                                                    "ottId": "mrcaott251469ott5846412",
+                                                                                                                    "children": [
+                                                                                                                        {
+                                                                                                                            "name": "Commerson-Delfin",
+                                                                                                                            "numTips": 2,
+                                                                                                                            "ottId": "ott1094144"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "name": "Weißbauchdelfin",
+                                                                                                                            "numTips": 0,
+                                                                                                                            "ottId": "ott251469"
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "Maui-Delfin",
+                                                                                                                    "numTips": 0,
+                                                                                                                    "ottId": "ott629875"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "name": "",
+                                                                    "numTips": 15,
+                                                                    "ottId": "mrcaott47843ott154711",
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "",
+                                                                            "numTips": 13,
+                                                                            "ottId": "mrcaott154711ott209644",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "",
+                                                                                    "numTips": 12,
+                                                                                    "ottId": "mrcaott209644ott336234",
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "name": "",
+                                                                                            "numTips": 11,
+                                                                                            "ottId": "mrcaott336234ott336240",
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "name": "Zwerggrindwal",
+                                                                                                    "numTips": 0,
+                                                                                                    "ottId": "ott336240"
+                                                                                                },
+                                                                                                {
+                                                                                                    "name": "",
+                                                                                                    "numTips": 10,
+                                                                                                    "ottId": "mrcaott336234ott535886",
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "name": "Grindwale",
+                                                                                                            "numTips": 9,
+                                                                                                            "ottId": "ott698443",
+                                                                                                            "children": [
+                                                                                                                {
+                                                                                                                    "name": "Grindwal",
+                                                                                                                    "numTips": 2,
+                                                                                                                    "ottId": "ott124212"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "name": "Kurzflossen-Grindwal",
+                                                                                                                    "numTips": 0,
+                                                                                                                    "ottId": "ott535886"
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "name": "Breitschnabeldelfin",
+                                                                                                            "numTips": 0,
+                                                                                                            "ottId": "ott336234"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "name": "Kleiner Schwertwal",
+                                                                                            "numTips": 0,
+                                                                                            "ottId": "ott209644"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "name": "Rundkopfdelfin",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott154711"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "name": "Orcaella",
+                                                                            "numTips": 2,
+                                                                            "ottId": "ott1003910",
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "Irawadidelfin",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott1003911"
+                                                                                },
+                                                                                {
+                                                                                    "name": "Australischer Stupsfinnendelfin",
+                                                                                    "numTips": 0,
+                                                                                    "ottId": "ott47843"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "",
+                                            "numTips": 6,
+                                            "ottId": "mrcaott5269ott86868",
+                                            "children": [
+                                                {
+                                                    "name": "",
+                                                    "numTips": 5,
+                                                    "ottId": "mrcaott86868ott140448",
+                                                    "children": [
+                                                        {
+                                                            "name": "La-Plata-Delfin",
+                                                            "numTips": 0,
+                                                            "ottId": "ott140448"
+                                                        },
+                                                        {
+                                                            "name": "Amazonas-Flussdelfine",
+                                                            "numTips": 4,
+                                                            "ottId": "ott698410",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Araguaia-Delfin",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott5555456"
+                                                                },
+                                                                {
+                                                                    "name": "Bolivianischer Amazonasdelfin",
+                                                                    "numTips": 0,
+                                                                    "ottId": "ott150935"
+                                                                },
+                                                                {
+                                                                    "name": "Amazonasdelfin",
+                                                                    "numTips": 2,
+                                                                    "ottId": "ott698411"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Chinesischer Flussdelfin",
+                                                    "numTips": 0,
+                                                    "ottId": "ott5269"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
