@@ -140,7 +140,7 @@ var ivis;
                     var allNodes = dfsFlat(this.args.data, n => true);
                     var allLinks = dfsFlat(this.args.data, n => n.parent);
                     this.cells = this.cellLayer.selectAll(".cell")
-                        .data(this.voroLayout.polygons().filter(e => !e))
+                        .data(this.voroLayout.polygons().filter(e => e))
                         .enter().append('polygon')
                         .attr("class", "cell")
                         .call(this.updateCell)
@@ -174,7 +174,7 @@ var ivis;
                     this.updateCells();
                 }
                 updateCells() {
-                    this.cells.data(this.voroLayout.polygons().filter(e => !e));
+                    this.cells.data(this.voroLayout.polygons().filter(e => e));
                     this.cells.call(this.updateCell);
                 }
                 updateCaptions(visible) {

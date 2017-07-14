@@ -133,7 +133,7 @@ namespace ivis.ui.D3
             var allLinks = dfsFlat(this.args.data, n=>n.parent)
 
             this.cells = this.cellLayer.selectAll(".cell")
-                .data(this.voroLayout.polygons().filter(e=> !e))
+                .data(this.voroLayout.polygons().filter(e=> e))
                 .enter().append('polygon')
                     .attr("class", "cell")
                     .call(this.updateCell)
@@ -175,7 +175,7 @@ namespace ivis.ui.D3
 
         updateCells() : void
         {
-            this.cells.data(this.voroLayout.polygons().filter(e=> !e))
+            this.cells.data(this.voroLayout.polygons().filter(e=> e))
             this.cells.call(this.updateCell)
         }
 
