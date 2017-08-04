@@ -8,21 +8,23 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" media="screen,projection">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script type="text/javascript" src="node_modules/d3/build/d3.min.js"></script>
+    <script type="text/javascript" src="node_bundles/xml2jsBundle.js"></script>
+    <script type="text/javascript" src="js/lib/plexx.js"></script>
+
 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="tree.css">
     <link rel="stylesheet" href="material.css">
-    <script type="text/javascript" src="js/lib/plexx.js"></script>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="https://d3js.org/d3-ease.v1.min.js"></script>
+
+    <!--<script type="text/javascript" src="dist/client.js"></script>-->
     <script type="text/javascript" src="js/global.js"></script>
     <script type="text/javascript" src="js/controller-init.js"></script>
     <script type="text/javascript" src="js/controller-interact.js"></script>
     <script type="text/javascript" src="js/model-layouts.js"></script>
     <script type="text/javascript" src="js/model-loaders.js"></script>
-    <script type="text/javascript" src="node_bundles/xml2jsBundle.js"></script>
     <script type="text/javascript" src="js/model-tree.js"></script>
     <script type="text/javascript" src="js/ui.js"></script>
     <script type="text/javascript" src="js/ui-d3.js"></script>
@@ -48,15 +50,14 @@
                 <select id="dataSourceSelect"></select>
                 <label>Data source</label></span>
 
-            <span id="userfileControl" class="configItem file-field input-field">
+            <span id="userfileControl" class="configItem file-field input-field" style="width:3.3em">
                 <div class="btn-small waves-effect waves-orange btn green lighten-5 black-text"">
                     <span><i class="material-icons">file_upload</i></span>
                     <input id="userfile" type="file" name="userfile" accept=".xml, .rdf, .csv, .json"></input>
                 </div>
                 <div class="file-path-wrapper" style="display:none">
                     <input class="file-path validate" type="text" placeholder="Upload"></input>
-                </div>
-            </span>
+                </div></span>
         </div>
 
         <div class="seperator"></div>

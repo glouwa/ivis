@@ -1,16 +1,15 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "module": "es6",
-        "moduleResolution": "node",
+        "module": "system",
+        //"moduleResolution": "node",
+        "sourceMap": true,
+        "removeComments": true,
+        "declaration": true,
         "lib": ["dom", "es2015", "es2016"],
-        //"sourceMap": true,
+        "types": [ "d3", "node", "jquery" ],
         "typeRoots": ["node_modules/@types"],
-        "outDir": "js",
-        "rootDir": "ts",
-        "types": [
-          "d3",
-          "node"
-        ]
+        //"outDir": "dist/client/",
+        //"rootDir": "ts"
     }
 }

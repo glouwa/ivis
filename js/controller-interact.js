@@ -72,7 +72,7 @@ var ivis;
                     },
                     arc: this.args.arc,
                     caption: this.caption,
-                    labelFilter: (n) => CktoCp(n.cache).r > .5,
+                    labelFilter: (n) => CktoCp(n.cache).r > .69,
                     parent: null,
                     pos: ArrAddR([50, 30], radius),
                     voroBox: [[-1.01, -1.01], [1.01, 1.01]],

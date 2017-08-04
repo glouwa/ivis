@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Hyperbolic tree view in plexx",
   "main": "index.html",
+  "author": "G3: Eva Rott, Michael Glatzhofer, Dominik Mocher, Julian Wolf",
+  "license": "CC-BY-4.0",
+  "homepage": "https://github.com/glouwa/ivis#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js & tsc -w  ",
@@ -13,29 +16,39 @@
     "url": "git+https://github.com/glouwa/ivis.git"
   },
   "keywords": [
-    "Hyperbolic",
+    "hyperbolic tree",
+    "hyper tree",
     "plexx",
     "ivis"
   ],
-  "author": "G3: Eva Rott, Michael Glatzhofer, Dominik Mocher, Julian Wolf",
-  "license": "CC-BY-4.0",
   "bugs": {
     "url": "https://github.com/glouwa/ivis/issues"
   },
-  "homepage": "https://github.com/glouwa/ivis#readme",
   "dependencies": {
+    "browserify": "^14.4.0",
     "connect": "^3.4.1",
     "d3": "^4.0.0",
-    "d3-ease": "^1.0.3",
     "formidable": "^1.1.1",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-typescript": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "jquery": "^3.2.1",
     "materialize-css": "^0.99.0",
+    "merge2": "^1.1.0",
     "serve-static": "^1.10.3",
     "typescript": "^2.3.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vinyl-transform": "^1.0.0",
     "watch": "^1.0.2",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "@types/d3": "^4.9.0",
-    "@types/node": "^7.0.27"
+    "@types/node": "^7.0.27",
+    "@types/jquery": "^3.2.1"
   }
 }

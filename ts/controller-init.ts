@@ -1,13 +1,15 @@
-var hidePan
+import * as c2 from "./controller-ineract.js"
+
 namespace ivis.controller
 {
     var slideNr = -1
     var slides_ = {}
     slides_.index = [
+        { ds:"code",                         ls:'layoutBergé',       name:"Reflection" },
         { ds:"fromFile('data/tolw/prod/carnivora-de.xml')", ls:'layoutBergé',       name:"Example treeml file" },
         { ds:"fromFile('data/flare.csv')",        ls:'layoutBergé',       name:"Example csv file" },
         { ds:"nTreeAtFirst",                 ls:'layoutBergé',       name:"Deep path example" },
-        { ds:"code",                         ls:'layoutBergé',       name:"Reflection" },
+
         { ds:"nTree",                        ls:'layoutBergé',       name:"Balanced tree" },
         { ds:"nTree",                        ls:'layoutBuchheim',    name:"Balanced tree" },
         { ds:"star_(5)",                     ls:'layoutUnitVectors', arc:"arc('0', '1')", name:"Unit vectors" },
@@ -47,9 +49,12 @@ namespace ivis.controller
 
     export function init(s)
     {        
+        console.log(c2)
+
         slides = slides_[s]
         var rendererOptions = ['D3', 'Plexx', 'PlexxDbg']
         var loaderOptions = [
+            { text:"Modules",        value:"code",                         },
             { text:"flare.csv (d3)", value:"fromFile('data/flare.csv')"         },
             { text:"sample.xml",     value:"fromFile('data/sample.xml')"        },
             { text:"sample.json",    value:"fromFile('data/sample.json')"       },
@@ -65,7 +70,7 @@ namespace ivis.controller
             { text:"Tree of life 9", value:"fromFile('data/otol/prod/cetartiodactyla-de.d3.json')", },
             { text:"Tree of life 10", value:"fromFile('data/otol/prod/primates-de.d3.json')",   },
             { text:"Tree of life 11", value:"fromFile('data/otol/prod/rodentia-de.d3.json')",   },
-            { text:"Modules",        value:"code",                         },
+
             { text:"⋆ Star 1+4",     value:"star_(5)",                     },
             { text:"⋆ Star 1+50",    value:"star_(50)",                    },
             { text:"⋆ Star 1+500",   value:"star_(500)",                   },
@@ -147,7 +152,7 @@ namespace ivis.controller
         var arcSelect        = buildCombo('#arcSelect',        arcOptions,     setArc)
         var captionSelect    = buildCombo('#captionSelect',    captionOptions, setCaption)
 
-        var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect")
+        var rendererSelect   = <HTMLInputElement>document.getElementById("rendererSelect"+``)
         var spaceSelect      = <HTMLInputElement>document.getElementById("spaceSelect")
         var arcSelect        = <HTMLInputElement>document.getElementById("arcSelect")
         var captionSelect    = <HTMLInputElement>document.getElementById("captionSelect")
